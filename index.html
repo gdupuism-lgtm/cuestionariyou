@@ -1356,7 +1356,8 @@ async function generateScript() {
     });
 
     const data = await response.json();
-    generatedScript = data.content.map(b => b.text || '').join('');
+    const parsed = typeof data.body === 'string' ? JSON.parse(data.body) : data;
+    generatedScript = (parsed.content || []).map(b => b.text || '').join('');
 
     // Mark code as used
     markCodeUsed(currentCode);

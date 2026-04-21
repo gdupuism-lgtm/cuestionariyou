@@ -19,10 +19,11 @@ exports.handler = async function(event) {
       })
     });
     const data = await response.json();
+    const text = (data.content || []).map(b => b.text || '').join('');
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify({ text: text })
     };
   } catch (err) {
     return {

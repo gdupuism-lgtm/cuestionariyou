@@ -3,16 +3,35 @@ exports.handler = async function(event) {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
   try {
-    const { system, prompt } = JSON.parse(event.body);
-    
-    const apiKey = process.env.ANTHROPIC_API_KEY;
-    if (!apiKey) {
+    const body = JSON.parse(event.body);
+
+    // EMAIL sending via Resend
+    if (body.type === 'email') {
+      const { to, subject, html } = body;
+      const resendRes = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
+        },
+        body: JSON.stringify({
+          from: 'ERIORCENTER <onboarding@resend.dev>',
+          to: [to],
+          subject: subject,
+          html: html
+        })
+      });
+      const resendData = await resendRes.json();
       return {
         statusCode: 200,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: 'ERROR: No API key found in environment' })
+        body: JSON.stringify({ ok: true, data: resendData })
       };
     }
+
+    // SCRIPT generation via Anthropic
+    const { system, prompt } = body;
+    const apiKey = process.env.ANTHROPIC_API_KEY;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -29,18 +48,7 @@ exports.handler = async function(event) {
       })
     });
 
-    const raw = await response.text();
-    
-    let data;
-    try {
-      data = JSON.parse(raw);
-    } catch(e) {
-      return {
-        statusCode: 200,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: 'ERROR parsing response: ' + raw.substring(0, 200) })
-      };
-    }
+    const data = await response.json();
 
     if (data.error) {
       return {
@@ -59,9 +67,8 @@ exports.handler = async function(event) {
 
   } catch (err) {
     return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: 'CATCH ERROR: ' + err.message })
+      statusCode: 500,
+      body: JSON.stringify({ error: err.message })
     };
   }
 };

@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ERIORCENTER — Audio YOU</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   :root {
     --cream: #faf6f0;
@@ -1798,30 +1797,75 @@ function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 // EMAILS (EmailJS)
 // ═══════════════════════════════════════
 async function sendEmails() {
-  if (!window.emailjs) {
-    console.log('EmailJS not configured yet');
-    return;
-  }
+  const clientHtml = `
+    <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#faf6f0;padding:40px;">
+      <div style="text-align:center;margin-bottom:32px;">
+        <p style="font-size:11px;letter-spacing:4px;color:#c9a96e;text-transform:uppercase;margin:0;">ERIORCENTER</p>
+        <h1 style="font-size:32px;font-weight:300;color:#2a1f14;margin:8px 0;">Audio YOU 🧸</h1>
+        <div style="width:60px;height:1px;background:#c9a96e;margin:16px auto;"></div>
+      </div>
+      <p style="font-size:16px;color:#2a1f14;font-weight:300;line-height:1.8;">Hola <strong>${formData.name}</strong> 💖✨</p>
+      <p style="font-size:15px;color:#7a6555;font-weight:300;line-height:1.8;">Gracias infinitas por tu confianza. Aquí está tu script personalizado, creado especialmente para ti con amor y magia. 🌸</p>
+      <div style="background:#1a1209;border-radius:8px;padding:32px;margin:32px 0;">
+        <p style="font-size:11px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin:0 0 16px;">Tu script</p>
+        <p style="font-size:14px;color:#faf6f0;font-weight:300;line-height:2;white-space:pre-wrap;margin:0;">${generatedScript}</p>
+      </div>
+      <p style="font-size:13px;color:#b09880;font-weight:300;line-height:1.8;text-align:center;">
+        📩 <strong style="color:#7a6555;">Importante:</strong> Una vez que envíes tus grabaciones, vuelve a llenar el formulario.<br>
+        Es indispensable para enviarte tu audio final. 🐇💛
+      </p>
+      <div style="text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid #e8d5b0;">
+        <p style="font-size:12px;color:#c9a96e;letter-spacing:2px;margin:0;">Con cariño, El equipo ☁️🌸💎</p>
+        <p style="font-size:10px;color:#b09880;letter-spacing:3px;text-transform:uppercase;margin:8px 0 0;">ERIORCENTER</p>
+      </div>
+    </div>`;
 
-  emailjs.init(CONFIG.EMAILJS_PUBLIC_KEY);
-
-  const params = {
-    to_name: formData.name,
-    to_email: formData.email,
-    script: generatedScript,
-    audio_name: 'Audio YOU',
-  };
+  const adminHtml = `
+    <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#faf6f0;padding:40px;">
+      <div style="text-align:center;margin-bottom:32px;">
+        <p style="font-size:11px;letter-spacing:4px;color:#c9a96e;text-transform:uppercase;margin:0;">ERIORCENTER — Admin</p>
+        <h1 style="font-size:28px;font-weight:300;color:#2a1f14;margin:8px 0;">Nuevo script generado</h1>
+        <div style="width:60px;height:1px;background:#c9a96e;margin:16px auto;"></div>
+      </div>
+      <div style="background:#fff;border:1px solid #e8d5b0;border-radius:6px;padding:24px;margin-bottom:24px;">
+        <p style="font-size:10px;letter-spacing:3px;color:#b09880;text-transform:uppercase;margin:0 0 12px;">Datos del cliente</p>
+        <p style="font-size:15px;color:#2a1f14;margin:0 0 6px;"><strong>Nombre:</strong> ${formData.name} ${formData.lastname}</p>
+        <p style="font-size:15px;color:#2a1f14;margin:0 0 6px;"><strong>Email:</strong> ${formData.email}</p>
+        <p style="font-size:15px;color:#2a1f14;margin:0;"><strong>Audio:</strong> Audio YOU 🧸</p>
+      </div>
+      <div style="background:#1a1209;border-radius:8px;padding:32px;">
+        <p style="font-size:11px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin:0 0 16px;">Script generado</p>
+        <p style="font-size:14px;color:#faf6f0;font-weight:300;line-height:2;white-space:pre-wrap;margin:0;">${generatedScript}</p>
+      </div>
+    </div>`;
 
   try {
-    await emailjs.send(CONFIG.EMAILJS_SERVICE_ID, CONFIG.EMAILJS_TEMPLATE_CLIENT, params);
-    await emailjs.send(CONFIG.EMAILJS_SERVICE_ID, CONFIG.EMAILJS_TEMPLATE_ADMIN, {
-      ...params,
-      to_email: CONFIG.ERIOR_EMAIL,
-      client_email: formData.email,
-      client_name: formData.name + ' ' + formData.lastname,
+    // Send to client
+    await fetch('/.netlify/functions/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'email',
+        to: formData.email,
+        subject: '💛 Tu script de Audio YOU está listo, ' + formData.name + ' 🧸',
+        html: clientHtml
+      })
     });
+
+    // Send to admin
+    await fetch('/.netlify/functions/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'email',
+        to: 'eriorcenter@gmail.com',
+        subject: '✦ Nuevo script generado — ' + formData.name + ' ' + formData.lastname,
+        html: adminHtml
+      })
+    });
+
     const s = document.getElementById('email-status');
-    s.textContent = `✓ Script enviado a ${formData.email} y a eriorcenter@gmail.com`;
+    s.textContent = '✓ Script enviado a ' + formData.email + ' y a eriorcenter@gmail.com';
     s.className = 'email-status success';
   } catch (err) {
     const s = document.getElementById('email-status');

@@ -1,3 +1,5 @@
+const nodemailer = require('nodemailer');
+
 exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
@@ -5,39 +7,37 @@ exports.handler = async function(event) {
   try {
     const body = JSON.parse(event.body);
 
-    // EMAIL sending via Resend
+    // EMAIL sending via Gmail
     if (body.type === 'email') {
-      const { to, subject, html } = body;
-      const resendRes = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
-        },
-        body: JSON.stringify({
-          from: 'ERIORCENTER <eriorcenter@gmail.com>',
-          to: [to],
-          subject: subject,
-          html: html
-        })
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'eriorcenter@gmail.com',
+          pass: process.env.GMAIL_APP_PASSWORD
+        }
       });
-      const resendData = await resendRes.json();
+
+      await transporter.sendMail({
+        from: 'ERIORCENTER <eriorcenter@gmail.com>',
+        to: body.to,
+        subject: body.subject,
+        html: body.html
+      });
+
       return {
         statusCode: 200,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ok: true, data: resendData })
+        body: JSON.stringify({ ok: true })
       };
     }
 
     // SCRIPT generation via Anthropic
     const { system, prompt } = body;
-    const apiKey = process.env.ANTHROPIC_API_KEY;
-
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': apiKey,
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({

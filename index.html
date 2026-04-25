@@ -737,17 +737,12 @@
     <div class="login-divider"></div>
     <label class="login-label">Ingresa tu código de acceso</label>
     <input type="text" id="access-code-input" class="login-input"
-           placeholder="YOU-XXXXX" maxlength="12"
-           oninput="this.value=this.value.toUpperCase()">
+           placeholder="Código de acceso" maxlength="12"
+           >
     <button class="btn-primary" onclick="handleLogin()">Acceder ✦</button>
     <div id="login-error" class="login-error"></div>
-    <p style="font-size:11px; color:rgba(201,169,110,0.35); margin-top:12px; letter-spacing:1px; line-height:1.8; text-align:center">
-      Códigos de prueba:<br>
-      <span style="font-family:monospace;letter-spacing:3px;color:rgba(201,169,110,0.5);cursor:pointer" onclick="document.getElementById('access-code-input').value='YOU-DEMO1'">YOU-DEMO1</span>
-      &nbsp;·&nbsp;
-      <span style="font-family:monospace;letter-spacing:3px;color:rgba(201,169,110,0.5);cursor:pointer" onclick="document.getElementById('access-code-input').value='YOU-DEMO2'">YOU-DEMO2</span>
-    </p>
-    <div class="login-admin-link" onclick="showAdminLogin()">— Acceso administrador —</div>
+
+    
   </div>
 </div>
 
@@ -1127,17 +1122,8 @@ function saveSubmission(sub) {
   localStorage.setItem('erior_submissions', JSON.stringify(subs));
 }
 
-// Seed demo codes — always ensure they exist
-function initCodes() {
-  const codes = getCodes();
-  const demoCodes = ['YOU-DEMO1', 'YOU-DEMO2'];
-  demoCodes.forEach(dc => {
-    if (!codes.find(c => c.code === dc)) {
-      codes.push({ code: dc, client: 'Demo Cliente', audio: 'YOU', used: false, createdAt: new Date().toISOString() });
-    }
-  });
-  saveCodes(codes);
-}
+// No demo codes needed — universal code system
+function initCodes() {}
 initCodes();
 
 // ═══════════════════════════════════════
@@ -1168,22 +1154,14 @@ function showAdminLogin() {
 // LOGIN
 // ═══════════════════════════════════════
 function handleLogin() {
-  const val = document.getElementById('access-code-input').value.trim().toUpperCase();
-  const codes = getCodes();
-  const found = codes.find(c => c.code === val);
+  const val = document.getElementById('access-code-input').value.trim().toLowerCase();
   const err = document.getElementById('login-error');
-  if (!found) {
+  if (val !== 'miaudioyou11') {
     err.textContent = 'Código no válido. Verifica e intenta de nuevo.';
     err.classList.add('visible');
     document.getElementById('access-code-input').style.borderColor = 'rgba(192,112,90,0.5)';
     return;
   }
-  if (found.used) {
-    err.textContent = 'Este código ya fue utilizado.';
-    err.classList.add('visible');
-    return;
-  }
-  currentCode = val;
   err.classList.remove('visible');
   currentStep = 0;
   showStep(0);

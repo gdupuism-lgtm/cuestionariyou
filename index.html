@@ -1054,11 +1054,11 @@ const AUDIOS = {
   'mimesmerizinglove10': {
     name: 'MESMERIZING LOVE',
     theme: 'theme-mesmerizing',
-    steps: 5,
+    steps: 4,
     headerLabel: 'ERIORCENTER — MESMERIZING LOVE 🌹',
     introTitle: 'MESMERIZING <em>LOVE</em>',
     introDesc: 'Muchas gracias por adquirir nuestro programa para complementar tu amor propio. Recuerda que debes escucharlo un mes al menos <strong>8 horas diarias</strong> 🌹💕',
-    fields: ['name','last','email','newversion','gender','record'],
+    fields: ['name','last','email','newversion','record'],
     buildSteps: buildMesmerizingSteps,
     buildPrompt: buildMesmerizingPrompt,
     systemPrompt: getMesmerizingSystem,
@@ -2972,10 +2972,8 @@ function getMesmerizingSystem(fd){
 function buildMesmerizingPrompt(fd){
   const name=fd.name||'_';
   const newversion=fd.newversion||'';
-  const gender=fd.gender||'mujer';
-  const a=gender==='hombre'?'o':'a';
   if(fd.lang==='es'){
-    return `Datos: Nombre: ${name}, Nueva versión a manifestar: "${newversion}", Género: ${gender}
+    return `Datos: Nombre: ${name}, Nueva versión a manifestar: "${newversion}"
 
 Genera el MINI SCRIPT MESMERIZING LOVE de ERIORCENTER siguiendo EXACTAMENTE esta estructura. Adapta SOLO las secciones marcadas con [PERSONALIZAR] usando la nueva versión del cliente. El resto del texto base queda idéntico.
 

@@ -3,1405 +3,1268 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ERIORCENTER — Audio YOU</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<title>ERIORCENTER — Audios Personalizados</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@200;300;400;500&family=Montserrat:wght@200;300;400;500&family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #faf6f0;
-    --warm: #f5ede0;
-    --gold: #c9a96e;
-    --gold-light: #e8d5b0;
-    --gold-dark: #9a7340;
-    --text: #2a1f14;
-    --text-soft: #7a6555;
-    --text-muted: #b09880;
-    --white: #ffffff;
-    --error: #c0705a;
-    --success: #7a9e7e;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ─── GRAIN OVERLAY ─── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 999; opacity: 0.4;
-  }
-
-  /* ─── PAGES ─── */
-  .page { display: none; min-height: 100vh; }
-  .page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-
-  /* ─── LOGIN PAGE ─── */
-  #page-login {
-    background: linear-gradient(160deg, #1a1209 0%, #2d1f0e 40%, #1a1209 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  #page-login::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 30%, rgba(201,169,110,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .login-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-    animation: orb-float 8s ease-in-out infinite;
-  }
-  .login-orb-1 { width: 400px; height: 400px; background: rgba(201,169,110,0.07); top: -100px; right: -100px; }
-  .login-orb-2 { width: 300px; height: 300px; background: rgba(201,169,110,0.05); bottom: -80px; left: -80px; animation-delay: -4s; }
-
-  @keyframes orb-float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-20px) scale(1.05); }
-  }
-
-  .login-box {
-    position: relative; z-index: 1;
-    display: flex; flex-direction: column; align-items: center;
-    padding: 60px 40px;
-    max-width: 440px; width: 90%;
-    text-align: center;
-  }
-
-  .login-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px; font-weight: 400; letter-spacing: 6px;
-    color: var(--gold); text-transform: uppercase;
-    margin-bottom: 8px; opacity: 0.8;
-  }
-
-  .login-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(40px, 8vw, 64px);
-    font-weight: 300; color: var(--cream);
-    line-height: 1; margin-bottom: 6px;
-    letter-spacing: -1px;
-  }
-
-  .login-title em {
-    font-style: italic; color: var(--gold);
-  }
-
-  .login-subtitle {
-    font-size: 11px; font-weight: 300; letter-spacing: 4px;
-    color: rgba(201,169,110,0.6); text-transform: uppercase;
-    margin-bottom: 48px;
-  }
-
-  .login-divider {
-    width: 60px; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 0 auto 48px;
-  }
-
-  .login-label {
-    font-size: 10px; font-weight: 400; letter-spacing: 3px;
-    color: rgba(201,169,110,0.7); text-transform: uppercase;
-    margin-bottom: 14px; display: block;
-  }
-
-  .login-input {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,169,110,0.2);
-    border-radius: 2px;
-    padding: 16px 20px;
-    font-family: 'Jost', sans-serif;
-    font-size: 14px; font-weight: 300; letter-spacing: 3px;
-    color: var(--cream); text-align: center;
-    outline: none;
-    transition: all 0.3s;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-  }
-
-  .login-input::placeholder { color: rgba(201,169,110,0.3); letter-spacing: 2px; font-size: 12px; }
-  .login-input:focus { border-color: rgba(201,169,110,0.5); background: rgba(255,255,255,0.06); }
-
-  .btn-primary {
-    width: 100%;
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-    color: #1a1209;
-    border: none; border-radius: 2px;
-    padding: 16px 32px;
-    font-family: 'Jost', sans-serif;
-    font-size: 11px; font-weight: 500; letter-spacing: 4px;
-    text-transform: uppercase; cursor: pointer;
-    transition: all 0.3s;
-    position: relative; overflow: hidden;
-  }
-
-  .btn-primary::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .btn-primary:hover::before { opacity: 1; }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.3); }
-  .btn-primary:active { transform: translateY(0); }
-
-  .login-error {
-    color: #e09090; font-size: 12px; margin-top: 16px;
-    min-height: 20px; letter-spacing: 0.5px;
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .login-error.visible { opacity: 1; }
-
-  .login-admin-link {
-    margin-top: 40px;
-    font-size: 11px; letter-spacing: 2px;
-    color: rgba(201,169,110,0.3);
-    cursor: pointer; transition: color 0.3s;
-    text-transform: uppercase;
-  }
-  .login-admin-link:hover { color: rgba(201,169,110,0.6); }
-
-  /* ─── FORM PAGE ─── */
-  #page-form {
-    background: var(--cream);
-    padding: 0;
-    justify-content: flex-start;
-  }
-
-  .form-header {
-    width: 100%; background: #1a1209;
-    padding: 20px 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 10;
-  }
-
-  .form-header-brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px; letter-spacing: 4px;
-    color: var(--gold); text-transform: uppercase;
-  }
-
-  .progress-container {
-    display: flex; align-items: center; gap: 8px;
-  }
-
-  .progress-bar-wrap {
-    width: 120px; height: 2px;
-    background: rgba(201,169,110,0.15); border-radius: 1px;
-    overflow: hidden;
-  }
-
-  .progress-bar {
-    height: 100%; background: var(--gold);
-    border-radius: 1px;
-    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  .progress-text {
-    font-size: 10px; letter-spacing: 2px;
-    color: rgba(201,169,110,0.5);
-    font-weight: 300;
-  }
-
-  .form-main {
-    width: 100%; max-width: 640px;
-    padding: 60px 40px 100px;
-    margin: 0 auto;
-    flex: 1;
-  }
-
-  /* ─── STEP ─── */
-  .step { display: none; animation: step-in 0.4s ease; }
-  .step.active { display: block; }
-
-  @keyframes step-in {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .step-eyebrow {
-    font-size: 10px; letter-spacing: 4px; font-weight: 400;
-    color: var(--gold); text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .step-question {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(24px, 4vw, 36px);
-    font-weight: 300; line-height: 1.3;
-    color: var(--text); margin-bottom: 8px;
-  }
-
-  .step-question em { font-style: italic; color: var(--gold-dark); }
-
-  .step-hint {
-    font-size: 13px; font-weight: 300;
-    color: var(--text-muted); margin-bottom: 36px;
-    line-height: 1.6;
-  }
-
-  .step-input {
-    width: 100%;
-    background: transparent;
-    border: none; border-bottom: 1px solid rgba(201,169,110,0.3);
-    padding: 12px 0;
-    font-family: 'Jost', sans-serif;
-    font-size: 16px; font-weight: 300;
-    color: var(--text); outline: none;
-    transition: border-color 0.3s;
-    resize: none;
-  }
-
-  .step-input:focus { border-color: var(--gold); }
-  .step-input::placeholder { color: var(--text-muted); font-size: 14px; }
-
-  textarea.step-input {
-    min-height: 120px; resize: vertical;
-    border: 1px solid rgba(201,169,110,0.2);
-    border-radius: 4px; padding: 16px;
-    background: rgba(201,169,110,0.04);
-  }
-  textarea.step-input:focus { border-color: var(--gold); background: rgba(201,169,110,0.07); }
-
-  /* Wishes special */
-  .wish-inputs { display: flex; flex-direction: column; gap: 16px; }
-  .wish-row {
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-  .wish-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-weight: 300;
-    color: var(--gold); padding-top: 10px;
-    min-width: 20px;
-  }
-  .wish-row input {
-    flex: 1;
-    background: transparent;
-    border: none; border-bottom: 1px solid rgba(201,169,110,0.25);
-    padding: 12px 0; font-family: 'Jost', sans-serif;
-    font-size: 15px; font-weight: 300;
-    color: var(--text); outline: none;
-    transition: border-color 0.3s;
-  }
-  .wish-row input:focus { border-color: var(--gold); }
-  .wish-row input::placeholder { color: var(--text-muted); font-size: 13px; }
-
-  /* Radio / choice */
-  .choice-group { display: flex; flex-direction: column; gap: 12px; }
-  .choice-option {
-    display: flex; align-items: center; gap: 16px;
-    padding: 16px 20px;
-    border: 1px solid rgba(201,169,110,0.2);
-    border-radius: 4px; cursor: pointer;
-    transition: all 0.25s;
-    user-select: none;
-  }
-  .choice-option:hover { border-color: rgba(201,169,110,0.5); background: rgba(201,169,110,0.04); }
-  .choice-option.selected { border-color: var(--gold); background: rgba(201,169,110,0.08); }
-  .choice-option input[type=radio] { display: none; }
-  .choice-radio {
-    width: 18px; height: 18px; border-radius: 50%;
-    border: 1px solid rgba(201,169,110,0.4);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; transition: all 0.25s;
-  }
-  .choice-option.selected .choice-radio { border-color: var(--gold); background: var(--gold); }
-  .choice-radio-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: #1a1209; opacity: 0; transition: opacity 0.2s;
-  }
-  .choice-option.selected .choice-radio-dot { opacity: 1; }
-  .choice-label { font-size: 15px; font-weight: 300; color: var(--text); }
-
-  /* Language switcher in step */
-  .lang-switcher {
-    display: flex; gap: 8px; margin-bottom: 32px;
-  }
-  .lang-btn {
-    padding: 6px 16px;
-    font-family: 'Jost', sans-serif;
-    font-size: 11px; font-weight: 400; letter-spacing: 2px;
-    text-transform: uppercase;
-    border: 1px solid rgba(201,169,110,0.2);
-    border-radius: 2px; cursor: pointer; background: transparent;
-    color: var(--text-muted); transition: all 0.25s;
-  }
-  .lang-btn.active { border-color: var(--gold); color: var(--gold-dark); background: rgba(201,169,110,0.08); }
-
-  /* Navigation */
-  .step-nav {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 48px;
-  }
-
-  .btn-back {
-    background: transparent; border: none;
-    font-family: 'Jost', sans-serif;
-    font-size: 12px; font-weight: 300; letter-spacing: 3px;
-    color: var(--text-muted); text-transform: uppercase;
-    cursor: pointer; transition: color 0.3s;
-    padding: 12px 0;
-  }
-  .btn-back:hover { color: var(--text); }
-
-  .btn-next {
-    background: #1a1209;
-    color: var(--gold);
-    border: 1px solid rgba(201,169,110,0.25);
-    border-radius: 2px;
-    padding: 14px 32px;
-    font-family: 'Jost', sans-serif;
-    font-size: 11px; font-weight: 400; letter-spacing: 4px;
-    text-transform: uppercase; cursor: pointer;
-    transition: all 0.3s;
-  }
-  .btn-next:hover { background: var(--gold); color: #1a1209; border-color: var(--gold); }
-
-  .step-field-error {
-    font-size: 12px; color: var(--error);
-    margin-top: 8px; opacity: 0; transition: opacity 0.3s;
-  }
-  .step-field-error.visible { opacity: 1; }
-
-  /* ─── INTRO STEP (special) ─── */
-  .intro-audio-card {
-    background: linear-gradient(160deg, #1a1209, #2d1f0e);
-    border-radius: 8px; padding: 40px;
-    margin-bottom: 40px; position: relative; overflow: hidden;
-  }
-  .intro-audio-card::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.1), transparent 60%);
-    pointer-events: none;
-  }
-  .intro-bear { font-size: 40px; margin-bottom: 16px; }
-  .intro-audio-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px; font-weight: 300;
-    color: var(--cream); margin-bottom: 16px;
-  }
-  .intro-audio-title em { color: var(--gold); font-style: italic; }
-  .intro-audio-desc {
-    font-size: 14px; font-weight: 300; line-height: 1.8;
-    color: rgba(250,246,240,0.7);
-  }
-
-  /* ─── GENERATING PAGE ─── */
-  #page-generating {
-    background: linear-gradient(160deg, #1a1209 0%, #2d1f0e 50%, #1a1209 100%);
-  }
-
-  .gen-content { text-align: center; max-width: 400px; padding: 40px; }
-
-  .gen-animation {
-    width: 80px; height: 80px; margin: 0 auto 40px;
-    position: relative;
-  }
-
-  .gen-ring {
-    position: absolute; inset: 0; border-radius: 50%;
-    border: 1px solid rgba(201,169,110,0.2);
-    animation: gen-pulse 2s ease-in-out infinite;
-  }
-  .gen-ring:nth-child(2) { inset: -12px; animation-delay: 0.4s; opacity: 0.6; }
-  .gen-ring:nth-child(3) { inset: -24px; animation-delay: 0.8s; opacity: 0.3; }
-
-  .gen-core {
-    position: absolute; inset: 20px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--gold), var(--gold-dark));
-    animation: gen-glow 2s ease-in-out infinite;
-  }
-
-  @keyframes gen-pulse { 0%,100%{transform:scale(1);opacity:0.3} 50%{transform:scale(1.1);opacity:0.8} }
-  @keyframes gen-glow { 0%,100%{box-shadow:0 0 20px rgba(201,169,110,0.3)} 50%{box-shadow:0 0 40px rgba(201,169,110,0.7)} }
-
-  .gen-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; font-weight: 300;
-    color: var(--cream); margin-bottom: 12px;
-  }
-  .gen-subtitle {
-    font-size: 13px; font-weight: 300; letter-spacing: 2px;
-    color: rgba(201,169,110,0.5); line-height: 1.8;
-  }
-
-  .gen-steps { margin-top: 32px; text-align: left; }
-  .gen-step-item {
-    display: flex; align-items: center; gap: 12px;
-    padding: 10px 0; font-size: 13px; font-weight: 300;
-    color: rgba(250,246,240,0.4);
-    border-bottom: 1px solid rgba(201,169,110,0.08);
-    transition: color 0.5s;
-  }
-  .gen-step-item.done { color: rgba(250,246,240,0.8); }
-  .gen-step-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: rgba(201,169,110,0.2); flex-shrink: 0;
-    transition: background 0.5s;
-  }
-  .gen-step-item.done .gen-step-dot { background: var(--gold); }
-
-  /* ─── RESULT PAGE ─── */
-  #page-result {
-    background: var(--cream);
-    justify-content: flex-start; padding-bottom: 80px;
-  }
-
-  .result-header {
-    width: 100%; background: #1a1209;
-    padding: 32px 40px; text-align: center;
-  }
-
-  .result-header-tag {
-    font-size: 10px; letter-spacing: 4px;
-    color: var(--gold); text-transform: uppercase; margin-bottom: 8px;
-  }
-
-  .result-header-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px; font-weight: 300; color: var(--cream);
-  }
-  .result-header-title em { font-style: italic; color: var(--gold); }
-
-  .result-main {
-    width: 100%; max-width: 700px;
-    padding: 60px 40px; margin: 0 auto;
-  }
-
-  .result-script-wrap {
-    background: var(--white);
-    border: 1px solid rgba(201,169,110,0.15);
-    border-radius: 8px; overflow: hidden;
-    box-shadow: 0 4px 40px rgba(0,0,0,0.06);
-  }
-
-  .result-script-header {
-    background: linear-gradient(135deg, #1a1209, #2d1f0e);
-    padding: 24px 32px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-
-  .result-script-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px; font-weight: 300; color: var(--cream);
-  }
-
-  .result-copy-btn {
-    background: rgba(201,169,110,0.15);
-    border: 1px solid rgba(201,169,110,0.3);
-    color: var(--gold); border-radius: 2px;
-    padding: 8px 16px; cursor: pointer;
-    font-family: 'Jost', sans-serif;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    transition: all 0.25s;
-  }
-  .result-copy-btn:hover { background: rgba(201,169,110,0.25); }
-
-  .result-script-body {
-    padding: 40px 32px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px; font-weight: 300;
-    line-height: 1.9; color: var(--text);
-    white-space: pre-wrap;
-    max-height: 600px; overflow-y: auto;
-  }
-
-  .result-actions {
-    display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap;
-  }
-
-  .btn-outline {
-    flex: 1; min-width: 200px;
-    background: transparent;
-    border: 1px solid rgba(42,31,20,0.2);
-    color: var(--text); border-radius: 2px;
-    padding: 14px 24px;
-    font-family: 'Jost', sans-serif;
-    font-size: 11px; font-weight: 400; letter-spacing: 3px;
-    text-transform: uppercase; cursor: pointer;
-    transition: all 0.3s; text-align: center;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold-dark); }
-
-  .email-status {
-    margin-top: 24px; padding: 16px 20px;
-    border-radius: 4px; font-size: 13px; font-weight: 300;
-    display: none;
-  }
-  .email-status.success { background: rgba(122,158,126,0.1); color: var(--success); border: 1px solid rgba(122,158,126,0.3); display: block; }
-  .email-status.error { background: rgba(192,112,90,0.1); color: var(--error); border: 1px solid rgba(192,112,90,0.2); display: block; }
-
-  /* ─── ADMIN PAGE ─── */
-  #page-admin {
-    background: var(--cream);
-    justify-content: flex-start;
-    align-items: stretch;
-  }
-
-  .admin-sidebar {
-    width: 240px; min-height: 100vh;
-    background: #1a1209; padding: 40px 24px;
-    flex-shrink: 0;
-  }
-
-  .admin-brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-weight: 300;
-    color: var(--cream); margin-bottom: 4px;
-  }
-  .admin-brand-sub {
-    font-size: 10px; letter-spacing: 3px;
-    color: rgba(201,169,110,0.4); text-transform: uppercase;
-    margin-bottom: 40px;
-  }
-
-  .admin-nav { display: flex; flex-direction: column; gap: 4px; }
-  .admin-nav-item {
-    padding: 10px 16px; border-radius: 3px;
-    font-size: 12px; letter-spacing: 2px; font-weight: 300;
-    color: rgba(250,246,240,0.4); text-transform: uppercase;
-    cursor: pointer; transition: all 0.25s;
-  }
-  .admin-nav-item:hover { color: var(--gold); background: rgba(201,169,110,0.06); }
-  .admin-nav-item.active { color: var(--gold); background: rgba(201,169,110,0.1); }
-
-  .admin-main {
-    flex: 1; padding: 48px;
-    min-height: 100vh;
-  }
-
-  .admin-section { display: none; }
-  .admin-section.active { display: block; }
-
-  .admin-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; font-weight: 300; color: var(--text);
-    margin-bottom: 32px;
-  }
-
-  .admin-card {
-    background: var(--white);
-    border: 1px solid rgba(201,169,110,0.15);
-    border-radius: 6px; padding: 28px;
-    margin-bottom: 24px;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-  }
-
-  .admin-generate-row {
-    display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;
-  }
-
-  .admin-field { flex: 1; min-width: 200px; }
-  .admin-field label {
-    display: block; font-size: 10px; letter-spacing: 3px;
-    color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;
-  }
-  .admin-input {
-    width: 100%; padding: 12px 16px;
-    border: 1px solid rgba(201,169,110,0.2); border-radius: 3px;
-    background: transparent; font-family: 'Jost', sans-serif;
-    font-size: 14px; font-weight: 300; color: var(--text);
-    outline: none; transition: border-color 0.25s;
-  }
-  .admin-input:focus { border-color: var(--gold); }
-
-  .admin-select {
-    width: 100%; padding: 12px 16px;
-    border: 1px solid rgba(201,169,110,0.2); border-radius: 3px;
-    background: var(--white); font-family: 'Jost', sans-serif;
-    font-size: 14px; font-weight: 300; color: var(--text);
-    outline: none; cursor: pointer;
-    appearance: none;
-  }
-
-  .btn-admin {
-    background: #1a1209; color: var(--gold);
-    border: 1px solid rgba(201,169,110,0.2); border-radius: 3px;
-    padding: 12px 24px;
-    font-family: 'Jost', sans-serif;
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    cursor: pointer; transition: all 0.25s; white-space: nowrap;
-  }
-  .btn-admin:hover { background: var(--gold); color: #1a1209; }
-
-  .btn-danger {
-    background: transparent; color: var(--error);
-    border: 1px solid rgba(192,112,90,0.2); border-radius: 3px;
-    padding: 6px 12px;
-    font-family: 'Jost', sans-serif;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer; transition: all 0.25s;
-  }
-  .btn-danger:hover { background: rgba(192,112,90,0.1); }
-
-  .codes-table {
-    width: 100%; border-collapse: collapse;
-  }
-  .codes-table th {
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--text-muted); font-weight: 400;
-    padding: 10px 16px; text-align: left;
-    border-bottom: 1px solid rgba(201,169,110,0.15);
-  }
-  .codes-table td {
-    padding: 14px 16px; font-size: 13px; font-weight: 300;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
-    vertical-align: middle;
-  }
-  .codes-table tr:last-child td { border-bottom: none; }
-  .codes-table tr:hover td { background: rgba(201,169,110,0.03); }
-
-  .code-badge {
-    font-family: monospace; font-size: 13px;
-    background: rgba(201,169,110,0.1); color: var(--gold-dark);
-    padding: 3px 8px; border-radius: 3px;
-  }
-
-  .status-badge {
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    padding: 3px 10px; border-radius: 20px;
-  }
-  .status-active { background: rgba(122,158,126,0.1); color: var(--success); }
-  .status-used { background: rgba(0,0,0,0.06); color: var(--text-muted); }
-
-  .submissions-list { display: flex; flex-direction: column; gap: 16px; }
-  .submission-card {
-    border: 1px solid rgba(201,169,110,0.15); border-radius: 6px;
-    overflow: hidden;
-  }
-  .submission-header {
-    background: rgba(201,169,110,0.05); padding: 16px 20px;
-    display: flex; align-items: center; justify-content: space-between;
-    cursor: pointer;
-  }
-  .submission-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px; font-weight: 300; color: var(--text);
-  }
-  .submission-date { font-size: 12px; color: var(--text-muted); }
-  .submission-body {
-    padding: 20px; display: none;
-    font-size: 13px; line-height: 1.7; color: var(--text-soft);
-    white-space: pre-wrap; font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-  }
-  .submission-body.open { display: block; }
-
-  /* Mobile */
-  @media (max-width: 680px) {
-    .form-main { padding: 40px 24px 80px; }
-    .result-main { padding: 40px 24px; }
-    .result-script-body { padding: 24px 20px; font-size: 15px; }
-    #page-admin { flex-direction: column; }
-    .admin-sidebar { width: 100%; min-height: auto; padding: 24px; }
-    .admin-main { padding: 24px; }
-    .admin-generate-row { flex-direction: column; }
-    .form-header { padding: 16px 24px; }
-    .form-header-brand { font-size: 11px; }
-    .progress-bar-wrap { width: 80px; }
-  }
-
-  /* Fade util */
-  .fade-in { animation: fadeIn 0.5s ease; }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-
-  /* Admin login */
-  #page-admin-login {
-    background: linear-gradient(160deg, #1a1209 0%, #2d1f0e 100%);
-  }
+/* ═══ RESET & BASE ═══ */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Jost', sans-serif; min-height:100vh; overflow-x:hidden; }
+
+/* ═══ PAGES ═══ */
+.page { display:none; min-height:100vh; }
+.page.active { display:flex; flex-direction:column; align-items:center; justify-content:center; }
+
+/* ═══════════════════════════════════
+   LOGIN PAGE — Shared dark portal
+═══════════════════════════════════ */
+#page-login {
+  background: #080808;
+  position: relative; overflow: hidden;
+}
+
+.login-stars {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 85%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 50%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 20% 45%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.25) 0%, transparent 100%),
+    radial-gradient(2px 2px at 45% 55%, rgba(255,255,255,0.1) 0%, transparent 100%);
+}
+
+.login-glow {
+  position: absolute;
+  border-radius: 50%; filter: blur(100px); pointer-events: none;
+  animation: glow-drift 8s ease-in-out infinite;
+}
+.login-glow-1 { width:500px; height:500px; background:rgba(120,80,200,0.08); top:-150px; right:-100px; }
+.login-glow-2 { width:400px; height:400px; background:rgba(200,140,60,0.06); bottom:-100px; left:-100px; animation-delay:-4s; }
+
+@keyframes glow-drift { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-30px)} }
+
+.login-box {
+  position:relative; z-index:1;
+  display:flex; flex-direction:column; align-items:center;
+  padding:80px 48px; max-width:500px; width:90%; text-align:center;
+}
+
+.login-erior {
+  font-family: 'Jost', sans-serif;
+  font-size:9px; font-weight:400; letter-spacing:8px;
+  color:rgba(255,255,255,0.2); text-transform:uppercase; margin-bottom:48px;
+}
+
+.login-portal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size:clamp(52px,10vw,88px); font-weight:300;
+  color:rgba(255,255,255,0.9); line-height:0.85; margin-bottom:16px;
+  letter-spacing:-2px;
+}
+
+.login-portal-sub {
+  font-size:10px; font-weight:300; letter-spacing:6px;
+  color:rgba(255,255,255,0.2); text-transform:uppercase; margin-bottom:56px;
+}
+
+.login-field-label {
+  font-size:9px; font-weight:400; letter-spacing:4px;
+  color:rgba(255,255,255,0.25); text-transform:uppercase; margin-bottom:14px;
+}
+
+.login-input {
+  width:100%; background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:18px 24px; font-family:'Jost',sans-serif;
+  font-size:14px; font-weight:300; letter-spacing:3px;
+  color:#fff; text-align:center; outline:none;
+  transition:all 0.4s; margin-bottom:16px;
+}
+.login-input::placeholder { color:rgba(255,255,255,0.12); font-size:12px; }
+.login-input:focus { border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); }
+
+.login-btn {
+  width:100%; background:transparent;
+  border:1px solid rgba(255,255,255,0.15);
+  padding:18px; font-family:'Jost',sans-serif;
+  font-size:10px; font-weight:400; letter-spacing:6px;
+  color:rgba(255,255,255,0.6); text-transform:uppercase;
+  cursor:pointer; transition:all 0.4s;
+}
+.login-btn:hover { border-color:rgba(255,255,255,0.4); color:#fff; background:rgba(255,255,255,0.04); }
+
+.login-err {
+  font-size:11px; color:rgba(220,140,140,0.8);
+  margin-top:12px; min-height:20px;
+  opacity:0; transition:opacity 0.3s; letter-spacing:0.5px;
+}
+.login-err.show { opacity:1; }
+
+/* ═══════════════════════════════════
+   FORM HEADER — changes per audio
+═══════════════════════════════════ */
+.form-header {
+  width:100%; padding:20px 48px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:10;
+}
+
+.fh-brand { font-size:9px; font-weight:400; letter-spacing:5px; text-transform:uppercase; }
+.progress-dots { display:flex; gap:6px; }
+.pdot {
+  width:6px; height:6px; border-radius:50%;
+  transition:all 0.4s;
+}
+
+/* ═══════════════════════════════════
+   FORM MAIN
+═══════════════════════════════════ */
+.form-main {
+  width:100%; max-width:620px;
+  padding:80px 48px 120px; margin:0 auto; flex:1;
+}
+
+.step { display:none; animation:step-in 0.45s cubic-bezier(0.16,1,0.3,1); }
+.step.active { display:block; }
+@keyframes step-in { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+.step-eyebrow {
+  font-size:9px; font-weight:400; letter-spacing:5px;
+  text-transform:uppercase; margin-bottom:14px;
+}
+
+.step-q {
+  font-size:clamp(24px,4vw,38px); font-weight:300;
+  line-height:1.2; margin-bottom:8px;
+}
+
+.step-hint {
+  font-size:12px; font-weight:300; line-height:1.8;
+  margin-bottom:36px; opacity:0.55;
+}
+
+.step-input {
+  width:100%; background:transparent; border:none;
+  border-bottom:1px solid currentColor; opacity:0.3;
+  padding:14px 0; font-size:16px; font-weight:300;
+  color:inherit; outline:none; transition:opacity 0.3s;
+}
+.step-input:focus { opacity:1; }
+.step-input::placeholder { opacity:0.4; font-size:14px; }
+
+textarea.step-input {
+  min-height:120px; resize:vertical;
+  border:1px solid currentColor; border-radius:0;
+  padding:16px; background:rgba(0,0,0,0.03); opacity:0.5;
+}
+textarea.step-input:focus { opacity:1; }
+
+.field-err {
+  font-size:11px; margin-top:8px;
+  opacity:0; transition:opacity 0.3s; letter-spacing:0.5px;
+  color:#c05050;
+}
+.field-err.show { opacity:1; }
+
+.choices { display:flex; flex-direction:column; gap:10px; }
+.choice-opt {
+  display:flex; align-items:center; gap:16px;
+  padding:18px 20px; border:1px solid currentColor;
+  opacity:0.3; cursor:pointer; transition:all 0.25s;
+  user-select:none;
+}
+.choice-opt:hover { opacity:0.7; }
+.choice-opt.selected { opacity:1; }
+.choice-opt input[type=radio] { display:none; }
+.choice-radio {
+  width:16px; height:16px; border-radius:50%;
+  border:1px solid currentColor; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.25s;
+}
+.choice-opt.selected .choice-radio { background:currentColor; }
+.choice-label { font-size:13px; font-weight:300; }
+
+.lang-row { display:flex; gap:8px; margin-bottom:32px; }
+.lang-btn {
+  padding:8px 20px; font-family:'Jost',sans-serif;
+  font-size:9px; font-weight:400; letter-spacing:3px;
+  text-transform:uppercase; border:1px solid currentColor;
+  cursor:pointer; background:transparent; color:inherit;
+  opacity:0.3; transition:all 0.25s;
+}
+.lang-btn.active { opacity:1; background:currentColor; }
+.lang-btn.active { color:#fff; }
+
+.step-nav {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-top:48px;
+}
+
+.btn-back {
+  background:transparent; border:none;
+  font-family:'Jost',sans-serif; font-size:10px; font-weight:300;
+  letter-spacing:3px; text-transform:uppercase;
+  cursor:pointer; transition:opacity 0.3s;
+  opacity:0.35; padding:12px 0; color:inherit;
+}
+.btn-back:hover { opacity:0.8; }
+
+.btn-next {
+  padding:16px 36px; border:1px solid currentColor;
+  font-family:'Jost',sans-serif; font-size:10px; font-weight:400;
+  letter-spacing:5px; text-transform:uppercase;
+  cursor:pointer; transition:all 0.3s;
+  background:transparent; color:inherit;
+}
+.btn-next:hover { background:currentColor; }
+
+/* ═══ GENERATING ═══ */
+#page-generating { background:#080808; }
+.gen-wrap { text-align:center; max-width:400px; padding:40px; }
+.gen-orb {
+  width:64px; height:64px; margin:0 auto 48px;
+  border-radius:50%; position:relative;
+  animation:orb-spin 3s linear infinite;
+}
+.gen-orb::before, .gen-orb::after {
+  content:''; position:absolute; border-radius:50%;
+  border:1px solid rgba(255,255,255,0.15);
+}
+.gen-orb::before { inset:0; animation:orb-spin 2s linear infinite reverse; }
+.gen-orb::after { inset:-12px; animation:orb-spin 4s linear infinite; }
+.gen-orb-core {
+  position:absolute; inset:16px; border-radius:50%;
+  background:rgba(255,255,255,0.8);
+  animation:orb-pulse 1.5s ease-in-out infinite;
+}
+@keyframes orb-spin { to{transform:rotate(360deg)} }
+@keyframes orb-pulse { 0%,100%{transform:scale(0.8);opacity:0.4} 50%{transform:scale(1);opacity:1} }
+
+.gen-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px; font-weight:300; font-style:italic;
+  color:#fff; margin-bottom:10px;
+}
+.gen-sub {
+  font-size:10px; font-weight:300; letter-spacing:3px;
+  color:rgba(255,255,255,0.25); text-transform:uppercase; line-height:2;
+}
+.gen-steps { margin-top:40px; text-align:left; }
+.gen-step {
+  display:flex; align-items:center; gap:12px;
+  padding:10px 0; font-size:12px; font-weight:300; letter-spacing:1px;
+  color:rgba(255,255,255,0.2);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  transition:color 0.5s;
+}
+.gen-step.done { color:rgba(255,255,255,0.7); }
+.gen-step-dot {
+  width:4px; height:4px; border-radius:50%;
+  background:rgba(255,255,255,0.15); flex-shrink:0; transition:background 0.5s;
+}
+.gen-step.done .gen-step-dot { background:#fff; }
+
+/* ═══ RESULT ═══ */
+#page-result { justify-content:flex-start; }
+.result-header { width:100%; padding:48px; text-align:center; }
+.result-tag {
+  font-size:9px; letter-spacing:5px; font-weight:400;
+  text-transform:uppercase; margin-bottom:10px; opacity:0.5;
+}
+.result-htitle {
+  font-size:36px; font-weight:300; font-style:italic;
+}
+.result-body {
+  width:100%; max-width:720px;
+  padding:64px 48px 80px; margin:0 auto;
+}
+.script-wrap { margin-bottom:24px; overflow:hidden; border:1px solid rgba(0,0,0,0.1); }
+.script-head {
+  padding:20px 32px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.script-head-label {
+  font-size:9px; letter-spacing:4px; font-weight:400; text-transform:uppercase; opacity:0.5;
+}
+.btn-copy {
+  padding:6px 16px; font-family:'Jost',sans-serif;
+  font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  cursor:pointer; transition:all 0.25s;
+  border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.08);
+  color:rgba(255,255,255,0.6);
+}
+.btn-copy:hover { background:rgba(255,255,255,0.2); color:#fff; }
+.script-content {
+  padding:40px 32px; font-size:16px; font-weight:300;
+  line-height:2; white-space:pre-wrap;
+  max-height:560px; overflow-y:auto;
+}
+.email-stat {
+  padding:14px 20px; font-size:12px; font-weight:300;
+  margin-top:16px; display:none; letter-spacing:0.5px;
+}
+.email-stat.ok { background:rgba(60,120,80,0.08); color:#3d7050; border:1px solid rgba(60,120,80,0.2); display:block; }
+.email-stat.fail { background:rgba(150,60,60,0.08); color:#904040; border:1px solid rgba(150,60,60,0.2); display:block; }
+.result-actions { display:flex; gap:12px; margin-top:24px; }
+.btn-dl {
+  background:transparent; font-family:'Jost',sans-serif;
+  font-size:9px; letter-spacing:4px; text-transform:uppercase;
+  cursor:pointer; transition:all 0.3s; padding:14px 28px;
+  border:1px solid rgba(0,0,0,0.15); color:rgba(0,0,0,0.4);
+}
+.btn-dl:hover { border-color:rgba(0,0,0,0.5); color:rgba(0,0,0,0.8); }
+.result-note {
+  margin-top:40px; padding:24px 32px;
+  font-size:12px; font-weight:300; line-height:1.9;
+  opacity:0.45; border-left:2px solid rgba(0,0,0,0.1);
+}
+
+/* Intro card */
+.intro-card {
+  padding:48px; margin-bottom:48px; position:relative; overflow:hidden;
+}
+.intro-card-label {
+  font-size:9px; letter-spacing:5px; font-weight:400;
+  text-transform:uppercase; margin-bottom:14px; opacity:0.4;
+}
+.intro-card-title {
+  font-size:36px; font-weight:300; font-style:italic;
+  margin-bottom:20px;
+}
+.intro-card-desc {
+  font-size:13px; font-weight:300; line-height:1.9; opacity:0.6;
+}
+.intro-card-desc strong { opacity:1; font-weight:400; }
+
+@media(max-width:640px){
+  .form-main{padding:48px 24px 80px;}
+  .result-body{padding:40px 24px 60px;}
+  .script-content{padding:28px 20px;font-size:15px;}
+  .form-header{padding:16px 24px;}
+  .result-header{padding:32px 24px;}
+  .intro-card{padding:32px 24px;}
+}
+
+/* ═══════════════════════════════════
+   AUDIO THEMES
+═══════════════════════════════════ */
+
+/* YOU — Dark gold */
+.theme-you {
+  --bg: #1a1209;
+  --surface: #2d1f0e;
+  --accent: #c9a96e;
+  --accent2: #9a7340;
+  --text: #faf6f0;
+  --text-soft: rgba(250,246,240,0.6);
+  --header-bg: #100c05;
+  --result-bg: #faf6f0;
+  --result-text: #2a1f14;
+  --script-head: #1a1209;
+  --pdot-off: rgba(201,169,110,0.2);
+  --pdot-on: #c9a96e;
+}
+.theme-you .form-header { background:var(--header-bg); color:var(--accent); }
+.theme-you .fh-brand { color:rgba(201,169,110,0.4); }
+.theme-you .pdot { background:var(--pdot-off); }
+.theme-you .pdot.done { background:rgba(201,169,110,0.6); }
+.theme-you .pdot.active { background:var(--pdot-on); }
+.theme-you #page-form { background:linear-gradient(160deg,#1a1209,#2d1f0e,#1a1209); color:var(--text); }
+.theme-you .step-eyebrow { color:var(--accent); }
+.theme-you .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-you .step-q em { color:var(--accent); font-style:italic; }
+.theme-you .step-hint { color:var(--text-soft); }
+.theme-you .step-input { color:var(--text); border-color:rgba(201,169,110,0.4); opacity:1; }
+.theme-you .step-input::placeholder { color:rgba(201,169,110,0.3); }
+.theme-you textarea.step-input { background:rgba(201,169,110,0.04); border-color:rgba(201,169,110,0.2); opacity:1; }
+.theme-you .choice-opt { border-color:rgba(201,169,110,0.2); color:var(--text); opacity:1; }
+.theme-you .choice-opt:hover { border-color:rgba(201,169,110,0.5); }
+.theme-you .choice-opt.selected { border-color:var(--accent); background:rgba(201,169,110,0.08); }
+.theme-you .lang-btn { color:var(--accent); border-color:rgba(201,169,110,0.2); opacity:1; }
+.theme-you .lang-btn.active { background:var(--accent); color:#1a1209; }
+.theme-you .btn-back { color:rgba(250,246,240,0.4); }
+.theme-you .btn-next { border-color:rgba(201,169,110,0.3); color:var(--accent); }
+.theme-you .btn-next:hover { background:var(--accent); color:#1a1209; }
+.theme-you .intro-card { background:rgba(0,0,0,0.3); color:var(--text); }
+.theme-you #page-result { background:var(--result-bg); color:var(--result-text); }
+.theme-you .result-header { background:#1a1209; color:var(--text); }
+.theme-you .result-tag { color:rgba(201,169,110,0.6); }
+.theme-you .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-you .result-htitle em { color:var(--accent); }
+.theme-you .script-wrap { border-color:rgba(201,169,110,0.15); }
+.theme-you .script-head { background:#1a1209; }
+.theme-you .script-content { font-family:'Cormorant Garamond',serif; color:var(--result-text); }
+.theme-you .btn-dl { border-color:rgba(42,31,20,0.2); color:rgba(42,31,20,0.4); }
+.theme-you .btn-dl:hover { border-color:rgba(42,31,20,0.6); color:rgba(42,31,20,0.8); }
+.theme-you .result-note { border-color:rgba(201,169,110,0.2); color:rgba(42,31,20,0.45); }
+.theme-you .wish-inputs { display:flex; flex-direction:column; gap:16px; }
+.theme-you .wish-row { display:flex; align-items:flex-start; gap:16px; }
+.theme-you .wish-num { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:300; color:var(--accent); padding-top:10px; min-width:20px; }
+.theme-you .wish-row input { flex:1; background:transparent; border:none; border-bottom:1px solid rgba(201,169,110,0.3); padding:12px 0; font-family:'Jost',sans-serif; font-size:15px; font-weight:300; color:var(--text); outline:none; transition:border-color 0.3s; }
+.theme-you .wish-row input:focus { border-color:var(--accent); }
+.theme-you .wish-row input::placeholder { color:rgba(201,169,110,0.3); font-size:13px; }
+
+/* IDENTITY — White/black/silver */
+.theme-identity {
+  --bg: #f7f7f5;
+  --text: #1a1a1a;
+  --text-soft: #666660;
+  --accent: #1a1a1a;
+  --accent-light: #e8e8e8;
+  --header-bg: #0d0d0d;
+  --pdot-off: rgba(255,255,255,0.15);
+  --pdot-on: #fff;
+}
+.theme-identity .form-header { background:var(--header-bg); }
+.theme-identity .fh-brand { color:rgba(255,255,255,0.3); }
+.theme-identity .pdot { background:var(--pdot-off); }
+.theme-identity .pdot.done { background:rgba(255,255,255,0.5); }
+.theme-identity .pdot.active { background:var(--pdot-on); }
+.theme-identity #page-form { background:#f7f7f5; color:#1a1a1a; }
+.theme-identity .step-eyebrow { color:#999993; }
+.theme-identity .step-q { font-family:'Playfair Display',serif; color:#1a1a1a; }
+.theme-identity .step-q em { font-style:italic; color:#666660; }
+.theme-identity .step-hint { color:#999993; }
+.theme-identity .step-input { color:#1a1a1a; border-color:#c0bfbd; opacity:1; }
+.theme-identity textarea.step-input { background:#fff; border-color:#e8e8e8; opacity:1; }
+.theme-identity .choice-opt { border-color:#e8e8e8; color:#1a1a1a; opacity:1; background:#fff; }
+.theme-identity .choice-opt.selected { background:#0d0d0d; border-color:#0d0d0d; }
+.theme-identity .choice-opt.selected .choice-label { color:#fff; }
+.theme-identity .choice-opt.selected .choice-radio { background:#fff; border-color:#fff; }
+.theme-identity .lang-btn { color:#1a1a1a; border-color:#e8e8e8; opacity:1; background:#fff; }
+.theme-identity .lang-btn.active { background:#0d0d0d; color:#fff; border-color:#0d0d0d; }
+.theme-identity .btn-back { color:#999993; }
+.theme-identity .btn-next { border-color:#1a1a1a; color:#1a1a1a; background:transparent; }
+.theme-identity .btn-next:hover { background:#0d0d0d; color:#fff; border-color:#0d0d0d; }
+.theme-identity .intro-card { background:#0d0d0d; color:#f7f7f5; }
+.theme-identity .intro-card-label { color:rgba(255,255,255,0.3); }
+.theme-identity .intro-card-title { font-family:'Playfair Display',serif; color:#f7f7f5; }
+.theme-identity .intro-card-desc { color:rgba(255,255,255,0.5); }
+.theme-identity #page-result { background:#f7f7f5; color:#1a1a1a; }
+.theme-identity .result-header { background:#0d0d0d; color:#f7f7f5; }
+.theme-identity .result-tag { color:rgba(255,255,255,0.3); }
+.theme-identity .result-htitle { font-family:'Playfair Display',serif; font-style:italic; color:#f7f7f5; }
+.theme-identity .script-wrap { border-color:#e8e8e8; }
+.theme-identity .script-head { background:#0d0d0d; }
+.theme-identity .script-content { font-family:'Playfair Display',serif; color:#1a1a1a; background:#fff; }
+
+/* AMOR PROPIO — Rose/blush/pink */
+.theme-amor {
+  --bg: #fdf0f0;
+  --text: #2a1515;
+  --text-soft: #8a5a5a;
+  --accent: #c4667a;
+  --accent-light: #f5c6d0;
+  --header-bg: #2a1515;
+  --pdot-off: rgba(196,102,122,0.2);
+  --pdot-on: #c4667a;
+}
+.theme-amor .form-header { background:var(--header-bg); }
+.theme-amor .fh-brand { color:rgba(196,102,122,0.5); }
+.theme-amor .pdot { background:var(--pdot-off); }
+.theme-amor .pdot.done { background:rgba(196,102,122,0.5); }
+.theme-amor .pdot.active { background:var(--pdot-on); }
+.theme-amor #page-form { background:#fdf0f0; color:#2a1515; }
+.theme-amor .step-eyebrow { color:#c4667a; }
+.theme-amor .step-q { font-family:'DM Serif Display',serif; color:#2a1515; }
+.theme-amor .step-q em { font-style:italic; color:#c4667a; }
+.theme-amor .step-hint { color:#8a5a5a; }
+.theme-amor .step-input { color:#2a1515; border-color:rgba(196,102,122,0.3); opacity:1; }
+.theme-amor textarea.step-input { background:rgba(253,240,240,0.8); border-color:rgba(196,102,122,0.2); opacity:1; }
+.theme-amor .choice-opt { border-color:rgba(196,102,122,0.2); color:#2a1515; opacity:1; background:rgba(255,255,255,0.7); }
+.theme-amor .choice-opt.selected { background:#2a1515; border-color:#2a1515; }
+.theme-amor .choice-opt.selected .choice-label { color:#fdf0f0; }
+.theme-amor .choice-opt.selected .choice-radio { background:#fdf0f0; border-color:#fdf0f0; }
+.theme-amor .lang-btn { color:#c4667a; border-color:rgba(196,102,122,0.25); opacity:1; background:transparent; }
+.theme-amor .lang-btn.active { background:#c4667a; color:#fff; border-color:#c4667a; }
+.theme-amor .btn-back { color:#c4667a; opacity:0.5; }
+.theme-amor .btn-next { border-color:rgba(196,102,122,0.4); color:#c4667a; }
+.theme-amor .btn-next:hover { background:#c4667a; color:#fff; border-color:#c4667a; }
+.theme-amor .intro-card { background:#2a1515; color:#fdf0f0; }
+.theme-amor .intro-card-label { color:rgba(196,102,122,0.5); }
+.theme-amor .intro-card-title { font-family:'DM Serif Display',serif; color:#fdf0f0; }
+.theme-amor #page-result { background:#fdf0f0; color:#2a1515; }
+.theme-amor .result-header { background:#2a1515; }
+.theme-amor .result-tag { color:rgba(196,102,122,0.6); }
+.theme-amor .result-htitle { font-family:'DM Serif Display',serif; font-style:italic; color:#fdf0f0; }
+.theme-amor .script-wrap { border-color:rgba(196,102,122,0.15); }
+.theme-amor .script-head { background:#2a1515; }
+.theme-amor .script-content { font-family:'DM Serif Display',serif; color:#2a1515; background:#fff8f8; }
+.theme-amor .btn-dl { border-color:rgba(196,102,122,0.2); color:rgba(196,102,122,0.5); }
+.theme-amor .btn-dl:hover { border-color:#c4667a; color:#c4667a; }
+
+/* BOOSTER — Deep space dark + neon green */
+.theme-booster {
+  --bg: #04080f;
+  --text: #c8f0d8;
+  --text-soft: rgba(200,240,216,0.5);
+  --accent: #00ff88;
+  --accent2: #00cc66;
+  --header-bg: #020509;
+  --pdot-off: rgba(0,255,136,0.12);
+  --pdot-on: #00ff88;
+}
+.theme-booster .form-header { background:#020509; }
+.theme-booster .fh-brand { color:rgba(0,255,136,0.35); }
+.theme-booster .pdot { background:rgba(0,255,136,0.12); }
+.theme-booster .pdot.done { background:rgba(0,255,136,0.45); }
+.theme-booster .pdot.active { background:#00ff88; box-shadow:0 0 8px #00ff88; }
+.theme-booster #page-form { background:linear-gradient(160deg,#04080f,#060e10,#04080f); color:#c8f0d8; }
+.theme-booster .step-eyebrow { color:#00ff88; text-shadow:0 0 12px rgba(0,255,136,0.4); }
+.theme-booster .step-q { font-family:'Work Sans',sans-serif; font-weight:200; color:#e0f8ec; letter-spacing:-0.5px; font-size:clamp(26px,4vw,40px); }
+.theme-booster .step-q em { font-style:normal; color:#00ff88; font-weight:400; }
+.theme-booster .step-hint { color:rgba(200,240,216,0.35); }
+.theme-booster .step-input { color:#e0f8ec; border-color:rgba(0,255,136,0.2); opacity:1; background:transparent; }
+.theme-booster .step-input:focus { border-color:rgba(0,255,136,0.6); }
+.theme-booster textarea.step-input { background:rgba(0,255,136,0.03); border-color:rgba(0,255,136,0.12); opacity:1; }
+.theme-booster textarea.step-input:focus { border-color:rgba(0,255,136,0.4); background:rgba(0,255,136,0.05); }
+.theme-booster .choice-opt { border-color:rgba(0,255,136,0.12); color:#c8f0d8; opacity:1; background:rgba(0,255,136,0.02); }
+.theme-booster .choice-opt:hover { border-color:rgba(0,255,136,0.4); background:rgba(0,255,136,0.05); }
+.theme-booster .choice-opt.selected { border-color:#00ff88; background:rgba(0,255,136,0.1); box-shadow:0 0 16px rgba(0,255,136,0.1); }
+.theme-booster .choice-opt.selected .choice-radio { background:#00ff88; border-color:#00ff88; box-shadow:0 0 8px #00ff88; }
+.theme-booster .lang-btn { color:rgba(0,255,136,0.7); border-color:rgba(0,255,136,0.15); opacity:1; background:transparent; }
+.theme-booster .lang-btn.active { background:rgba(0,255,136,0.15); color:#00ff88; border-color:#00ff88; box-shadow:0 0 12px rgba(0,255,136,0.2); }
+.theme-booster .btn-back { color:rgba(0,255,136,0.25); }
+.theme-booster .btn-next { border-color:rgba(0,255,136,0.25); color:#00ff88; background:transparent; }
+.theme-booster .btn-next:hover { background:rgba(0,255,136,0.12); border-color:#00ff88; box-shadow:0 0 16px rgba(0,255,136,0.2); }
+.theme-booster .intro-card { background:rgba(0,255,136,0.04); border:1px solid rgba(0,255,136,0.08); color:#c8f0d8; }
+.theme-booster .intro-card-label { color:rgba(0,255,136,0.35); }
+.theme-booster .intro-card-title { font-family:'Work Sans',sans-serif; font-weight:200; color:#e0f8ec; }
+.theme-booster .intro-card-desc { color:rgba(200,240,216,0.5); }
+.theme-booster #page-result { background:#04080f; color:#c8f0d8; }
+.theme-booster .result-header { background:#020509; }
+.theme-booster .result-tag { color:rgba(0,255,136,0.4); }
+.theme-booster .result-htitle { font-family:'Work Sans',sans-serif; font-weight:200; color:#e0f8ec; letter-spacing:-1px; }
+.theme-booster .script-wrap { border-color:rgba(0,255,136,0.1); }
+.theme-booster .script-head { background:#020509; }
+.theme-booster .script-content { font-family:'Work Sans',sans-serif; font-weight:300; color:#c8f0d8; background:#030a06; line-height:2.1; }
+.theme-booster .btn-dl { border-color:rgba(0,255,136,0.15); color:rgba(0,255,136,0.35); background:transparent; }
+.theme-booster .btn-dl:hover { border-color:#00ff88; color:#00ff88; }
+.theme-booster .result-note { border-color:rgba(0,255,136,0.08); color:rgba(200,240,216,0.25); }
 </style>
 </head>
 <body>
 
 <!-- ═══ LOGIN ═══ -->
 <div id="page-login" class="page active">
-  <div class="login-orb login-orb-1"></div>
-  <div class="login-orb login-orb-2"></div>
+  <div class="login-stars"></div>
+  <canvas id="fireworks-canvas" style="position:absolute;inset:0;pointer-events:none;z-index:2;width:100%;height:100%;"></canvas>
+  <div class="login-glow login-glow-1"></div>
+  <div class="login-glow login-glow-2"></div>
   <div class="login-box">
-    <div class="login-logo">ERIORCENTER</div>
-    <h1 class="login-title">Audio <em>YOU</em></h1>
-    <div class="login-subtitle">🧸 Tu audio personalizado</div>
-    <div class="login-divider"></div>
-    <label class="login-label">Ingresa tu código de acceso</label>
-    <input type="text" id="access-code-input" class="login-input"
-           placeholder="Código de acceso" maxlength="12"
-           >
-    <button class="btn-primary" onclick="handleLogin()">Acceder ✦</button>
-    <div id="login-error" class="login-error"></div>
-
-    
-  </div>
-</div>
-
-<!-- ═══ ADMIN LOGIN ═══ -->
-<div id="page-admin-login" class="page">
-  <div class="login-box">
-    <div class="login-logo">ERIORCENTER</div>
-    <h1 class="login-title" style="font-size:40px">Admin</h1>
-    <div class="login-subtitle" style="margin-bottom:48px">Panel de gestión</div>
-    <label class="login-label">Contraseña de administrador</label>
-    <input type="password" id="admin-pw-input" class="login-input"
-           placeholder="••••••••" style="letter-spacing:4px"
-           onkeydown="if(event.key==='Enter') handleAdminLogin()">
-    <button class="btn-primary" onclick="handleAdminLogin()">Entrar ✦</button>
-    <div id="admin-login-error" class="login-error"></div>
-    <div class="login-admin-link" onclick="showPage('page-login')">← Volver</div>
+    <div class="login-erior">ERIORCENTER</div>
+    <h1 class="login-portal-title">Portal</h1>
+    <p class="login-portal-sub">Audios personalizados</p>
+    <div class="login-field-label">Código de acceso</div>
+    <input type="text" id="code-input" class="login-input" placeholder="ingresa tu código"
+           onkeydown="if(event.key==='Enter') doLogin()">
+    <button class="login-btn" onclick="doLogin()">Acceder ✦</button>
+    <div id="login-err" class="login-err"></div>
   </div>
 </div>
 
 <!-- ═══ FORM ═══ -->
 <div id="page-form" class="page">
   <header class="form-header">
-    <div class="form-header-brand">ERIORCENTER — Audio YOU</div>
-    <div class="progress-container">
-      <div class="progress-bar-wrap">
-        <div class="progress-bar" id="progress-bar" style="width:0%"></div>
-      </div>
-      <span class="progress-text" id="progress-text">0 / 11</span>
-    </div>
+    <div class="fh-brand" id="fh-brand-text">ERIORCENTER</div>
+    <div class="progress-dots" id="progress-dots"></div>
   </header>
-
-  <main class="form-main">
-
-    <!-- Step 0: Intro -->
-    <div class="step active" data-step="0">
-      <div class="intro-audio-card">
-        <div class="intro-bear">🧸</div>
-        <h2 class="intro-audio-title">Audio <em>YOU</em></h2>
-        <p class="intro-audio-desc">Nuestro audio ultra personalizado creado especialmente para ti, pensado con amor según lo que quieres lograr y tu rutina diaria 🌙💭. Es un audio único que combina la neutralidad con la fuerza mágica del niño interior 💫. Cada audio es diferente, porque se adapta a cada persona y a sus necesidades.</p>
-      </div>
-      <p class="step-eyebrow">Antes de comenzar</p>
-      <h2 class="step-question">¿En qué idioma deseas tu <em>script</em>?</h2>
-      <p class="step-hint">Tu script se generará completamente en el idioma que elijas.</p>
-      <div class="lang-switcher" style="margin-bottom:0">
-        <button class="lang-btn active" id="lang-es" onclick="setLang('es')">Español</button>
-        <button class="lang-btn" id="lang-en" onclick="setLang('en')">English</button>
-      </div>
-      <div class="step-nav">
-        <span></span>
-        <button class="btn-next" onclick="nextStep()">Comenzar →</button>
-      </div>
-    </div>
-
-    <!-- Step 1: Name -->
-    <div class="step" data-step="1">
-      <p class="step-eyebrow">01 — Tu nombre</p>
-      <h2 class="step-question">¿Cuál es tu <em>nombre</em>?</h2>
-      <p class="step-hint">Solo tu nombre, sin apellidos ✨</p>
-      <input type="text" class="step-input" id="field-name" placeholder="Mi nombre es..." autocomplete="off">
-      <div class="step-field-error" id="err-name">Por favor ingresa tu nombre</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 2: Last name -->
-    <div class="step" data-step="2">
-      <p class="step-eyebrow">02 — Tu apellido</p>
-      <h2 class="step-question">¿Y tu <em>apellido</em>?</h2>
-      <p class="step-hint">Para personalizar completamente tu script 🌸</p>
-      <input type="text" class="step-input" id="field-lastname" placeholder="Mi apellido es..." autocomplete="off">
-      <div class="step-field-error" id="err-lastname">Por favor ingresa tu apellido</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 3: Email -->
-    <div class="step" data-step="3">
-      <p class="step-eyebrow">03 — Tu email</p>
-      <h2 class="step-question">¿A qué <em>email</em> enviamos tu script?</h2>
-      <p class="step-hint">Recibirás tu script completo en este correo 📩</p>
-      <input type="email" class="step-input" id="field-email" placeholder="tucorreo@email.com" autocomplete="email">
-      <div class="step-field-error" id="err-email">Por favor ingresa un email válido</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 4: Wishes -->
-    <div class="step" data-step="4">
-      <p class="step-eyebrow">04 — Tus deseos</p>
-      <h2 class="step-question">Cuéntanos <em>3 deseos</em> que quieras invitar a jugar en tu realidad</h2>
-      <p class="step-hint">Exprésalos en primera persona, brevemente. Por ejemplo: "Despertar cada día sintiéndome más bella y luminosa" ✨</p>
-      <div class="wish-inputs">
-        <div class="wish-row"><span class="wish-num">I</span><input type="text" id="wish-1" placeholder="Mi primer deseo..."></div>
-        <div class="wish-row"><span class="wish-num">II</span><input type="text" id="wish-2" placeholder="Mi segundo deseo..."></div>
-        <div class="wish-row"><span class="wish-num">III</span><input type="text" id="wish-3" placeholder="Mi tercer deseo..."></div>
-      </div>
-      <div class="step-field-error" id="err-wishes">Por favor ingresa al menos un deseo</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 5: Inner child hobby -->
-    <div class="step" data-step="5">
-      <p class="step-eyebrow">05 — Tu niñ@ interior</p>
-      <h2 class="step-question">¿Qué es lo que más le <em>gustaba hacer</em> a tu niño interior?</h2>
-      <p class="step-hint">¿A qué jugabas? ¿Qué te llenaba de alegría? 🎠</p>
-      <textarea class="step-input" id="field-hobby" placeholder="De niñ@ me encantaba..."></textarea>
-      <div class="step-field-error" id="err-hobby">Por favor responde esta pregunta</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 6: Inner child desire -->
-    <div class="step" data-step="6">
-      <p class="step-eyebrow">06 — El mayor deseo</p>
-      <h2 class="step-question">¿Cuál era el <em>mayor deseo</em> de tu niño interior?</h2>
-      <p class="step-hint">Aquello que soñabas con todo tu corazón 🌈</p>
-      <textarea class="step-input" id="field-desire" placeholder="Mi niñ@ interior siempre soñó con..."></textarea>
-      <div class="step-field-error" id="err-desire">Por favor responde esta pregunta</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 7: Strength -->
-    <div class="step" data-step="7">
-      <p class="step-eyebrow">07 — Tu fortaleza</p>
-      <h2 class="step-question">¿Qué es lo que más <em>amabas</em> de tu niño interior?</h2>
-      <p class="step-hint">Tu mayor virtud, lo que te hacía especial 💎</p>
-      <textarea class="step-input" id="field-strength" placeholder="Lo que más amaba de mí de pequeñ@ era..."></textarea>
-      <div class="step-field-error" id="err-strength">Por favor responde esta pregunta</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 8: Wound -->
-    <div class="step" data-step="8">
-      <p class="step-eyebrow">08 — Tu herida</p>
-      <h2 class="step-question">¿Cuál es la <em>herida más fuerte</em> de tu niño interior?</h2>
-      <p class="step-hint">El miedo, la creencia o el dolor que más marcó tu infancia. Este espacio es tuyo, aquí eres segur@ 🤍</p>
-      <textarea class="step-input" id="field-wound" placeholder="La herida más profunda de mi niñ@ interior es..."></textarea>
-      <div class="step-field-error" id="err-wound">Por favor responde esta pregunta</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 9: Money -->
-    <div class="step" data-step="9">
-      <p class="step-eyebrow">09 — Dinero</p>
-      <h2 class="step-question">Si tu niño interior ganara <em>dinero</em>, ¿de qué manera le hubiera gustado hacerlo?</h2>
-      <p class="step-hint">¿Qué actividad, talento o manera de vivir habría traído abundancia a tu niñ@? 💸</p>
-      <textarea class="step-input" id="field-money" placeholder="Mi niñ@ interior hubiera ganado dinero..."></textarea>
-      <div class="step-field-error" id="err-money">Por favor responde esta pregunta</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 10: Who records -->
-    <div class="step" data-step="10">
-      <p class="step-eyebrow">10 — Grabación</p>
-      <h2 class="step-question">¿Quién <em>graba</em> el audio?</h2>
-      <p class="step-hint">Puedes grabarlo tú mismo o nosotros lo grabamos para ti 🎙️</p>
-      <div class="choice-group" id="record-choices">
-        <label class="choice-option" onclick="selectChoice(this, 'record')">
-          <input type="radio" name="record" value="self">
-          <div class="choice-radio"><div class="choice-radio-dot"></div></div>
-          <span class="choice-label">🎙️ Yo lo grabo</span>
-        </label>
-        <label class="choice-option" onclick="selectChoice(this, 'record')">
-          <input type="radio" name="record" value="erior">
-          <div class="choice-radio"><div class="choice-radio-dot"></div></div>
-          <span class="choice-label">💛 ERIORCENTER lo graba por mí</span>
-        </label>
-      </div>
-      <div class="step-field-error" id="err-record">Por favor selecciona una opción</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="nextStep()">Continuar →</button>
-      </div>
-    </div>
-
-    <!-- Step 11: Day or night -->
-    <div class="step" data-step="11">
-      <p class="step-eyebrow">11 — Frecuencia</p>
-      <h2 class="step-question">¿Tu audio lo escucharás más de <em>día o de noche</em>?</h2>
-      <p class="step-hint">Esto nos ayuda a elegir las ondas y frecuencias perfectas para tu audio 🌙☀️</p>
-      <div class="choice-group" id="time-choices">
-        <label class="choice-option" onclick="selectChoice(this, 'time')">
-          <input type="radio" name="time" value="day">
-          <div class="choice-radio"><div class="choice-radio-dot"></div></div>
-          <span class="choice-label">☀️ De día</span>
-        </label>
-        <label class="choice-option" onclick="selectChoice(this, 'time')">
-          <input type="radio" name="time" value="night">
-          <div class="choice-radio"><div class="choice-radio-dot"></div></div>
-          <span class="choice-label">🌙 De noche</span>
-        </label>
-      </div>
-      <div class="step-field-error" id="err-time">Por favor selecciona una opción</div>
-      <div class="step-nav">
-        <button class="btn-back" onclick="prevStep()">← Anterior</button>
-        <button class="btn-next" onclick="generateScript()">Generar mi script ✨</button>
-      </div>
-    </div>
-
+  <main class="form-main" id="form-main-area">
+    <!-- Steps injected by JS -->
   </main>
 </div>
 
 <!-- ═══ GENERATING ═══ -->
 <div id="page-generating" class="page">
-  <div class="gen-content">
-    <div class="gen-animation">
-      <div class="gen-ring"></div>
-      <div class="gen-ring"></div>
-      <div class="gen-ring"></div>
-      <div class="gen-core"></div>
-    </div>
+  <div class="gen-wrap">
+    <div class="gen-orb"><div class="gen-orb-core"></div></div>
     <h2 class="gen-title">Creando tu script</h2>
-    <p class="gen-subtitle">Estamos tejiendo palabras especiales<br>solo para ti, con amor 🧸✨</p>
+    <p class="gen-sub">Tejiendo palabras<br>solo para ti ✨</p>
     <div class="gen-steps">
-      <div class="gen-step-item" id="gen-s1"><div class="gen-step-dot"></div>Analizando tus respuestas...</div>
-      <div class="gen-step-item" id="gen-s2"><div class="gen-step-dot"></div>Canalizando tu niñ@ interior...</div>
-      <div class="gen-step-item" id="gen-s3"><div class="gen-step-dot"></div>Tejiendo afirmaciones personalizadas...</div>
-      <div class="gen-step-item" id="gen-s4"><div class="gen-step-dot"></div>Preparando tu script único...</div>
+      <div class="gen-step" id="gs1"><div class="gen-step-dot"></div>Analizando tus respuestas...</div>
+      <div class="gen-step" id="gs2"><div class="gen-step-dot"></div>Personalizando tu script...</div>
+      <div class="gen-step" id="gs3"><div class="gen-step-dot"></div>Tejiendo afirmaciones...</div>
+      <div class="gen-step" id="gs4"><div class="gen-step-dot"></div>Preparando tu entrega...</div>
     </div>
   </div>
 </div>
 
 <!-- ═══ RESULT ═══ -->
 <div id="page-result" class="page">
-  <div class="result-header">
-    <div class="result-header-tag">✦ Tus scripts están listos</div>
-    <h2 class="result-header-title">💛☁️ Audio <em>YOU</em> ☁️💛</h2>
+  <div class="result-header" id="result-header">
+    <div class="result-tag">✦ Tus scripts están listos</div>
+    <h2 class="result-htitle" id="result-title">Audio</h2>
   </div>
-  <div class="result-main">
-
-    <!-- Script 1 -->
-    <div class="result-script-wrap" style="margin-bottom:32px">
-      <div class="result-script-header">
-        <span class="result-script-title">✯ Primera grabación 🐇</span>
-        <button class="result-copy-btn" onclick="copyScript(1)">Copiar</button>
+  <div class="result-body">
+    <div class="script-wrap">
+      <div class="script-head">
+        <span class="script-head-label">Primera grabación</span>
+        <button class="btn-copy" onclick="copyS(1)">Copiar</button>
       </div>
-      <div class="result-script-body" id="result-script-1"></div>
+      <div class="script-content" id="sc1"></div>
     </div>
-
-    <!-- Script 2 -->
-    <div class="result-script-wrap">
-      <div class="result-script-header" style="background:linear-gradient(135deg,#0d1a14,#163020)">
-        <span class="result-script-title">✯ Segunda grabación — Mini Script 🐇</span>
-        <button class="result-copy-btn" onclick="copyScript(2)">Copiar</button>
+    <div class="script-wrap">
+      <div class="script-head">
+        <span class="script-head-label">Segunda grabación — Mini Script</span>
+        <button class="btn-copy" onclick="copyS(2)">Copiar</button>
       </div>
-      <div class="result-script-body" id="result-script-2"></div>
+      <div class="script-content" id="sc2"></div>
     </div>
-
-    <div id="email-status" class="email-status"></div>
+    <div id="email-stat" class="email-stat"></div>
     <div class="result-actions">
-      <button class="btn-outline" onclick="downloadScript()">⬇ Descargar .txt</button>
+      <button class="btn-dl" onclick="dlScript()">⬇ Descargar .txt</button>
     </div>
-    <p style="margin-top:32px; font-size:13px; font-weight:300; color:var(--text-muted); line-height:1.8; text-align:center;">
-      📩 <strong style="font-weight:400">Importante:</strong> Una vez que envíes tus grabaciones, vuelve a llenar el formulario.<br>
-      Es indispensable para enviarte tu audio final. 🐇💛
-    </p>
+    <div class="result-note">
+      📩 <strong style="font-weight:500">Importante:</strong> Una vez que envíes tus grabaciones, vuelve a llenar el formulario. Es indispensable para enviarte tu audio final. 🐇💛
+    </div>
   </div>
-</div>
-
-<!-- ═══ ADMIN ═══ -->
-<div id="page-admin" class="page" style="flex-direction:row">
-  <aside class="admin-sidebar">
-    <div class="admin-brand">ERIORCENTER</div>
-    <div class="admin-brand-sub">Panel Admin</div>
-    <nav class="admin-nav">
-      <div class="admin-nav-item active" onclick="adminTab('codes')">Códigos</div>
-      <div class="admin-nav-item" onclick="adminTab('submissions')">Scripts generados</div>
-      <div class="admin-nav-item" onclick="showPage('page-login')" style="margin-top:auto; color:rgba(201,169,110,0.25)">Cerrar sesión</div>
-    </nav>
-  </aside>
-  <main class="admin-main">
-
-    <!-- Codes section -->
-    <div class="admin-section active" id="admin-codes">
-      <h2 class="admin-title">Gestión de Códigos</h2>
-      <div class="admin-card">
-        <p style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:20px; font-weight:400">Generar nuevo código</p>
-        <div class="admin-generate-row">
-          <div class="admin-field">
-            <label>Nombre del cliente</label>
-            <input type="text" class="admin-input" id="admin-client-name" placeholder="Nombre del cliente">
-          </div>
-          <div class="admin-field">
-            <label>Audio</label>
-            <select class="admin-select admin-input" id="admin-audio-type">
-              <option value="YOU">Audio YOU 🧸</option>
-            </select>
-          </div>
-          <button class="btn-admin" onclick="generateCode()">Generar código</button>
-        </div>
-        <div id="generated-code-display" style="margin-top:20px; display:none; padding:16px; background:rgba(201,169,110,0.06); border-radius:4px; border:1px solid rgba(201,169,110,0.15)">
-          <p style="font-size:11px; letter-spacing:2px; color:var(--text-muted); text-transform:uppercase; margin-bottom:8px">Código generado:</p>
-          <p id="new-code-value" style="font-family:monospace; font-size:20px; color:var(--gold-dark); letter-spacing:4px"></p>
-          <p id="new-code-client" style="font-size:12px; color:var(--text-muted); margin-top:4px"></p>
-        </div>
-      </div>
-      <div class="admin-card">
-        <p style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:20px; font-weight:400">Códigos activos</p>
-        <table class="codes-table">
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Cliente</th>
-              <th>Audio</th>
-              <th>Estado</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody id="codes-tbody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Submissions section -->
-    <div class="admin-section" id="admin-submissions">
-      <h2 class="admin-title">Scripts Generados</h2>
-      <div id="submissions-container">
-        <p style="color:var(--text-muted); font-size:14px; font-weight:300">No hay scripts generados aún.</p>
-      </div>
-    </div>
-
-  </main>
 </div>
 
 <script>
-// ═══════════════════════════════════════
-// CONFIGURATION — Replace these values
-// ═══════════════════════════════════════
-const CONFIG = {
-  EMAILJS_PUBLIC_KEY: '5TUlfXQxdR0MrxW-v',
-  EMAILJS_SERVICE_ID: 'service_iw8x7oc',
-  EMAILJS_TEMPLATE_CLIENT: 'template_o320qmp',
-  EMAILJS_TEMPLATE_ADMIN: 'template_n7yeudd',
-  ERIOR_EMAIL: 'eriorcenter@gmail.com',
-  CLAUDE_API_KEY: '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',
-  ADMIN_PASSWORD: 'erior2025',              // ← Cambia esto
+// ═══════════════════════════════════
+// AUDIO CATALOG
+// ═══════════════════════════════════
+const AUDIOS = {
+  'miaudioyou11': {
+    name: 'Audio YOU',
+    theme: 'theme-you',
+    steps: 11,
+    headerLabel: 'ERIORCENTER — Audio YOU 🧸',
+    introTitle: 'Audio <em>YOU</em>',
+    introDesc: 'Nuestro audio ultra personalizado creado especialmente para ti, pensado con amor según lo que quieres lograr y tu rutina diaria 🌙💭. Es un audio único que combina la neutralidad con la fuerza mágica del niño interior 💫.',
+    fields: ['name','last','email','wish1','wish2','wish3','hobby','desire','strength','wound','money','record','time'],
+    buildSteps: buildYouSteps,
+    buildPrompt: buildYouPrompt,
+    systemPrompt: getYouSystem,
+  },
+  'miidentity22': {
+    name: 'Audio IDENTITY',
+    theme: 'theme-identity',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — Audio IDENTITY 🌿',
+    introTitle: 'Identity',
+    introDesc: 'Muchas gracias por adquirir nuestro programa para programar en tu inconsciente mucha <strong>magia</strong> y por fin ser tu versión más <strong>auténtica</strong> 🌿✨',
+    fields: ['name','last','email','intention','record'],
+    buildSteps: buildIdentitySteps,
+    buildPrompt: buildIdentityPrompt,
+    systemPrompt: getIdentitySystem,
+  },
+  'miamorpropio33': {
+    name: 'Amor Propio Magic 3.0',
+    theme: 'theme-amor',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — Amor Propio Magic 3.0 🌹',
+    introTitle: 'Amor Propio <em>Magic</em>',
+    introDesc: 'Muchas gracias por adquirir nuestro nuevo programa para programar en tu inconsciente mucha <strong>magia</strong> y por fin acabar con la <strong>codependencia</strong> 🦋💖',
+    fields: ['name','last','email','intention','record'],
+    buildSteps: buildAmorSteps,
+    buildPrompt: buildAmorPrompt,
+    systemPrompt: getAmorSystem,
+  },
+  'mibooster44': {
+    name: 'Booster',
+    theme: 'theme-booster',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — BOOSTER ⚡',
+    introTitle: 'Booster',
+    introDesc: 'Este audio ha sido creado para ayudarte a que <strong>todos tus otros audios funcionen más rápido y con mayor potencia</strong>, ya que te lleva al <strong>estado de neutralidad</strong> ⚡🌿',
+    fields: ['name','last','email','intention','record'],
+    buildSteps: buildBoosterSteps,
+    buildPrompt: buildBoosterPrompt,
+    systemPrompt: getBoosterSystem,
+  }
 };
 
-// ═══════════════════════════════════════
-// STORAGE (localStorage)
-// ═══════════════════════════════════════
-function getCodes() {
-  return JSON.parse(localStorage.getItem('erior_codes') || '[]');
-}
-function saveCodes(codes) {
-  localStorage.setItem('erior_codes', JSON.stringify(codes));
-}
-function getSubmissions() {
-  return JSON.parse(localStorage.getItem('erior_submissions') || '[]');
-}
-function saveSubmission(sub) {
-  const subs = getSubmissions();
-  subs.unshift(sub);
-  localStorage.setItem('erior_submissions', JSON.stringify(subs));
-}
-
-// No demo codes needed — universal code system
-function initCodes() {}
-initCodes();
-
-// ═══════════════════════════════════════
+// ═══════════════════════════════════
 // APP STATE
-// ═══════════════════════════════════════
+// ═══════════════════════════════════
+let currentAudio = null;
 let currentStep = 0;
-const TOTAL_STEPS = 11;
-let selectedLang = 'es';
-let formData = {};
-let generatedScript = '';
-let currentCode = '';
+let lang = 'es';
+let fd = {};
+let fullScript = '';
+let s1 = '', s2 = '';
 
-// ═══════════════════════════════════════
-// NAVIGATION
-// ═══════════════════════════════════════
+const delay = ms => new Promise(r => setTimeout(r, ms));
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-function showAdminLogin() {
-  showPage('page-admin-login');
-  document.getElementById('admin-pw-input').value = '';
-  document.getElementById('admin-login-error').classList.remove('visible');
-}
-
-// ═══════════════════════════════════════
+// ═══════════════════════════════════
 // LOGIN
-// ═══════════════════════════════════════
-function handleLogin() {
-  const val = document.getElementById('access-code-input').value.trim().toLowerCase();
-  const err = document.getElementById('login-error');
-  if (val !== 'miaudioyou11') {
+// ═══════════════════════════════════
+function doLogin() {
+  const val = document.getElementById('code-input').value.trim().toLowerCase();
+  const err = document.getElementById('login-err');
+  const audio = AUDIOS[val];
+  if (!audio) {
     err.textContent = 'Código no válido. Verifica e intenta de nuevo.';
-    err.classList.add('visible');
-    document.getElementById('access-code-input').style.borderColor = 'rgba(192,112,90,0.5)';
+    err.classList.add('show');
     return;
   }
-  err.classList.remove('visible');
-  currentStep = 0;
+  err.classList.remove('show');
+  currentAudio = audio;
+  fd = {}; lang = 'es'; currentStep = 0;
+  applyTheme(audio.theme);
+  document.getElementById('fh-brand-text').textContent = audio.headerLabel;
+  document.getElementById('result-title').innerHTML = '💛☁️ ' + audio.name + ' ☁️💛';
+  audio.buildSteps();
+  initDots(audio.steps);
   showStep(0);
   showPage('page-form');
 }
 
-document.getElementById('access-code-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') handleLogin();
+document.getElementById('code-input').addEventListener('keydown', e => {
+  if(e.key==='Enter') doLogin();
 });
 
-function handleAdminLogin() {
-  const pw = document.getElementById('admin-pw-input').value;
-  if (pw === CONFIG.ADMIN_PASSWORD) {
-    showPage('page-admin');
-    renderCodesTable();
-    renderSubmissions();
-  } else {
-    const err = document.getElementById('admin-login-error');
-    err.textContent = 'Contraseña incorrecta.';
-    err.classList.add('visible');
+function applyTheme(theme) {
+  ['page-form','page-result'].forEach(id => {
+    const el = document.getElementById(id);
+    el.className = 'page';
+    el.classList.add(theme);
+  });
+  document.querySelector('.form-header').className = 'form-header ' + theme;
+  document.getElementById('result-header').className = 'result-header ' + theme;
+  document.getElementById('progress-dots').className = 'progress-dots ' + theme;
+}
+
+// ═══════════════════════════════════
+// PROGRESS DOTS
+// ═══════════════════════════════════
+function initDots(total) {
+  const c = document.getElementById('progress-dots');
+  c.innerHTML = '';
+  for(let i=0;i<=total;i++){
+    const d=document.createElement('div');
+    d.className='pdot'+(i===0?' active':'');
+    d.id='dot-'+i; c.appendChild(d);
   }
 }
 
-document.getElementById('admin-pw-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') handleAdminLogin();
-});
-
-// ═══════════════════════════════════════
-// FORM STEPS
-// ═══════════════════════════════════════
-function setLang(lang) {
-  selectedLang = lang;
-  document.getElementById('lang-es').classList.toggle('active', lang === 'es');
-  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+function updateDots(step) {
+  const total = currentAudio ? currentAudio.steps : 5;
+  for(let i=0;i<=total;i++){
+    const d=document.getElementById('dot-'+i);
+    if(!d) continue;
+    d.className='pdot'+(i<step?' done':i===step?' active':'');
+  }
 }
 
+// ═══════════════════════════════════
+// STEP NAVIGATION
+// ═══════════════════════════════════
 function showStep(n) {
-  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.step')[n].classList.add('active');
-  const pct = Math.round((n / TOTAL_STEPS) * 100);
-  document.getElementById('progress-bar').style.width = pct + '%';
-  document.getElementById('progress-text').textContent = n + ' / ' + TOTAL_STEPS;
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  const steps = document.querySelectorAll('.step');
+  if(steps[n]) steps[n].classList.add('active');
+  updateDots(n);
+  window.scrollTo(0,0);
 }
 
 function nextStep() {
-  if (!validateStep(currentStep)) return;
+  if(!validateStep(currentStep)) return;
   collectStep(currentStep);
-  if (currentStep < TOTAL_STEPS) {
-    currentStep++;
-    showStep(currentStep);
-    window.scrollTo(0, 0);
-  }
+  if(currentStep < currentAudio.steps) { currentStep++; showStep(currentStep); }
 }
 
 function prevStep() {
-  if (currentStep > 0) {
-    currentStep--;
-    showStep(currentStep);
-    window.scrollTo(0, 0);
-  }
+  if(currentStep>0){ currentStep--; showStep(currentStep); }
 }
 
-function selectChoice(el, group) {
-  document.querySelectorAll(`input[name="${group}"]`).forEach(r => {
-    r.closest('.choice-option').classList.remove('selected');
-  });
+function pickChoice(el, group) {
+  document.querySelectorAll(`input[name="${group}"]`).forEach(r=>r.closest('.choice-opt').classList.remove('selected'));
   el.classList.add('selected');
-  el.querySelector('input[type=radio]').checked = true;
+  el.querySelector('input').checked=true;
+}
+
+function setLang(l) {
+  lang=l;
+  ['btn-es','btn-en'].forEach(id=>{
+    const b=document.getElementById(id);
+    if(b) b.classList.toggle('active',id.includes(l));
+  });
 }
 
 function validateStep(n) {
-  const clearErr = id => document.getElementById(id) && document.getElementById(id).classList.remove('visible');
-  const showErr = id => document.getElementById(id) && document.getElementById(id).classList.add('visible');
+  const show=id=>{const e=document.getElementById(id);if(e)e.classList.add('show');};
+  const hide=id=>{const e=document.getElementById(id);if(e)e.classList.remove('show');};
+  const v=id=>{const e=document.getElementById(id);return e&&e.value.trim();};
 
-  if (n === 1) {
-    clearErr('err-name');
-    if (!document.getElementById('field-name').value.trim()) { showErr('err-name'); return false; }
+  if(n===0) return true;
+
+  const fields = currentAudio.fields;
+
+  if(fields[n-1]==='name'){hide('e-name');if(!v('f-name')){show('e-name');return false;}}
+  if(fields[n-1]==='last'){hide('e-last');if(!v('f-last')){show('e-last');return false;}}
+  if(fields[n-1]==='email'){
+    hide('e-email');
+    const em=document.getElementById('f-email');
+    if(!em||!em.value.trim()||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value)){show('e-email');return false;}
   }
-  if (n === 2) {
-    clearErr('err-lastname');
-    if (!document.getElementById('field-lastname').value.trim()) { showErr('err-lastname'); return false; }
+  if(fields[n-1]==='wish1'){
+    hide('e-wishes');
+    const w1=document.getElementById('wish-1');
+    if(!w1||!w1.value.trim()){show('e-wishes');return false;}
   }
-  if (n === 3) {
-    clearErr('err-email');
-    const email = document.getElementById('field-email').value.trim();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('err-email'); return false; }
+  if(['hobby','desire','strength','wound','money'].includes(fields[n-1])){
+    const fid='f-'+fields[n-1]; hide('e-'+fields[n-1]);
+    if(!v(fid)){show('e-'+fields[n-1]);return false;}
   }
-  if (n === 4) {
-    clearErr('err-wishes');
-    const w1 = document.getElementById('wish-1').value.trim();
-    if (!w1) { showErr('err-wishes'); return false; }
+  if(fields[n-1]==='intention'){hide('e-intention');if(!v('f-intention')){show('e-intention');return false;}}
+  if(fields[n-1]==='record'){
+    hide('e-record');
+    if(!document.querySelector('input[name="record"]:checked')){show('e-record');return false;}
   }
-  if (n === 5) {
-    clearErr('err-hobby');
-    if (!document.getElementById('field-hobby').value.trim()) { showErr('err-hobby'); return false; }
-  }
-  if (n === 6) {
-    clearErr('err-desire');
-    if (!document.getElementById('field-desire').value.trim()) { showErr('err-desire'); return false; }
-  }
-  if (n === 7) {
-    clearErr('err-strength');
-    if (!document.getElementById('field-strength').value.trim()) { showErr('err-strength'); return false; }
-  }
-  if (n === 8) {
-    clearErr('err-wound');
-    if (!document.getElementById('field-wound').value.trim()) { showErr('err-wound'); return false; }
-  }
-  if (n === 9) {
-    clearErr('err-money');
-    if (!document.getElementById('field-money').value.trim()) { showErr('err-money'); return false; }
-  }
-  if (n === 10) {
-    clearErr('err-record');
-    if (!document.querySelector('input[name="record"]:checked')) { showErr('err-record'); return false; }
-  }
-  if (n === 11) {
-    clearErr('err-time');
-    if (!document.querySelector('input[name="time"]:checked')) { showErr('err-time'); return false; }
+  if(fields[n-1]==='time'){
+    hide('e-time');
+    if(!document.querySelector('input[name="time"]:checked')){show('e-time');return false;}
   }
   return true;
 }
 
 function collectStep(n) {
-  if (n === 1) formData.name = document.getElementById('field-name').value.trim();
-  if (n === 2) formData.lastname = document.getElementById('field-lastname').value.trim();
-  if (n === 3) formData.email = document.getElementById('field-email').value.trim();
-  if (n === 4) formData.wishes = [
-    document.getElementById('wish-1').value.trim(),
-    document.getElementById('wish-2').value.trim(),
-    document.getElementById('wish-3').value.trim()
-  ].filter(Boolean);
-  if (n === 5) formData.hobby = document.getElementById('field-hobby').value.trim();
-  if (n === 6) formData.desire = document.getElementById('field-desire').value.trim();
-  if (n === 7) formData.strength = document.getElementById('field-strength').value.trim();
-  if (n === 8) formData.wound = document.getElementById('field-wound').value.trim();
-  if (n === 9) formData.money = document.getElementById('field-money').value.trim();
-  if (n === 10) formData.record = document.querySelector('input[name="record"]:checked').value;
-  if (n === 11) formData.time = document.querySelector('input[name="time"]:checked').value;
-  formData.lang = selectedLang;
+  if(n===0){fd.lang=lang;return;}
+  const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
+  const fields=currentAudio.fields;
+  const f=fields[n-1];
+  if(f==='name') fd.name=g('f-name');
+  if(f==='last') fd.last=g('f-last');
+  if(f==='email') fd.email=g('f-email');
+  if(f==='wish1') fd.wishes=[g('wish-1'),g('wish-2'),g('wish-3')].filter(Boolean);
+  if(['hobby','desire','strength','wound','money','intention'].includes(f)) fd[f]=g('f-'+f);
+  if(f==='record'){const r=document.querySelector('input[name="record"]:checked');fd.record=r?r.value:'';}
+  if(f==='time'){const t=document.querySelector('input[name="time"]:checked');fd.time=t?t.value:'';}
+  fd.lang=lang;
 }
 
-// ═══════════════════════════════════════
-// GENERATE SCRIPT
-// ═══════════════════════════════════════
-async function generateScript() {
-  if (!validateStep(11)) return;
-  collectStep(11);
-
+// ═══════════════════════════════════
+// GENERATE
+// ═══════════════════════════════════
+async function generate() {
+  if(!validateStep(currentAudio.steps)) return;
+  collectStep(currentAudio.steps);
   showPage('page-generating');
-
-  // Animate generation steps
-  const steps = ['gen-s1','gen-s2','gen-s3','gen-s4'];
-  for (let i = 0; i < steps.length; i++) {
-    await delay(900);
-    document.getElementById(steps[i]).classList.add('done');
+  const items=['gs1','gs2','gs3','gs4'];
+  for(let i=0;i<items.length;i++){await delay(800);document.getElementById(items[i]).classList.add('done');}
+  try {
+    const res=await fetch('/.netlify/functions/generate',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({system:currentAudio.systemPrompt(fd),prompt:currentAudio.buildPrompt(fd)})
+    });
+    const data=await res.json();
+    fullScript=data.text||'';
+    splitScript(fullScript);
+    showPage('page-result');
+    sendEmails();
+  } catch(e) {
+    fullScript='Error generando el script. Por favor contacta a ERIORCENTER.';
+    splitScript(fullScript);
+    showPage('page-result');
   }
+}
 
-  const prompt = buildPrompt(formData);
+function splitScript(text) {
+  const markers=['💛☁️ TU MINI SCRIPT','💛☁️ YOUR MINI SCRIPT','💛☁️ TU MINI SCRIPT DE','💛☁️ TU MINI SCRIPT AMOR','💛☁️ TU MINI SCRIPT BOOSTER'];
+  let idx=-1;
+  for(const m of markers){idx=text.indexOf(m);if(idx!==-1)break;}
+  if(idx!==-1){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
+  else{const p=text.split(/\n---\n/);s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
+  document.getElementById('sc1').textContent=s1;
+  document.getElementById('sc2').textContent=s2||text;
+}
+
+function copyS(n){
+  navigator.clipboard.writeText(n===1?s1:s2).then(()=>{
+    const btns=document.querySelectorAll('.btn-copy');
+    btns[n-1].textContent='✓ Copiado';
+    setTimeout(()=>btns[n-1].textContent='Copiar',2000);
+  });
+}
+
+function dlScript(){
+  const b=new Blob([fullScript],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(b);
+  a.download=`script-${(currentAudio?currentAudio.name:'audio').toLowerCase().replace(/\s/g,'-')}-${fd.name||'cliente'}.txt`;
+  a.click();
+}
+
+// ═══════════════════════════════════
+// EMAILS
+// ═══════════════════════════════════
+async function sendEmails(){
+  const audioName=currentAudio?currentAudio.name:'Audio';
+  const clientHtml=`<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#faf6f0;padding:40px;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <p style="font-size:10px;letter-spacing:5px;color:#8a8a82;text-transform:uppercase;margin:0;">ERIORCENTER</p>
+      <h1 style="font-size:28px;font-weight:300;font-style:italic;color:#1a1a1a;margin:8px 0;font-family:Georgia,serif;">${audioName}</h1>
+      <div style="width:60px;height:1px;background:#c9a96e;margin:16px auto;"></div>
+    </div>
+    <p style="font-size:15px;color:#1a1a1a;font-weight:300;line-height:1.8;">Hola <strong>${fd.name}</strong> 💖✨</p>
+    <p style="font-size:14px;color:#666;font-weight:300;line-height:1.8;margin-top:8px;">Gracias infinitas por tu confianza. Aquí está tu script personalizado. 🌸</p>
+    <div style="background:#1a1209;padding:32px;margin:32px 0;">
+      <p style="font-size:10px;letter-spacing:4px;color:rgba(255,255,255,0.4);text-transform:uppercase;margin:0 0 16px;">Tu script</p>
+      <p style="font-size:14px;color:#faf6f0;font-weight:300;line-height:2;white-space:pre-wrap;margin:0;font-family:Georgia,serif;">${fullScript}</p>
+    </div>
+    <p style="font-size:12px;color:#999;font-weight:300;line-height:1.8;text-align:center;">📩 Una vez que envíes tus grabaciones, vuelve a llenar el formulario. 🐇💛</p>
+    <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid #e8e8e8;">
+      <p style="font-size:11px;color:#8a8a82;letter-spacing:3px;margin:0;">Con cariño, El equipo ☁️🌸💎</p>
+      <p style="font-size:10px;color:#b09880;letter-spacing:3px;text-transform:uppercase;margin:8px 0 0;">ERIORCENTER</p>
+    </div>
+  </div>`;
+
+  const adminHtml=`<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#faf6f0;padding:40px;">
+    <p style="font-size:10px;letter-spacing:5px;color:#8a8a82;text-transform:uppercase;margin:0 0 8px;">ERIORCENTER — Admin</p>
+    <h1 style="font-size:22px;font-weight:300;color:#1a1a1a;margin:0 0 24px;">Nuevo script: ${audioName}</h1>
+    <div style="background:#fff;border:1px solid #e8e8e8;padding:20px;margin-bottom:24px;">
+      <p style="font-size:13px;color:#1a1a1a;margin:0 0 6px;"><strong>Nombre:</strong> ${fd.name} ${fd.last||''}</p>
+      <p style="font-size:13px;color:#1a1a1a;margin:0 0 6px;"><strong>Email:</strong> ${fd.email}</p>
+      <p style="font-size:13px;color:#1a1a1a;margin:0 0 6px;"><strong>Audio:</strong> ${audioName}</p>
+      ${fd.intention?`<p style="font-size:13px;color:#1a1a1a;margin:0;"><strong>Intención:</strong> ${fd.intention}</p>`:''}
+    </div>
+    <div style="background:#1a1209;padding:32px;">
+      <p style="font-size:14px;color:#faf6f0;font-weight:300;line-height:2;white-space:pre-wrap;margin:0;font-family:Georgia,serif;">${fullScript}</p>
+    </div>
+  </div>`;
 
   try {
-    const response = await fetch('/.netlify/functions/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: getSystemPrompt(formData.lang),
-        prompt: prompt
-      })
-    });
-
-    const data = await response.json();
-    generatedScript = data.text || '';
-
-    // Mark code as used
-    markCodeUsed(currentCode);
-
-    // Save submission
-    saveSubmission({
-      name: formData.name + ' ' + formData.lastname,
-      email: formData.email,
-      code: currentCode,
-      script: generatedScript,
-      date: new Date().toISOString(),
-      lang: formData.lang
-    });
-
-    // Show result
-    displayScripts(generatedScript);
-    showPage('page-result');
-
-    // Send emails
-    sendEmails();
-
-  } catch (err) {
-    console.error(err);
-    // Fallback: show an error but still navigate
-    generatedScript = 'Hubo un error generando tu script. Por favor contacta a ERIORCENTER.';
-    displayScripts(generatedScript);
-    showPage('page-result');
+    await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({type:'email',to:fd.email,subject:`✦ Tu script de ${audioName} está listo, ${fd.name} ✨`,html:clientHtml})});
+    await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({type:'email',to:'eriorcenter@gmail.com',subject:`✦ Nuevo script ${audioName} — ${fd.name} ${fd.last||''}`,html:adminHtml})});
+    const s=document.getElementById('email-stat');
+    s.textContent=`✓ Script enviado a ${fd.email} y a eriorcenter@gmail.com`;
+    s.className='email-stat ok';
+  } catch(e) {
+    const s=document.getElementById('email-stat');
+    s.textContent='No se pudo enviar el email automático. Copia el script manualmente.';
+    s.className='email-stat fail';
   }
 }
 
-function buildPrompt(d) {
-  const name = d.name || '_';
-  const wishes = d.wishes || [];
-  const w1 = wishes[0] || '';
-  const w2 = wishes[1] || '';
-  const w3 = wishes[2] || '';
-  const hobby = d.hobby || '';
-  const desire = d.desire || '';
-  const strength = d.strength || '';
-  const wound = d.wound || '';
-  const money = d.money || '';
-  const isEs = d.lang === 'es';
+// ═══════════════════════════════════
+// BUILD STEPS — YOU
+// ═══════════════════════════════════
+function buildYouSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">Audio <em>YOU</em> 🧸</div>
+      <div class="intro-card-desc">Nuestro audio ultra personalizado creado especialmente para ti, pensado con amor según lo que quieres lograr y tu rutina diaria 🌙💭. Un audio único que combina la <strong>neutralidad</strong> con la fuerza mágica del <strong>niño interior</strong> 💫.</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">Solo tu nombre, sin apellidos ✨</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <p class="step-hint">Para personalizar completamente tu script 🌸</p>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Recibirás tu script completo en este correo 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tus deseos</div>
+    <h2 class="step-q">Cuéntanos <em>3 deseos</em> que quieras invitar a tu realidad</h2>
+    <p class="step-hint">Exprésalos en primera persona. Por ejemplo: "Despertar sintiéndome más bella y luminosa" ✨</p>
+    <div class="wish-inputs">
+      <div class="wish-row"><span class="wish-num">I</span><input type="text" id="wish-1" placeholder="Mi primer deseo..."></div>
+      <div class="wish-row"><span class="wish-num">II</span><input type="text" id="wish-2" placeholder="Mi segundo deseo..."></div>
+      <div class="wish-row"><span class="wish-num">III</span><input type="text" id="wish-3" placeholder="Mi tercer deseo..."></div>
+    </div>
+    <div class="field-err" id="e-wishes">Por favor ingresa al menos un deseo</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Tu niñ@ interior</div>
+    <h2 class="step-q">¿Qué le <em>gustaba hacer</em> a tu niño interior?</h2>
+    <p class="step-hint">¿A qué jugabas? ¿Qué te llenaba de alegría? 🎠</p>
+    <textarea class="step-input" id="f-hobby" placeholder="De niñ@ me encantaba..."></textarea>
+    <div class="field-err" id="e-hobby">Por favor responde esta pregunta</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="6">
+    <div class="step-eyebrow">06 — El mayor deseo</div>
+    <h2 class="step-q">¿Cuál era el <em>mayor deseo</em> de tu niño interior?</h2>
+    <p class="step-hint">Aquello que soñabas con todo tu corazón 🌈</p>
+    <textarea class="step-input" id="f-desire" placeholder="Mi niñ@ interior siempre soñó con..."></textarea>
+    <div class="field-err" id="e-desire">Por favor responde esta pregunta</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="7">
+    <div class="step-eyebrow">07 — Tu fortaleza</div>
+    <h2 class="step-q">¿Qué es lo que más <em>amabas</em> de tu niño interior?</h2>
+    <p class="step-hint">Tu mayor virtud, lo que te hacía especial 💎</p>
+    <textarea class="step-input" id="f-strength" placeholder="Lo que más amaba de mí de pequeñ@ era..."></textarea>
+    <div class="field-err" id="e-strength">Por favor responde esta pregunta</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="8">
+    <div class="step-eyebrow">08 — Tu herida</div>
+    <h2 class="step-q">¿Cuál es la <em>herida más fuerte</em> de tu niño interior?</h2>
+    <p class="step-hint">El miedo o dolor que más marcó tu infancia. Este espacio es tuyo, aquí eres segur@ 🤍</p>
+    <textarea class="step-input" id="f-wound" placeholder="La herida más profunda de mi niñ@ interior es..."></textarea>
+    <div class="field-err" id="e-wound">Por favor responde esta pregunta</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="9">
+    <div class="step-eyebrow">09 — Dinero</div>
+    <h2 class="step-q">¿Cómo hubiera ganado <em>dinero</em> tu niño interior?</h2>
+    <p class="step-hint">¿Qué talento o actividad habría traído abundancia a tu niñ@? 💸</p>
+    <textarea class="step-input" id="f-money" placeholder="Mi niñ@ interior hubiera ganado dinero..."></textarea>
+    <div class="field-err" id="e-money">Por favor responde esta pregunta</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="10">
+    <div class="step-eyebrow">10 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Tu voz es tu huella dactilar en el mundo de la vibración 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="11">
+    <div class="step-eyebrow">11 — Frecuencia</div>
+    <h2 class="step-q">¿Lo escucharás de <em>día o de noche</em>?</h2>
+    <p class="step-hint">Esto define las frecuencias perfectas para tu audio 🌙☀️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'time')"><input type="radio" name="time" value="day"><div class="choice-radio"></div><span class="choice-label">☀️ De día</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'time')"><input type="radio" name="time" value="night"><div class="choice-radio"></div><span class="choice-label">🌙 De noche</span></label>
+    </div>
+    <div class="field-err" id="e-time">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+  </div>`;
+}
 
-  if (isEs) {
-    return `Tienes el siguiente script base del Audio YOU de ERIORCENTER. Tu tarea es REEMPLAZAR únicamente las secciones marcadas con [PERSONALIZAR] usando las respuestas del cliente. El resto del script debe quedar EXACTAMENTE igual, palabra por palabra, emojis incluidos. NO agregues ni quites nada que no esté marcado.
+// ═══════════════════════════════════
+// BUILD STEPS — IDENTITY
+// ═══════════════════════════════════
+function buildIdentitySteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">Identity 🌿</div>
+      <div class="intro-card-desc">Muchas gracias por adquirir nuestro programa para programar en tu inconsciente mucha <strong>magia</strong> y por fin ser tu versión más <strong>auténtica</strong> ✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu intención</div>
+    <h2 class="step-q">¿Para qué quieres que <em>intencionemos</em> este audio?</h2>
+    <p class="step-hint">Un solo tema, breve. Por ejemplo: quiero más belleza, quiero sanar mi cuerpo 🌿</p>
+    <textarea class="step-input" id="f-intention" placeholder="Quiero..."></textarea>
+    <div class="field-err" id="e-intention">Por favor escribe tu intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">No hay voz más poderosa que tu voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+  </div>`;
+}
 
-DATOS DEL CLIENTE:
+// ═══════════════════════════════════
+// BUILD STEPS — AMOR PROPIO
+// ═══════════════════════════════════
+function buildAmorSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">Amor Propio <em>Magic</em> 3.0 🌹</div>
+      <div class="intro-card-desc">Muchas gracias por adquirir nuestro programa para programar en tu inconsciente mucha <strong>magia</strong> y por fin acabar con la <strong>codependencia</strong> 🦋💖</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu intención</div>
+    <h2 class="step-q">¿Para qué quieres que <em>intencionemos</em> este audio?</h2>
+    <p class="step-hint">Un solo tema, breve. Por ejemplo: quiero más belleza, quiero encontrar el amor 🌹</p>
+    <textarea class="step-input" id="f-intention" placeholder="Quiero..."></textarea>
+    <div class="field-err" id="e-intention">Por favor escribe tu intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">No hay voz más poderosa que tu voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — BOOSTER
+// ═══════════════════════════════════
+function buildBoosterSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">Booster ⚡</div>
+      <div class="intro-card-desc">Este audio ha sido creado para que <strong>todos tus otros audios funcionen más rápido y con mayor potencia</strong>, llevándote al estado de <strong>neutralidad</strong> desde el cual todo se manifiesta ⚡🌿</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu intención</div>
+    <h2 class="step-q">¿Para qué quieres que <em>intencionemos</em> este audio?</h2>
+    <p class="step-hint">Un solo tema, breve. Si ya tienes tu script solo escribe "ya lo tengo" ⚡</p>
+    <textarea class="step-input" id="f-intention" placeholder="Quiero..."></textarea>
+    <div class="field-err" id="e-intention">Por favor escribe tu intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">No hay voz más poderosa que tu voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — YOU
+// ═══════════════════════════════════
+function getYouSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts del Audio YOU de ERIORCENTER. Toma el script base y reemplaza EXACTAMENTE las secciones marcadas con los datos del cliente. El resto queda igual, incluyendo emojis y saltos de línea. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's Audio YOU script editor. Take the base script and replace EXACTLY the marked sections with client data. Everything else stays identical. Return ONLY the final script.`;
+}
+
+function buildYouPrompt(fd){
+  const name=fd.name||'_';
+  const wishes=fd.wishes||[];
+  const w1=wishes[0]||'';const w2=wishes[1]||'';const w3=wishes[2]||'';
+  if(fd.lang==='es'){
+    return `Datos del cliente:
 - Nombre: ${name}
 - Deseo 1: ${w1}
 - Deseo 2: ${w2}
 - Deseo 3: ${w3}
-- Hobbie del niñ@ interior: ${hobby}
-- Mayor deseo del niñ@ interior: ${desire}
-- Fortaleza: ${strength}
-- Herida / miedo: ${wound}
-- Cómo ganaría dinero su niñ@ interior: ${money}
+- Hobbie niñ@ interior: ${fd.hobby||''}
+- Mayor deseo niñ@ interior: ${fd.desire||''}
+- Fortaleza: ${fd.strength||''}
+- Herida/miedo: ${fd.wound||''}
+- Dinero niñ@ interior: ${fd.money||''}
+- Momento: ${fd.time==='night'?'noche':'día'}
 
-REGLAS DE REEMPLAZO:
-1. Donde diga "Yo _," o "Yo __," → pon "Yo ${name},"
-2. Donde diga "[DESEO 1]" → pon: ${w1}
-3. Donde diga "[DESEO 2]" → pon: ${w2}
-4. Donde diga "[DESEO 3]" → pon: ${w3}
-5. Donde diga "[FORTALEZA]" → adapta con: ${strength}
-6. Donde diga "[HERIDA]" → adapta con: ${wound}
-7. Donde diga "[DINERO]" → adapta con: ${money}
-8. Mantén TODOS los emojis, saltos de línea y puntuación exactamente igual.
-
-SCRIPT BASE (respeta cada línea, cada emoji, cada espacio):
+SCRIPT BASE — Reemplaza solo lo marcado:
 
 💛☁️ TU PRIMER SCRIPT ☁️💛
 ✯ primera grabación 🂱🐇
@@ -1409,10 +1272,7 @@ SCRIPT BASE (respeta cada línea, cada emoji, cada espacio):
 ¡Hola! 💖✨
 Gracias infinitas por tu confianza. 🌸
 Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
-
 ¿Podrías enviarnos la grabación de este script? 🎧🌙
-
-
 
 Yo ${name}, soy mi niñ@ interior y por eso me veo tan joven.
 
@@ -1425,148 +1285,69 @@ Mi mente descansa.
 Mi corazón se siente acompañado.
 Mi energía se ordena con calma.
 Me relajo dentro de mí.
-Todo es gozo.
-Todo es paz.
+Todo es gozo. Todo es paz.
 Todo se vuelve simple y amoroso. ✨🪽🌸🎠💖🧸🤍
 
 Mi jugador es mi niñ@ interior.
-Esa parte viva, elegante y resiliente
-que entiende la realidad como un juego amoroso.
-Desde aquí, todo se acomoda con facilidad.
-Nada pesa.
-Nada amenaza.
+Esa parte viva, elegante y resiliente que entiende la realidad como un juego amoroso.
+Desde aquí, todo se acomoda con facilidad. Nada pesa. Nada amenaza.
 La vida coopera conmigo. 🌈✨
 
-Me siento livian@.
-Abiert@.
-Presente.
+Me siento livian@. Abiert@. Presente.
 Habito la inocencia natural que siempre fue mía.
-Mi energía se siente estable y segura.
-Ser yo se siente bien. 🤍🧸
+Mi energía se siente estable y segura. Ser yo se siente bien. 🤍🧸
 
 Mi niñ@ interior toma el mando con alegría.
-Elige sin miedo.
-Crea sin esfuerzo.
-Confía sin dudar. ✨
+Elige sin miedo. Crea sin esfuerzo. Confía sin dudar. ✨
 
 El dinero me ama.
 El dinero es una energía profundamente enamorada de mí.
 Me llega con facilidad, suavidad y constancia.
-Ser reconocid@ me resulta natural.
-Ser importante se siente cómodo.
-[DINERO: adapta esta línea con cómo su niñ@ interior ganaría dinero: ${money}]
-Disfruto el dinero.
-Disfruto recibirlo.
-Disfruto usarlo.
-Me gusta gastar porque sé, con absoluta certeza, que siempre gano más. 💸🪄
+[DINERO: 1-2 líneas con cómo ganaría dinero su niñ@ interior: ${fd.money||''}]
+Disfruto el dinero. Disfruto recibirlo. Disfruto usarlo.
+Me gusta gastar porque sé que siempre gano más. 💸🪄
 
 Vivo en abundancia natural.
 Recibo abundancia diaria que llega a mí con facilidad.
-Mi reconocimiento crece.
-Mi nombre se valora.
-Mi presencia importa.
+Mi reconocimiento crece. Mi nombre se valora. Mi presencia importa.
 El éxito me acompaña de forma estable y elegante. 🌟✨
-
-Me muevo con confianza siendo mi niñ@ interior,
-con alegría,
-con la naturalidad de quien sabe
-que todo está bien.
 
 ¿Por qué será que caminar por la vida con esta confianza hace que todo se sienta tan bien? 🌸
 
-Mi fortaleza desde mi niñ@ interior siempre fue clara.
-[FORTALEZA: adapta 2-3 líneas con la fortaleza del cliente: ${strength}]
-Mi resiliencia es suave pero firme.
-Eso es un don. ✨🧸🤍
+[FORTALEZA: adapta 2-3 líneas con: ${fd.strength||''}]
+Mi resiliencia es suave pero firme. Eso es un don. ✨🧸🤍
 
-[HERIDA: adapta este bloque con la herida del cliente: ${wound} — mantén el tono tierno e integrador, sin rechazar ni juzgar]
+[HERIDA: integra con ternura: ${fd.wound||''}]
 Mi niñ@ interior entiende algo nuevo ahora:
 no tengo que competir para ser vist@.
-No tengo que compararme para ser elegid@.
-Mi lugar existe.
-Yo existo.
-Yo importo.
-Me acompaño.
-Me elijo.
-Me sostengo. 🫶🏻✨
+Mi lugar existe. Yo existo. Yo importo.
+Me acompaño. Me elijo. Me sostengo. 🫶🏻✨
 
-Mi preferencia es clara:
-vivir desde mi niñ@ interior,
-libre, auténtic@, diventid@ y presente. 🎠🤍
-
-Mi jugador es mi niñ@ interior, por lo tanto vivo el éxito como un estado natural de mi energía.
-No persigo el éxito.
-El éxito vive en mí.
-Es mi manera de estar.
-Es mi forma de moverme.
-Todo lo que hago florece con facilidad.
-Ser exitosa se siente normal y seguro. 🌟✨
-
-[DESEO 1: adapta 3-4 líneas poéticas para manifestar: ${w1}]
-
-[DESEO 2: adapta 3-4 líneas poéticas para manifestar: ${w2}]
-
-[DESEO 3: adapta 3-4 líneas poéticas para manifestar: ${w3}]
+[DESEO 1: 3-4 líneas poéticas para: ${w1}]
+[DESEO 2: 3-4 líneas poéticas para: ${w2}]
+[DESEO 3: 3-4 líneas poéticas para: ${w3}]
 
 La vida me cuida. 💸🌈
 
-Como mi niñ@ interior que soy, me permito ser vist@ por mis padres.
-Mi presencia se reconoce.
-Mi esencia se valora.
-Ya no compito con nadie.
-Mi lugar es único.
-Mi niñ@ interior se siente mirad@, considerad@ y querid@.
-Mi corazón descansa en esa certeza. 🧸🤍
-
 Le entrego el mando a mi niñ@ interior y confío.
-Confío en mi espontaneidad.
-Confío en mi sensibilidad.
+Confío en mi espontaneidad. Confío en mi sensibilidad.
 Confío en mi manera única de estar en el mundo. 🤍🧸
 
-Arreglarme se siente divertido.
-Ponerme coquet@ se siente natural.
-Disfruto mi imagen.
-Disfruto mi presencia.
-Recibir atención se siente seguro y agradable.
-Ser vist@ ya no da miedo.
-Ser admirad@ se siente bien. ✨👗💖
-
-Soy completamente presencia.
-Vivo tan en presencia que al ser mi niñ@ interior, soy el más magnético.
+Arreglarme se siente divertido. Ponerme coquet@ se siente natural.
+Disfruto mi imagen. Disfruto mi presencia.
+Ser vist@ ya no da miedo. Ser admirad@ se siente bien. ✨👗💖
 
 Yo ${name}, soy la persona más inocente, más pura, más divertida, más auténtica, más tierna, más amorosa, más ligera, más dulce de este mundo.
 
-Mi corazón es el más puro de este mundo. Veo todo con amor, veo todo con inocencia, veo todo con pureza. Soy puro amor, soy pureza, soy inocencia, soy magia, soy belleza, soy gracia. Soy la persona más magnética, auténtica y radiante que existe. Siempre cautivo a todos con mi presencia, siempre cautivo a todos con mi belleza y con mi energía.
+Mi corazón es el más puro de este mundo. Soy puro amor, soy pureza, soy inocencia, soy magia, soy belleza, soy gracia.
 
-Regreso a mi niñ@ divin@, regreso a mi pureza, regreso a mi inocencia, regreso a mi corazón puro.
-Mi corazón es tan pur@ que nada ni nadie puede ensuciarlo.
-Dejo ir el pasado por completo, no me asocio con el pasado.
-
-Esta realidad responde con alegría
-a mi energía genuina,
-a mi niñ@ interior despiert@.
-
-Cada experiencia se siente amorosa,
-divertida,
-ligera
-y expansiva.
+Regreso a mi niñ@ divin@, regreso a mi pureza, regreso a mi inocencia.
+Dejo ir el pasado por completo.
 
 Yo ${name}, soy mi niñ@ interior consciente.
-Lleno mi vida de juego,
-risa,
-ligereza,
-alegría,
-amor, ternura
-y diversión.
+Lleno mi vida de juego, risa, ligereza, alegría, amor, ternura y diversión.
 
-Todo es fácil.
-Todo fluye.
-Todo está hecho.
-
-Y así es. ✨🧸🤍
-
-
-
+Todo es fácil. Todo fluye. Todo está hecho. Y así es. ✨🧸🤍
 
 💛☁️ TU MINI SCRIPT ☁️💛
 ✯ Segunda grabación 🂱🐇
@@ -1574,410 +1355,502 @@ Y así es. ✨🧸🤍
 Yo ${name}, soy mi niñ@ interior.
 Soy mi versión más poderosa y mi versión más pura.
 Veo todo con amor y por eso nada se siente como amenaza.
-Aprendí a recibir, aprendí a elegir. Todo es fácil, todo lo merezco y no hay obstáculos.
-¿Por qué será que saqué todo el miedo de mi sistema, de mi inconsciente, de mi mente y de mi cuerpo?
-El miedo ya no existe, solo existe el amor en mí porque veo todo con inocencia.
+Aprendí a recibir, aprendí a elegir. Todo es fácil, todo lo merezco.
+El miedo ya no existe, solo existe el amor en mí.
 
-En esta realidad yo soy la niñ@ interior, el poder que opera todo, mi mejor versión, y por lo mismo gano dinero haciendo dinero.
-[DINERO MINI: 1-2 líneas con cómo su niñ@ interior ganaría dinero: ${money}]
-Soy muy reconocida, importante y respetada por lo que hago y por cómo lo hago.
+En esta realidad yo soy la niñ@ interior, el poder que opera todo.
+[DINERO MINI: 1-2 líneas: ${fd.money||''}]
+Soy muy reconocid@, importante y respetad@ por lo que hago.
 Mi éxito se construye con facilidad, autenticidad y disfrute.
 Todo lo que toco se expande, prospera y se vuelve valioso.
-Hacer dinero se siente natural cuando soy yo misma, cuando creo, lidero y me permito brillar.
-¿Por qué será que me convertí en la persona más feliz, más alegre y más agradecida del mundo siendo exitosa, reconocida y abundante?
-Agradezco todo lo que tengo y celebro que el dinero, el reconocimiento y el éxito fluyen hacia mí de manera constante y gozosa. ✨
-
-
-
+¿Por qué será que me convertí en la persona más feliz del mundo siendo exitosa, reconocida y abundante?
+Agradezco todo y celebro que el dinero y el éxito fluyen hacia mí de manera constante. ✨
 
 📩 IMPORTANTE:
 Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
-(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+Es indispensable para poder enviarte tu audio final. 🐇💛
+Con cariño, El equipo ☁️🌸💎
 
-Existe un solo formulario por audio,
-es el mismo que recibiste en el primer correo. 🐇💛
-
-Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
-
-Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
-Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
-
-Con cariño,
-El equipo ☁️🌸💎
-
-RECUERDA: Devuelve SOLO el script final ya con los datos del cliente insertados. Sin explicaciones, sin comentarios, sin markdown. Solo el texto del script listo para leer.`;
+Devuelve SOLO el script final sin explicaciones.`;
   } else {
-    return `You have the following Audio YOU base script from ERIORCENTER. Your task is to REPLACE only the [PERSONALIZE] sections using the client's answers. The rest of the script must remain EXACTLY the same, word for word, including emojis. Do NOT add or remove anything not marked.
-
-CLIENT DATA:
-- Name: ${name}
-- Wish 1: ${w1}
-- Wish 2: ${w2}
-- Wish 3: ${w3}
-- Inner child hobby: ${hobby}
-- Inner child greatest desire: ${desire}
-- Strength: ${strength}
-- Wound / fear: ${wound}
-- How inner child would earn money: ${money}
-
-REPLACEMENT RULES:
-1. Where it says "I _," or "I __," → put "I, ${name},"
-2. Replace [WISH 1], [WISH 2], [WISH 3] with the client's wishes
-3. Replace [STRENGTH] with an adaptation of: ${strength}
-4. Replace [WOUND] with a tender integration of: ${wound}
-5. Replace [MONEY] lines with adaptation of: ${money}
-6. Keep ALL emojis, line breaks and punctuation exactly the same.
-
-BASE SCRIPT:
-
-💛☁️ YOUR FIRST SCRIPT ☁️💛
-✯ first recording 🂱🐇
-
-Hello! 💖✨
-Infinite thanks for your trust. 🌸
-This mini script is an additional theme created to further enhance your main recording.
-
-Could you send us the recording of this script? 🎧🌙
-
-I, ${name}, am my inner child and that is why I look so young.
-
-People are completely hypnotized by my presence and I am so natural, so child-like, so authentic and fun that people become addicted to my energy.
-I play like my inner child and that is why I am always so powerful and it is always so easy for me to enter and stay in neutrality.
-I always feel safe, relaxed, protected…
-My body loosens.
-My breathing becomes gentle.
-My mind rests.
-My heart feels accompanied.
-My energy settles with calm.
-I relax within myself.
-Everything is joy.
-Everything is peace.
-Everything becomes simple and loving. ✨🪽🌸🎠💖🧸🤍
-
-My player is my inner child.
-That alive, elegant and resilient part
-that understands reality as a loving game.
-From here, everything falls into place easily.
-Nothing weighs.
-Nothing threatens.
-Life cooperates with me. 🌈✨
-
-I feel light.
-Open.
-Present.
-I inhabit the natural innocence that was always mine.
-My energy feels stable and safe.
-Being me feels good. 🤍🧸
-
-My inner child takes the lead with joy.
-Chooses without fear.
-Creates without effort.
-Trusts without doubt. ✨
-
-Money loves me.
-Money is an energy deeply in love with me.
-It comes to me with ease, softness and constancy.
-[MONEY: adapt this line with how their inner child would earn money: ${money}]
-I enjoy money.
-I enjoy receiving it.
-I enjoy using it.
-I love spending because I know, with absolute certainty, that I always earn more. 💸🪄
-
-[STRENGTH: adapt 2-3 lines with client strength: ${strength}]
-My resilience is soft but firm.
-That is a gift. ✨🧸🤍
-
-[WOUND: adapt this block with client wound: ${wound} — keep the tender integrating tone]
-My inner child now understands something new:
-I do not have to compete to be seen.
-I do not have to compare myself to be chosen.
-My place exists.
-I exist.
-I matter.
-I accompany myself.
-I choose myself.
-I sustain myself. 🫶🏻✨
-
-[WISH 1: 3-4 poetic lines to manifest: ${w1}]
-[WISH 2: 3-4 poetic lines to manifest: ${w2}]
-[WISH 3: 3-4 poetic lines to manifest: ${w3}]
-
-Life takes care of me. 💸🌈
-
-I, ${name}, am my conscious inner child.
-I fill my life with play,
-laughter,
-lightness,
-joy,
-love, tenderness
-and fun.
-
-Everything is easy.
-Everything flows.
-Everything is done.
-
-And so it is. ✨🧸🤍
-
-
-
-
-💛☁️ YOUR MINI SCRIPT ☁️💛
-✯ Second recording 🂱🐇
-
-I, ${name}, am my inner child.
-I am my most powerful version and my purest version.
-I see everything with love and that is why nothing feels like a threat.
-I learned to receive, I learned to choose. Everything is easy, I deserve everything and there are no obstacles.
-Why is it that I removed all fear from my system, my subconscious, my mind and my body?
-Fear no longer exists, only love exists in me because I see everything with innocence.
-
-In this reality I am the inner child, the power that operates everything, my best version, and therefore I earn money by earning money.
-[MONEY MINI: 1-2 lines with how inner child would earn money: ${money}]
-I am very recognized, important and respected for what I do and how I do it.
-My success is built with ease, authenticity and enjoyment.
-Everything I touch expands, prospers and becomes valuable.
-Earning money feels natural when I am myself, when I create, lead and allow myself to shine.
-Why is it that I became the happiest, most joyful and most grateful person in the world being successful, recognized and abundant?
-I am grateful for everything I have and I celebrate that money, recognition and success flow to me constantly and joyfully. ✨
-
-
-
-
-📩 IMPORTANT:
-Once you send your two recordings, please fill out the form again 💫
-(It is essential to be able to send you your final audio; if you do not fill it out again, your audio will not be able to arrive).
-
-There is only one form per audio,
-it is the same one you received in the first email. 🐇💛
-
-If you decide not to record this audio after receiving the script, simply fill out the form again selecting the "record for me" option.
-
-We are very happy to accompany you in this process of magic and transformation. 🌷🌈
-Your voice creates universes, and we are here to amplify its power. ⚡💖
-
-With love,
-The team ☁️🌸💎
-
-REMEMBER: Return ONLY the final script with the client data already inserted. No explanations, no comments, no markdown. Just the script text ready to read.`;
+    return `Client data: Name: ${name}, Wish1: ${w1}, Wish2: ${w2}, Wish3: ${w3}, Hobby: ${fd.hobby}, Desire: ${fd.desire}, Strength: ${fd.strength}, Wound: ${fd.wound}, Money: ${fd.money}. Generate the YOU audio script in English following the same structure as the Spanish version. Use the client's data naturally. Return ONLY the final script.`;
   }
 }
 
-function getSystemPrompt(lang) {
-  if (lang === 'es') {
-    return `Eres el editor de scripts de ERIORCENTER. Tu única tarea es tomar el script base y reemplazar las secciones marcadas con los datos del cliente, manteniendo el resto EXACTAMENTE igual. No agregas texto propio. No cambias el estilo. No modificas emojis ni saltos de línea. Solo reemplazas lo que se te indica y devuelves el script completo listo para usar.`;
-  }
-  return `You are ERIORCENTER's script editor. Your only task is to take the base script and replace the marked sections with the client's data, keeping everything else EXACTLY the same. You do not add your own text. You do not change the style. You do not modify emojis or line breaks. You only replace what is indicated and return the complete script ready to use.`;
+// ═══════════════════════════════════
+// PROMPTS — IDENTITY
+// ═══════════════════════════════════
+function getIdentitySystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts del Audio IDENTITY de ERIORCENTER. Todo en presente. Identidad ya vivida. Sin futuro ni carencia. Tono: tranquilo, seguro, elegante. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's IDENTITY audio script editor. Everything in present tense. Identity already lived. No future, no lack. Tone: calm, confident, elegant. Return ONLY the final script.`;
 }
 
-function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+function buildIdentityPrompt(fd){
+  const name=fd.name||'_';
+  const intention=fd.intention||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Intención: ${intention}
 
-// ═══════════════════════════════════════
-// EMAILS (EmailJS)
-// ═══════════════════════════════════════
-async function sendEmails() {
-  const clientHtml = `
-    <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#faf6f0;padding:40px;">
-      <div style="text-align:center;margin-bottom:32px;">
-        <p style="font-size:11px;letter-spacing:4px;color:#c9a96e;text-transform:uppercase;margin:0;">ERIORCENTER</p>
-        <h1 style="font-size:32px;font-weight:300;color:#2a1f14;margin:8px 0;">Audio YOU 🧸</h1>
-        <div style="width:60px;height:1px;background:#c9a96e;margin:16px auto;"></div>
-      </div>
-      <p style="font-size:16px;color:#2a1f14;font-weight:300;line-height:1.8;">Hola <strong>${formData.name}</strong> 💖✨</p>
-      <p style="font-size:15px;color:#7a6555;font-weight:300;line-height:1.8;">Gracias infinitas por tu confianza. Aquí está tu script personalizado, creado especialmente para ti con amor y magia. 🌸</p>
-      <div style="background:#1a1209;border-radius:8px;padding:32px;margin:32px 0;">
-        <p style="font-size:11px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin:0 0 16px;">Tu script</p>
-        <p style="font-size:14px;color:#faf6f0;font-weight:300;line-height:2;white-space:pre-wrap;margin:0;">${generatedScript}</p>
-      </div>
-      <p style="font-size:13px;color:#b09880;font-weight:300;line-height:1.8;text-align:center;">
-        📩 <strong style="color:#7a6555;">Importante:</strong> Una vez que envíes tus grabaciones, vuelve a llenar el formulario.<br>
-        Es indispensable para enviarte tu audio final. 🐇💛
-      </p>
-      <div style="text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid #e8d5b0;">
-        <p style="font-size:12px;color:#c9a96e;letter-spacing:2px;margin:0;">Con cariño, El equipo ☁️🌸💎</p>
-        <p style="font-size:10px;color:#b09880;letter-spacing:3px;text-transform:uppercase;margin:8px 0 0;">ERIORCENTER</p>
-      </div>
-    </div>`;
+SCRIPT BASE:
 
-  const adminHtml = `
-    <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#faf6f0;padding:40px;">
-      <div style="text-align:center;margin-bottom:32px;">
-        <p style="font-size:11px;letter-spacing:4px;color:#c9a96e;text-transform:uppercase;margin:0;">ERIORCENTER — Admin</p>
-        <h1 style="font-size:28px;font-weight:300;color:#2a1f14;margin:8px 0;">Nuevo script generado</h1>
-        <div style="width:60px;height:1px;background:#c9a96e;margin:16px auto;"></div>
-      </div>
-      <div style="background:#fff;border:1px solid #e8d5b0;border-radius:6px;padding:24px;margin-bottom:24px;">
-        <p style="font-size:10px;letter-spacing:3px;color:#b09880;text-transform:uppercase;margin:0 0 12px;">Datos del cliente</p>
-        <p style="font-size:15px;color:#2a1f14;margin:0 0 6px;"><strong>Nombre:</strong> ${formData.name} ${formData.lastname}</p>
-        <p style="font-size:15px;color:#2a1f14;margin:0 0 6px;"><strong>Email:</strong> ${formData.email}</p>
-        <p style="font-size:15px;color:#2a1f14;margin:0;"><strong>Audio:</strong> Audio YOU 🧸</p>
-      </div>
-      <div style="background:#1a1209;border-radius:8px;padding:32px;">
-        <p style="font-size:11px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin:0 0 16px;">Script generado</p>
-        <p style="font-size:14px;color:#faf6f0;font-weight:300;line-height:2;white-space:pre-wrap;margin:0;">${generatedScript}</p>
-      </div>
-    </div>`;
+💛☁️ TU PRIMER SCRIPT DE IDENTITY ☁️💛
+✯ primera grabación 🂱🐇
 
-  try {
-    // Send to client
-    await fetch('/.netlify/functions/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        type: 'email',
-        to: formData.email,
-        subject: '💛 Tu script de Audio YOU está listo, ' + formData.name + ' 🧸',
-        html: clientHtml
-      })
-    });
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+¿Podrías enviarnos la grabación de este script? 🎧🌙
 
-    // Send to admin
-    await fetch('/.netlify/functions/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        type: 'email',
-        to: 'eriorcenter@gmail.com',
-        subject: '✦ Nuevo script generado — ' + formData.name + ' ' + formData.lastname,
-        html: adminHtml
-      })
-    });
+Yo, ${name}, soy mi versión más auténtica. Me permito ser libre.
 
-    const s = document.getElementById('email-status');
-    s.textContent = '✓ Script enviado a ' + formData.email + ' y a eriorcenter@gmail.com';
-    s.className = 'email-status success';
-  } catch (err) {
-    const s = document.getElementById('email-status');
-    s.textContent = 'No se pudo enviar el email automático. Copia el script manualmente.';
-    s.className = 'email-status error';
-  }
-}
+Existo con claridad. Me muevo con presencia.
+Mi identidad es estable, coherente y real.
 
-// ═══════════════════════════════════════
-// RESULT ACTIONS
-// ═══════════════════════════════════════
-let script1Text = '';
-let script2Text = '';
+[INTENCION: 4-6 líneas en presente describiendo cómo ${name} ya vive: ${intention}. Sin "quiero" ni "voy a". Como si ya fuera su realidad.]
 
-function displayScripts(fullText) {
-  // Split on the second header marker
-  const splitMarkers = ['💛☁️ TU MINI SCRIPT', '💛☁️ YOUR MINI SCRIPT'];
-  let idx = -1;
-  for (const m of splitMarkers) {
-    idx = fullText.indexOf(m);
-    if (idx !== -1) break;
-  }
-  if (idx !== -1) {
-    script1Text = fullText.substring(0, idx).trim();
-    script2Text = fullText.substring(idx).trim();
+Vivo esta identidad con disfrute y compromiso.
+Soy constante, auténtic@ y confiable.
+Mi nombre es reconocido. Mi presencia importa. Mi esencia se valora.
+
+Me relaciono con calma y certeza.
+Elijo desde la plenitud, no desde la carencia.
+
+Habito mi cuerpo con gratitud.
+Me muevo con gracia y seguridad.
+
+No busco nada. Todo lo que soy ya está aquí.
+Mi vida se ordena desde esta certeza tranquila.
+
+Yo, ${name}, soy mi versión más auténtica.
+Esto no es una meta. Es mi realidad. ✨🌿
+
+Y mientras habito esta identidad con seguridad, lo sé con certeza firme:
+estoy viviendo desde quien realmente soy. ✨
+
+💛☁️ TU MINI SCRIPT DE IDENTITY ☁️💛
+✯ Segunda grabación 🂱🐇
+
+Yo, ${name}, soy mi versión más auténtica. Me permito ser libre.
+Soy un modelo internacional consolidado. Mi presencia es magnética, profesional y memorable. Camino con seguridad en cualquier pasarela y frente a cualquier cámara; mi energía se siente clara, elegante y segura.
+Trabajo con marcas, agencias y equipos de alto nivel que valoran mi disciplina, mi estética y mi forma de representar cada proyecto. Mi imagen comunica fuerza, estilo y autenticidad. Sé adaptarme, sé expresar y sé sostener la atención con naturalidad.
+Mi carrera se mueve con orden y expansión. Viajo, participo en campañas, sesiones y desfiles que reflejan mi crecimiento. Cada proyecto abre nuevas puertas y fortalece mi posición en la industria.
+Mi cuerpo, mi actitud y mi presencia trabajan en coherencia. Cuido mi energía, mi postura y mi enfoque, y eso se traduce en resultados visibles. Me siento cómod@ ocupando espacios grandes y siendo visto.
+Vivo esta profesión con disfrute y compromiso. Soy constante, profesional y confiable. Mi nombre es reconocido y mi trabajo es respetado.
+Y mientras habito esta identidad con seguridad, lo sé con certeza firme:
+estoy viviendo la vida de un modelo internacional. ✨
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+Con cariño, El equipo ☁️🌸💎
+
+Devuelve SOLO el script final.`;
   } else {
-    // fallback: try splitting by ---
-    const parts = fullText.split(/\n---\n/);
-    script1Text = parts[0] ? parts[0].trim() : fullText;
-    script2Text = parts[1] ? parts[1].trim() : '';
+    return `Name: ${name}, Intention: ${intention}. Generate IDENTITY audio script in English. Present tense, identity already lived, calm confident tone. Return ONLY the final script.`;
   }
-  document.getElementById('result-script-1').textContent = script1Text;
-  document.getElementById('result-script-2').textContent = script2Text || fullText;
 }
 
-function copyScript(num) {
-  const text = num === 1 ? script1Text : script2Text;
-  navigator.clipboard.writeText(text).then(() => {
-    const btns = document.querySelectorAll('.result-copy-btn');
-    const btn = btns[num - 1];
-    btn.textContent = '✓ Copiado';
-    setTimeout(() => btn.textContent = 'Copiar', 2000);
-  });
+// ═══════════════════════════════════
+// PROMPTS — AMOR PROPIO
+// ═══════════════════════════════════
+function getAmorSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts de Amor Propio Magic 3.0 de ERIORCENTER. Tono encantador, mágico, emocional. Suave y amoroso. Todo en presente y positivo. El cambio externo es consecuencia del amor propio. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's Amor Propio Magic 3.0 script editor. Tone: enchanting, magical, emotional. Soft and loving. Everything in present tense and positive. External change comes from self-love. Return ONLY the final script.`;
 }
 
-function downloadScript() {
-  const blob = new Blob([generatedScript], { type: 'text/plain' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `scripts-audio-you-${formData.name || 'cliente'}.txt`;
-  a.click();
-}
+function buildAmorPrompt(fd){
+  const name=fd.name||'_';
+  const intention=fd.intention||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Intención: ${intention}
 
-// ═══════════════════════════════════════
-// ADMIN
-// ═══════════════════════════════════════
-function adminTab(tab) {
-  document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.admin-nav-item').forEach(i => i.classList.remove('active'));
-  document.getElementById('admin-' + tab).classList.add('active');
-  event.target.classList.add('active');
-  if (tab === 'submissions') renderSubmissions();
-}
+SCRIPT BASE — Reemplaza [INTENCION] con el deseo personalizado:
 
-function generateCode() {
-  const clientName = document.getElementById('admin-client-name').value.trim();
-  if (!clientName) { alert('Ingresa el nombre del cliente'); return; }
-  const audio = document.getElementById('admin-audio-type').value;
-  const rand = Math.random().toString(36).substring(2,7).toUpperCase();
-  const code = `${audio}-${rand}`;
-  const codes = getCodes();
-  codes.push({ code, client: clientName, audio, used: false, createdAt: new Date().toISOString() });
-  saveCodes(codes);
-  document.getElementById('new-code-value').textContent = code;
-  document.getElementById('new-code-client').textContent = 'Para: ' + clientName;
-  document.getElementById('generated-code-display').style.display = 'block';
-  document.getElementById('admin-client-name').value = '';
-  renderCodesTable();
-}
+💛☁️ TU PRIMER SCRIPT AMOR PROPIO MAGIC 3.0 ☁️💛
+✯ primera grabación 🂱🐇
 
-function markCodeUsed(code) {
-  const codes = getCodes();
-  const found = codes.find(c => c.code === code);
-  if (found) { found.used = true; saveCodes(codes); }
-}
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+¿Podrías enviarnos la grabación de este script? 🎧🌙
 
-function deleteCode(code) {
-  if (!confirm('¿Eliminar código ' + code + '?')) return;
-  const codes = getCodes().filter(c => c.code !== code);
-  saveCodes(codes);
-  renderCodesTable();
-}
+Yo, ${name}, me siento completamente feliz, en plenitud, en dicha.
+¡Pero no cualquier dicha!
+Hablo de esa sensación cálida y poderosa de reconocerme, elegirme y sostenerme con amor verdadero. 🦋💃🌈
+Estoy en plenitud, en calma y en conexión conmigo,
+como si mi alma estuviera flotando en una bañera de burbujas rosas mientras mi corazón se llena de amor propio. 🛁🌹🎷
 
-function renderCodesTable() {
-  const codes = getCodes();
-  const tbody = document.getElementById('codes-tbody');
-  if (!tbody) return;
-  tbody.innerHTML = codes.map(c => `
-    <tr>
-      <td><span class="code-badge">${c.code}</span></td>
-      <td>${c.client}</td>
-      <td>${c.audio}</td>
-      <td><span class="status-badge ${c.used ? 'status-used' : 'status-active'}">${c.used ? 'Usado' : 'Activo'}</span></td>
-      <td><button class="btn-danger" onclick="deleteCode('${c.code}')">Eliminar</button></td>
-    </tr>
-  `).join('');
-}
+¿Y por qué me siento tan bien conmigo hoy?
+Tal vez porque dejé de buscar validación afuera
+y empecé a mirarme con respeto.
+Porque entendí que mi valor no depende de nada externo.
 
-function renderSubmissions() {
-  const subs = getSubmissions();
-  const container = document.getElementById('submissions-container');
-  if (!container) return;
-  if (subs.length === 0) {
-    container.innerHTML = '<p style="color:var(--text-muted);font-size:14px;font-weight:300">No hay scripts generados aún.</p>';
-    return;
+Yo me amo profundamente. Me trato con ternura.
+Me hablo con respeto. Me elijo sin dudar.
+Mi autoestima se eleva naturalmente.
+Reconozco mis virtudes, mi esencia y mi valor.
+Sé quién soy y eso me da seguridad.
+
+Me siento merecedora de cosas buenas.
+De amor, de bienestar, de abundancia y de oportunidades.
+Recibir lo bueno se vuelve natural para mí.
+
+Mi validación nace dentro de mí.
+No necesito aprobación externa para sentirme suficiente.
+Mi paz no depende de opiniones ajenas.
+Confío en mí. Confío en mis decisiones.
+Confío en mi capacidad de construir una vida hermosa.
+
+Mi mente está en calma, mi energía está alineada.
+El amor propio fortalece mi seguridad y mi merecimiento.
+
+[INTENCION: 4-6 líneas en presente mostrando cómo el amor propio de ${name} ya produce: ${intention}. Tono mágico y amoroso. Como resultado natural del amor propio, no como deseo.]
+
+Yo soy la prueba viviente de que cuando me elijo y me reconozco,
+[continúa con: ${intention} como resultado ya vivido]
+y mi vida se llena de cosas buenas.
+
+Y mientras respiro profundo sintiendo este amor tan real dentro de mí, me pregunto:
+¿Qué voy a hacer ahora que me amo profundamente,
+que me siento merecedora de lo mejor,
+y que mi validación nace completamente desde mí? 🌙💎🌹
+
+💛☁️ TU MINI SCRIPT AMOR PROPIO MAGIC 3.0 ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+¿Podrías enviarnos la grabación de este script? 🎧🌙
+
+Yo, ${name}, me siento completamente feliz, en plenitud, en dicha.
+¡Pero no cualquier dicha!
+Hablo de esa sensación cálida y poderosa de reconocerme, elegirme y sostenerme con amor verdadero. 🦋💃🌈
+Estoy en plenitud, en calma y en conexión conmigo,
+como si mi alma estuviera flotando en una bañera de burbujas rosas mientras mi corazón se llena de amor propio. 🛁🌹🎷
+¿Y por qué me siento tan bien conmigo hoy?
+Tal vez porque dejé de buscar validación afuera y empecé a mirarme con respeto.
+Porque entendí que mi valor no depende de nada externo.
+Yo me amo profundamente. Me trato con ternura. Me hablo con respeto. Me elijo sin dudar.
+Mi autoestima se eleva naturalmente. Reconozco mis virtudes, mi esencia y mi valor.
+Sé quién soy y eso me da seguridad.
+Me siento merecedora de cosas buenas. De amor, de bienestar, de abundancia y de oportunidades.
+Recibir lo bueno se vuelve natural para mí.
+Mi validación nace dentro de mí. No necesito aprobación externa para sentirme suficiente.
+Mi paz no depende de opiniones ajenas. Confío en mí. Confío en mis decisiones.
+Confío en mi capacidad de construir una vida hermosa.
+Mi mente está en calma, mi energía está alineada.
+El amor propio fortalece mi seguridad y mi merecimiento.
+Yo soy la prueba viviente de que cuando me elijo y me reconozco,
+mi autoestima crece, mi seguridad se fortalece y mi vida se llena de cosas buenas.
+Y mientras respiro profundo sintiendo este amor tan real dentro de mí, me pregunto:
+¿Qué voy a hacer ahora que me amo profundamente,
+que me siento merecedora de lo mejor,
+y que mi validación nace completamente desde mí? 🌙💎🌹
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+Con cariño, El equipo ☁️🌸💎
+
+Devuelve SOLO el script final.`;
+  } else {
+    return `Name: ${name}, Intention: ${intention}. Generate Amor Propio Magic 3.0 script in English. Enchanting, magical, loving tone. Self-love as the source of all external results. Return ONLY the final script.`;
   }
-  container.innerHTML = '<div class="submissions-list">' + subs.map((s,i) => `
-    <div class="submission-card">
-      <div class="submission-header" onclick="toggleSub(${i})">
-        <div>
-          <div class="submission-name">${s.name}</div>
-          <div class="submission-date">${s.email} · ${new Date(s.date).toLocaleDateString('es-MX')} · Código: ${s.code}</div>
-        </div>
-        <span style="color:var(--text-muted)">▾</span>
-      </div>
-      <div class="submission-body" id="sub-body-${i}">${s.script}</div>
-    </div>
-  `).join('') + '</div>';
 }
 
-function toggleSub(i) {
-  const el = document.getElementById('sub-body-' + i);
-  el.classList.toggle('open');
+// ═══════════════════════════════════
+// PROMPTS — BOOSTER
+// ═══════════════════════════════════
+function getBoosterSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts del BOOSTER de ERIORCENTER. Tono neutral, directo, claro. Sin emoción exagerada. Es un comando, no un texto emocional. Todo positivo, todo en presente. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's BOOSTER script editor. Tone: neutral, direct, clear. No exaggerated emotion. It's a command, not an emotional text. Everything positive, everything in present tense. Return ONLY the final script.`;
 }
+
+function buildBoosterPrompt(fd){
+  const name=fd.name||'_';
+  const intention=fd.intention||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Intención: ${intention}
+
+SCRIPT BASE — Reemplaza [INTENCION] con el deseo personalizado:
+
+💛☁️ TU PRIMER SCRIPT BOOSTER ☁️💛
+✯ primera grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+¿Podrías enviarnos la grabación de este script? 🎧🌙
+
+Yo ${name}, siempre estoy en neutralidad.
+Aquí solo existe la seguridad, solo existe la abundancia, solo existe el amor, solo existe mi versión más completa.
+Todo es fácil y todo lo que quiero se organiza y manifiesta con precisión.
+
+Esta realidad ya solo me refleja amor, relajación, dicha, gozo, plenitud y paz.
+Mi realidad ya solo responde a mis preferencias limpias:
+[INTENCION: expresa en positivo el deseo: ${intention}]
+
+Esta realidad refleja [estado interno positivo relacionado con: ${intention}]
+Mi mente, mi cuerpo y mi energía se organizan con precisión.
+
+Mi experiencia responde a [resultado limpio de: ${intention}]
+Mi estado interno es estable, ligero y completamente alineado.
+
+Yo no manifiesto, yo no espero, yo no hago nada.
+Simplemente el Universo responde a mis preferencias.
+
+Se rendea esto ahora:
+[lista de 4-5 estados positivos relacionados con: ${intention}]
+
+[escenario ideal en presente: cómo vive ${name} con: ${intention} ya manifestado]
+
+Yo anclo este estado.
+[estado base relacionado con: ${intention}]
+
+Esta realidad refleja una versión de mí centrada y completamente alineada.
+
+Se rendea esto ahora:
+[segunda lista de 3-4 estados]
+
+Yo ${name}, soy [estado 1 de ${intention}].
+Yo ${name}, soy [estado 2].
+Yo ${name}, soy [estado 3].
+Yo ${name}, soy estabilidad interna total.
+
+[lista de 5-6 frecuencias/estados en una sola palabra cada una]
+
+Todo es fácil.
+Todo fluye.
+Todo está hecho.
+
+Y así es.
+
+💛☁️ TU MINI SCRIPT BOOSTER ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+¿Podrías enviarnos la grabación de este script? 🎧🌙
+
+Yo ${name}, siempre estoy en neutralidad.
+Aquí solo existe la seguridad, solo existe la abundancia, solo existe el amor, solo existe mi versión más completa.
+Todo es fácil y todo lo que quiero se organiza y manifiesta con precisión.
+
+Esta realidad ya solo me refleja amor, relajación, dicha, gozo, plenitud y paz.
+Mi realidad ya solo responde a mis preferencias limpias:
+vivir en paz constante, amor estable y certeza absoluta en cada momento.
+
+Esta realidad refleja un estado interno tranquilo, seguro y completamente sostenido.
+Mi mente, mi cuerpo y mi energía se organizan con precisión para permanecer en calma, claridad y confianza natural.
+
+Mi experiencia responde a una paz continua, un amor constante y una certeza clara en todo lo que vivo.
+Mi estado interno es estable, ligero y completamente alineado.
+
+Yo no manifiesto, yo no espero, yo no hago nada.
+Simplemente el Universo responde a mis preferencias.
+
+Se rendea esto ahora:
+calma constante
+amor interno estable
+certeza clara
+equilibrio emocional
+presencia consciente
+
+Mi realidad ya es un espacio donde todo se siente seguro, ligero y en armonía.
+Cada momento se vive con claridad, confianza y tranquilidad.
+
+Yo anclo este estado.
+La paz es mi estado base.
+El amor es constante en mí.
+La certeza es natural para mí.
+
+Esta realidad refleja una versión de mí centrada, tranquila y completamente alineada.
+Todo lo que me rodea confirma mi estabilidad y mi paz.
+
+Se rendea esto ahora:
+claridad mental
+presencia plena
+seguridad interna
+armonía constante
+
+Yo ${name}, soy paz.
+Yo ${name}, soy amor.
+Yo ${name}, soy certeza.
+Yo ${name}, soy estabilidad interna total.
+
+paz
+amor
+certeza
+equilibrio
+presencia
+armonía
+
+Todo es fácil.
+Todo fluye.
+Todo está hecho.
+
+Y así es.
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+Con cariño, El equipo ☁️🌸💎
+
+Devuelve SOLO el script final.`;
+  } else {
+    return `Name: ${name}, Intention: ${intention}. Generate BOOSTER script in English. Neutral, direct, command-like tone. Everything positive present tense. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// FIREWORKS
+// ═══════════════════════════════════
+(function(){
+  const canvas = document.getElementById('fireworks-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = [
+    '#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#c77dff',
+    '#ff9f43','#ff6fd8','#00d2ff','#ff4757','#eccc68',
+    '#a29bfe','#fd79a8','#00cec9','#fdcb6e','#e17055'
+  ];
+
+  class Particle {
+    constructor(x, y, color, angle, speed, life) {
+      this.x = x; this.y = y; this.color = color;
+      this.vx = Math.cos(angle) * speed;
+      this.vy = Math.sin(angle) * speed;
+      this.life = life; this.maxLife = life;
+      this.size = Math.random() * 3 + 1;
+      this.gravity = 0.08;
+      this.trail = [];
+    }
+    update() {
+      this.trail.push({x: this.x, y: this.y});
+      if (this.trail.length > 6) this.trail.shift();
+      this.vx *= 0.98;
+      this.vy += this.gravity;
+      this.x += this.vx; this.y += this.vy;
+      this.life--;
+    }
+    draw(ctx) {
+      const alpha = this.life / this.maxLife;
+      // Trail
+      for (let i = 0; i < this.trail.length; i++) {
+        const ta = (i / this.trail.length) * alpha * 0.4;
+        ctx.beginPath();
+        ctx.arc(this.trail[i].x, this.trail[i].y, this.size * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = this.color + Math.floor(ta * 255).toString(16).padStart(2,'0');
+        ctx.fill();
+      }
+      // Main particle
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * alpha, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.globalAlpha = alpha;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      // Glow
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 2 * alpha, 0, Math.PI * 2);
+      const grd = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.size*2*alpha);
+      grd.addColorStop(0, this.color + '88');
+      grd.addColorStop(1, this.color + '00');
+      ctx.fillStyle = grd;
+      ctx.fill();
+    }
+  }
+
+  class Rocket {
+    constructor() {
+      this.x = W * (0.2 + Math.random() * 0.6);
+      this.y = H + 10;
+      this.tx = W * (0.15 + Math.random() * 0.7);
+      this.ty = H * (0.1 + Math.random() * 0.45);
+      this.speed = 6 + Math.random() * 5;
+      const angle = Math.atan2(this.ty - this.y, this.tx - this.x);
+      this.vx = Math.cos(angle) * this.speed;
+      this.vy = Math.sin(angle) * this.speed;
+      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      this.exploded = false;
+      this.trail = [];
+    }
+    update() {
+      this.trail.push({x:this.x,y:this.y});
+      if(this.trail.length>12) this.trail.shift();
+      this.x += this.vx; this.y += this.vy;
+      this.vy += 0.04;
+      if(this.vy >= 0 || this.y <= this.ty) this.exploded = true;
+    }
+    draw(ctx) {
+      for(let i=0;i<this.trail.length;i++){
+        const a = i/this.trail.length;
+        ctx.beginPath();
+        ctx.arc(this.trail[i].x,this.trail[i].y,2*a,0,Math.PI*2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = a*0.6;
+        ctx.fill();
+      }
+      ctx.globalAlpha=1;
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,3,0,Math.PI*2);
+      ctx.fillStyle=this.color;
+      ctx.fill();
+    }
+    explode() {
+      const parts = [];
+      const count = 80 + Math.floor(Math.random()*60);
+      const color2 = COLORS[Math.floor(Math.random()*COLORS.length)];
+      for(let i=0;i<count;i++){
+        const angle = (Math.PI*2/count)*i + Math.random()*0.3;
+        const speed = 1.5 + Math.random()*5;
+        const c = Math.random()>0.3 ? this.color : color2;
+        const life = 40+Math.floor(Math.random()*40);
+        parts.push(new Particle(this.x,this.y,c,angle,speed,life));
+      }
+      // Add sparkle ring
+      for(let i=0;i<20;i++){
+        const angle=(Math.PI*2/20)*i;
+        parts.push(new Particle(this.x,this.y,'#ffffff',angle,0.8+Math.random()*1.5,25+Math.floor(Math.random()*20)));
+      }
+      return parts;
+    }
+  }
+
+  let rockets = [];
+  let particles = [];
+  let nextLaunch = 0;
+
+  function launchRocket() {
+    rockets.push(new Rocket());
+    nextLaunch = Date.now() + 400 + Math.random() * 1200;
+  }
+
+  // Initial burst
+  setTimeout(()=>{for(let i=0;i<3;i++) setTimeout(()=>rockets.push(new Rocket()), i*300);},500);
+
+  function loop() {
+    ctx.clearRect(0,0,W,H);
+    if(Date.now() > nextLaunch && document.getElementById('page-login').classList.contains('active')) launchRocket();
+    rockets = rockets.filter(r=>{
+      r.update();
+      r.draw(ctx);
+      if(r.exploded){ particles.push(...r.explode()); return false; }
+      return true;
+    });
+    particles = particles.filter(p=>{
+      p.update(); p.draw(ctx); return p.life>0;
+    });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
 </script>
 </body>
 </html>

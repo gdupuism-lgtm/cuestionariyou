@@ -394,9 +394,9 @@ textarea.step-input:focus { opacity:1; }
 .theme-you .result-tag { color:rgba(201,169,110,0.6); }
 .theme-you .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
 .theme-you .result-htitle em { color:var(--accent); }
-.theme-you .script-wrap { border-color:rgba(201,169,110,0.15); }
+.theme-you .script-wrap { border-color:rgba(201,169,110,0.2); }
 .theme-you .script-head { background:#1a1209; }
-.theme-you .script-content { font-family:'Cormorant Garamond',serif; color:var(--result-text); }
+.theme-you .script-content { font-family:'Cormorant Garamond',serif; color:#2a1f14; background:#fffdf8; }
 .theme-you .btn-dl { border-color:rgba(42,31,20,0.2); color:rgba(42,31,20,0.4); }
 .theme-you .btn-dl:hover { border-color:rgba(42,31,20,0.6); color:rgba(42,31,20,0.8); }
 .theme-you .result-note { border-color:rgba(201,169,110,0.2); color:rgba(42,31,20,0.45); }
@@ -890,13 +890,32 @@ async function generate() {
 }
 
 function splitScript(text) {
-  const markers=['💛☁️ TU MINI SCRIPT','💛☁️ YOUR MINI SCRIPT','💛☁️ TU MINI SCRIPT DE','💛☁️ TU MINI SCRIPT AMOR','💛☁️ TU MINI SCRIPT BOOSTER'];
+  // Find where mini script starts
+  const miniMarkers=['TU MINI SCRIPT','YOUR MINI SCRIPT'];
   let idx=-1;
-  for(const m of markers){idx=text.indexOf(m);if(idx!==-1)break;}
-  if(idx!==-1){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
-  else{const p=text.split(/\n---\n/);s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
-  document.getElementById('sc1').textContent=s1;
-  document.getElementById('sc2').textContent=s2||text;
+  for(const m of miniMarkers){
+    const found=text.indexOf(m);
+    if(found!==-1){
+      // go back to find the emoji line start
+      const lineStart=text.lastIndexOf('\n',found);
+      idx=lineStart!==-1?lineStart+1:found;
+      break;
+    }
+  }
+  if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
+  else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
+
+  const singleOnly=['theme-identity','theme-amor','theme-booster'];
+  const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
+  const wrap1=document.querySelectorAll('.script-wrap')[0];
+  if(onlyMini){
+    wrap1.style.display='none';
+    document.getElementById('sc2').textContent=s2||text;
+  } else {
+    wrap1.style.display='';
+    document.getElementById('sc1').textContent=s1;
+    document.getElementById('sc2').textContent=s2||text;
+  }
 }
 
 function copyS(n){
@@ -1182,7 +1201,7 @@ function buildAmorSteps(){
   <div class="step" data-step="4">
     <div class="step-eyebrow">04 — Tu intención</div>
     <h2 class="step-q">¿Para qué quieres que <em>intencionemos</em> este audio?</h2>
-    <p class="step-hint">Un solo tema, breve. Por ejemplo: quiero más belleza, quiero encontrar el amor 🌹</p>
+    <p class="step-hint">Un solo tema, sé <strong>muy específic@</strong>. Entre más detalle, mejor. Por ejemplo: "Quiero tener la piel más luminosa y joven", "Quiero encontrar el amor de mi vida siendo yo misma", "Quiero ganar dinero haciendo lo que amo". 🌹</p>
     <textarea class="step-input" id="f-intention" placeholder="Quiero..."></textarea>
     <div class="field-err" id="e-intention">Por favor escribe tu intención</div>
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
@@ -1482,16 +1501,17 @@ function buildAmorPrompt(fd){
   const name=fd.name||'_';
   const intention=fd.intention||'';
   if(fd.lang==='es'){
-    return `Datos: Nombre: ${name}, Intención: ${intention}
+    return `Datos: Nombre: ${name}, Intención específica: ${intention}
 
-SCRIPT BASE — Reemplaza [INTENCION] con el deseo personalizado:
+Genera el MINI SCRIPT de Amor Propio Magic 3.0 de ERIORCENTER siguiendo EXACTAMENTE esta estructura. El resto del texto base queda igual, solo adapta las secciones marcadas con [PERSONALIZAR].
 
-💛☁️ TU PRIMER SCRIPT AMOR PROPIO MAGIC 3.0 ☁️💛
-✯ primera grabación 🂱🐇
+💛☁️ TU MINI SCRIPT AMOR PROPIO MAGIC 3.0 ☁️💛
+✯ Segunda grabación 🂱🐇
 
 ¡Hola! 💖✨
 Gracias infinitas por tu confianza. 🌸
-¿Podrías enviarnos la grabación de este script? 🎧🌙
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+¿Podrías enviarnos la grabación de este script específico? 🎧🌙
 
 Yo, ${name}, me siento completamente feliz, en plenitud, en dicha.
 ¡Pero no cualquier dicha!
@@ -1504,8 +1524,10 @@ Tal vez porque dejé de buscar validación afuera
 y empecé a mirarme con respeto.
 Porque entendí que mi valor no depende de nada externo.
 
-Yo me amo profundamente. Me trato con ternura.
-Me hablo con respeto. Me elijo sin dudar.
+Yo me amo profundamente.
+Me trato con ternura.
+Me hablo con respeto.
+Me elijo sin dudar.
 Mi autoestima se eleva naturalmente.
 Reconozco mis virtudes, mi esencia y mi valor.
 Sé quién soy y eso me da seguridad.
@@ -1517,16 +1539,18 @@ Recibir lo bueno se vuelve natural para mí.
 Mi validación nace dentro de mí.
 No necesito aprobación externa para sentirme suficiente.
 Mi paz no depende de opiniones ajenas.
-Confío en mí. Confío en mis decisiones.
+Confío en mí.
+Confío en mis decisiones.
 Confío en mi capacidad de construir una vida hermosa.
 
 Mi mente está en calma, mi energía está alineada.
 El amor propio fortalece mi seguridad y mi merecimiento.
 
-[INTENCION: 4-6 líneas en presente mostrando cómo el amor propio de ${name} ya produce: ${intention}. Tono mágico y amoroso. Como resultado natural del amor propio, no como deseo.]
+[PERSONALIZAR: Aquí escribe 4-6 líneas que integren: "${intention}" como resultado natural del amor propio. Nunca desde carencia. Ejemplo: si quiere belleza → "Mi belleza florece naturalmente desde mi amor propio. Cada día me veo más radiante porque me elijo." Si quiere dinero → "El dinero fluye hacia mí con facilidad porque confío en mi valor." Tono mágico, amoroso, en presente.]
 
-Yo soy la prueba viviente de que cuando me elijo y me reconozco,
-[continúa con: ${intention} como resultado ya vivido]
+Yo soy la prueba viviente de que
+cuando me elijo y me reconozco,
+[PERSONALIZAR: 2-3 líneas conectando amor propio con: ${intention} ya manifestado]
 y mi vida se llena de cosas buenas.
 
 Y mientras respiro profundo sintiendo este amor tan real dentro de mí, me pregunto:
@@ -1534,45 +1558,24 @@ Y mientras respiro profundo sintiendo este amor tan real dentro de mí, me pregu
 que me siento merecedora de lo mejor,
 y que mi validación nace completamente desde mí? 🌙💎🌹
 
-💛☁️ TU MINI SCRIPT AMOR PROPIO MAGIC 3.0 ☁️💛
-✯ Segunda grabación 🂱🐇
-
-¡Hola! 💖✨
-Gracias infinitas por tu confianza. 🌸
-¿Podrías enviarnos la grabación de este script? 🎧🌙
-
-Yo, ${name}, me siento completamente feliz, en plenitud, en dicha.
-¡Pero no cualquier dicha!
-Hablo de esa sensación cálida y poderosa de reconocerme, elegirme y sostenerme con amor verdadero. 🦋💃🌈
-Estoy en plenitud, en calma y en conexión conmigo,
-como si mi alma estuviera flotando en una bañera de burbujas rosas mientras mi corazón se llena de amor propio. 🛁🌹🎷
-¿Y por qué me siento tan bien conmigo hoy?
-Tal vez porque dejé de buscar validación afuera y empecé a mirarme con respeto.
-Porque entendí que mi valor no depende de nada externo.
-Yo me amo profundamente. Me trato con ternura. Me hablo con respeto. Me elijo sin dudar.
-Mi autoestima se eleva naturalmente. Reconozco mis virtudes, mi esencia y mi valor.
-Sé quién soy y eso me da seguridad.
-Me siento merecedora de cosas buenas. De amor, de bienestar, de abundancia y de oportunidades.
-Recibir lo bueno se vuelve natural para mí.
-Mi validación nace dentro de mí. No necesito aprobación externa para sentirme suficiente.
-Mi paz no depende de opiniones ajenas. Confío en mí. Confío en mis decisiones.
-Confío en mi capacidad de construir una vida hermosa.
-Mi mente está en calma, mi energía está alineada.
-El amor propio fortalece mi seguridad y mi merecimiento.
-Yo soy la prueba viviente de que cuando me elijo y me reconozco,
-mi autoestima crece, mi seguridad se fortalece y mi vida se llena de cosas buenas.
-Y mientras respiro profundo sintiendo este amor tan real dentro de mí, me pregunto:
-¿Qué voy a hacer ahora que me amo profundamente,
-que me siento merecedora de lo mejor,
-y que mi validación nace completamente desde mí? 🌙💎🌹
-
 📩 IMPORTANTE:
 Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
-Con cariño, El equipo ☁️🌸💎
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
 
-Devuelve SOLO el script final.`;
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final con los datos del cliente. Sin explicaciones ni comentarios.`;
   } else {
-    return `Name: ${name}, Intention: ${intention}. Generate Amor Propio Magic 3.0 script in English. Enchanting, magical, loving tone. Self-love as the source of all external results. Return ONLY the final script.`;
+    return 'Name: '+name+', Specific intention: '+intention+'. Generate Amor Propio Magic 3.0 MINI SCRIPT in English following the exact same structure. Enchanting, magical, loving tone. Self-love as source. Return ONLY the final script.';
   }
 }
 

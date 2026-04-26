@@ -723,12 +723,32 @@ document.getElementById('code-input').addEventListener('keydown', e => {
   if(e.key==='Enter') doLogin();
 });
 
+const THEME_BG = {
+  'theme-you': '#1a1209',
+  'theme-identity': '#f7f7f5',
+  'theme-amor': '#fdf0f0',
+  'theme-booster': '#04080f',
+};
+const THEME_COLOR = {
+  'theme-you': '#faf6f0',
+  'theme-identity': '#1a1a1a',
+  'theme-amor': '#2a1515',
+  'theme-booster': '#c8f0d8',
+};
+
 function applyTheme(theme) {
-  ['page-form','page-result'].forEach(id => {
-    const el = document.getElementById(id);
-    el.className = 'page';
-    el.classList.add(theme);
-  });
+  const formEl = document.getElementById('page-form');
+  formEl.className = 'page';
+  formEl.classList.add(theme);
+  formEl.style.background = THEME_BG[theme] || '';
+  formEl.style.color = THEME_COLOR[theme] || '';
+
+  const resultEl = document.getElementById('page-result');
+  resultEl.className = 'page';
+  resultEl.classList.add(theme);
+  resultEl.style.background = THEME_BG[theme] || '';
+  resultEl.style.color = THEME_COLOR[theme] || '';
+
   document.querySelector('.form-header').className = 'form-header ' + theme;
   document.getElementById('result-header').className = 'result-header ' + theme;
   document.getElementById('progress-dots').className = 'progress-dots ' + theme;

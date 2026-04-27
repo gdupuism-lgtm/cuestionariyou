@@ -859,6 +859,58 @@ textarea.step-input:focus { opacity:1; }
 .theme-mesmerizing .result-note { border-color:rgba(200,96,122,0.08); color:rgba(253,240,242,0.25); }
 .theme-mesmerizing .btn-copy { border-color:rgba(200,96,122,0.2); background:rgba(200,96,122,0.05); color:rgba(232,160,144,0.6); }
 .theme-mesmerizing .btn-copy:hover { background:rgba(200,96,122,0.12); color:var(--accent2); }
+
+/* FIT WAVE — Electric blue / neon green */
+.theme-fitwave {
+  --bg: #010a0f;
+  --surface: #021520;
+  --accent: #00e5ff;
+  --accent2: #39ff14;
+  --text: #e8faff;
+  --text-soft: rgba(232,250,255,0.5);
+  --header-bg: #000a0f;
+  --pdot-off: rgba(0,229,255,0.15);
+  --pdot-on: #00e5ff;
+}
+.theme-fitwave .form-header { background:var(--header-bg); color:var(--accent2); border-bottom:1px solid rgba(0,229,255,0.08); }
+.theme-fitwave .fh-brand { color:rgba(57,255,20,0.3); }
+.theme-fitwave .pdot { background:var(--pdot-off); }
+.theme-fitwave .pdot.done { background:rgba(0,229,255,0.45); }
+.theme-fitwave .pdot.active { background:var(--accent); box-shadow:0 0 8px rgba(0,229,255,0.6); }
+.theme-fitwave #page-form { background:linear-gradient(160deg,#010a0f,#021520,#010a0f); color:var(--text); }
+.theme-fitwave .step-eyebrow { color:var(--accent); letter-spacing:6px; }
+.theme-fitwave .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-fitwave .step-q em { color:var(--accent2); font-style:italic; }
+.theme-fitwave .step-hint { color:var(--text-soft); }
+.theme-fitwave .step-input { color:var(--text); border-color:rgba(0,229,255,0.25); opacity:1; }
+.theme-fitwave .step-input::placeholder { color:rgba(0,229,255,0.2); }
+.theme-fitwave textarea.step-input { background:rgba(0,229,255,0.03); border-color:rgba(0,229,255,0.15); opacity:1; }
+.theme-fitwave .choice-opt { border-color:rgba(0,229,255,0.15); color:var(--text); opacity:1; }
+.theme-fitwave .choice-opt:hover { border-color:rgba(0,229,255,0.4); background:rgba(0,229,255,0.04); }
+.theme-fitwave .choice-opt.selected { border-color:var(--accent); background:rgba(0,229,255,0.08); box-shadow:0 0 12px rgba(0,229,255,0.1); }
+.theme-fitwave .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); box-shadow:0 0 8px rgba(0,229,255,0.5); }
+.theme-fitwave .lang-btn { color:var(--accent2); border-color:rgba(0,229,255,0.18); opacity:1; background:transparent; }
+.theme-fitwave .lang-btn.active { background:rgba(0,229,255,0.12); color:var(--accent); border-color:var(--accent); }
+.theme-fitwave .btn-back { color:rgba(232,250,255,0.25); }
+.theme-fitwave .btn-next { border-color:rgba(0,229,255,0.3); color:var(--accent); }
+.theme-fitwave .btn-next:hover { background:rgba(0,229,255,0.12); border-color:var(--accent); color:#fff; box-shadow:0 0 16px rgba(0,229,255,0.2); }
+.theme-fitwave .intro-card { background:rgba(0,229,255,0.04); border:1px solid rgba(0,229,255,0.1); color:var(--text); }
+.theme-fitwave .intro-card-label { color:rgba(0,229,255,0.4); }
+.theme-fitwave .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-fitwave .intro-card-desc { color:var(--text-soft); }
+.theme-fitwave #page-result { background:#010a0f !important; color:var(--text) !important; }
+.theme-fitwave .result-header { background:#000a0f; border-bottom:1px solid rgba(0,229,255,0.08); }
+.theme-fitwave .result-tag { color:rgba(0,229,255,0.5); }
+.theme-fitwave .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-fitwave .result-htitle em { color:var(--accent2); }
+.theme-fitwave .script-wrap { border-color:rgba(0,229,255,0.12); }
+.theme-fitwave .script-head { background:#000a0f; }
+.theme-fitwave .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#010d14 !important; line-height:2.2; }
+.theme-fitwave .btn-dl { border-color:rgba(0,229,255,0.18); color:rgba(0,229,255,0.4); background:transparent; }
+.theme-fitwave .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-fitwave .result-note { border-color:rgba(0,229,255,0.08); color:rgba(232,250,255,0.25); }
+.theme-fitwave .btn-copy { border-color:rgba(0,229,255,0.2); background:rgba(0,229,255,0.05); color:rgba(57,255,20,0.6); }
+.theme-fitwave .btn-copy:hover { background:rgba(0,229,255,0.12); color:var(--accent2); }
 </style>
 </head>
 <body>
@@ -1062,6 +1114,18 @@ const AUDIOS = {
     buildSteps: buildMesmerizingSteps,
     buildPrompt: buildMesmerizingPrompt,
     systemPrompt: getMesmerizingSystem,
+  },
+  'mifitwave11': {
+    name: 'FIT WAVE',
+    theme: 'theme-fitwave',
+    steps: 6,
+    headerLabel: 'ERIORCENTER — FIT WAVE 💪',
+    introTitle: 'FIT <em>WAVE</em>',
+    introDesc: 'Muchas gracias por adquirir nuestro programa <strong>FIT WAVE</strong>. Esta fórmula está diseñada para que conectes y tengas el cuerpo que tú quieras 💪⚡',
+    fields: ['name','last','email','goal','context','gender','record'],
+    buildSteps: buildFitwaveSteps,
+    buildPrompt: buildFitwavePrompt,
+    systemPrompt: getFitwaveSystem,
   }
 };
 
@@ -1121,6 +1185,7 @@ const THEME_BG = {
   'theme-moneytech': '#010510',
   'theme-satori': '#f4f2ee',
   'theme-mesmerizing': '#110508',
+  'theme-fitwave': '#010a0f',
 };
 const THEME_COLOR = {
   'theme-you': '#faf6f0',
@@ -1133,6 +1198,7 @@ const THEME_COLOR = {
   'theme-moneytech': '#e8f0ff',
   'theme-satori': '#2a2a2a',
   'theme-mesmerizing': '#fdf0f2',
+  'theme-fitwave': '#e8faff',
 };
 
 function applyTheme(theme) {
@@ -1241,6 +1307,11 @@ function validateStep(n) {
   if(fields[n-1]==='manifest'){hide('e-manifest');if(!v('f-manifest')){show('e-manifest');return false;}}
   if(fields[n-1]==='notaccepted'){hide('e-notaccepted');if(!v('f-notaccepted')){show('e-notaccepted');return false;}}
   if(fields[n-1]==='newversion'){hide('e-newversion');if(!v('f-newversion')){show('e-newversion');return false;}}
+  if(fields[n-1]==='goal'){
+    hide('e-goal');
+    if(!document.querySelector('input[name="goal"]:checked')){show('e-goal');return false;}
+  }
+  if(fields[n-1]==='context'){hide('e-context');if(!v('f-context')){show('e-context');return false;}}
   if(fields[n-1]==='version'){
     hide('e-version');
     if(!document.querySelector('input[name="version"]:checked')){show('e-version');return false;}
@@ -1275,6 +1346,8 @@ function collectStep(n) {
   if(f==='manifest') fd.manifest=g('f-manifest');
   if(f==='notaccepted') fd.notaccepted=g('f-notaccepted');
   if(f==='newversion') fd.newversion=g('f-newversion');
+  if(f==='goal'){const r=document.querySelector('input[name="goal"]:checked');fd.goal=r?r.value:'';}
+  if(f==='context') fd.context=g('f-context');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
   if(f==='pronunciation') fd.pronunciation=g('f-pronunciation');
   if(f==='gender'){const r=document.querySelector('input[name="gender"]:checked');fd.gender=r?r.value:'';};
@@ -1325,7 +1398,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -3022,6 +3095,138 @@ Con cariño, El equipo ☁️🌸💎
 Devuelve SOLO el script final.`;
   } else {
     return `Name: ${name}, New version to manifest: "${newversion}". Generate MESMERIZING LOVE MINI SCRIPT in English. Magnetic, enveloping, emotional tone. Sensual but elegant. Everything present tense. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — FIT WAVE
+// ═══════════════════════════════════
+function buildFitwaveSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">FIT <em>WAVE</em> 💪</div>
+      <div class="intro-card-desc">Muchas gracias por adquirir nuestro programa <strong>FIT WAVE</strong>. Esta fórmula está diseñada para que conectes y tengas el cuerpo que tú quieras 💪⚡</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">Solo tu nombre, sin apellidos 💪</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu objetivo</div>
+    <h2 class="step-q">Este audio es para <em>…</em></h2>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'goal')"><input type="radio" name="goal" value="adelgazar"><div class="choice-radio"></div><span class="choice-label">🔥 Adelgazar</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'goal')"><input type="radio" name="goal" value="tonificar"><div class="choice-radio"></div><span class="choice-label">💪 Tonificar</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'goal')"><input type="radio" name="goal" value="subir de peso"><div class="choice-radio"></div><span class="choice-label">⬆️ Subir de peso</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'goal')"><input type="radio" name="goal" value="ser mejor en el gym"><div class="choice-radio"></div><span class="choice-label">🏋️ Ser mejor en el gym</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'goal')"><input type="radio" name="goal" value="rendimiento"><div class="choice-radio"></div><span class="choice-label">⚡ Rendimiento</span></label>
+    </div>
+    <div class="field-err" id="e-goal">Por favor selecciona tu objetivo</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Tu contexto</div>
+    <h2 class="step-q">Cuéntanos un poco más para qué es tu <em>audio</em></h2>
+    <p class="step-hint">Ejemplo: "He probado todo para bajar de peso y no he podido", "Quiero ganar músculo rápido", "Me cuesta mantener la constancia en el gym" 💪</p>
+    <textarea class="step-input" id="f-context" placeholder="Mi situación es..."></textarea>
+    <div class="field-err" id="e-context">Por favor cuéntanos más</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="6">
+    <div class="step-eyebrow">06 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Es mejor que tú lo grabes — el inconsciente obedece más a tu voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💪</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — FIT WAVE
+// ═══════════════════════════════════
+function getFitwaveSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts FIT WAVE de ERIORCENTER. Estilo: fluido, energético, enfocado en fitness y cuerpo. Mezcla Zero Point, identidad y reprogramación física. Frases clave: "Yo _, anulo el reflejo", "Yo elijo…", "Se rendea ahora…", "Colapso…". Todo en presente positivo. Sin esfuerzo forzado. El cuerpo coopera naturalmente. Termina siempre con "¿Por qué será que…?" Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's FIT WAVE script editor. Style: fluid, energetic, focused on fitness and body. Mix of Zero Point, identity and physical reprogramming. Key phrases: "I _, cancel the reflection", "I choose…", "It renders now…", "I collapse…". Everything positive present tense. No forced effort. The body cooperates naturally. Always ends with "Why is it that…?" Return ONLY the final script.`;
+}
+
+function buildFitwavePrompt(fd){
+  const name=fd.name||'_';
+  const goal=fd.goal||'';
+  const context=fd.context||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Objetivo: "${goal}", Contexto: "${context}"
+
+Genera el MINI SCRIPT FIT WAVE de ERIORCENTER siguiendo esta estructura exacta. Personaliza con el objetivo y contexto del cliente.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste, ¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo ${name}, anulo el reflejo. Esta realidad ya no me espejea, solo responde a mis preferencias.
+
+[BLOQUE ELECCIÓN: "Yo elijo…" — 2-3 líneas declarando el objetivo "${goal}" como decisión presente. Natural, sin esfuerzo, desde amor propio.]
+
+Se rendea ahora [RENDERIZACIÓN: 3-4 líneas describiendo cambios físicos concretos, funciones del cuerpo y resultados visibles alineados a "${goal}". Fluido.]
+
+[RELACIÓN CON EL CUERPO: 3-4 líneas redefiniendo el cuerpo como aliado inteligente. Sin etiquetas limitantes. Todo coopera con la elección.]
+
+[REENCUADRE DEL PASADO: 2-3 líneas referenciando "${context}" — el pasado no se niega, se transforma en permiso. "He probado… y ya no importa."]
+
+Colapso ahora [COLAPSO: 2-3 líneas eliminando creencias limitantes específicas de "${goal}" y "${context}". Abre nueva línea de tiempo.]
+
+[IDENTIDAD: 2-3 líneas. "Yo no soy [limitación]". "Solo soy elección pura." Elimina identificación con el problema.]
+
+[ANCLAJE: 2-3 líneas afirmando que el resultado ya está, el cuerpo ya se ve así. Palabras: anclado, estable, natural.]
+
+Yo ${name}, [cierre de identidad alineado a "${goal}"]. ¿Por qué será que [pregunta sugestiva sobre "${goal}" ya logrado para ${name}]?
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+Existe un solo formulario por audio, es el mismo que recibiste en el primer correo. 🐇💛
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+Con cariño, El equipo ☁️🌸💎
+
+Devuelve SOLO el script final.`;
+  } else {
+    return `Name: ${name}, Goal: "${goal}", Context: "${context}". Generate FIT WAVE MINI SCRIPT in English. Fluid, energetic tone. Zero Point + identity + physical reprogramming. Key phrases: cancel the reflection, I choose, it renders now, I collapse. End with "Why is it that…?" Return ONLY the final script.`;
   }
 }
 

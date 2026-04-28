@@ -911,6 +911,578 @@ textarea.step-input:focus { opacity:1; }
 .theme-fitwave .result-note { border-color:rgba(0,229,255,0.08); color:rgba(232,250,255,0.25); }
 .theme-fitwave .btn-copy { border-color:rgba(0,229,255,0.2); background:rgba(0,229,255,0.05); color:rgba(57,255,20,0.6); }
 .theme-fitwave .btn-copy:hover { background:rgba(0,229,255,0.12); color:var(--accent2); }
+
+/* SELECT — White smoke / silver */
+.theme-select {
+  --bg: #f8f7f5;
+  --surface: #f0eeeb;
+  --accent: #888080;
+  --accent2: #444040;
+  --text: #1a1818;
+  --text-soft: rgba(26,24,24,0.5);
+  --header-bg: #1a1818;
+  --pdot-off: rgba(136,128,128,0.15);
+  --pdot-on: #444040;
+}
+.theme-select .form-header { background:var(--header-bg); color:rgba(248,247,245,0.6); }
+.theme-select .fh-brand { color:rgba(248,247,245,0.25); }
+.theme-select .pdot { background:var(--pdot-off); }
+.theme-select .pdot.done { background:rgba(136,128,128,0.4); }
+.theme-select .pdot.active { background:var(--accent2); }
+.theme-select #page-form { background:linear-gradient(160deg,#f8f7f5,#eeece9,#f8f7f5); color:var(--text); }
+.theme-select .step-eyebrow { color:var(--accent); letter-spacing:6px; }
+.theme-select .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-select .step-q em { color:var(--accent2); font-style:italic; }
+.theme-select .step-hint { color:var(--text-soft); }
+.theme-select .step-input { color:var(--text); border-color:rgba(26,24,24,0.15); opacity:1; }
+.theme-select .step-input::placeholder { color:rgba(26,24,24,0.2); }
+.theme-select textarea.step-input { background:rgba(26,24,24,0.02); border-color:rgba(26,24,24,0.1); opacity:1; }
+.theme-select .choice-opt { border-color:rgba(26,24,24,0.08); color:var(--text); opacity:1; }
+.theme-select .choice-opt:hover { border-color:rgba(26,24,24,0.25); }
+.theme-select .choice-opt.selected { border-color:var(--accent2); background:rgba(26,24,24,0.04); }
+.theme-select .choice-opt.selected .choice-radio { background:var(--accent2); border-color:var(--accent2); }
+.theme-select .lang-btn { color:var(--accent2); border-color:rgba(26,24,24,0.15); opacity:1; background:transparent; }
+.theme-select .lang-btn.active { background:var(--accent2); color:#f8f7f5; }
+.theme-select .btn-back { color:rgba(26,24,24,0.3); }
+.theme-select .btn-next { border-color:rgba(26,24,24,0.2); color:var(--accent2); }
+.theme-select .btn-next:hover { background:var(--accent2); color:#f8f7f5; }
+.theme-select .intro-card { background:rgba(26,24,24,0.03); border:1px solid rgba(26,24,24,0.08); color:var(--text); }
+.theme-select .intro-card-label { color:rgba(26,24,24,0.35); }
+.theme-select .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-select .intro-card-desc { color:var(--text-soft); }
+.theme-select #page-result { background:#f8f7f5 !important; color:var(--text) !important; }
+.theme-select .result-header { background:#1a1818; }
+.theme-select .result-tag { color:rgba(136,128,128,0.6); }
+.theme-select .result-htitle { font-family:'Cormorant Garamond',serif; color:#f8f7f5; }
+.theme-select .result-htitle em { color:rgba(200,196,190,0.8); }
+.theme-select .script-wrap { border-color:rgba(26,24,24,0.1); }
+.theme-select .script-head { background:#1a1818; }
+.theme-select .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#f4f2ef !important; line-height:2.2; }
+.theme-select .btn-dl { border-color:rgba(26,24,24,0.12); color:rgba(26,24,24,0.4); background:transparent; }
+.theme-select .btn-dl:hover { border-color:rgba(26,24,24,0.4); color:var(--accent2); }
+.theme-select .result-note { border-color:rgba(26,24,24,0.08); color:rgba(26,24,24,0.35); }
+.theme-select .btn-copy { border-color:rgba(26,24,24,0.12); background:rgba(26,24,24,0.03); color:rgba(26,24,24,0.5); }
+.theme-select .btn-copy:hover { background:rgba(26,24,24,0.08); color:var(--accent2); }
+
+/* WONDERLAND COHERENCE — Deep night blue / turquoise */
+.theme-wonderland {
+  --bg: #020810;
+  --surface: #041020;
+  --accent: #00d4c8;
+  --accent2: #80eae4;
+  --text: #e8f8f8;
+  --text-soft: rgba(232,248,248,0.5);
+  --header-bg: #010608;
+  --pdot-off: rgba(0,212,200,0.15);
+  --pdot-on: #00d4c8;
+}
+.theme-wonderland .form-header { background:var(--header-bg); color:var(--accent2); border-bottom:1px solid rgba(0,212,200,0.08); }
+.theme-wonderland .fh-brand { color:rgba(128,234,228,0.3); }
+.theme-wonderland .pdot { background:var(--pdot-off); }
+.theme-wonderland .pdot.done { background:rgba(0,212,200,0.45); }
+.theme-wonderland .pdot.active { background:var(--accent); box-shadow:0 0 8px rgba(0,212,200,0.6); }
+.theme-wonderland #page-form { background:linear-gradient(160deg,#020810,#041020,#020c18); color:var(--text); }
+.theme-wonderland .step-eyebrow { color:var(--accent); letter-spacing:6px; }
+.theme-wonderland .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-wonderland .step-q em { color:var(--accent2); font-style:italic; }
+.theme-wonderland .step-hint { color:var(--text-soft); }
+.theme-wonderland .step-input { color:var(--text); border-color:rgba(0,212,200,0.25); opacity:1; }
+.theme-wonderland .step-input::placeholder { color:rgba(0,212,200,0.2); }
+.theme-wonderland textarea.step-input { background:rgba(0,212,200,0.03); border-color:rgba(0,212,200,0.15); opacity:1; }
+.theme-wonderland .choice-opt { border-color:rgba(0,212,200,0.15); color:var(--text); opacity:1; }
+.theme-wonderland .choice-opt:hover { border-color:rgba(0,212,200,0.4); background:rgba(0,212,200,0.04); }
+.theme-wonderland .choice-opt.selected { border-color:var(--accent); background:rgba(0,212,200,0.08); box-shadow:0 0 12px rgba(0,212,200,0.1); }
+.theme-wonderland .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); }
+.theme-wonderland .lang-btn { color:var(--accent2); border-color:rgba(0,212,200,0.18); opacity:1; background:transparent; }
+.theme-wonderland .lang-btn.active { background:rgba(0,212,200,0.15); color:var(--accent2); border-color:var(--accent); }
+.theme-wonderland .btn-back { color:rgba(232,248,248,0.25); }
+.theme-wonderland .btn-next { border-color:rgba(0,212,200,0.3); color:var(--accent2); }
+.theme-wonderland .btn-next:hover { background:rgba(0,212,200,0.12); border-color:var(--accent); color:#e8f8f8; }
+.theme-wonderland .intro-card { background:rgba(0,212,200,0.04); border:1px solid rgba(0,212,200,0.1); color:var(--text); }
+.theme-wonderland .intro-card-label { color:rgba(0,212,200,0.4); }
+.theme-wonderland .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-wonderland .intro-card-desc { color:var(--text-soft); }
+.theme-wonderland #page-result { background:#020810 !important; color:var(--text) !important; }
+.theme-wonderland .result-header { background:#010608; border-bottom:1px solid rgba(0,212,200,0.06); }
+.theme-wonderland .result-tag { color:rgba(0,212,200,0.5); }
+.theme-wonderland .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-wonderland .result-htitle em { color:var(--accent2); }
+.theme-wonderland .script-wrap { border-color:rgba(0,212,200,0.12); }
+.theme-wonderland .script-head { background:#010608; }
+.theme-wonderland .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#030c18 !important; line-height:2.2; }
+.theme-wonderland .btn-dl { border-color:rgba(0,212,200,0.18); color:rgba(0,212,200,0.4); background:transparent; }
+.theme-wonderland .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-wonderland .result-note { border-color:rgba(0,212,200,0.08); color:rgba(232,248,248,0.25); }
+.theme-wonderland .btn-copy { border-color:rgba(0,212,200,0.2); background:rgba(0,212,200,0.05); color:rgba(128,234,228,0.6); }
+.theme-wonderland .btn-copy:hover { background:rgba(0,212,200,0.12); color:var(--accent2); }
+
+/* LUCKY — Dark forest green / bright gold */
+.theme-lucky {
+  --bg: #030a04;
+  --surface: #071408;
+  --accent: #c8a020;
+  --accent2: #f0cc50;
+  --text: #f0f8e8;
+  --text-soft: rgba(240,248,232,0.55);
+  --header-bg: #020602;
+  --pdot-off: rgba(200,160,32,0.15);
+  --pdot-on: #c8a020;
+}
+.theme-lucky .form-header { background:var(--header-bg); color:var(--accent2); border-bottom:1px solid rgba(200,160,32,0.08); }
+.theme-lucky .fh-brand { color:rgba(240,204,80,0.3); }
+.theme-lucky .pdot { background:var(--pdot-off); }
+.theme-lucky .pdot.done { background:rgba(200,160,32,0.45); }
+.theme-lucky .pdot.active { background:var(--accent2); box-shadow:0 0 8px rgba(240,204,80,0.5); }
+.theme-lucky #page-form { background:linear-gradient(160deg,#030a04,#071408,#030c04); color:var(--text); }
+.theme-lucky .step-eyebrow { color:var(--accent2); letter-spacing:6px; }
+.theme-lucky .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-lucky .step-q em { color:var(--accent2); font-style:italic; }
+.theme-lucky .step-hint { color:var(--text-soft); }
+.theme-lucky .step-input { color:var(--text); border-color:rgba(200,160,32,0.3); opacity:1; }
+.theme-lucky .step-input::placeholder { color:rgba(200,160,32,0.2); }
+.theme-lucky textarea.step-input { background:rgba(200,160,32,0.03); border-color:rgba(200,160,32,0.18); opacity:1; }
+.theme-lucky .choice-opt { border-color:rgba(200,160,32,0.15); color:var(--text); opacity:1; }
+.theme-lucky .choice-opt:hover { border-color:rgba(200,160,32,0.4); background:rgba(200,160,32,0.04); }
+.theme-lucky .choice-opt.selected { border-color:var(--accent2); background:rgba(200,160,32,0.08); box-shadow:0 0 12px rgba(240,204,80,0.1); }
+.theme-lucky .choice-opt.selected .choice-radio { background:var(--accent2); border-color:var(--accent2); }
+.theme-lucky .lang-btn { color:var(--accent2); border-color:rgba(200,160,32,0.2); opacity:1; background:transparent; }
+.theme-lucky .lang-btn.active { background:var(--accent2); color:#030a04; }
+.theme-lucky .btn-back { color:rgba(240,248,232,0.25); }
+.theme-lucky .btn-next { border-color:rgba(200,160,32,0.35); color:var(--accent2); }
+.theme-lucky .btn-next:hover { background:var(--accent2); color:#030a04; }
+.theme-lucky .intro-card { background:rgba(200,160,32,0.05); border:1px solid rgba(200,160,32,0.12); color:var(--text); }
+.theme-lucky .intro-card-label { color:rgba(200,160,32,0.4); }
+.theme-lucky .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-lucky .intro-card-desc { color:var(--text-soft); }
+.theme-lucky #page-result { background:#030a04 !important; color:var(--text) !important; }
+.theme-lucky .result-header { background:#020602; border-bottom:1px solid rgba(200,160,32,0.06); }
+.theme-lucky .result-tag { color:rgba(200,160,32,0.5); }
+.theme-lucky .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-lucky .result-htitle em { color:var(--accent2); }
+.theme-lucky .script-wrap { border-color:rgba(200,160,32,0.15); }
+.theme-lucky .script-head { background:#020602; }
+.theme-lucky .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#040c04 !important; line-height:2.2; }
+.theme-lucky .btn-dl { border-color:rgba(200,160,32,0.18); color:rgba(200,160,32,0.4); background:transparent; }
+.theme-lucky .btn-dl:hover { border-color:var(--accent2); color:var(--accent2); }
+.theme-lucky .result-note { border-color:rgba(200,160,32,0.1); color:rgba(240,248,232,0.3); }
+.theme-lucky .btn-copy { border-color:rgba(200,160,32,0.22); background:rgba(200,160,32,0.05); color:rgba(240,204,80,0.6); }
+.theme-lucky .btn-copy:hover { background:rgba(200,160,32,0.12); color:var(--accent2); }
+
+/* AMOR PROPIO 2.0 — Deep rose / mauve */
+.theme-amorpropio2 {
+  --bg: #0f0408;
+  --surface: #1e0812;
+  --accent: #c05080;
+  --accent2: #e890b0;
+  --text: #fdeef4;
+  --text-soft: rgba(253,238,244,0.55);
+  --header-bg: #080206;
+  --pdot-off: rgba(192,80,128,0.15);
+  --pdot-on: #c05080;
+}
+.theme-amorpropio2 .form-header { background:var(--header-bg); color:var(--accent2); }
+.theme-amorpropio2 .fh-brand { color:rgba(232,144,176,0.3); }
+.theme-amorpropio2 .pdot { background:var(--pdot-off); }
+.theme-amorpropio2 .pdot.done { background:rgba(192,80,128,0.45); }
+.theme-amorpropio2 .pdot.active { background:var(--accent); box-shadow:0 0 8px rgba(192,80,128,0.5); }
+.theme-amorpropio2 #page-form { background:linear-gradient(160deg,#0f0408,#1e0812,#0f0408); color:var(--text); }
+.theme-amorpropio2 .step-eyebrow { color:var(--accent2); letter-spacing:6px; }
+.theme-amorpropio2 .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-amorpropio2 .step-q em { color:var(--accent2); font-style:italic; }
+.theme-amorpropio2 .step-hint { color:var(--text-soft); }
+.theme-amorpropio2 .step-input { color:var(--text); border-color:rgba(192,80,128,0.3); opacity:1; }
+.theme-amorpropio2 .step-input::placeholder { color:rgba(192,80,128,0.2); }
+.theme-amorpropio2 textarea.step-input { background:rgba(192,80,128,0.03); border-color:rgba(192,80,128,0.18); opacity:1; }
+.theme-amorpropio2 .choice-opt { border-color:rgba(192,80,128,0.15); color:var(--text); opacity:1; }
+.theme-amorpropio2 .choice-opt:hover { border-color:rgba(192,80,128,0.4); background:rgba(192,80,128,0.04); }
+.theme-amorpropio2 .choice-opt.selected { border-color:var(--accent); background:rgba(192,80,128,0.08); }
+.theme-amorpropio2 .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); }
+.theme-amorpropio2 .lang-btn { color:var(--accent2); border-color:rgba(192,80,128,0.2); opacity:1; background:transparent; }
+.theme-amorpropio2 .lang-btn.active { background:var(--accent); color:#fdeef4; }
+.theme-amorpropio2 .btn-back { color:rgba(253,238,244,0.25); }
+.theme-amorpropio2 .btn-next { border-color:rgba(192,80,128,0.35); color:var(--accent2); }
+.theme-amorpropio2 .btn-next:hover { background:var(--accent); color:#fdeef4; }
+.theme-amorpropio2 .intro-card { background:rgba(192,80,128,0.05); border:1px solid rgba(192,80,128,0.12); color:var(--text); }
+.theme-amorpropio2 .intro-card-label { color:rgba(192,80,128,0.4); }
+.theme-amorpropio2 .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-amorpropio2 .intro-card-desc { color:var(--text-soft); }
+.theme-amorpropio2 #page-result { background:#0f0408 !important; color:var(--text) !important; }
+.theme-amorpropio2 .result-header { background:#080206; }
+.theme-amorpropio2 .result-tag { color:rgba(192,80,128,0.5); }
+.theme-amorpropio2 .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-amorpropio2 .result-htitle em { color:var(--accent2); }
+.theme-amorpropio2 .script-wrap { border-color:rgba(192,80,128,0.15); }
+.theme-amorpropio2 .script-head { background:#080206; }
+.theme-amorpropio2 .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#120306 !important; line-height:2.2; }
+.theme-amorpropio2 .btn-dl { border-color:rgba(192,80,128,0.18); color:rgba(192,80,128,0.4); background:transparent; }
+.theme-amorpropio2 .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-amorpropio2 .result-note { border-color:rgba(192,80,128,0.1); color:rgba(253,238,244,0.3); }
+.theme-amorpropio2 .btn-copy { border-color:rgba(192,80,128,0.22); background:rgba(192,80,128,0.05); color:rgba(232,144,176,0.6); }
+.theme-amorpropio2 .btn-copy:hover { background:rgba(192,80,128,0.12); color:var(--accent2); }
+
+/* ECLAT — Deep black / nacre silver */
+.theme-eclat {
+  --bg: #080808;
+  --surface: #111111;
+  --accent: #c0b8c8;
+  --accent2: #e8e0f0;
+  --text: #f0eef8;
+  --text-soft: rgba(240,238,248,0.5);
+  --header-bg: #040404;
+  --pdot-off: rgba(192,184,200,0.15);
+  --pdot-on: #c0b8c8;
+}
+.theme-eclat .form-header { background:var(--header-bg); color:var(--accent2); border-bottom:1px solid rgba(192,184,200,0.08); }
+.theme-eclat .fh-brand { color:rgba(232,224,240,0.25); }
+.theme-eclat .pdot { background:var(--pdot-off); }
+.theme-eclat .pdot.done { background:rgba(192,184,200,0.4); }
+.theme-eclat .pdot.active { background:var(--accent2); box-shadow:0 0 8px rgba(232,224,240,0.4); }
+.theme-eclat #page-form { background:linear-gradient(160deg,#080808,#111111,#080808); color:var(--text); }
+.theme-eclat .step-eyebrow { color:var(--accent); letter-spacing:6px; }
+.theme-eclat .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-eclat .step-q em { color:var(--accent2); font-style:italic; }
+.theme-eclat .step-hint { color:var(--text-soft); }
+.theme-eclat .step-input { color:var(--text); border-color:rgba(192,184,200,0.2); opacity:1; }
+.theme-eclat .step-input::placeholder { color:rgba(192,184,200,0.18); }
+.theme-eclat textarea.step-input { background:rgba(192,184,200,0.03); border-color:rgba(192,184,200,0.15); opacity:1; }
+.theme-eclat .choice-opt { border-color:rgba(192,184,200,0.12); color:var(--text); opacity:1; }
+.theme-eclat .choice-opt:hover { border-color:rgba(192,184,200,0.35); background:rgba(192,184,200,0.04); }
+.theme-eclat .choice-opt.selected { border-color:var(--accent2); background:rgba(192,184,200,0.07); }
+.theme-eclat .choice-opt.selected .choice-radio { background:var(--accent2); border-color:var(--accent2); }
+.theme-eclat .lang-btn { color:var(--accent2); border-color:rgba(192,184,200,0.15); opacity:1; background:transparent; }
+.theme-eclat .lang-btn.active { background:rgba(192,184,200,0.15); color:var(--accent2); border-color:var(--accent2); }
+.theme-eclat .btn-back { color:rgba(240,238,248,0.22); }
+.theme-eclat .btn-next { border-color:rgba(192,184,200,0.25); color:var(--accent2); }
+.theme-eclat .btn-next:hover { background:rgba(192,184,200,0.12); border-color:var(--accent2); color:#f0eef8; }
+.theme-eclat .intro-card { background:rgba(192,184,200,0.04); border:1px solid rgba(192,184,200,0.1); color:var(--text); }
+.theme-eclat .intro-card-label { color:rgba(192,184,200,0.35); }
+.theme-eclat .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-eclat .intro-card-desc { color:var(--text-soft); }
+.theme-eclat #page-result { background:#080808 !important; color:var(--text) !important; }
+.theme-eclat .result-header { background:#040404; border-bottom:1px solid rgba(192,184,200,0.06); }
+.theme-eclat .result-tag { color:rgba(192,184,200,0.5); }
+.theme-eclat .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-eclat .result-htitle em { color:var(--accent2); }
+.theme-eclat .script-wrap { border-color:rgba(192,184,200,0.1); }
+.theme-eclat .script-head { background:#040404; }
+.theme-eclat .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#0c0c0c !important; line-height:2.2; }
+.theme-eclat .btn-dl { border-color:rgba(192,184,200,0.15); color:rgba(192,184,200,0.4); background:transparent; }
+.theme-eclat .btn-dl:hover { border-color:var(--accent2); color:var(--accent2); }
+.theme-eclat .result-note { border-color:rgba(192,184,200,0.08); color:rgba(240,238,248,0.25); }
+.theme-eclat .btn-copy { border-color:rgba(192,184,200,0.18); background:rgba(192,184,200,0.04); color:rgba(232,224,240,0.55); }
+.theme-eclat .btn-copy:hover { background:rgba(192,184,200,0.1); color:var(--accent2); }
+
+/* ATTRACTION — Dark wine / coral rose */
+.theme-attraction {
+  --bg: #0a0308;
+  --surface: #180510;
+  --accent: #d04060;
+  --accent2: #f088a0;
+  --text: #feeef4;
+  --text-soft: rgba(254,238,244,0.55);
+  --header-bg: #060205;
+  --pdot-off: rgba(208,64,96,0.15);
+  --pdot-on: #d04060;
+}
+.theme-attraction .form-header { background:var(--header-bg); color:var(--accent2); }
+.theme-attraction .fh-brand { color:rgba(240,136,160,0.3); }
+.theme-attraction .pdot { background:var(--pdot-off); }
+.theme-attraction .pdot.done { background:rgba(208,64,96,0.45); }
+.theme-attraction .pdot.active { background:var(--accent); box-shadow:0 0 8px rgba(208,64,96,0.5); }
+.theme-attraction #page-form { background:linear-gradient(160deg,#0a0308,#180510,#0a0308); color:var(--text); }
+.theme-attraction .step-eyebrow { color:var(--accent2); letter-spacing:6px; }
+.theme-attraction .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-attraction .step-q em { color:var(--accent2); font-style:italic; }
+.theme-attraction .step-hint { color:var(--text-soft); }
+.theme-attraction .step-input { color:var(--text); border-color:rgba(208,64,96,0.3); opacity:1; }
+.theme-attraction .step-input::placeholder { color:rgba(208,64,96,0.2); }
+.theme-attraction textarea.step-input { background:rgba(208,64,96,0.03); border-color:rgba(208,64,96,0.18); opacity:1; }
+.theme-attraction .choice-opt { border-color:rgba(208,64,96,0.15); color:var(--text); opacity:1; }
+.theme-attraction .choice-opt:hover { border-color:rgba(208,64,96,0.4); background:rgba(208,64,96,0.04); }
+.theme-attraction .choice-opt.selected { border-color:var(--accent); background:rgba(208,64,96,0.08); }
+.theme-attraction .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); }
+.theme-attraction .lang-btn { color:var(--accent2); border-color:rgba(208,64,96,0.2); opacity:1; background:transparent; }
+.theme-attraction .lang-btn.active { background:var(--accent); color:#feeef4; }
+.theme-attraction .btn-back { color:rgba(254,238,244,0.25); }
+.theme-attraction .btn-next { border-color:rgba(208,64,96,0.35); color:var(--accent2); }
+.theme-attraction .btn-next:hover { background:var(--accent); color:#feeef4; }
+.theme-attraction .intro-card { background:rgba(208,64,96,0.05); border:1px solid rgba(208,64,96,0.12); color:var(--text); }
+.theme-attraction .intro-card-label { color:rgba(208,64,96,0.4); }
+.theme-attraction .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-attraction .intro-card-desc { color:var(--text-soft); }
+.theme-attraction #page-result { background:#0a0308 !important; color:var(--text) !important; }
+.theme-attraction .result-header { background:#060205; }
+.theme-attraction .result-tag { color:rgba(208,64,96,0.5); }
+.theme-attraction .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-attraction .result-htitle em { color:var(--accent2); }
+.theme-attraction .script-wrap { border-color:rgba(208,64,96,0.15); }
+.theme-attraction .script-head { background:#060205; }
+.theme-attraction .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#0d0308 !important; line-height:2.2; }
+.theme-attraction .btn-dl { border-color:rgba(208,64,96,0.18); color:rgba(208,64,96,0.4); background:transparent; }
+.theme-attraction .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-attraction .result-note { border-color:rgba(208,64,96,0.1); color:rgba(254,238,244,0.3); }
+.theme-attraction .btn-copy { border-color:rgba(208,64,96,0.22); background:rgba(208,64,96,0.05); color:rgba(240,136,160,0.6); }
+.theme-attraction .btn-copy:hover { background:rgba(208,64,96,0.12); color:var(--accent2); }
+
+/* MASTER MIND — Black / deep indigo */
+.theme-mastermind {
+  --bg: #03020a;
+  --surface: #080518;
+  --accent: #6040c0;
+  --accent2: #a090e8;
+  --text: #f0eeff;
+  --text-soft: rgba(240,238,255,0.5);
+  --header-bg: #020108;
+  --pdot-off: rgba(96,64,192,0.15);
+  --pdot-on: #6040c0;
+}
+.theme-mastermind .form-header { background:var(--header-bg); color:var(--accent2); border-bottom:1px solid rgba(96,64,192,0.1); }
+.theme-mastermind .fh-brand { color:rgba(160,144,232,0.3); }
+.theme-mastermind .pdot { background:var(--pdot-off); }
+.theme-mastermind .pdot.done { background:rgba(96,64,192,0.45); }
+.theme-mastermind .pdot.active { background:var(--accent); box-shadow:0 0 8px rgba(96,64,192,0.6); }
+.theme-mastermind #page-form { background:linear-gradient(160deg,#03020a,#080518,#03020a); color:var(--text); }
+.theme-mastermind .step-eyebrow { color:var(--accent2); letter-spacing:6px; }
+.theme-mastermind .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-mastermind .step-q em { color:var(--accent2); font-style:italic; }
+.theme-mastermind .step-hint { color:var(--text-soft); }
+.theme-mastermind .step-input { color:var(--text); border-color:rgba(96,64,192,0.3); opacity:1; }
+.theme-mastermind .step-input::placeholder { color:rgba(96,64,192,0.2); }
+.theme-mastermind textarea.step-input { background:rgba(96,64,192,0.03); border-color:rgba(96,64,192,0.18); opacity:1; }
+.theme-mastermind .choice-opt { border-color:rgba(96,64,192,0.15); color:var(--text); opacity:1; }
+.theme-mastermind .choice-opt:hover { border-color:rgba(96,64,192,0.4); background:rgba(96,64,192,0.04); }
+.theme-mastermind .choice-opt.selected { border-color:var(--accent); background:rgba(96,64,192,0.08); box-shadow:0 0 12px rgba(96,64,192,0.1); }
+.theme-mastermind .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); }
+.theme-mastermind .lang-btn { color:var(--accent2); border-color:rgba(96,64,192,0.2); opacity:1; background:transparent; }
+.theme-mastermind .lang-btn.active { background:var(--accent); color:#f0eeff; }
+.theme-mastermind .btn-back { color:rgba(240,238,255,0.25); }
+.theme-mastermind .btn-next { border-color:rgba(96,64,192,0.35); color:var(--accent2); }
+.theme-mastermind .btn-next:hover { background:var(--accent); color:#f0eeff; }
+.theme-mastermind .intro-card { background:rgba(96,64,192,0.05); border:1px solid rgba(96,64,192,0.12); color:var(--text); }
+.theme-mastermind .intro-card-label { color:rgba(96,64,192,0.4); }
+.theme-mastermind .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-mastermind .intro-card-desc { color:var(--text-soft); }
+.theme-mastermind #page-result { background:#03020a !important; color:var(--text) !important; }
+.theme-mastermind .result-header { background:#020108; border-bottom:1px solid rgba(96,64,192,0.08); }
+.theme-mastermind .result-tag { color:rgba(96,64,192,0.5); }
+.theme-mastermind .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-mastermind .result-htitle em { color:var(--accent2); }
+.theme-mastermind .script-wrap { border-color:rgba(96,64,192,0.15); }
+.theme-mastermind .script-head { background:#020108; }
+.theme-mastermind .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#050210 !important; line-height:2.2; }
+.theme-mastermind .btn-dl { border-color:rgba(96,64,192,0.18); color:rgba(96,64,192,0.4); background:transparent; }
+.theme-mastermind .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-mastermind .result-note { border-color:rgba(96,64,192,0.1); color:rgba(240,238,255,0.3); }
+.theme-mastermind .btn-copy { border-color:rgba(96,64,192,0.22); background:rgba(96,64,192,0.05); color:rgba(160,144,232,0.6); }
+.theme-mastermind .btn-copy:hover { background:rgba(96,64,192,0.12); color:var(--accent2); }
+
+/* 11:11 — Cosmic purple / gold */
+.theme-onceonce {
+  --bg: #06020f;
+  --surface: #0e0520;
+  --accent: #9040d0;
+  --accent2: #d4a840;
+  --text: #f4eeff;
+  --text-soft: rgba(244,238,255,0.5);
+  --header-bg: #040010;
+  --pdot-off: rgba(144,64,208,0.15);
+  --pdot-on: #9040d0;
+}
+.theme-onceonce .form-header { background:var(--header-bg); color:var(--accent2); border-bottom:1px solid rgba(144,64,208,0.1); }
+.theme-onceonce .fh-brand { color:rgba(212,168,64,0.3); }
+.theme-onceonce .pdot { background:var(--pdot-off); }
+.theme-onceonce .pdot.done { background:rgba(144,64,208,0.45); }
+.theme-onceonce .pdot.active { background:var(--accent); box-shadow:0 0 8px rgba(144,64,208,0.6); }
+.theme-onceonce #page-form { background:linear-gradient(160deg,#06020f,#0e0520,#06020f); color:var(--text); }
+.theme-onceonce .step-eyebrow { color:var(--accent2); letter-spacing:6px; }
+.theme-onceonce .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-onceonce .step-q em { color:var(--accent2); font-style:italic; }
+.theme-onceonce .step-hint { color:var(--text-soft); }
+.theme-onceonce .step-input { color:var(--text); border-color:rgba(144,64,208,0.3); opacity:1; }
+.theme-onceonce .step-input::placeholder { color:rgba(144,64,208,0.2); }
+.theme-onceonce textarea.step-input { background:rgba(144,64,208,0.03); border-color:rgba(144,64,208,0.18); opacity:1; }
+.theme-onceonce .choice-opt { border-color:rgba(144,64,208,0.15); color:var(--text); opacity:1; }
+.theme-onceonce .choice-opt:hover { border-color:rgba(144,64,208,0.4); background:rgba(144,64,208,0.04); }
+.theme-onceonce .choice-opt.selected { border-color:var(--accent); background:rgba(144,64,208,0.08); }
+.theme-onceonce .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); }
+.theme-onceonce .lang-btn { color:var(--accent2); border-color:rgba(144,64,208,0.2); opacity:1; background:transparent; }
+.theme-onceonce .lang-btn.active { background:var(--accent); color:#f4eeff; }
+.theme-onceonce .btn-back { color:rgba(244,238,255,0.25); }
+.theme-onceonce .btn-next { border-color:rgba(144,64,208,0.35); color:var(--accent2); }
+.theme-onceonce .btn-next:hover { background:var(--accent); color:#f4eeff; }
+.theme-onceonce .intro-card { background:rgba(144,64,208,0.05); border:1px solid rgba(144,64,208,0.12); color:var(--text); }
+.theme-onceonce .intro-card-label { color:rgba(144,64,208,0.4); }
+.theme-onceonce .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-onceonce .intro-card-desc { color:var(--text-soft); }
+.theme-onceonce #page-result { background:#06020f !important; color:var(--text) !important; }
+.theme-onceonce .result-header { background:#040010; border-bottom:1px solid rgba(144,64,208,0.08); }
+.theme-onceonce .result-tag { color:rgba(144,64,208,0.5); }
+.theme-onceonce .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-onceonce .result-htitle em { color:var(--accent2); }
+.theme-onceonce .script-wrap { border-color:rgba(144,64,208,0.15); }
+.theme-onceonce .script-head { background:#040010; }
+.theme-onceonce .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#080118 !important; line-height:2.2; }
+.theme-onceonce .btn-dl { border-color:rgba(144,64,208,0.18); color:rgba(144,64,208,0.4); background:transparent; }
+.theme-onceonce .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-onceonce .result-note { border-color:rgba(144,64,208,0.1); color:rgba(244,238,255,0.3); }
+.theme-onceonce .btn-copy { border-color:rgba(144,64,208,0.22); background:rgba(144,64,208,0.05); color:rgba(212,168,64,0.6); }
+.theme-onceonce .btn-copy:hover { background:rgba(144,64,208,0.12); color:var(--accent2); }
+
+/* ERIOR KIDS — Warm yellow / soft orange */
+.theme-kids {
+  --bg: #0a0600;
+  --surface: #180e00;
+  --accent: #e8a020;
+  --accent2: #f8d060;
+  --text: #fff8e8;
+  --text-soft: rgba(255,248,232,0.55);
+  --header-bg: #060400;
+  --pdot-off: rgba(232,160,32,0.15);
+  --pdot-on: #e8a020;
+}
+.theme-kids .form-header { background:var(--header-bg); color:var(--accent2); border-bottom:1px solid rgba(232,160,32,0.1); }
+.theme-kids .fh-brand { color:rgba(248,208,96,0.3); }
+.theme-kids .pdot { background:var(--pdot-off); }
+.theme-kids .pdot.done { background:rgba(232,160,32,0.45); }
+.theme-kids .pdot.active { background:var(--accent2); box-shadow:0 0 8px rgba(248,208,96,0.5); }
+.theme-kids #page-form { background:linear-gradient(160deg,#0a0600,#180e00,#0a0600); color:var(--text); }
+.theme-kids .step-eyebrow { color:var(--accent2); letter-spacing:6px; }
+.theme-kids .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-kids .step-q em { color:var(--accent2); font-style:italic; }
+.theme-kids .step-hint { color:var(--text-soft); }
+.theme-kids .step-input { color:var(--text); border-color:rgba(232,160,32,0.3); opacity:1; }
+.theme-kids .step-input::placeholder { color:rgba(232,160,32,0.2); }
+.theme-kids textarea.step-input { background:rgba(232,160,32,0.03); border-color:rgba(232,160,32,0.18); opacity:1; }
+.theme-kids .choice-opt { border-color:rgba(232,160,32,0.15); color:var(--text); opacity:1; }
+.theme-kids .choice-opt:hover { border-color:rgba(232,160,32,0.4); background:rgba(232,160,32,0.04); }
+.theme-kids .choice-opt.selected { border-color:var(--accent2); background:rgba(232,160,32,0.08); }
+.theme-kids .choice-opt.selected .choice-radio { background:var(--accent2); border-color:var(--accent2); }
+.theme-kids .lang-btn { color:var(--accent2); border-color:rgba(232,160,32,0.2); opacity:1; background:transparent; }
+.theme-kids .lang-btn.active { background:var(--accent2); color:#0a0600; }
+.theme-kids .btn-back { color:rgba(255,248,232,0.25); }
+.theme-kids .btn-next { border-color:rgba(232,160,32,0.35); color:var(--accent2); }
+.theme-kids .btn-next:hover { background:var(--accent2); color:#0a0600; }
+.theme-kids .intro-card { background:rgba(232,160,32,0.05); border:1px solid rgba(232,160,32,0.12); color:var(--text); }
+.theme-kids .intro-card-label { color:rgba(232,160,32,0.4); }
+.theme-kids .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-kids .intro-card-desc { color:var(--text-soft); }
+.theme-kids #page-result { background:#0a0600 !important; color:var(--text) !important; }
+.theme-kids .result-header { background:#060400; border-bottom:1px solid rgba(232,160,32,0.08); }
+.theme-kids .result-tag { color:rgba(232,160,32,0.5); }
+.theme-kids .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-kids .result-htitle em { color:var(--accent2); }
+.theme-kids .script-wrap { border-color:rgba(232,160,32,0.15); }
+.theme-kids .script-head { background:#060400; }
+.theme-kids .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#0d0800 !important; line-height:2.2; }
+.theme-kids .btn-dl { border-color:rgba(232,160,32,0.18); color:rgba(232,160,32,0.4); background:transparent; }
+.theme-kids .btn-dl:hover { border-color:var(--accent2); color:var(--accent2); }
+.theme-kids .result-note { border-color:rgba(232,160,32,0.1); color:rgba(255,248,232,0.3); }
+.theme-kids .btn-copy { border-color:rgba(232,160,32,0.22); background:rgba(232,160,32,0.05); color:rgba(248,208,96,0.6); }
+.theme-kids .btn-copy:hover { background:rgba(232,160,32,0.12); color:var(--accent2); }
+
+/* ERIOR LOVE — Dark terracotta / peach */
+.theme-eriorldove {
+  --bg: #0f0602;
+  --surface: #1e0e06;
+  --accent: #c86040;
+  --accent2: #f0a880;
+  --text: #fff4ee;
+  --text-soft: rgba(255,244,238,0.55);
+  --header-bg: #080400;
+  --pdot-off: rgba(200,96,64,0.15);
+  --pdot-on: #c86040;
+}
+.theme-eriorldove .form-header { background:var(--header-bg); color:var(--accent2); border-bottom:1px solid rgba(200,96,64,0.1); }
+.theme-eriorldove .fh-brand { color:rgba(240,168,128,0.3); }
+.theme-eriorldove .pdot { background:var(--pdot-off); }
+.theme-eriorldove .pdot.done { background:rgba(200,96,64,0.45); }
+.theme-eriorldove .pdot.active { background:var(--accent); box-shadow:0 0 8px rgba(200,96,64,0.5); }
+.theme-eriorldove #page-form { background:linear-gradient(160deg,#0f0602,#1e0e06,#0f0602); color:var(--text); }
+.theme-eriorldove .step-eyebrow { color:var(--accent2); letter-spacing:6px; }
+.theme-eriorldove .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-eriorldove .step-q em { color:var(--accent2); font-style:italic; }
+.theme-eriorldove .step-hint { color:var(--text-soft); }
+.theme-eriorldove .step-input { color:var(--text); border-color:rgba(200,96,64,0.3); opacity:1; }
+.theme-eriorldove .step-input::placeholder { color:rgba(200,96,64,0.2); }
+.theme-eriorldove textarea.step-input { background:rgba(200,96,64,0.03); border-color:rgba(200,96,64,0.18); opacity:1; }
+.theme-eriorldove .choice-opt { border-color:rgba(200,96,64,0.15); color:var(--text); opacity:1; }
+.theme-eriorldove .choice-opt:hover { border-color:rgba(200,96,64,0.4); background:rgba(200,96,64,0.04); }
+.theme-eriorldove .choice-opt.selected { border-color:var(--accent); background:rgba(200,96,64,0.08); }
+.theme-eriorldove .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); }
+.theme-eriorldove .lang-btn { color:var(--accent2); border-color:rgba(200,96,64,0.2); opacity:1; background:transparent; }
+.theme-eriorldove .lang-btn.active { background:var(--accent); color:#fff4ee; }
+.theme-eriorldove .btn-back { color:rgba(255,244,238,0.25); }
+.theme-eriorldove .btn-next { border-color:rgba(200,96,64,0.35); color:var(--accent2); }
+.theme-eriorldove .btn-next:hover { background:var(--accent); color:#fff4ee; }
+.theme-eriorldove .intro-card { background:rgba(200,96,64,0.05); border:1px solid rgba(200,96,64,0.12); color:var(--text); }
+.theme-eriorldove .intro-card-label { color:rgba(200,96,64,0.4); }
+.theme-eriorldove .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-eriorldove .intro-card-desc { color:var(--text-soft); }
+.theme-eriorldove #page-result { background:#0f0602 !important; color:var(--text) !important; }
+.theme-eriorldove .result-header { background:#080400; border-bottom:1px solid rgba(200,96,64,0.08); }
+.theme-eriorldove .result-tag { color:rgba(200,96,64,0.5); }
+.theme-eriorldove .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-eriorldove .result-htitle em { color:var(--accent2); }
+.theme-eriorldove .script-wrap { border-color:rgba(200,96,64,0.15); }
+.theme-eriorldove .script-head { background:#080400; }
+.theme-eriorldove .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#120500 !important; line-height:2.2; }
+.theme-eriorldove .btn-dl { border-color:rgba(200,96,64,0.18); color:rgba(200,96,64,0.4); background:transparent; }
+.theme-eriorldove .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-eriorldove .result-note { border-color:rgba(200,96,64,0.1); color:rgba(255,244,238,0.3); }
+.theme-eriorldove .btn-copy { border-color:rgba(200,96,64,0.22); background:rgba(200,96,64,0.05); color:rgba(240,168,128,0.6); }
+.theme-eriorldove .btn-copy:hover { background:rgba(200,96,64,0.12); color:var(--accent2); }
+
+/* MENTAL GLOW UP — Dark steel blue / electric cyan */
+.theme-mentalglow {
+  --bg: #020810;
+  --surface: #050f1e;
+  --accent: #0090c0;
+  --accent2: #40d8f0;
+  --text: #e8f8ff;
+  --text-soft: rgba(232,248,255,0.5);
+  --header-bg: #010508;
+  --pdot-off: rgba(0,144,192,0.15);
+  --pdot-on: #0090c0;
+}
+.theme-mentalglow .form-header { background:var(--header-bg); color:var(--accent2); border-bottom:1px solid rgba(0,144,192,0.1); }
+.theme-mentalglow .fh-brand { color:rgba(64,216,240,0.3); }
+.theme-mentalglow .pdot { background:var(--pdot-off); }
+.theme-mentalglow .pdot.done { background:rgba(0,144,192,0.45); }
+.theme-mentalglow .pdot.active { background:var(--accent2); box-shadow:0 0 8px rgba(64,216,240,0.5); }
+.theme-mentalglow #page-form { background:linear-gradient(160deg,#020810,#050f1e,#020810); color:var(--text); }
+.theme-mentalglow .step-eyebrow { color:var(--accent2); letter-spacing:6px; }
+.theme-mentalglow .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-mentalglow .step-q em { color:var(--accent2); font-style:italic; }
+.theme-mentalglow .step-hint { color:var(--text-soft); }
+.theme-mentalglow .step-input { color:var(--text); border-color:rgba(0,144,192,0.3); opacity:1; }
+.theme-mentalglow .step-input::placeholder { color:rgba(0,144,192,0.2); }
+.theme-mentalglow textarea.step-input { background:rgba(0,144,192,0.03); border-color:rgba(0,144,192,0.18); opacity:1; }
+.theme-mentalglow .choice-opt { border-color:rgba(0,144,192,0.15); color:var(--text); opacity:1; }
+.theme-mentalglow .choice-opt:hover { border-color:rgba(0,144,192,0.4); background:rgba(0,144,192,0.04); }
+.theme-mentalglow .choice-opt.selected { border-color:var(--accent2); background:rgba(0,144,192,0.08); }
+.theme-mentalglow .choice-opt.selected .choice-radio { background:var(--accent2); border-color:var(--accent2); }
+.theme-mentalglow .lang-btn { color:var(--accent2); border-color:rgba(0,144,192,0.2); opacity:1; background:transparent; }
+.theme-mentalglow .lang-btn.active { background:var(--accent); color:#e8f8ff; }
+.theme-mentalglow .btn-back { color:rgba(232,248,255,0.25); }
+.theme-mentalglow .btn-next { border-color:rgba(0,144,192,0.35); color:var(--accent2); }
+.theme-mentalglow .btn-next:hover { background:var(--accent); color:#e8f8ff; }
+.theme-mentalglow .intro-card { background:rgba(0,144,192,0.05); border:1px solid rgba(0,144,192,0.12); color:var(--text); }
+.theme-mentalglow .intro-card-label { color:rgba(0,144,192,0.4); }
+.theme-mentalglow .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-mentalglow .intro-card-desc { color:var(--text-soft); }
+.theme-mentalglow #page-result { background:#020810 !important; color:var(--text) !important; }
+.theme-mentalglow .result-header { background:#010508; border-bottom:1px solid rgba(0,144,192,0.08); }
+.theme-mentalglow .result-tag { color:rgba(0,144,192,0.5); }
+.theme-mentalglow .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-mentalglow .result-htitle em { color:var(--accent2); }
+.theme-mentalglow .script-wrap { border-color:rgba(0,144,192,0.15); }
+.theme-mentalglow .script-head { background:#010508; }
+.theme-mentalglow .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#030c18 !important; line-height:2.2; }
+.theme-mentalglow .btn-dl { border-color:rgba(0,144,192,0.18); color:rgba(0,144,192,0.4); background:transparent; }
+.theme-mentalglow .btn-dl:hover { border-color:var(--accent2); color:var(--accent2); }
+.theme-mentalglow .result-note { border-color:rgba(0,144,192,0.1); color:rgba(232,248,255,0.3); }
+.theme-mentalglow .btn-copy { border-color:rgba(0,144,192,0.22); background:rgba(0,144,192,0.05); color:rgba(64,216,240,0.6); }
+.theme-mentalglow .btn-copy:hover { background:rgba(0,144,192,0.12); color:var(--accent2); }
 </style>
 </head>
 <body>
@@ -1126,7 +1698,139 @@ const AUDIOS = {
     buildSteps: buildFitwaveSteps,
     buildPrompt: buildFitwavePrompt,
     systemPrompt: getFitwaveSystem,
-  }
+  },
+  'miselect12': {
+    name: 'SELECT',
+    theme: 'theme-select',
+    steps: 4,
+    headerLabel: 'ERIORCENTER — SELECT ✨',
+    introTitle: '<em>SELECT</em>',
+    introDesc: 'Este audio ha sido creado especialmente para ayudarte a que <strong>todos tus comandos se vean materializados día a día en tu realidad</strong>. Te lleva al estado de autoría, donde tú solo eliges y lo verás en tu realidad ✨',
+    fields: ['name','email','desires','record'],
+    buildSteps: buildSelectSteps,
+    buildPrompt: buildSelectPrompt,
+    systemPrompt: getSelectSystem,
+  },
+  'miwonderland13': {
+    name: 'WONDERLAND COHERENCE',
+    theme: 'theme-wonderland',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — WONDERLAND COHERENCE 🌀',
+    introTitle: 'WONDERLAND <em>COHERENCE</em>',
+    introDesc: 'Este audio está diseñado para activar y estabilizar la <strong>coherencia</strong> dentro de ti. Mientras lo escuchas, tu mente, tu energía y tus elecciones comienzan a alinearse naturalmente 🌀✨',
+    fields: ['name','last','email','anchors','record'],
+    buildSteps: buildWonderlandSteps,
+    buildPrompt: buildWonderlandPrompt,
+    systemPrompt: getWonderlandSystem,
+  },
+  'milucky14': {
+    name: 'LUCKY',
+    theme: 'theme-lucky',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — LUCKY 🍀',
+    introTitle: '<em>LUCKY</em>',
+    introDesc: 'Esta fórmula está diseñada para activar la <strong>atracción acelerada de dinero</strong> y optimizar tus decisiones financieras. Tu sistema interno se recalibra automáticamente hacia la abundancia y la suerte 🍀💰',
+    fields: ['name','last','email','goal','record'],
+    buildSteps: buildLuckySteps,
+    buildPrompt: buildLuckyPrompt,
+    systemPrompt: getLuckySystem,
+  },
+  'miamorpropio2punto0': {
+    name: 'Amor Propio Magic 2.0',
+    theme: 'theme-amorpropio2',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — Amor Propio Magic 2.0 🌸',
+    introTitle: 'Amor Propio Magic <em>2.0</em>',
+    introDesc: 'Muchas gracias por adquirir nuestro nuevo programa para atraer <strong>Amor Propio y Magia</strong> 🪄✨',
+    fields: ['name','last','email','history','record'],
+    buildSteps: buildAmorpropio2Steps,
+    buildPrompt: buildAmorpropio2Prompt,
+    systemPrompt: getAmorpropio2System,
+  },
+  'mieclet15': {
+    name: 'ÉCLAT',
+    theme: 'theme-eclat',
+    steps: 4,
+    headerLabel: 'ERIORCENTER — ÉCLAT ✨',
+    introTitle: '<em>ÉCLAT</em>',
+    introDesc: 'Este audio ha sido creado especialmente para que todos tus comandos de <strong>belleza</strong> se materialicen día a día. Te lleva al estado de autoría donde tú eliges y tu cuerpo obedece con perfección ✨💎',
+    fields: ['name','email','changes','record'],
+    buildSteps: buildEclatSteps,
+    buildPrompt: buildEclatPrompt,
+    systemPrompt: getEclatSystem,
+  },
+  'miattraction16': {
+    name: 'ATTRACTION',
+    theme: 'theme-attraction',
+    steps: 6,
+    headerLabel: 'ERIORCENTER — ATTRACTION 💖',
+    introTitle: '<em>ATTRACTION</em>',
+    introDesc: 'Bienvenid@ al programa <strong>ATTRACTION</strong>. Este audio está diseñado para activar tu magnetismo y atraer el amor sano, maduro y recíproco que mereces 💖✨',
+    fields: ['name','pronunciation','last','email','lovetype','lovestory','specificname','gender','record'],
+    buildSteps: buildAttractionSteps,
+    buildPrompt: buildAttractionPrompt,
+    systemPrompt: getAttractionSystem,
+  },
+  'mimastermind17': {
+    name: 'Master MIND',
+    theme: 'theme-mastermind',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — Master MIND 🧠',
+    introTitle: 'Master <em>MIND</em>',
+    introDesc: 'Muchas gracias por adquirir nuestro programa <strong>MASTER MIND</strong>. Especial para expandir tu consciencia y lograr todo lo que te propones 🧠✨',
+    fields: ['name','last','email','area','gender','record'],
+    buildSteps: buildMastermindSteps,
+    buildPrompt: buildMastermindPrompt,
+    systemPrompt: getMastermindSystem,
+  },
+  'mionceonce11': {
+    name: '11:11',
+    theme: 'theme-onceonce',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — 11:11 ✨',
+    introTitle: '<em>11:11</em>',
+    introDesc: 'Muchas gracias por adquirir nuestro programa <strong>11:11</strong>. El audio para volverte puro amor y disolverte en él ✨💛',
+    fields: ['name','last','email','lovesolution','gender','record'],
+    buildSteps: buildOnceonceSteps,
+    buildPrompt: buildOnceoncePrompt,
+    systemPrompt: getOnceonceSystem,
+  },
+  'mieriorkids00': {
+    name: 'ERIOR KIDS',
+    theme: 'theme-kids',
+    steps: 4,
+    headerLabel: 'ERIORCENTER — ERIOR KIDS 🌟',
+    introTitle: 'ERIOR <em>KIDS</em>',
+    introDesc: 'Este audio está hecho especialmente para niños 🌟 Diseñado para que de forma natural entren en un estado de mayor calma, claridad y coherencia interna ✨',
+    fields: ['name','email','kidsintention','record'],
+    buildSteps: buildKidsSteps,
+    buildPrompt: buildKidsPrompt,
+    systemPrompt: getKidsSystem,
+  },
+  'mieriorlove20': {
+    name: 'ERIOR LOVE',
+    theme: 'theme-eriorldove',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — ERIOR LOVE 💛',
+    introTitle: 'ERIOR <em>LOVE</em>',
+    introDesc: 'Haremos <strong>Alquimia interna</strong> para que reflejes la mejor versión de las personas en tus relaciones 💛✨',
+    fields: ['name','last','email','lovetheme','record'],
+    buildSteps: buildEriorloveSteps,
+    buildPrompt: buildEriorlovePrompt,
+    systemPrompt: getEriorloveSystem,
+  },
+  'mimentalglow21': {
+    name: 'MENTAL GLOW UP',
+    theme: 'theme-mentalglow',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — MENTAL GLOW UP 🧠',
+    introTitle: 'MENTAL <em>GLOW UP</em>',
+    introDesc: 'Muchas gracias por adquirir nuestro nuevo audio de <strong>Amor Propio y Belleza</strong>. Este programa transforma tu mente y tu personalidad desde adentro 🧠⚡',
+    fields: ['name','last','email','personality','record'],
+    buildSteps: buildMentalglowSteps,
+    buildPrompt: buildMentalglowPrompt,
+    systemPrompt: getMentalglowSystem,
+  },
 };
 
 // ═══════════════════════════════════
@@ -1186,6 +1890,17 @@ const THEME_BG = {
   'theme-satori': '#f4f2ee',
   'theme-mesmerizing': '#110508',
   'theme-fitwave': '#010a0f',
+  'theme-select': '#f8f7f5',
+  'theme-wonderland': '#020810',
+  'theme-lucky': '#030a04',
+  'theme-amorpropio2': '#0f0408',
+  'theme-eclat': '#080808',
+  'theme-attraction': '#0a0308',
+  'theme-mastermind': '#03020a',
+  'theme-onceonce': '#06020f',
+  'theme-kids': '#0a0600',
+  'theme-eriorldove': '#0f0602',
+  'theme-mentalglow': '#020810',
 };
 const THEME_COLOR = {
   'theme-you': '#faf6f0',
@@ -1199,6 +1914,17 @@ const THEME_COLOR = {
   'theme-satori': '#2a2a2a',
   'theme-mesmerizing': '#fdf0f2',
   'theme-fitwave': '#e8faff',
+  'theme-select': '#1a1818',
+  'theme-wonderland': '#e8f8f8',
+  'theme-lucky': '#f0f8e8',
+  'theme-amorpropio2': '#fdeef4',
+  'theme-eclat': '#f0eef8',
+  'theme-attraction': '#feeef4',
+  'theme-mastermind': '#f0eeff',
+  'theme-onceonce': '#f4eeff',
+  'theme-kids': '#fff8e8',
+  'theme-eriorldove': '#fff4ee',
+  'theme-mentalglow': '#e8f8ff',
 };
 
 function applyTheme(theme) {
@@ -1312,6 +2038,25 @@ function validateStep(n) {
     if(!document.querySelector('input[name="goal"]:checked')){show('e-goal');return false;}
   }
   if(fields[n-1]==='context'){hide('e-context');if(!v('f-context')){show('e-context');return false;}}
+  if(fields[n-1]==='desires'){hide('e-desires');if(!v('f-desires')){show('e-desires');return false;}}
+  if(fields[n-1]==='anchors'){hide('e-anchors');if(!v('f-anchors')){show('e-anchors');return false;}}
+  if(fields[n-1]==='history'){hide('e-history');if(!v('f-history')){show('e-history');return false;}}
+  if(fields[n-1]==='changes'){hide('e-changes');if(!v('f-changes')){show('e-changes');return false;}}
+  if(fields[n-1]==='lovetype'){
+    hide('e-lovetype');
+    if(!document.querySelector('input[name="lovetype"]:checked')){show('e-lovetype');return false;}
+  }
+  if(fields[n-1]==='lovestory'){hide('e-lovestory');if(!v('f-lovestory')){show('e-lovestory');return false;}}
+  if(fields[n-1]==='area'){hide('e-area');if(!v('f-area')){show('e-area');return false;}}
+  if(fields[n-1]==='lovesolution'){hide('e-lovesolution');if(!v('f-lovesolution')){show('e-lovesolution');return false;}}
+  if(fields[n-1]==='kidsintention'){hide('e-kidsintention');if(!v('f-kidsintention')){show('e-kidsintention');return false;}}
+  if(fields[n-1]==='lovetheme'){hide('e-lovetheme');if(!v('f-lovetheme')){show('e-lovetheme');return false;}}
+  if(fields[n-1]==='personality'){hide('e-personality');if(!v('f-personality')){show('e-personality');return false;}}
+  if(fields[n-1]==='specificname'){
+    // specificname only required if lovetype=specific
+    const lt=document.querySelector('input[name="lovetype"]:checked');
+    if(lt&&lt.value==='specific'&&!v('f-specificname')){hide('e-specificname');show('e-specificname');return false;}
+  }
   if(fields[n-1]==='version'){
     hide('e-version');
     if(!document.querySelector('input[name="version"]:checked')){show('e-version');return false;}
@@ -1348,6 +2093,18 @@ function collectStep(n) {
   if(f==='newversion') fd.newversion=g('f-newversion');
   if(f==='goal'){const r=document.querySelector('input[name="goal"]:checked');fd.goal=r?r.value:'';}
   if(f==='context') fd.context=g('f-context');
+  if(f==='desires') fd.desires=g('f-desires');
+  if(f==='anchors') fd.anchors=g('f-anchors');
+  if(f==='history') fd.history=g('f-history');
+  if(f==='changes') fd.changes=g('f-changes');
+  if(f==='lovetype'){const r=document.querySelector('input[name="lovetype"]:checked');fd.lovetype=r?r.value:'';}
+  if(f==='lovestory') fd.lovestory=g('f-lovestory');
+  if(f==='area') fd.area=g('f-area');
+  if(f==='lovesolution') fd.lovesolution=g('f-lovesolution');
+  if(f==='kidsintention') fd.kidsintention=g('f-kidsintention');
+  if(f==='lovetheme') fd.lovetheme=g('f-lovetheme');
+  if(f==='personality') fd.personality=g('f-personality');
+  if(f==='specificname') fd.specificname=g('f-specificname');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
   if(f==='pronunciation') fd.pronunciation=g('f-pronunciation');
   if(f==='gender'){const r=document.querySelector('input[name="gender"]:checked');fd.gender=r?r.value:'';};
@@ -1398,7 +2155,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -3227,6 +3984,1478 @@ Con cariño, El equipo ☁️🌸💎
 Devuelve SOLO el script final.`;
   } else {
     return `Name: ${name}, Goal: "${goal}", Context: "${context}". Generate FIT WAVE MINI SCRIPT in English. Fluid, energetic tone. Zero Point + identity + physical reprogramming. Key phrases: cancel the reflection, I choose, it renders now, I collapse. End with "Why is it that…?" Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — SELECT
+// ═══════════════════════════════════
+function buildSelectSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title"><em>SELECT</em> ✨</div>
+      <div class="intro-card-desc">Este audio ha sido creado especialmente para ayudarte a que <strong>todos tus comandos se vean materializados día a día en tu realidad</strong>. Te lleva al estado de autoría, donde tú solo eliges y lo verás en tu realidad ✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre y apellido</em>?</h2>
+    <p class="step-hint">El universo responde a tu nombre completo ✨</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tus 5 deseos</div>
+    <h2 class="step-q">Dinos <em>5 cosas</em> que quieras ver en tu realidad</h2>
+    <p class="step-hint">Brevemente, una por línea. Ejemplos: "Quiero tener más belleza", "Quiero ganar 10,000 pesos diarios", "Quiero conocer al amor de mi vida" ✨</p>
+    <textarea class="step-input" id="f-desires" placeholder="1. Quiero...&#10;2. Quiero...&#10;3. Quiero...&#10;4. Quiero...&#10;5. Quiero..." style="height:160px;"></textarea>
+    <div class="field-err" id="e-desires">Por favor escribe al menos un deseo</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Tu voz tiene el poder más alto para programar tu inconsciente 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — SELECT
+// ═══════════════════════════════════
+function getSelectSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts SELECT de ERIORCENTER. El script lleva al estado de neutralidad y autoría. Todo en positivo y presente. Estructura fija: inicio en neutralidad → por cada deseo: pregunta "¿Por qué será que ya...?" + afirmación "✨ Ya..." → bloque de anulación del reflejo → renderización → cierre exacto. Sin explicar el "cómo". Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's SELECT script editor. The script leads to neutrality and authorship state. Everything positive and present tense. Fixed structure: neutrality opening → for each desire: question "Why is it that already...?" + affirmation "✨ Already..." → reflection cancellation block → rendering → exact closing. Return ONLY the final script.`;
+}
+
+function buildSelectPrompt(fd){
+  const name=fd.name||'_';
+  const desires=fd.desires||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, 5 deseos: "${desires}"
+
+Genera el MINI SCRIPT SELECT de ERIORCENTER siguiendo EXACTAMENTE esta estructura. Usa los deseos del cliente para personalizar cada bloque.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo ${name}, vivo en neutralidad. Muy fácilmente manifiesto todas mis preferencias, todos los días. La vida es fácil para mí.
+
+[PARA CADA DESEO de los 5 que escribió el cliente, genera este bloque — adapta la pregunta y la afirmación al deseo específico:]
+¿Por qué será que ya [deseo en presente, específico y positivo]?
+✨ Ya [afirmación corta y directa que confirma ese deseo como realidad].
+
+[Repite el bloque anterior para cada uno de los 5 deseos]
+
+Anulo el reflejo.
+Esta realidad ya no me espejea carencia ni limitación.
+Solo responde a mis preferencias: [lista los 5 deseos en 1-2 palabras cada uno, separados por comas].
+
+Yo no manifiesto, yo no espero, yo no hago nada.
+El universo responde a mis preferencias.
+Y mis preferencias ya están cumplidas.
+
+Se rendea esto ahora.
+Yo elijo esta línea de tiempo.
+Yo anclo este estado.
+Colapso la realidad limitada y se rendea la de [resume los deseos en una frase positiva].
+
+Todo es fácil.
+Todo fluye.
+Todo está hecho.
+Y así es. ✨
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, 5 desires: "${desires}". Generate SELECT MINI SCRIPT in English following exact same structure. Neutrality opening → for each desire: "Why is it that already...?" + "✨ Already..." → cancellation block → rendering → exact closing. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — WONDERLAND COHERENCE
+// ═══════════════════════════════════
+function buildWonderlandSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">WONDERLAND <em>COHERENCE</em> 🌀</div>
+      <div class="intro-card-desc">Este audio está diseñado para activar y estabilizar la <strong>coherencia</strong> dentro de ti. Mientras lo escuchas, tu mente, tu energía y tus elecciones comienzan a alinearse naturalmente 🌀✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">Solo tu nombre, sin apellido 🌀</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tus 3 anclajes</div>
+    <h2 class="step-q">Escribe tus <em>3 anclajes</em> de coherencia</h2>
+    <p class="step-hint">Cada uno describe un trigger automático. Ejemplos: "Cada vez que tomo agua, mi mente y cuerpo se sincronizan", "Cada vez que respiro profundo, entro en coherencia". Escríbelos uno por línea 🌀</p>
+    <textarea class="step-input" id="f-anchors" placeholder="1. Cada vez que...&#10;2. Cada vez que...&#10;3. Cada vez que..." style="height:140px;"></textarea>
+    <div class="field-err" id="e-anchors">Por favor escribe tus 3 anclajes</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Funciona más con tu voz — el inconsciente obedece a tu nombre y voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🌀</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — WONDERLAND COHERENCE
+// ═══════════════════════════════════
+function getWonderlandSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts WONDERLAND COHERENCE de ERIORCENTER. El script activa y estabiliza la coherencia interna. Tono: simple, directo, repetitivo, hipnótico. Lenguaje 100% positivo. Enfoque en coherencia, neutralidad y alineación automática. Sin esfuerzo, sin lucha. Todo se ordena solo. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's WONDERLAND COHERENCE script editor. The script activates and stabilizes inner coherence. Tone: simple, direct, repetitive, hypnotic. 100% positive language. Focus on coherence, neutrality, automatic alignment. No effort, no struggle. Everything organizes itself. Return ONLY the final script.`;
+}
+
+function buildWonderlandPrompt(fd){
+  const name=fd.name||'_';
+  const anchors=fd.anchors||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, 3 anclajes del cliente: "${anchors}"
+
+Genera el MINI SCRIPT WONDERLAND COHERENCE de ERIORCENTER siguiendo EXACTAMENTE esta estructura. Los únicos bloques variables son el inicio (con el nombre), el bloque de anclajes (con los 3 anclajes del cliente), y el bloque de identidad llena el espacio con el nombre. TODO lo demás es TEXTO FIJO que no cambias.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo ${name}, me siento segur@, me siento protegid@, no tengo culpas, soy inocente, solo cosas buenas me pasan.
+
+En mi ${name}, la coherencia vive siempre, por eso me es fácil entrar en neutralidad; mi mente, mi energía y mis elecciones se alinean con naturalidad.
+¿Por qué será que cuando soy coherente conmigo mism@ todo empieza a organizarse con tanta facilidad?
+Mi campo energético se vuelve claro, estable y congruente, y desde esa coherencia mis preferencias se manifiestan con precisión.
+¿Por qué será que cuando mi energía está alineada la realidad responde tan rápido y de forma tan limpia?
+Cada pensamiento, emoción y acción dentro de mí ya camina en la misma dirección, creando una señal coherente hacia la realidad.
+¿Por qué será que esta coherencia interna se siente tan natural y tan poderosa al mismo tiempo?
+En esta neutralidad coherente, todo lo que elijo encuentra su lugar y aparece en mi mundo con facilidad.
+
+Soy coherencia.
+Mi abundancia es coherencia.
+Mi belleza es coherencia.
+Mi energía es coherencia.
+Mi presencia es coherencia.
+
+[ANCLAJES: Usa los 3 anclajes del cliente: "${anchors}". Para cada uno, redáctalo comenzando con "Yo ${name}, cada vez que..." o "Cada vez que..." según corresponda. Después de la frase del anclaje agrega 1 línea que refuerce el resultado con coherencia/alineación. Mantén el estilo simple y fluido del ejemplo.]
+
+Me relajo, siempre vivo en coherencia. ✨
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, 3 anchors: "${anchors}". Generate WONDERLAND COHERENCE MINI SCRIPT in English following exact same structure. Simple, direct, hypnotic tone. Coherence and alignment focus. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — LUCKY
+// ═══════════════════════════════════
+function buildLuckySteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title"><em>LUCKY</em> 🍀</div>
+      <div class="intro-card-desc">Esta fórmula está diseñada para activar la <strong>atracción acelerada de dinero</strong> y optimizar tus decisiones financieras. Tu sistema interno se recalibra automáticamente hacia la abundancia y la suerte 🍀💰</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La manera en que te dicen, sin apellidos 🍀</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu intención</div>
+    <h2 class="step-q">¿Qué te gustaría <em>lograr</em> con este audio?</h2>
+    <p class="step-hint">Ejemplos: "Ganarme la lotería", "Ganar todos los sorteos y concursos", "Que toda la gente me pague todo", "Atraer dinero inesperado" 🍀</p>
+    <textarea class="step-input" id="f-goal" placeholder="Quiero lograr..."></textarea>
+    <div class="field-err" id="e-goal">Por favor escribe tu intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Funciona más con tu voz — el inconsciente obedece a tu nombre y voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🍀</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — LUCKY
+// ═══════════════════════════════════
+function getLuckySystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts LUCKY de ERIORCENTER. Tono: directo, simple, repetitivo, sin lógica complicada. Todo en positivo. Enfocado en suerte, dinero, facilidad y normalización. Estructura fija obligatoria con bloques específicos. El ante-penúltimo párrafo y el cierre final en mayúsculas son EXACTOS e INAMOVIBLES. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's LUCKY script editor. Tone: direct, simple, repetitive, no complicated logic. Everything positive. Focused on luck, money, ease, normalization. Fixed mandatory structure. The second-to-last paragraph and the final closing in caps are EXACT and IMMOVABLE. Return ONLY the final script.`;
+}
+
+function buildLuckyPrompt(fd){
+  const name=fd.name||'_';
+  const goal=fd.goal||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Intención: "${goal}"
+
+Genera el MINI SCRIPT LUCKY de ERIORCENTER siguiendo EXACTAMENTE esta estructura. Personaliza los bloques con la intención del cliente. El ANTE-PENÚLTIMO PÁRRAFO y el CIERRE FINAL son EXACTOS — no los cambies ni una letra.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo ${name}, sé que [PERSONALIZAR: "${goal}" expresado como posibilidad abierta, 1 línea].
+[PERSONALIZAR: 5-7 líneas más comenzando con "Sé que…" normalizando dinero, suerte, oportunidades y resultados favorables relacionados a "${goal}". Simple, directo.]
+
+Todo es posible porque vivo en neutralidad.
+Desde la neutralidad el dinero fluye con facilidad.
+[PERSONALIZAR: 2-3 líneas más de "Desde la neutralidad…" reforzando la intención "${goal}".]
+
+Soy la o él mejor manifestando dinero, soy la persona con más buena suerte en el mundo.
+
+[PERSONALIZAR: 4-6 frases cortas tipo "El dinero fluye.", "Los premios llegan.", "Las oportunidades se alinean." Relacionadas a "${goal}".]
+
+¿Por qué será que [PERSONALIZAR: pregunta sobre "${goal}" ya logrado]?
+¿Por qué será que [PERSONALIZAR: segunda pregunta reforzando identidad de suerte/abundancia]?
+¿Por qué será que [PERSONALIZAR: tercera pregunta normalizando el resultado]?
+
+Yo solo me mantengo neutral…
+y lo veo en mi realidad todos los días, cada vez más.
+
+ENTRE MÁS ESCUCHO ESTE AUDIO MÁS BUENA SUERTE TENGO, MÁS GANO TODOS LOS CONCURSOS Y SORTEOS Y MÁS RECIBO Y GANO DINERO ✨
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, Intention: "${goal}". Generate LUCKY MINI SCRIPT in English following exact same structure. Direct, simple, repetitive tone. Everything positive. Luck, money, ease focus. The second-to-last paragraph and final closing in caps are EXACT — do not change them. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — AMOR PROPIO MAGIC 2.0
+// ═══════════════════════════════════
+function buildAmorpropio2Steps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">Amor Propio Magic <em>2.0</em> 🌸</div>
+      <div class="intro-card-desc">Muchas gracias por adquirir nuestro nuevo programa para atraer <strong>Amor Propio y Magia</strong> 🪄✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La manera en la que te dices, sin apellidos 🌸</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que enviaste tu comprobante de pago 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu historia</div>
+    <h2 class="step-q">¿Qué <em>historia del pasado</em> quieres cambiar?</h2>
+    <p class="step-hint">Solo un tema. Ejemplos: "Quiero trabajar la seguridad", "Quiero trabajar las relaciones en pareja", "Quiero trabajar el dinero", "Quiero trabajar un trauma de la infancia" 🌸</p>
+    <textarea class="step-input" id="f-history" placeholder="Quiero trabajar..."></textarea>
+    <div class="field-err" id="e-history">Por favor escribe tu tema</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Sirve 90% más con tu voz — el inconsciente obedece a tu nombre y voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🌸</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — AMOR PROPIO MAGIC 2.0
+// ═══════════════════════════════════
+function getAmorpropio2System(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts Amor Propio Magic 2.0 de ERIORCENTER. Estilo: narrativo, fluido, mágico, empoderador y amoroso. Como si hablara una versión superior de la persona. Todo en positivo y presente. Sin mencionar trauma directamente. Sin drama ni victimismo. No es terapia ni análisis. Afirma identidad. Cierra siempre con "¿Por qué será que me amo tanto? ¿Por qué será que estoy tan enamorad@ de mí?" Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's Amor Propio Magic 2.0 script editor. Style: narrative, fluid, magical, empowering and loving. As if a superior version of the person is speaking. Everything positive and present tense. No direct mention of trauma. No drama or victimism. Not therapy or analysis. Affirms identity. Always closes with the self-love questions. Return ONLY the final script.`;
+}
+
+function buildAmorpropio2Prompt(fd){
+  const name=fd.name||'_';
+  const history=fd.history||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Historia/tema a trabajar: "${history}"
+
+Genera el MINI SCRIPT Amor Propio Magic 2.0 de ERIORCENTER siguiendo EXACTAMENTE esta estructura. Adapta SOLO las secciones marcadas con [PERSONALIZAR]. El cierre es OBLIGATORIO e IDÉNTICO.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo, ${name}, declaro que
+[PERSONALIZAR: 5-7 líneas afirmando la nueva identidad relacionada a "${history}". Narrativo, fluido. En presente. Como si ya fuera realidad. Sin mencionar el problema directamente — solo la nueva versión. Ej: si es "relaciones" → "mis relaciones se construyen desde el amor propio, la claridad y el respeto."]
+
+Yo elijo que ya soy la versión de mí que merece todo.
+Desde esta elección, [PERSONALIZAR: 1 línea conectando "${history}" con algo que fluye naturalmente].
+
+[PERSONALIZAR: 3-4 líneas describiendo cómo ${name} vive esta nueva realidad. Cómo se siente, qué disfruta, qué experimenta. Todo en presente positivo.]
+
+Anulo el reflejo.
+Esta realidad ya no me espejea [PERSONALIZAR: 1 frase de lo que se anula, sin drama, relacionado a "${history}"].
+Solo responde a mi preferencia de [PERSONALIZAR: resultado positivo alineado a "${history}"] y amor propio consciente.
+
+Colapso la realidad de [PERSONALIZAR: versión limitada relacionada a "${history}" en 3-4 palabras].
+Se rendea esto ahora:
+[PERSONALIZAR: 2-3 líneas de la nueva realidad manifestada. Específica, presente, positiva.]
+
+Confío en mi capacidad de elegir bien.
+Confío en lo que merezco.
+[PERSONALIZAR: 1-2 líneas de cierre amoroso relacionadas a "${history}".]
+Y desde este lugar, todo se ordena con facilidad.
+
+¿Qué voy a hacer ahora que estoy tan enamorad@ de mí ✯ 🎧 🥣 🪽✩?
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, Theme to work on: "${history}". Generate Amor Propio Magic 2.0 MINI SCRIPT in English following exact same structure. Narrative, fluid, magical, empowering tone. Everything positive present tense. No direct trauma mention. Always end with self-love questions. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — ECLAT
+// ═══════════════════════════════════
+function buildEclatSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title"><em>ÉCLAT</em> ✨</div>
+      <div class="intro-card-desc">Este audio ha sido creado especialmente para que todos tus comandos de <strong>belleza</strong> se materialicen día a día. Te lleva al estado de autoría donde tú eliges y tu cuerpo obedece con perfección ✨💎</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre y apellido</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre completo</em>?</h2>
+    <p class="step-hint">Nombre y apellido ✨</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tus 5 cambios</div>
+    <h2 class="step-q">Dinos <em>5 cambios físicos</em> que quieres ver en tu cuerpo</h2>
+    <p class="step-hint">Brevemente, uno por línea. Ejemplos: "Quiero la piel más bonita", "Quiero ser más delgada", "Quiero piel de porcelana", "Quiero ser más sexy" ✨</p>
+    <textarea class="step-input" id="f-changes" placeholder="1. Quiero...&#10;2. Quiero...&#10;3. Quiero...&#10;4. Quiero...&#10;5. Quiero..." style="height:160px;"></textarea>
+    <div class="field-err" id="e-changes">Por favor escribe al menos un cambio</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">No es igual de efectivo sin tu voz — el inconsciente obedece a tu nombre y voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — ECLAT
+// ═══════════════════════════════════
+function getEclatSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts ÉCLAT de ERIORCENTER. Mezcla de Zero Point Rendering y Select Script. Enfocado en belleza, magnetismo y armonía física. Tono: suave, elegante, armónico. Sin esfuerzo, sin comparación. Identidad + renderización + neutralidad. Las 3 preguntas de agua/audios/dormir son obligatorias. El cierre exacto es inamovible. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's ÉCLAT script editor. Mix of Zero Point Rendering and Select Script. Focused on beauty, magnetism, physical harmony. Tone: soft, elegant, harmonious. No effort, no comparison. Identity + rendering + neutrality. The 3 water/audio/sleep questions are mandatory. The exact closing is immovable. Return ONLY the final script.`;
+}
+
+function buildEclatPrompt(fd){
+  const name=fd.name||'_';
+  const changes=fd.changes||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, 5 cambios físicos: "${changes}"
+
+Genera el MINI SCRIPT ÉCLAT de ERIORCENTER siguiendo EXACTAMENTE esta estructura. Personaliza los bloques de cambios físicos con los 5 deseos del cliente. Los bloques fijos NO se modifican. El cierre final es EXACTO e INAMOVIBLE.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo ${name}, soy la expresión viva de la belleza.
+Represento toda la belleza que existe en mi realidad.
+La belleza interna me hace ser cada vez más hermosa.
+La belleza interna se refleja en mi exterior y por eso soy la más bella.
+Nadie es más bella que yo porque yo tengo el interior más hermoso.
+
+Yo existo en punto cero.
+Desde aquí, la belleza no se persigue: se rendea.
+No hay esfuerzo, no hay corrección, no hay comparación.
+Solo reconocimiento de lo que ya soy.
+
+Mi luz interior se proyecta con precisión en cada célula de mi cuerpo.
+Cada pensamiento bello se traduce en armonía física.
+Cada emoción suave se convierte en belleza visible.
+Mi energía es arte en movimiento.
+
+Anulo el reflejo.
+Esta realidad ya no me espejea exigencia ni duda.
+Solo responde a mi preferencia limpia de belleza absoluta.
+Se rendea ahora la versión más bella, más luminosa y más perfecta de mí.
+
+Todo en mí vibra en pureza, amor y plenitud.
+Y cuanto más me reconozco, más mi belleza florece ante todos los ojos.
+Me es muy fácil reconocer mi belleza: la veo, la siento y la reflejo en mi cuerpo físico.
+
+Yo ${name}, vivo en neutralidad.
+Muy fácilmente manifiesto todas mis preferencias, todos los días.
+La vida es fácil para mí.
+
+Yo ${name}, entro en punto cero.
+Silencio. Presencia. Certeza.
+Aquí no hay deseo ni carencia.
+Solo una elección clara: belleza encarnada.
+
+Yo no manifiesto, yo no espero, yo no hago nada.
+El universo responde a mis preferencias.
+Y mi preferencia es clara: ser belleza viva, dentro y fuera.
+
+Se rendea esto ahora: pureza, armonía y expresión divina de mi belleza.
+
+[PERSONALIZAR: Para cada uno de los 5 cambios físicos "${changes}", genera 2-3 líneas en presente afirmando ese cambio como realidad ya existente. Tono elegante, suave, sin esfuerzo. Ej: si es "quiero piel más bonita" → "Yo ${name}, tengo la piel más luminosa y perfecta cada día. Mi piel refleja salud, hidratación y belleza natural." Separa cada cambio con una línea en blanco.]
+
+Me gusto.
+Me celebro.
+Habitar mi cuerpo se siente ligero, amoroso y natural.
+
+¿Por qué será que cada vez que tomo agua mi cuerpo se armoniza más y mi belleza se vuelve más evidente?
+¿Por qué será que cada vez que escucho mis audios mi silueta se define y mi atractivo aumenta?
+¿Por qué será que cada vez que duermo despierto más delgada, más curvilínea y más hermosa?
+
+Yo elijo la línea de tiempo donde todo esto ya está hecho.
+Yo anclo este estado ahora.
+Colapso la realidad del olvido y se rendea la del reconocimiento.
+
+Todo es fácil.
+Todo es posible.
+Porque el universo elige mis preferencias.
+
+Todo está hecho.
+Todo fluye.
+Y así es.
+
+¿Qué voy a hacer ahora que es inevitable que cada vez me veo más bell@ y joven?
+¡Es inevitable! Nadie lo puede parar.
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, 5 physical changes: "${changes}". Generate ÉCLAT MINI SCRIPT in English following exact same structure. Elegant, soft, harmonious tone. Zero Point Rendering + identity. 3 mandatory questions (water/audios/sleep). Exact immovable closing. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — ATTRACTION
+// ═══════════════════════════════════
+function buildAttractionSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title"><em>ATTRACTION</em> 💖</div>
+      <div class="intro-card-desc">Bienvenid@ al programa <strong>ATTRACTION</strong>. Este audio está diseñado para activar tu magnetismo y atraer el amor sano, maduro y recíproco que mereces 💖✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La manera en la que te dices, sin apellidos 💖</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <p class="step-hint" style="margin-top:20px;">¿Tu nombre se pronuncia de alguna manera especial? <span style="opacity:0.4">(opcional)</span></p>
+    <input type="text" class="step-input" id="f-pronunciation" placeholder="Se pronuncia como..." autocomplete="off">
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu intención</div>
+    <h2 class="step-q">¿Qué quieres <em>atraer</em>?</h2>
+    <div class="choices">
+      <label class="choice-opt" onclick="selectChoice(this,'lovetype','new');toggleSpecificField(false)"><input type="radio" name="lovetype" value="new"><div class="choice-radio"></div><span class="choice-label">💞 Atraer una nueva pareja</span></label>
+      <label class="choice-opt" onclick="selectChoice(this,'lovetype','specific');toggleSpecificField(true)"><input type="radio" name="lovetype" value="specific"><div class="choice-radio"></div><span class="choice-label">💍 Atraer a una persona específica</span></label>
+    </div>
+    <div class="field-err" id="e-lovetype">Por favor selecciona una opción</div>
+    <div id="specific-name-wrap" style="display:none;margin-top:16px;">
+      <p class="step-hint">¿Cómo se llama o cómo le dices? (sin apellidos) 💖</p>
+      <input type="text" class="step-input" id="f-specificname" placeholder="Su nombre es..." autocomplete="off">
+      <div class="field-err" id="e-specificname">Por favor escribe el nombre de esa persona</div>
+    </div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Tu situación</div>
+    <h2 class="step-q">Cuéntanos tu <em>situación amorosa</em></h2>
+    <p class="step-hint">En 5 renglones brevemente. Esto nos ayuda a personalizar tu script 💖</p>
+    <textarea class="step-input" id="f-lovestory" placeholder="Mi situación amorosa es..." style="height:140px;"></textarea>
+    <div class="field-err" id="e-lovestory">Por favor cuéntanos tu situación</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="6">
+    <div class="step-eyebrow">06 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Sirve 90% más con tu voz — el inconsciente obedece a tu nombre y voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💖</button></div>
+  </div>`;
+}
+
+function toggleSpecificField(show){
+  document.getElementById('specific-name-wrap').style.display = show ? 'block' : 'none';
+}
+
+function selectChoice(el, name, val){
+  const group = el.closest('.choices');
+  group.querySelectorAll('.choice-opt').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  fd[name] = val;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — ATTRACTION
+// ═══════════════════════════════════
+function getAttractionSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts ATTRACTION de ERIORCENTER. Tono: romántico, magnético, seguro, elevado. Todo en positivo y presente. Desde certeza, no desde carencia. Frases: "soy un imán", "ya vivo", "se siente". Incluye cómo actúa la otra persona, cómo se siente la relación, identidad de "elegida/amada/correspondida". Cierra con pregunta "¿Por qué será que…?" y frases de inevitabilidad. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's ATTRACTION script editor. Tone: romantic, magnetic, secure, elevated. Everything positive and present tense. From certainty, not lack. Phrases: "I am a magnet", "I already live", "it feels". Include how the other person acts, how the relationship feels, identity of "chosen/loved/reciprocated". Close with "Why is it that…?" and inevitability phrases. Return ONLY the final script.`;
+}
+
+function buildAttractionPrompt(fd){
+  const name=fd.name||'_';
+  const lovetype=fd.lovetype||'new';
+  const lovestory=fd.lovestory||'';
+  const specificname=fd.specificname||'';
+  const isSpecific = lovetype==='specific';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Tipo: ${isSpecific?'persona específica':'nueva pareja'}${isSpecific?', Nombre de la persona: '+specificname:''}, Situación amorosa: "${lovestory}"
+
+Genera el MINI SCRIPT ATTRACTION de ERIORCENTER. ${isSpecific?`Es para atraer a UNA PERSONA ESPECÍFICA llamada "${specificname}". Usa su nombre en el script.`:`Es para atraer UNA NUEVA PAREJA. No menciones nombre de persona específica.`} Adapta la situación "${lovestory}" como ya resuelta.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo, ${name}, soy un imán de [PERSONALIZAR: tipo de amor relacionado a "${lovestory}" — ej: "amor comprometido, estable y consciente"] 💍✨
+
+[PERSONALIZAR: 4-6 líneas describiendo la situación "${lovestory}" ya resuelta. ${isSpecific?`${specificname} siente, actúa, elige. Cómo se comporta, qué expresa, cómo se siente la relación.`:`La nueva pareja llega, cómo es, cómo se siente, cómo actúa. Qué hace, cómo trata a ${name}.`} Tono: certeza total, presente, emocional.]
+
+[PERSONALIZAR: 3-4 líneas más de cómo se siente ${name} en esta relación. Segura, elegida, priorizada, escuchada. Emocional y específico a "${lovestory}".]
+
+[PERSONALIZAR: 2-3 líneas de cómo evoluciona o se concreta la relación. Natural, fluido, inevitable.]
+
+Yo me siento elegida, segura y profundamente amada 💖
+Mi relación es un espacio donde puedo ser yo, sentirme vista y construir en paz.
+
+¿Por qué será que ${isSpecific?`ahora ${specificname} se siente tan [PERSONALIZAR: estado específico relacionado a "${lovestory}"]`:`el amor perfecto para mí llegó de forma tan natural y clara`}? ❓💫
+
+Tal vez porque todo en nuestra vida se alineó 🧲
+O quizá… porque el amor que construimos se volvió tan fuerte,
+que el siguiente paso simplemente se volvió inevitable.
+
+Y se siente claro.
+Se siente real.
+Se siente como un "sí" definitivo 💍✨
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, Type: ${isSpecific?'specific person':'new partner'}${isSpecific?', Person name: '+specificname:''}, Love situation: "${lovestory}". Generate ATTRACTION MINI SCRIPT in English. Romantic, magnetic, secure tone. Everything present tense from certainty. Close with "Why is it that…?" and inevitability. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — MASTER MIND
+// ═══════════════════════════════════
+function buildMastermindSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">Master <em>MIND</em> 🧠</div>
+      <div class="intro-card-desc">Muchas gracias por adquirir nuestro programa <strong>MASTER MIND</strong>. Especial para expandir tu consciencia y lograr todo lo que te propones 🧠✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La manera en que te dices, sin apellidos 🧠</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu área</div>
+    <h2 class="step-q">¿Qué área de tu vida quieres <em>mejorar</em>?</h2>
+    <p class="step-hint">Solo un tema. Ejemplos: amor, belleza, salud, dinero, relación, trabajo, confianza 🧠</p>
+    <input type="text" class="step-input" id="f-area" placeholder="Quiero mejorar..." autocomplete="off">
+    <div class="field-err" id="e-area">Por favor escribe tu área</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Es mejor que tú lo grabes — funciona más rápido con tu voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🧠</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — MASTER MIND
+// ═══════════════════════════════════
+function getMastermindSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts MASTER MIND de ERIORCENTER. Tono: seguro, expansivo, elegante, profesional, empoderado. Sin metáforas excesivas. 100% positivo, directo, en presente. Enfoque en mentalidad, identidad y resultados reales. Inicio fijo obligatorio. Cierre fijo obligatorio. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's MASTER MIND script editor. Tone: secure, expansive, elegant, professional, empowered. No excessive metaphors. 100% positive, direct, present tense. Focus on mindset, identity and real results. Fixed mandatory opening. Fixed mandatory closing. Return ONLY the final script.`;
+}
+
+function buildMastermindPrompt(fd){
+  const name=fd.name||'_';
+  const area=fd.area||'';
+  const gender=fd.gender||'mujer';
+  const o=gender==='hombre'?'o':'a';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Área a mejorar: "${area}", Género: ${gender}
+
+Genera el MINI SCRIPT MASTER MIND de ERIORCENTER siguiendo EXACTAMENTE esta estructura. El inicio y el cierre son FIJOS e INAMOVIBLES. Personaliza el desarrollo con el área "${area}".
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo, ${name}, me hago cargo de mí mism${o} y logro todo lo que me propongo.
+
+[PERSONALIZAR: 3-4 líneas describiendo "${area}" ya presente en la vida de ${name}. Directo, afirmativo, en presente. Sin dramatizar. Ej: si es "belleza" → "La belleza fluye en mí con naturalidad. Mi presencia irradia encanto. Mi rostro refleja calma y confianza."]
+
+[PERSONALIZAR: 3-4 líneas de alineación mental y emocional relacionada a "${area}". Seguridad interna, claridad, control personal.]
+
+[PERSONALIZAR: 3-4 líneas sobre las capacidades personales de ${name} en "${area}". Talento, disciplina, valor, claridad.]
+
+[PERSONALIZAR: 3-4 líneas de resultados visibles en la realidad. Cómo se ve, cómo se siente, qué confirma cada día. En presente.]
+
+Mi mente está en paz.
+Mi energía es clara.
+Mi presencia es auténtica.
+
+Yo, ${name}, soy la${o==='o'?'':'/ el'} mejor [PERSONALIZAR: acción o resultado específico de "${area}" — ej: "atrayendo belleza a mi vida", "generando dinero con facilidad", "construyendo salud cada día"].
+¿Por qué será que soy tan buen${o} en esto? 💎✨
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, Area to improve: "${area}", Gender: ${gender}. Generate MASTER MIND MINI SCRIPT in English. Secure, expansive, elegant tone. Fixed opening and closing. Direct, present tense. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — 11:11
+// ═══════════════════════════════════
+function buildOnceonceSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title"><em>11:11</em> ✨</div>
+      <div class="intro-card-desc">Muchas gracias por adquirir nuestro programa <strong>11:11</strong>. El audio para volverte puro amor y disolverte en él ✨💛</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">Sin apellidos ✨</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu intención</div>
+    <h2 class="step-q">¿Qué quieres <em>solucionar desde el amor</em>?</h2>
+    <p class="step-hint">En una frase. Ejemplos: "Quiero mejorar mi relación de pareja", "Quiero mejorar mi relación conmigo mism@", "Quiero atraer más dinero", "Quiero vivir más feliz" ✨</p>
+    <textarea class="step-input" id="f-lovesolution" placeholder="Quiero solucionar..."></textarea>
+    <div class="field-err" id="e-lovesolution">Por favor escribe tu intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Sirve 90% más con tu voz — el inconsciente obedece a tu nombre y voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — 11:11
+// ═══════════════════════════════════
+function getOnceonceSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts 11:11 de ERIORCENTER. Tono: encantador, mágico, ligero, elevado, alegre con humor sutil. Texto continuo sin divisiones. Empieza con "¿Por qué será que yo, ___, ...?" La realidad ya está activada. Integra de forma natural: "Yo elijo", "Anulo el reflejo", "Se rendea esto ahora", "Colapso". Cierra con otra pregunta "¿Por qué será que...?" + frase de inevitabilidad. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's 11:11 script editor. Tone: enchanting, magical, light, elevated, joyful with subtle humor. Continuous text without divisions. Starts with "Why is it that I, ___, ...?" Reality is already activated. Naturally integrate: "I choose", "I cancel the reflection", "It renders now", "I collapse". Close with another "Why is it that...?" question + inevitability phrase. Return ONLY the final script.`;
+}
+
+function buildOnceoncePrompt(fd){
+  const name=fd.name||'_';
+  const lovesolution=fd.lovesolution||'';
+  const gender=fd.gender||'mujer';
+  const o=gender==='hombre'?'o':'a';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Qué quiere solucionar desde el amor: "${lovesolution}", Género: ${gender}
+
+Genera el MINI SCRIPT 11:11 de ERIORCENTER. Flujo continuo, mágico, ligero. Comienza con pregunta poderosa. Integra Zero Point naturalmente. Cierra con pregunta + inevitabilidad.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+¿Por qué será que yo, ${name}, [PERSONALIZAR: "${lovesolution}" ya resuelto, como si ya fuera realidad. Pregunta mágica, alegre, expansiva. Ej: si es "mejorar mi salud" → "estoy viviendo una salud tan radiante, tan plena y tan natural?"]
+
+[PERSONALIZAR: 6-8 líneas de texto continuo describiendo "${lovesolution}" ya vivido por ${name}. Mágico, visual, emocional. Como una mini historia. Metáforas bonitas del universo, energía, luz. Tono ligero y elevado. Puede incluir cómo se siente, qué experimenta, qué nota.]
+
+Yo anulo el reflejo.
+Esta realidad ya no me espejea [PERSONALIZAR: lo opuesto a "${lovesolution}" en 3-4 palabras].
+Solo responde a mis preferencias.
+
+[PERSONALIZAR: 2-3 líneas de "Yo elijo..." expandiendo la solución "${lovesolution}" desde amor y naturalidad.]
+
+Se rendea esto ahora:
+[PERSONALIZAR: 3-5 estados o resultados concretos relacionados a "${lovesolution}". Cada uno en una línea.]
+
+Colapso la realidad donde [PERSONALIZAR: versión limitada de "${lovesolution}" en 3-4 palabras].
+Activo la realidad donde es mi vida diaria.
+
+Y entonces me sonrío…
+porque todo se siente natural, fácil, inevitable.
+
+Y me pregunto con alegría:
+¿Por qué será que yo, ${name}, [PERSONALIZAR: versión expandida y más específica de la pregunta inicial sobre "${lovesolution}"]?
+Porque cuando [PERSONALIZAR: 1 línea poética sobre el amor y "${lovesolution}"]…
+se vuelve [PERSONALIZAR: adjetivo poderoso]. ✨💛
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Fluido, continuo, sin listas dentro del texto. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, What to solve through love: "${lovesolution}", Gender: ${gender}. Generate 11:11 MINI SCRIPT in English. Enchanting, magical, light tone. Continuous flow. Start with "Why is it that I, ${name}, ...?" Integrate Zero Point naturally. Close with question + inevitability. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — ERIOR KIDS
+// ═══════════════════════════════════
+function buildKidsSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">ERIOR <em>KIDS</em> 🌟</div>
+      <div class="intro-card-desc">Este audio está hecho especialmente para <strong>niños</strong>. Diseñado para que de forma natural el niñ@ entre en calma, claridad y coherencia interna 🌟✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas el <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Nombre del niñ@</div>
+    <h2 class="step-q">¿Cuál es el <em>nombre</em> del niño o la niña?</h2>
+    <p class="step-hint">Solo el nombre, sin apellidos 🌟</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Su nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa el nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos el script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que realizaste el pago 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Intención del audio</div>
+    <h2 class="step-q">¿Cuál es la <em>intención principal</em> del audio?</h2>
+    <p class="step-hint">Ejemplos: "Que tenga más confianza", "Que se sienta tranquil@ y en calma", "Que le vaya mejor en la escuela", "Que duerma mejor", "Que maneje mejor sus emociones" 🌟</p>
+    <textarea class="step-input" id="f-kidsintention" placeholder="Quiero que..."></textarea>
+    <div class="field-err" id="e-kidsintention">Por favor escribe la intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">El audio funciona mejor cuando lo graba uno de los padres o el propio niñ@ 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Nosotros lo grabamos</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar script 🌟</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — ERIOR KIDS
+// ═══════════════════════════════════
+function getKidsSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts ERIOR KIDS de ERIORCENTER. Scripts para niños. Tono: dulce, protector, mágico, simple. Lenguaje muy simple, frases cortas. Todo en positivo. Identidad positiva, calma, facilidad, autoestima, entorno seguro, confianza. Cierra con "¿Por qué será que cada día...?" y "Todo está bien. Todo es fácil. Todo fluye. Y así es. ✨" Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's ERIOR KIDS script editor. Scripts for children. Tone: sweet, protective, magical, simple. Very simple language, short sentences. Everything positive. Positive identity, calm, ease, self-esteem, safe environment, confidence. Close with "Why is it that every day...?" and "Everything is fine. Everything is easy. Everything flows. And so it is. ✨" Return ONLY the final script.`;
+}
+
+function buildKidsPrompt(fd){
+  const name=fd.name||'_';
+  const intention=fd.kidsintention||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre del niñ@: ${name}, Intención: "${intention}"
+
+Genera el MINI SCRIPT ERIOR KIDS de ERIORCENTER. Lenguaje muy simple y dulce para niños. Frases cortas. Todo en positivo. El cierre es FIJO e INAMOVIBLE.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo ${name}, soy un niñ@ inteligente, capaz y llen@ de luz.
+[PERSONALIZAR: 2-3 líneas de identidad positiva de ${name}. Simple, dulce. Relacionadas a "${intention}".]
+
+[PERSONALIZAR: 3-4 líneas de regulación emocional. Tranquilidad, paz, seguridad. Relacionadas a "${intention}". Frases muy cortas.]
+
+[PERSONALIZAR: 3-4 líneas de facilidad. "[Actividad relacionada a "${intention}"] es fácil para mí. Es natural para mí." Muy simples.]
+
+[PERSONALIZAR: 3-4 líneas de autoestima. "Soy [cualidad]." "Soy capaz." "Confío en mí." Relacionadas a "${intention}".]
+
+[PERSONALIZAR: 2-3 líneas de entorno positivo. Las personas a su alrededor son buenas. El mundo es seguro y bonito.]
+
+[PERSONALIZAR: 2-3 líneas de confianza en sí mism@. Confía en lo que sabe, siente y hace. Relacionadas a "${intention}".]
+
+Yo ${name}, [PERSONALIZAR: 1-2 líneas reforzando identidad positiva relacionada a "${intention}".]
+[PERSONALIZAR: 1 línea de identidad: "Soy [cualidades positivas]".]
+
+¿Por qué será que cada día [PERSONALIZAR: pregunta sobre "${intention}" como ya logrado, en lenguaje infantil simple]?
+
+Todo está bien.
+Todo es fácil.
+Todo fluye.
+Y así es. ✨
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Lenguaje muy simple para niños. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Child's name: ${name}, Intention: "${intention}". Generate ERIOR KIDS MINI SCRIPT in English. Very simple language for children. Short sentences. Everything positive. Sweet, protective, magical tone. Fixed closing. Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+
+// ═══════════════════════════════════
+// BUILD STEPS — ERIOR LOVE
+// ═══════════════════════════════════
+function buildEriorloveSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">ERIOR <em>LOVE</em> 💛</div>
+      <div class="intro-card-desc">Haremos <strong>Alquimia interna</strong> para que reflejes la mejor versión de las personas en tus relaciones 💛✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La manera en que te dices, sin apellidos 💛</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu tema</div>
+    <h2 class="step-q">¿Para qué <em>tema</em> será tu audio?</h2>
+    <p class="step-hint">Algo que quieras trabajar en tus relaciones. Ejemplo: "Siempre me tocan personas que me rechazan", "Me cuesta poner límites", "Quiero atraer relaciones más sanas" 💛</p>
+    <textarea class="step-input" id="f-lovetheme" placeholder="Quiero trabajar..."></textarea>
+    <div class="field-err" id="e-lovetheme">Por favor escribe tu tema</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Sirve más con tu voz — el inconsciente obedece a tu nombre y voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💛</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — ERIOR LOVE
+// ═══════════════════════════════════
+function getEriorloveSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts ERIOR LOVE de ERIORCENTER. Tono: suave, seguro, elegante, emocionalmente maduro. 100% positivo, presente. Identidad primero. La realidad ya está resuelta. Magnetismo natural sin esfuerzo. Cierre con "¿No es maravilloso que...?" Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's ERIOR LOVE script editor. Tone: soft, secure, elegant, emotionally mature. 100% positive, present tense. Identity first. Reality already resolved. Natural magnetism without effort. Close with "Isn't it wonderful that...?" Return ONLY the final script.`;
+}
+
+function buildEriorlovePrompt(fd){
+  const name=fd.name||'_';
+  const lovetheme=fd.lovetheme||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Tema a trabajar: "${lovetheme}"
+
+Genera el MINI SCRIPT ERIOR LOVE de ERIORCENTER. Todo en positivo, presente, como realidad ya activa. Personaliza con "${lovetheme}" transformado en su opuesto positivo. Cierre exacto obligatorio.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+Yo, ${name}, vivo en una realidad donde [PERSONALIZAR: versión resuelta y positiva de "${lovetheme}" como realidad ya activa. 1-2 líneas.]
+
+[PERSONALIZAR: IDENTIDAD — 3-4 líneas de quién es ${name} ahora. Su energía, su presencia, cómo se percibe. Seguro, elegante, claro.]
+
+[PERSONALIZAR: REFLEJO — 3-4 líneas de cómo su energía crea su realidad. "Mi energía transmite X, y eso se refleja en Y." Las personas responden a su frecuencia.]
+
+[PERSONALIZAR: MAGNETISMO — 3-4 líneas de cómo llegan las relaciones o personas correctas. Natural, sin esfuerzo, sin persecución. Todo fluye.]
+
+[PERSONALIZAR: RELACIONES — 3-4 líneas de cómo son sus relaciones ahora. Reciprocidad, claridad, presencia, estabilidad. Relacionado a la solución de "${lovetheme}".]
+
+[PERSONALIZAR: SENSACIÓN — 3-4 líneas de cómo se siente ${name}. Tranquila, segura, en paz, elegida. Cuerpo y mente integran el cambio.]
+
+Yo, ${name}, soy la mejor manifestando [PERSONALIZAR: resultado positivo de "${lovetheme}" en 4-6 palabras].
+
+Y me pregunto con una calma profunda:
+¿No es maravilloso [PERSONALIZAR: pregunta cuántica sobre "${lovetheme}" ya resuelto — cómo se siente vivir en esa realidad ya activa]?
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, Theme to work on: "${lovetheme}". Generate ERIOR LOVE MINI SCRIPT in English. Soft, secure, elegant tone. 100% positive present tense. Identity first. Natural magnetism. Close with "Isn't it wonderful that...?" Return ONLY the final script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — MENTAL GLOW UP
+// ═══════════════════════════════════
+function buildMentalglowSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">MENTAL <em>GLOW UP</em> 🧠</div>
+      <div class="intro-card-desc">Muchas gracias por adquirir nuestro nuevo audio de <strong>Amor Propio y Belleza</strong>. Este programa transforma tu mente y tu personalidad desde adentro 🧠⚡</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">Sin apellidos 🧠</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu cambio</div>
+    <h2 class="step-q">¿Qué quieres <em>cambiar de tu personalidad</em>?</h2>
+    <p class="step-hint">Ejemplos: "Mejorar mi atención porque tengo TDA", "Quiero ser más sociable", "Quiero ser más extrovertido", "Quiero ser más alegre y responsable" 🧠</p>
+    <textarea class="step-input" id="f-personality" placeholder="Quiero cambiar..."></textarea>
+    <div class="field-err" id="e-personality">Por favor escribe tu cambio</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Sirve 90% más con tu voz — el inconsciente obedece a tu nombre y voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER lo graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🧠</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — MENTAL GLOW UP
+// ═══════════════════════════════════
+function getMentalglowSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts MENTAL GLOW UP de ERIORCENTER. Estructura: Identidad → Naturalidad → Funcionamiento interno → Vida real → Regulación → Sin esfuerzo → Acción → Bloque de poder FIJO → Reflejo externo → Integración → Pregunta "¿Qué voy a hacer ahora que...?". El bloque de poder es INAMOVIBLE. Todo en positivo y presente. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's MENTAL GLOW UP script editor. Structure: Identity → Naturalness → Internal function → Real life → Regulation → No effort → Action → FIXED power block → External reflection → Integration → "What am I going to do now that...?" question. The power block is IMMOVABLE. Everything positive and present tense. Return ONLY the final script.`;
+}
+
+function buildMentalglowPrompt(fd){
+  const name=fd.name||'_';
+  const personality=fd.personality||'';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Cambio de personalidad deseado: "${personality}"
+
+Genera el MINI SCRIPT MENTAL GLOW UP de ERIORCENTER. Sigue la estructura exacta. El BLOQUE DE PODER es FIJO e INAMOVIBLE — cópialo exactamente.
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+[IDENTIDAD: "Yo ${name} soy/tengo/estoy…" — 3-4 líneas declarando el estado final de "${personality}" como identidad ya activa.]
+
+[NATURALIDAD: 3-4 líneas haciendo que ese estado se sienta natural. "Se siente fácil", "es natural para mí", "fluye sin esfuerzo". Relacionado a "${personality}".]
+
+[FUNCIONAMIENTO INTERNO: 3-4 líneas de cómo funciona la mente/cuerpo de ${name} en ese estado. Siempre positivo. Mente clara, emociones estables, acciones coherentes. Específico a "${personality}".]
+
+[VIDA REAL: 3-4 líneas de cómo se ve el cambio en el día a día de ${name}. Aterrizar el cambio. Específico a "${personality}". Ej: "termino lo que empiezo", "hablo con facilidad".]
+
+[REGULACIÓN: 3-4 líneas de calma, estabilidad, seguridad. Baja resistencia interna. "Me siento tranquil@", "todo está bajo control", "mi sistema está regulado".]
+
+[SIN ESFUERZO: 3-4 líneas eliminando la idea de forzar. "No tengo que forzarlo", "simplemente sucede", "es automático". Relacionado a "${personality}".]
+
+[ACCIÓN NATURAL: 3-4 líneas de cómo ${name} actúa desde ese estado. "Actúo con facilidad", "me expreso libremente", "decido con claridad".]
+
+Yo confío en que puedo crear todo lo que quiero,
+porque en mi realidad nadie absolutamente, nadie tiene Libre Albedrío.
+
+[REFLEJO EXTERNO: 3-4 líneas de cómo el mundo refleja el cambio. "Todo coopera conmigo", "las personas responden diferente", "la realidad se ajusta".]
+
+[INTEGRACIÓN: 3-4 líneas de cómo todo se vuelve estable y permanente. "Cada vez es más fácil", "ya es parte de mí", "se sostiene solo".]
+
+✨ ¿Qué voy a hacer ahora que [PERSONALIZAR: "${personality}" ya logrado — cómo fluye la vida de ${name} con ese cambio integrado]? ✨
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+RECUERDA: Devuelve SOLO el script final. Sin explicaciones ni comentarios.`;
+  } else {
+    return `Name: ${name}, Personality change desired: "${personality}". Generate MENTAL GLOW UP MINI SCRIPT in English. Follow exact structure. POWER BLOCK is fixed: "I trust that I can create everything I want, because in my reality absolutely no one has Free Will." Close with "What am I going to do now that...?" Return ONLY the final script.`;
   }
 }
 

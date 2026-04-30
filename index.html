@@ -2168,7 +2168,9 @@ function validateStep(n) {
   if(fields[n-1]==='newversion'){hide('e-newversion');if(!v('f-newversion')){show('e-newversion');return false;}}
   if(fields[n-1]==='goal'){
     hide('e-goal');
-    if(!document.querySelector('input[name="goal"]:checked')){show('e-goal');return false;}
+    const radioGoal=document.querySelector('input[name="goal"]:checked');
+    const textGoal=document.getElementById('f-goal');
+    if(!radioGoal && !(textGoal && textGoal.value.trim())){show('e-goal');return false;}
   }
   if(fields[n-1]==='context'){hide('e-context');if(!v('f-context')){show('e-context');return false;}}
   if(fields[n-1]==='desires'){hide('e-desires');if(!v('f-desires')){show('e-desires');return false;}}
@@ -2227,7 +2229,11 @@ function collectStep(n) {
   if(f==='manifest') fd.manifest=g('f-manifest');
   if(f==='notaccepted') fd.notaccepted=g('f-notaccepted');
   if(f==='newversion') fd.newversion=g('f-newversion');
-  if(f==='goal'){const r=document.querySelector('input[name="goal"]:checked');fd.goal=r?r.value:'';}
+  if(f==='goal'){
+    const r=document.querySelector('input[name="goal"]:checked');
+    const t=document.getElementById('f-goal');
+    fd.goal=r?r.value:(t?t.value.trim():'');
+  }
   if(f==='context') fd.context=g('f-context');
   if(f==='desires') fd.desires=g('f-desires');
   if(f==='anchors') fd.anchors=g('f-anchors');

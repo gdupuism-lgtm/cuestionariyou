@@ -1587,6 +1587,61 @@ textarea.step-input:focus { opacity:1; }
 .theme-mentalglow .result-note { border-color:rgba(0,144,192,0.1); color:rgba(232,248,255,0.3); }
 .theme-mentalglow .btn-copy { border-color:rgba(0,144,192,0.22); background:rgba(0,144,192,0.05); color:rgba(64,216,240,0.6); }
 .theme-mentalglow .btn-copy:hover { background:rgba(0,144,192,0.12); color:var(--accent2); }
+
+/* ERIOR 3.0 — Punto cero / Configuración alienígena */
+.theme-erior3 {
+  --bg: #050505;
+  --surface: #0c0c0c;
+  --accent: #d4af37;
+  --accent2: #00e5ff;
+  --text: #e8e6e1;
+  --text-soft: rgba(232,230,225,0.5);
+  --header-bg: #020202;
+  --pdot-off: rgba(212,175,55,0.15);
+  --pdot-on: #d4af37;
+}
+.theme-erior3 .form-header { background:var(--header-bg); color:var(--accent); border-bottom:1px solid rgba(212,175,55,0.1); }
+.theme-erior3 .fh-brand { color:rgba(212,175,55,0.35); letter-spacing:7px; }
+.theme-erior3 .pdot { background:var(--pdot-off); }
+.theme-erior3 .pdot.done { background:rgba(212,175,55,0.5); }
+.theme-erior3 .pdot.active { background:var(--accent); box-shadow:0 0 8px rgba(212,175,55,0.5); }
+.theme-erior3 #page-form { background:radial-gradient(ellipse at top, #0c0c0c 0%, #020202 75%); color:var(--text); }
+.theme-erior3 .step-eyebrow { color:var(--accent2); letter-spacing:6px; font-family:'Courier New',monospace; }
+.theme-erior3 .step-q { font-family:'Cormorant Garamond',serif; color:var(--text); font-weight:300; }
+.theme-erior3 .step-q em { color:var(--accent); font-style:italic; }
+.theme-erior3 .step-hint { color:var(--text-soft); }
+.theme-erior3 .step-input { color:var(--text); border-color:rgba(212,175,55,0.3); opacity:1; font-family:'Cormorant Garamond',serif; }
+.theme-erior3 .step-input::placeholder { color:rgba(212,175,55,0.25); font-style:italic; }
+.theme-erior3 .step-input:focus { border-color:var(--accent2); box-shadow:0 0 12px rgba(0,229,255,0.15); }
+.theme-erior3 textarea.step-input { background:rgba(212,175,55,0.03); border-color:rgba(212,175,55,0.2); opacity:1; }
+.theme-erior3 textarea.step-input:focus { border-color:var(--accent2); }
+.theme-erior3 .choice-opt { border-color:rgba(212,175,55,0.18); color:var(--text); opacity:1; background:rgba(212,175,55,0.02); }
+.theme-erior3 .choice-opt:hover { border-color:rgba(212,175,55,0.4); background:rgba(212,175,55,0.05); }
+.theme-erior3 .choice-opt.selected { border-color:var(--accent); background:rgba(212,175,55,0.08); box-shadow:0 0 16px rgba(212,175,55,0.1); }
+.theme-erior3 .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); }
+.theme-erior3 .lang-btn { color:var(--accent); border-color:rgba(212,175,55,0.2); opacity:1; background:transparent; }
+.theme-erior3 .lang-btn.active { background:var(--accent); color:#050505; }
+.theme-erior3 .btn-back { color:rgba(232,230,225,0.3); }
+.theme-erior3 .btn-next { border-color:rgba(212,175,55,0.4); color:var(--accent); letter-spacing:6px; }
+.theme-erior3 .btn-next:hover { background:var(--accent); color:#050505; box-shadow:0 0 20px rgba(212,175,55,0.25); }
+.theme-erior3 .intro-card { background:rgba(212,175,55,0.04); border:1px solid rgba(212,175,55,0.12); color:var(--text); }
+.theme-erior3 .intro-card-label { color:rgba(0,229,255,0.45); letter-spacing:6px; }
+.theme-erior3 .intro-card-title { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-erior3 .intro-card-title em { color:var(--accent); }
+.theme-erior3 .intro-card-desc { color:var(--text-soft); }
+.theme-erior3 #page-result { background:#050505 !important; color:var(--text) !important; }
+.theme-erior3 .result-header { background:#020202; border-bottom:1px solid rgba(212,175,55,0.08); }
+.theme-erior3 .result-tag { color:rgba(0,229,255,0.5); letter-spacing:5px; }
+.theme-erior3 .result-htitle { font-family:'Cormorant Garamond',serif; color:var(--text); }
+.theme-erior3 .result-htitle em { color:var(--accent); }
+.theme-erior3 .script-wrap { border-color:rgba(212,175,55,0.15); }
+.theme-erior3 .script-head { background:#020202; }
+.theme-erior3 .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#080808 !important; line-height:2.2; }
+.theme-erior3 .btn-dl { border-color:rgba(212,175,55,0.2); color:rgba(212,175,55,0.45); background:transparent; }
+.theme-erior3 .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-erior3 .result-note { border-color:rgba(212,175,55,0.1); color:rgba(232,230,225,0.3); }
+.theme-erior3 .btn-copy { border-color:rgba(212,175,55,0.22); background:rgba(212,175,55,0.05); color:rgba(212,175,55,0.7); }
+.theme-erior3 .btn-copy:hover { background:rgba(212,175,55,0.12); color:var(--accent); }
 </style>
 </head>
 <body>
@@ -1960,6 +2015,19 @@ const AUDIOS = {
     buildPrompt: buildMentalglowPrompt,
     systemPrompt: getMentalglowSystem,
   },
+  'mierior24': {
+    name: 'AUDIO ERIOR 3.0',
+    theme: 'theme-erior3',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — AUDIO ERIOR 3.0 ⟁',
+    introTitle: 'AUDIO <em>ERIOR 3.0</em>',
+    introDesc: 'Muchas gracias por adquirir nuestro programa <strong>ERIOR 3.0</strong>. Aquí mejoramos y reescribimos tu script con la arquitectura ERIOR — neutralidad total, normalización de realidad, configuración del punto cero ⟁✨',
+    fields: ['name','last','email','clientscript','record'],
+    buildSteps: buildErior3Steps,
+    buildPrompt: buildErior3Prompt,
+    systemPrompt: getErior3System,
+    dualScript: true,
+  },
 };
 
 // ═══════════════════════════════════
@@ -2032,6 +2100,7 @@ const THEME_BG = {
   'theme-mentalglow': '#020810',
   'theme-whiterabbit': '#040404',
   'theme-curious': '#08040f',
+  'theme-erior3': '#050505',
 };
 const THEME_COLOR = {
   'theme-you': '#faf6f0',
@@ -2058,6 +2127,7 @@ const THEME_COLOR = {
   'theme-mentalglow': '#e8f8ff',
   'theme-whiterabbit': '#f8f8f8',
   'theme-curious': '#f4eeff',
+  'theme-erior3': '#e8e6e1',
 };
 
 function applyTheme(theme) {
@@ -2190,6 +2260,11 @@ function validateStep(n) {
   if(fields[n-1]==='fear'){hide('e-fear');if(!v('f-fear')){show('e-fear');return false;}}
   if(fields[n-1]==='desire'){hide('e-desire');if(!v('f-desire')){show('e-desire');return false;}}
   if(fields[n-1]==='personality'){hide('e-personality');if(!v('f-personality')){show('e-personality');return false;}}
+  if(fields[n-1]==='clientscript'){
+    hide('e-clientscript');
+    const sc=document.getElementById('f-clientscript');
+    if(!sc||sc.value.trim().length<80){show('e-clientscript');return false;}
+  }
   if(fields[n-1]==='specificname'){
     // specificname only required if lovetype=specific
     const lt=document.querySelector('input[name="lovetype"]:checked');
@@ -2249,6 +2324,7 @@ function collectStep(n) {
   if(f==='fear') fd.fear=g('f-fear');
   if(f==='desire') fd.desire=g('f-desire');
   if(f==='personality') fd.personality=g('f-personality');
+  if(f==='clientscript') fd.clientscript=g('f-clientscript');
   if(f==='specificname') fd.specificname=g('f-specificname');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
   if(f==='pronunciation') fd.pronunciation=g('f-pronunciation');
@@ -2287,10 +2363,13 @@ async function generate() {
 function splitScript(text) {
   // CURIOUS CURIOUSER: dual scripts separated by ===DESEO===
   if(currentAudio && currentAudio.dualScript){
-    const sep = text.indexOf('===DESEO===');
+    const isErior3Audio = currentAudio && currentAudio.theme === 'theme-erior3';
+    const separator = isErior3Audio ? '===MINISCRIPT===' : '===DESEO===';
+    const sepLen = separator.length;
+    const sep = text.indexOf(separator);
     if(sep !== -1){
       s1 = text.substring(0, sep).trim();
-      s2 = text.substring(sep + 11).trim();
+      s2 = text.substring(sep + sepLen).trim();
     } else {
       const half = Math.floor(text.length/2);
       s1 = text.substring(0, half).trim();
@@ -2302,8 +2381,14 @@ function splitScript(text) {
     document.getElementById('sc2').textContent = s2;
     // Update labels
     const heads = document.querySelectorAll('.script-head');
-    if(heads[0]) heads[0].innerHTML = '<span style="font-size:10px;letter-spacing:4px;">MIEDO MINI SCRIPT — PRIMERA GRABACIÓN</span>';
-    if(heads[1]) heads[1].innerHTML = '<span style="font-size:10px;letter-spacing:4px;">DESEO MINI SCRIPT — SEGUNDA GRABACIÓN</span>';
+    const isErior3Theme = currentAudio && currentAudio.theme === 'theme-erior3';
+    if(isErior3Theme){
+      if(heads[0]) heads[0].innerHTML = '<span style="font-size:10px;letter-spacing:4px;">SCRIPT — PRIMERA GRABACIÓN</span><button class="btn-copy" onclick="copyS(1)">Copiar</button>';
+      if(heads[1]) heads[1].innerHTML = '<span style="font-size:10px;letter-spacing:4px;">MINI SCRIPT — SEGUNDA GRABACIÓN</span><button class="btn-copy" onclick="copyS(2)">Copiar</button>';
+    } else {
+      if(heads[0]) heads[0].innerHTML = '<span style="font-size:10px;letter-spacing:4px;">MIEDO MINI SCRIPT — PRIMERA GRABACIÓN</span>';
+      if(heads[1]) heads[1].innerHTML = '<span style="font-size:10px;letter-spacing:4px;">DESEO MINI SCRIPT — SEGUNDA GRABACIÓN</span>';
+    }
     return;
   }
 
@@ -5865,6 +5950,167 @@ Yo, ${name},
 RECUERDA: Devuelve SOLO los dos scripts con ===DESEO=== separándolos. Sin explicaciones.`;
   } else {
     return `Name: ${name}, Greatest fear: "${fear}", Greatest desire: "${desire}", Gender: ${gender}. Generate TWO scripts. Separate with ===DESEO=== on its own line. FEAR SCRIPT: recognize, observe, shift perspective, reaffirm power, deactivate, anchor in safety, close with "What am I going to do now that I have no more blocks?". DESIRE SCRIPT: identity already fulfilled, emotional sensation, naturalness, integration, close with "What am I going to do now that I live a life full of love and fulfill all my dreams?" Return ONLY the two scripts.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — ERIOR 3.0
+// ═══════════════════════════════════
+function buildErior3Steps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">AUDIO <em>ERIOR 3.0</em> ⟁</div>
+      <div class="intro-card-desc">Muchas gracias por adquirir nuestro programa <strong>ERIOR</strong>. Aquí reescribimos y potenciamos tu script con la arquitectura <strong>ERIOR 3.0</strong>: neutralidad total, normalización de realidad y configuración del punto cero ⟁✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La manera en la que te dices, sin apellidos ⟁</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tus scripts?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu script</div>
+    <h2 class="step-q">Pega aquí tu <em>script</em></h2>
+    <p class="step-hint">El script que hiciste con la guía. Lo vamos a reescribir aplicando la arquitectura ERIOR — neutralidad, normalización de realidad, frases cortas, presente, sin esfuerzo. Mientras más detalle des sobre tu vida (trabajo, relaciones, dinero, cuerpo), más preciso queda ⟁</p>
+    <textarea class="step-input" id="f-clientscript" placeholder="Pega aquí tu script completo..." style="height:240px;"></textarea>
+    <div class="field-err" id="e-clientscript">Por favor pega tu script completo (mínimo 80 caracteres)</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Recuerda — recibirás DOS scripts (script principal + mini script). No hay voz más poderosa que tu voz 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo los grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">💛 ERIORCENTER los graba por mí</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mis scripts ⟁</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — ERIOR 3.0
+// ═══════════════════════════════════
+function getErior3System(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts AUDIO ERIOR 3.0 de ERIORCENTER. Recibes el script crudo del cliente y lo REESCRIBES siguiendo ESTRICTAMENTE la arquitectura ERIOR — Versión Conciencia Avanzada (Neutralidad Total).
+
+ARQUITECTURA ERIOR (8 secciones que se integran fluidamente, sin títulos visibles):
+1. ENTRADA EN NEUTRALIDAD: calma, estabilidad, cero urgencia. "Estoy tranquil@. Todo está en orden."
+2. DECLARACIÓN DE IDENTIDAD: define quién es la persona, no algo externo. "Soy una persona clara, estable, precisa."
+3. NORMALIZACIÓN DE REALIDAD (CORE): nunca "quiero", siempre "siempre ha sido así / ya / es normal". Esto colapsa el tiempo.
+4. LÓGICA INTERNA COHERENTE: "Como pienso claro, decido bien. Como decido bien, todo fluye."
+5. EFECTO EN EL ENTORNO: el exterior como consecuencia natural, no manipulación. "La gente me percibe con respeto."
+6. PREGUNTAS DE INTEGRACIÓN: "¿Por qué será que todo me sale tan fácil?" — confirman, no cuestionan.
+7. EXPANSIÓN SIN ESFUERZO: "Todo se acomoda. Todo fluye sin esfuerzo."
+8. CIERRE EN CERTEZA ABSOLUTA: "Todo está hecho. Es estable. Es normal." Sin emoción alta.
+
+PRINCIPIOS ALIENÍGENAS (REGLAS INAMOVIBLES):
+- NO hay "manifestación". Solo: configuración → percepción → experiencia.
+- NO se persuade al cerebro. Se le da una realidad ya organizada.
+- NO hay emoción intensa. Neutralidad = poder sostenido.
+- Tiempo colapsado: usa "siempre", "ya", "es normal".
+- Lenguaje simple y preciso. Sin adornos. Sin exageración. Todo suena obvio, lógico, inevitable.
+- Frases cortas. Una idea por línea cuando sea posible.
+- 100% presente, 100% positivo, sin "no", sin futuro, sin condicionales.
+- Si el cliente menciona personas por nombre, mantén esos nombres.
+- Mantén el contenido específico de su vida (trabajo, dinero, cuerpo, relaciones) pero reescríbelo con la arquitectura ERIOR.
+
+Devuelve el script principal seguido de ===MINISCRIPT=== en línea sola, seguido del mini script. SOLO eso. Sin explicaciones.`
+    :`You are ERIORCENTER's AUDIO ERIOR 3.0 script editor. You receive the client's raw script and REWRITE it following the ERIOR architecture (Advanced Consciousness Version - Total Neutrality). 8 sections: neutrality entry, identity declaration, reality normalization (always/already/normal - never "I want"), coherent internal logic, environment effect, integration questions, effortless expansion, certainty closing. Short sentences, present tense, positive only, time collapsed. Return main script + ===MINISCRIPT=== on its own line + mini script. Nothing else.`;
+}
+
+function buildErior3Prompt(fd){
+  const name=fd.name||'_';
+  const clientscript=fd.clientscript||'';
+  if(fd.lang==='es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Script crudo del cliente:
+"""
+${clientscript}
+"""
+
+INSTRUCCIONES:
+Reescribe el script anterior aplicando la arquitectura ERIOR. Conserva los temas, personas y contenido específico que el cliente mencionó (trabajo, relaciones por nombre, metas, cuerpo, dinero, etc.). Pero TRANSFÓRMALO al estilo ERIOR: frases cortas, neutralidad total, presente absoluto, normalización ("siempre ha sido así", "es natural", "ya"), sin "quiero" ni "voy a", sin emoción intensa, sin esfuerzo, todo suena inevitable y lógico.
+
+Estructura del entregable EXACTAMENTE así:
+
+¡Hola! ✯ 𐬾 🐇 🂱 ☁️
+Aquí está tu script y tu mini script con mucho cariño.
+Recuerda que debes enviar tu script y el mini script (dos grabaciones).
+*RECUERDA que debe llevar tu nombre
+
+SCRIPT
+YO ${name}, [aquí va el script REESCRITO con arquitectura ERIOR aplicada al contenido del cliente. Frases cortas, una por línea cuando sea posible. Mantén todos los temas específicos que mencionó el cliente — trabajo, personas, dinero, cuerpo, etc. — pero en estilo ERIOR. Termina con "Y así es. ✨"]
+
+===MINISCRIPT===
+
+MINI SCRIPT
+Yo ${name} no manifiesto, yo no espero, yo no hago nada.
+El universo ya responde solo a mis preferencias.
+Anulo el reflejo. Esta realidad ya no me espejea. Solo me muestra lo que elijo.
+Yo no soy identidad. No hay pasado. No hay esfuerzo.
+Todo se rendea desde este punto cero.
+Y sí…
+¿no es una locura deliciosa que TODO esté saliendo mejor de lo que imaginé?
+
+REGLAS:
+- El SCRIPT principal es la reescritura del script del cliente con arquitectura ERIOR.
+- El MINI SCRIPT es SIEMPRE EXACTO como aparece arriba, solo cambia el nombre.
+- Separa los dos bloques con ===MINISCRIPT=== en línea sola.
+- Devuelve SOLO eso, sin explicaciones ni comentarios.`;
+  } else {
+    return `Client data:
+- Name: ${name}
+- Client's raw script: """${clientscript}"""
+
+Rewrite the client's script applying ERIOR architecture (short sentences, total neutrality, absolute present, normalization with "always/already/natural", no "I want" or "I will", no intense emotion, effortless, sounds inevitable and logical). Keep all specific content the client mentioned (work, people by name, goals, body, money). Format:
+
+Hello! ✯ 𐬾 🐇 🂱 ☁️
+Here is your script and mini script.
+Remember to record both (two recordings).
+
+SCRIPT
+I ${name}, [REWRITTEN script with ERIOR architecture applied to client content. End with "And so it is. ✨"]
+
+===MINISCRIPT===
+
+MINI SCRIPT
+I ${name} don't manifest, I don't wait, I don't do anything.
+The universe already responds to my preferences.
+I cancel the reflection. This reality no longer mirrors me. It only shows what I choose.
+I am not identity. There is no past. There is no effort.
+Everything renders from this zero point.
+And yes…
+isn't it a delicious madness that EVERYTHING is turning out better than I imagined?
+
+Return ONLY this. No explanations.`;
   }
 }
 

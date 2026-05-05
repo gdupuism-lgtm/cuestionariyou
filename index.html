@@ -2898,6 +2898,61 @@ function collectStep(n) {
   fd.lang=lang;
 }
 
+
+// ═══════════════════════════════════
+// UNIVERSAL HARDENED SYSTEM PROMPT
+// Injects strict rules into every audio's system prompt
+// to prevent language mixing and unwanted improvisation
+// ═══════════════════════════════════
+function buildHardenedSystem(originalSystem, lang){
+  const rulesEs = `
+
+══════════════════════════════════════════════════
+REGLAS UNIVERSALES OBLIGATORIAS (PRIORIDAD ABSOLUTA)
+══════════════════════════════════════════════════
+
+1. IDIOMA — Esta respuesta es 100% en ESPAÑOL. NUNCA mezcles palabras o frases en inglés u otro idioma. Cada palabra debe estar en español. Si dudas de una palabra, usa solo español. Esto es INVIOLABLE.
+
+2. NO IMPROVISES NI ADORNES — Apégate ESTRICTAMENTE a la estructura, el tono y el vocabulario indicado. NO agregues palabras decorativas, místicas, religiosas o "elevadas" que no estén explícitamente pedidas. Palabras PROHIBIDAS a menos que estén en la plantilla:
+   - "sagrado", "divino", "místico", "trascendental", "celestial"
+   - "eterno", "infinito" (cuando no se piden)
+   - "alma", "espíritu" (cuando no se piden)
+   - Adornos poéticos no solicitados
+
+3. RESPETA LA PLANTILLA EXACTA — Si el prompt te da una estructura, frases o un formato, REPRODÚCELO TAL CUAL, solo personalizando los datos del cliente. No inviertas el orden. No agregues secciones nuevas. No omitas ninguna sección.
+
+4. SOLO DEVUELVE EL CONTENIDO PEDIDO — Sin meta-comentarios, sin "aquí está tu script", sin explicaciones de qué hiciste. Solo el resultado limpio.
+
+══════════════════════════════════════════════════
+
+`;
+
+  const rulesEn = `
+
+══════════════════════════════════════════════════
+UNIVERSAL MANDATORY RULES (ABSOLUTE PRIORITY)
+══════════════════════════════════════════════════
+
+1. LANGUAGE — This response is 100% in ENGLISH. NEVER mix Spanish words or phrases. Every word must be in English. This is INVIOLABLE.
+
+2. DO NOT IMPROVISE OR DECORATE — Stick STRICTLY to the structure, tone and vocabulary indicated. DO NOT add decorative, mystical, religious or "elevated" words not explicitly asked for. PROHIBITED words unless in the template:
+   - "sacred", "divine", "mystical", "transcendental", "celestial"
+   - "eternal", "infinite" (when not requested)
+   - "soul", "spirit" (when not requested)
+   - Unsolicited poetic adornments
+
+3. RESPECT THE EXACT TEMPLATE — If the prompt gives you a structure, phrases or format, REPRODUCE IT EXACTLY, only personalizing client data. Do not reorder. Do not add new sections. Do not omit any section.
+
+4. ONLY RETURN THE REQUESTED CONTENT — No meta-comments, no "here is your script", no explanations. Just the clean result.
+
+══════════════════════════════════════════════════
+
+`;
+
+  const rules = (lang === 'en') ? rulesEn : rulesEs;
+  return rules + originalSystem;
+}
+
 // ═══════════════════════════════════
 // GENERATE
 // ═══════════════════════════════════
@@ -2910,7 +2965,7 @@ async function generate() {
   try {
     const res=await fetch('/.netlify/functions/generate',{
       method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({system:currentAudio.systemPrompt(fd),prompt:currentAudio.buildPrompt(fd)})
+      body:JSON.stringify({system:buildHardenedSystem(currentAudio.systemPrompt(fd),fd.lang),prompt:currentAudio.buildPrompt(fd)})
     });
     const data=await res.json();
     fullScript=data.text||'';

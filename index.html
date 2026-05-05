@@ -1882,6 +1882,288 @@ textarea.step-input:focus { opacity:1; }
   from { opacity:0; transform:translateY(30px) scale(0.98); }
   to { opacity:1; transform:translateY(0) scale(1); }
 }
+
+/* ICON AURA — Michael Jackson icon vibes */
+.theme-iconaura {
+  --bg: #050505;
+  --surface: #0e0c08;
+  --accent: #f4d570;
+  --accent2: #ffe89a;
+  --accent3: #ffffff;
+  --text: #fafaf6;
+  --text-soft: rgba(250,250,246,0.7);
+  --header-bg: #020202;
+  --pdot-off: rgba(244,213,112,0.18);
+  --pdot-on: #f4d570;
+}
+.theme-iconaura .form-header {
+  background:var(--header-bg);
+  color:var(--accent);
+  border-bottom:1px solid rgba(244,213,112,0.2);
+  position:relative;
+}
+.theme-iconaura .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(244,213,112,0.6), transparent);
+}
+.theme-iconaura .fh-brand { color:rgba(244,213,112,0.55); letter-spacing:7px; }
+.theme-iconaura .pdot { background:var(--pdot-off); }
+.theme-iconaura .pdot.done { background:rgba(244,213,112,0.55); }
+.theme-iconaura .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 16px rgba(244,213,112,0.7), 0 0 32px rgba(244,213,112,0.3);
+  animation:ia-pulse 1.6s ease-in-out infinite;
+}
+@keyframes ia-pulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.4); box-shadow:0 0 22px rgba(244,213,112,0.9), 0 0 40px rgba(244,213,112,0.5); }
+}
+.theme-iconaura #page-form {
+  background:radial-gradient(ellipse at top, #1a1408 0%, #050505 55%, #000000 100%);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+.theme-iconaura #page-form::before {
+  content:''; position:fixed;
+  top:-200px; left:50%; transform:translateX(-50%);
+  width:800px; height:600px;
+  background:radial-gradient(ellipse at center top, rgba(244,213,112,0.18) 0%, rgba(244,213,112,0.08) 30%, transparent 60%);
+  pointer-events:none; z-index:0;
+  animation:ia-spotlight-pulse 5s ease-in-out infinite;
+}
+@keyframes ia-spotlight-pulse {
+  0%,100% { opacity:0.7; }
+  50% { opacity:1; }
+}
+.theme-iconaura #page-form::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 15% 25%, rgba(244,213,112,0.5), transparent),
+    radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 60% 50%, rgba(244,213,112,0.3), transparent),
+    radial-gradient(2px 2px at 30% 80%, rgba(255,232,154,0.4), transparent),
+    radial-gradient(1px 1px at 75% 70%, rgba(255,255,255,0.3), transparent);
+  opacity:0.7;
+}
+.theme-iconaura .form-main { position:relative; z-index:1; }
+.theme-iconaura .step-eyebrow {
+  color:var(--accent2);
+  letter-spacing:7px;
+  font-family:'Courier New',monospace;
+  font-weight:500;
+  text-shadow:0 0 14px rgba(244,213,112,0.5);
+}
+.theme-iconaura .step-q {
+  font-family:'Playfair Display',serif;
+  color:var(--text);
+  font-weight:400;
+  letter-spacing:-1px;
+  text-shadow:0 2px 24px rgba(244,213,112,0.15);
+}
+.theme-iconaura .step-q em {
+  color:var(--accent);
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent), #fff5c8 50%, var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.theme-iconaura .step-hint { color:var(--text-soft); }
+.theme-iconaura .step-input {
+  color:var(--text);
+  border-color:rgba(244,213,112,0.4);
+  opacity:1;
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;
+  background:rgba(244,213,112,0.03);
+}
+.theme-iconaura .step-input::placeholder { color:rgba(244,213,112,0.35); font-style:italic; }
+.theme-iconaura .step-input:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 18px rgba(244,213,112,0.25);
+  background:rgba(244,213,112,0.06);
+}
+.theme-iconaura textarea.step-input {
+  background:rgba(244,213,112,0.04);
+  border-color:rgba(244,213,112,0.3);
+}
+.theme-iconaura textarea.step-input:focus { border-color:var(--accent); }
+.theme-iconaura .choice-opt {
+  border-color:rgba(244,213,112,0.2);
+  color:var(--text);
+  opacity:1;
+  background:rgba(244,213,112,0.03);
+}
+.theme-iconaura .choice-opt:hover {
+  border-color:rgba(244,213,112,0.5);
+  background:rgba(244,213,112,0.07);
+}
+.theme-iconaura .choice-opt.selected {
+  border-color:var(--accent);
+  background:rgba(244,213,112,0.1);
+  box-shadow:0 0 20px rgba(244,213,112,0.2);
+}
+.theme-iconaura .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); box-shadow:0 0 8px rgba(244,213,112,0.6); }
+.theme-iconaura .lang-btn {
+  color:var(--accent);
+  border-color:rgba(244,213,112,0.3);
+  opacity:1;
+  background:transparent;
+}
+.theme-iconaura .lang-btn.active {
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  color:#050505;
+  border-color:var(--accent);
+}
+.theme-iconaura .btn-back { color:rgba(250,250,246,0.4); }
+.theme-iconaura .btn-next {
+  border-color:rgba(244,213,112,0.55);
+  color:var(--accent);
+  letter-spacing:6px;
+  font-weight:500;
+  position:relative;
+  overflow:hidden;
+}
+.theme-iconaura .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(244,213,112,0.2), rgba(255,232,154,0.1));
+  opacity:0; transition:opacity 0.3s;
+}
+.theme-iconaura .btn-next:hover {
+  background:transparent;
+  border-color:var(--accent2);
+  color:#fff;
+  box-shadow:0 0 28px rgba(244,213,112,0.4), inset 0 0 18px rgba(244,213,112,0.1);
+}
+.theme-iconaura .btn-next:hover::before { opacity:1; }
+.theme-iconaura .intro-card {
+  background:linear-gradient(135deg, rgba(244,213,112,0.08), rgba(255,232,154,0.04));
+  border:1px solid rgba(244,213,112,0.22);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+.theme-iconaura .ia-intro { padding-top:120px; padding-bottom:48px; }
+.theme-iconaura .ia-spotlight {
+  position:absolute;
+  top:-100px; left:50%; transform:translateX(-50%);
+  width:300px; height:300px;
+  background:radial-gradient(ellipse at center, rgba(244,213,112,0.4) 0%, rgba(244,213,112,0.15) 30%, transparent 70%);
+  pointer-events:none;
+  animation:ia-spotlight-pulse 4s ease-in-out infinite;
+  filter:blur(8px);
+}
+.theme-iconaura .ia-aura {
+  position:absolute;
+  top:30px; left:50%; transform:translateX(-50%);
+  width:80px; height:80px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(244,213,112,0.4) 30%, transparent 70%);
+  animation:ia-aura-pulse 3s ease-in-out infinite;
+  filter:blur(2px);
+}
+@keyframes ia-aura-pulse {
+  0%,100% { transform:translateX(-50%) scale(1); opacity:0.8; }
+  50% { transform:translateX(-50%) scale(1.2); opacity:1; }
+}
+.theme-iconaura .intro-card-label {
+  color:var(--accent2);
+  letter-spacing:7px;
+  position:relative;
+  z-index:2;
+}
+.theme-iconaura .intro-card-title {
+  font-family:'Playfair Display',serif;
+  color:var(--text);
+  font-size:54px;
+  letter-spacing:2px;
+  position:relative;
+  z-index:2;
+  text-shadow:0 4px 32px rgba(244,213,112,0.3);
+}
+.theme-iconaura .intro-card-title em {
+  color:var(--accent);
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent) 0%, #fff5c8 50%, var(--accent) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  background-size:200% auto;
+  animation:ia-shine 4s linear infinite;
+}
+@keyframes ia-shine {
+  to { background-position:200% center; }
+}
+.theme-iconaura .intro-card-desc {
+  color:var(--text-soft);
+  font-size:14px;
+  line-height:1.95;
+  position:relative;
+  z-index:2;
+}
+.theme-iconaura #page-result {
+  background:radial-gradient(ellipse at top, #1a1408 0%, #050505 60%) !important;
+  color:var(--text) !important;
+}
+.theme-iconaura .result-header {
+  background:#020202;
+  border-bottom:1px solid rgba(244,213,112,0.2);
+  position:relative;
+}
+.theme-iconaura .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(244,213,112,0.6), transparent);
+}
+.theme-iconaura .result-tag { color:var(--accent2); letter-spacing:5px; }
+.theme-iconaura .result-htitle {
+  font-family:'Playfair Display',serif;
+  color:var(--text);
+}
+.theme-iconaura .result-htitle em {
+  color:var(--accent);
+  background:linear-gradient(135deg, var(--accent), #fff5c8 50%, var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.theme-iconaura .script-wrap {
+  border-color:rgba(244,213,112,0.2);
+  background:rgba(244,213,112,0.02);
+}
+.theme-iconaura .script-head { background:#020202; }
+.theme-iconaura .script-content {
+  font-family:'Cormorant Garamond',serif;
+  color:var(--text) !important;
+  background:#0a0805 !important;
+  line-height:2.1;
+  font-size:16px;
+}
+.theme-iconaura .btn-dl {
+  border-color:rgba(244,213,112,0.28);
+  color:rgba(244,213,112,0.55);
+  background:transparent;
+}
+.theme-iconaura .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-iconaura .result-note {
+  border-color:rgba(244,213,112,0.22);
+  color:rgba(250,250,246,0.45);
+  background:rgba(244,213,112,0.04);
+  padding:24px 32px;
+}
+.theme-iconaura .btn-copy {
+  border-color:rgba(244,213,112,0.32);
+  background:rgba(244,213,112,0.08);
+  color:rgba(244,213,112,0.8);
+}
+.theme-iconaura .btn-copy:hover { background:rgba(244,213,112,0.18); color:var(--accent); }
+.theme-iconaura .step.active {
+  animation:ia-fade-in 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes ia-fade-in {
+  from { opacity:0; transform:translateY(30px) scale(0.98); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
 </style>
 </head>
 <body>
@@ -2280,6 +2562,18 @@ const AUDIOS = {
     buildPrompt: buildMindmoviePrompt,
     systemPrompt: getMindmovieSystem,
   },
+  'miiconaura11': {
+    name: 'ICON AURA',
+    theme: 'theme-iconaura',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — ICON AURA ✦',
+    introTitle: 'ICON <em>AURA</em>',
+    introDesc: 'Audio con frecuencias elevadas que activan tu presencia naturalmente magnética ✦',
+    fields: ['name','last','email','iconintention','record'],
+    buildSteps: buildIconauraSteps,
+    buildPrompt: buildIconauraPrompt,
+    systemPrompt: getIconauraSystem,
+  },
 };
 
 // ═══════════════════════════════════
@@ -2354,6 +2648,7 @@ const THEME_BG = {
   'theme-curious': '#08040f',
   'theme-erior3': '#050505',
   'theme-mindmovie': '#08060d',
+  'theme-iconaura': '#050505',
 };
 const THEME_COLOR = {
   'theme-you': '#faf6f0',
@@ -2382,6 +2677,7 @@ const THEME_COLOR = {
   'theme-curious': '#f4eeff',
   'theme-erior3': '#e8e6e1',
   'theme-mindmovie': '#faf6ee',
+  'theme-iconaura': '#fafaf6',
 };
 
 function applyTheme(theme) {
@@ -2520,6 +2816,7 @@ function validateStep(n) {
   if(fields[n-1]==='mustinclude'){hide('e-mustinclude');if(!v('f-mustinclude')){show('e-mustinclude');return false;}}
   if(fields[n-1]==='yourversion'){hide('e-yourversion');if(!v('f-yourversion')){show('e-yourversion');return false;}}
   if(fields[n-1]==='avoid'){hide('e-avoid');if(!v('f-avoid')){show('e-avoid');return false;}}
+  if(fields[n-1]==='iconintention'){hide('e-iconintention');if(!v('f-iconintention')){show('e-iconintention');return false;}}
   if(fields[n-1]==='clientscript'){
     hide('e-clientscript');
     const sc=document.getElementById('f-clientscript');
@@ -2590,6 +2887,7 @@ function collectStep(n) {
   if(f==='mustinclude') fd.mustinclude=g('f-mustinclude');
   if(f==='yourversion') fd.yourversion=g('f-yourversion');
   if(f==='avoid') fd.avoid=g('f-avoid');
+  if(f==='iconintention') fd.iconintention=g('f-iconintention');
   if(f==='clientscript') fd.clientscript=g('f-clientscript');
   if(f==='specificname') fd.specificname=g('f-specificname');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
@@ -2672,7 +2970,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -6566,6 +6864,184 @@ REGLAS:
 - Tono cinematográfico, emocional, premium`;
   } else {
     return `Client data: Name: ${name}, Main result: "${fd.mainresult||''}", Ideal life: "${fd.ideallife||''}", Emotions: "${fd.emotions||''}", Must include: "${fd.mustinclude||''}", Their version: "${fd.yourversion||''}", Avoid: "${fd.avoid||''}". Generate Mind Movie executive summary in English following same structure: opening, central concept, main scenes (5-7), atmosphere/aesthetics, on-screen presence, confirmed key elements, guiding emotion, what we'll avoid, next step (send max 6 reference photos to eriorcenter@gmail.com). Cinematographic, emotional, premium tone. Return ONLY the summary.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — ICON AURA
+// ═══════════════════════════════════
+function buildIconauraSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card ia-intro">
+      <div class="ia-spotlight"></div>
+      <div class="ia-aura"></div>
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">ICON <em>AURA</em> ✦</div>
+      <div class="intro-card-desc">Audio cuidadosamente diseñado con frecuencias elevadas que afinan tu energía y activan una <strong>presencia naturalmente magnética</strong>. Tu campo se vuelve más claro, estable y poderoso, alineándote con esa versión tuya que <strong>impacta sin esfuerzo</strong> — que no persigue atención porque la atrae ✦</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>mini script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar ✦</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">ACTO 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La forma en que te dices, sin apellidos ✦</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">ACTO 02 — Tu firma</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">ACTO 03 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu mini script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">ACTO 04 — Tu visión</div>
+    <h2 class="step-q">¿Qué quieres <em>lograr</em> con este audio?</h2>
+    <p class="step-hint">Cuéntanos en un párrafo. <strong>Piensa muy bien tu intención antes de enviar — el mini script no se puede cambiar.</strong><br><br>Ejemplos: "Quiero ser el mejor actor, ser más auténtico para ser más reconocido", "Quiero ser una gran artista, aprender a pintar de manera auténtica y ser reconocida", "Quiero convertirme en una empresaria magnética y exitosa" ✦</p>
+    <textarea class="step-input" id="f-iconintention" placeholder="Quiero lograr..." style="height:200px;"></textarea>
+    <div class="field-err" id="e-iconintention">Por favor describe lo que quieres lograr</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">ACTO 05 — Tu voz</div>
+    <h2 class="step-q">¿Quién <em>graba</em> el audio?</h2>
+    <p class="step-hint">Tu voz es tu firma energética. Funciona muchísimo más cuando lo grabas tú 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self"><div class="choice-radio"></div><span class="choice-label">🎙️ Yo lo grabo</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="erior"><div class="choice-radio"></div><span class="choice-label">✦ ERIORCENTER lo graba (consciente que funciona más con mi voz)</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi mini script ✦</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — ICON AURA
+// ═══════════════════════════════════
+function getIconauraSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts ICON AURA de ERIORCENTER. Generas un MINI SCRIPT en formato carta, profundamente emocional, en primera persona. Tono: elevado, fluido, seguro, auténtico, magnético. Lenguaje: afirmativo, emocional, elegante, expansivo. Todo en presente, todo en positivo.
+
+ESTRUCTURA OBLIGATORIA (14 secciones que fluyen sin títulos visibles, como una carta continua dividida en párrafos):
+
+1. APERTURA EMOCIONAL: Inicia con "Querido/a [NOMBRE]:" — tono cercano, amoroso. Declaración de paz/plenitud/éxtasis siendo su mejor versión.
+
+2. IDENTIDAD NUEVA: "[NOMBRE] es mi nuevo nombre." Nueva versión asociada a magia, plenitud y renovación.
+
+3. PRESENCIA Y AUTOSOSTÉN: Anclaje al presente. "Yo me tengo. Siempre me tengo." Capacidad de sentir y permanecer estable.
+
+4. COHERENCIA INTERNA: Mente + corazón + cuerpo alineados. Sin fricción interna. Autenticidad como resultado.
+
+5. IDENTIDAD COMO FUENTE (MAGIA): No busca magia, la ES. Estado interno crea realidad. Magia como estado natural.
+
+6. TALENTO Y PROPÓSITO: Talento alineado con esencia. Impacto sin esfuerzo. Grandeza natural.
+
+7. AUTOIMAGEN: Belleza como reflejo interno. Magnetismo, carisma, glow. "Magnétic@, segur@, brillante."
+
+8. ABUNDANCIA Y RECEPCIÓN: Gratitud profunda. Imán de bendiciones. Recibir naturalmente sin resistencia.
+
+9. DISCIPLINA AMOROSA: Disciplina desde el amor. Autocuidado y sostén. "Me sostengo, me priorizo, me elijo."
+
+10. AMOR PROPIO INQUEBRANTABLE: Seguridad interna total. Valor propio estable. "Nada puede hacerme dudar de quién soy."
+
+11. ⭐ BLOQUE PERSONALIZABLE (CRÍTICO): Adapta según META y BLOQUEO de la intención del cliente. Estructura OBLIGATORIA EXACTA:
+"Yo [NOMBRE], anclo, vivo y disfruto mi versión más completa. Por eso me expando, me permito vivir en mi mayor autenticidad y soy el/la mejor [META]. Todo lo que hago es exitoso, es desde mi autenticidad, es desde mi grandeza. Soy innovador/a, soy creativo/a, soy disciplinado/a con amor ¿Por qué será que soy el/la mejor [META]? Ya no siento [BLOQUEO]. Ya no es un impedimento para que yo sea el/la mejor [META]."
+
+12. INTEGRACIÓN DE CONTRASTES: "Soy expansión con estabilidad. Soy poder con calma. Soy grandeza con coherencia."
+
+13. EFECTO ACUMULATIVO (ESCALADA): "Mientras más alinead@ estoy… más natural es manifestar… más evidente es mi capacidad…"
+
+14. CIERRE CON PREGUNTA EXPANSIVA: "¿qué voy a hacer ahora que soy [META]… que vivo sin [BLOQUEO]… y que todo lo que deseo se vuelve realidad con tanta facilidad? ✨💫"
+
+REGLAS CRÍTICAS:
+- Mantén coherencia de género (actor/actriz, creativo/creativa). Si el cliente menciona claramente femenino o masculino, usa esa forma. Si no, usa formas inclusivas (-@, -e/a).
+- El bloque #11 lleva la estructura EXACTA. No la modifiques. Solo rellena [NOMBRE], [META] y [BLOQUEO].
+- Si el cliente no menciona un bloqueo claro, deduce uno coherente (miedo, inseguridad, vergüenza, dudas, miedo a lo grande, etc.).
+- Cada sección debe sentirse como un párrafo natural en una carta — sin títulos visibles ni numeración.
+- Total aproximado: 600-800 palabras.
+
+Devuelve SOLO la carta completa. Sin explicaciones meta. Sin comentarios.`
+    :`You are ERIORCENTER's ICON AURA script editor. Generate a mini script as a deeply emotional letter in first person. Tone: elevated, fluid, secure, authentic, magnetic. 14 sections flowing as continuous letter: emotional opening "Dear [NAME]:", new identity, presence/self-support, internal coherence, identity as magic source, talent and purpose, self-image, abundance, loving discipline, unbreakable self-love, ⭐ personalizable block with EXACT structure adapted to client's GOAL and BLOCK, integration of contrasts, escalation, expansive closing question. Keep gender coherence. Return ONLY the complete letter.`;
+}
+
+function buildIconauraPrompt(fd){
+  const name=fd.name||'_';
+  const intention=fd.iconintention||'';
+  if(fd.lang==='es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Intención completa: """${intention}"""
+
+INSTRUCCIONES:
+1. Analiza la intención y extrae:
+   - META específica (ej: "actor", "artista", "empresaria", "cantante", "manifestando", etc.)
+   - BLOQUEO inicial (ej: "vergüenza", "miedo", "inseguridad", "miedo a lo grande", "dudas", etc.) — si el cliente no lo menciona explícitamente, deduce uno coherente con su intención.
+   - Coherencia de género: usa la forma correcta (actor/actriz, etc.)
+
+2. Genera el mini script siguiendo las 14 secciones de tu sistema, con la estructura EXACTA del bloque #11 personalizada.
+
+3. Entrega EXACTAMENTE este formato:
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+
+Querido/a ${name}:
+[Aquí va la carta completa siguiendo las 14 secciones — fluida, sin títulos visibles, párrafos naturales. Usa el nombre ${name} en cada lugar marcado en la estructura. El bloque #11 va EXACTAMENTE como está definido.]
+
+¿qué voy a hacer ahora que soy [META]… que vivo sin [BLOQUEO]… y que todo lo que deseo se vuelve realidad con tanta facilidad? ✨💫
+
+
+
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+REGLAS:
+- Devuelve SOLO el mini script completo en el formato exacto.
+- Sin explicaciones ni comentarios meta.
+- El bloque #11 con la estructura textual EXACTA, solo rellenando [NOMBRE], [META], [BLOQUEO].
+- Mantén coherencia de género en todo el texto.`;
+  } else {
+    return `Client data: Name: ${name}, Intention: """${intention}""". Extract GOAL and BLOCK from intention. Generate ICON AURA mini script in English following the 14-section structure as flowing letter. Block #11 must follow exact structure adapted with [NAME], [GOAL], [BLOCK]. Gender coherent. Use the same email format wrapper. Return ONLY the complete mini script.`;
   }
 }
 

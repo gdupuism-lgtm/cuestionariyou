@@ -1642,6 +1642,246 @@ textarea.step-input:focus { opacity:1; }
 .theme-erior3 .result-note { border-color:rgba(212,175,55,0.1); color:rgba(232,230,225,0.3); }
 .theme-erior3 .btn-copy { border-color:rgba(212,175,55,0.22); background:rgba(212,175,55,0.05); color:rgba(212,175,55,0.7); }
 .theme-erior3 .btn-copy:hover { background:rgba(212,175,55,0.12); color:var(--accent); }
+
+/* MIND MOVIE — Cinematográfico premium */
+.theme-mindmovie {
+  --bg: #08060d;
+  --surface: #120c1a;
+  --accent: #d4af6a;
+  --accent2: #b88dff;
+  --accent3: #ff6b9d;
+  --text: #faf6ee;
+  --text-soft: rgba(250,246,238,0.7);
+  --header-bg: #050308;
+  --pdot-off: rgba(212,175,106,0.18);
+  --pdot-on: #d4af6a;
+}
+.theme-mindmovie .form-header {
+  background:var(--header-bg);
+  color:var(--accent);
+  border-bottom:1px solid rgba(212,175,106,0.15);
+  position:relative;
+}
+.theme-mindmovie .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(184,141,255,0.4), transparent);
+}
+.theme-mindmovie .fh-brand { color:rgba(212,175,106,0.5); letter-spacing:7px; }
+.theme-mindmovie .pdot { background:var(--pdot-off); }
+.theme-mindmovie .pdot.done { background:rgba(212,175,106,0.55); }
+.theme-mindmovie .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 14px rgba(212,175,106,0.6), 0 0 24px rgba(184,141,255,0.3);
+  animation:mm-pulse 1.8s ease-in-out infinite;
+}
+@keyframes mm-pulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.3); }
+}
+.theme-mindmovie #page-form {
+  background:radial-gradient(ellipse at top, #1a1228 0%, #08060d 50%, #050308 100%);
+  color:var(--text);
+  position:relative;
+}
+.theme-mindmovie #page-form::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 25% 30%, rgba(212,175,106,0.4), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(184,141,255,0.3), transparent),
+    radial-gradient(1px 1px at 50% 80%, rgba(255,107,157,0.25), transparent);
+  opacity:0.6;
+}
+.theme-mindmovie .form-main { position:relative; z-index:1; }
+.theme-mindmovie .step-eyebrow {
+  color:var(--accent2);
+  letter-spacing:7px;
+  font-family:'Courier New',monospace;
+  font-weight:500;
+  text-shadow:0 0 12px rgba(184,141,255,0.4);
+}
+.theme-mindmovie .step-q {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-weight:400;
+  letter-spacing:-1px;
+}
+.theme-mindmovie .step-q em {
+  color:var(--accent);
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.theme-mindmovie .step-hint { color:var(--text-soft); }
+.theme-mindmovie .step-input {
+  color:var(--text);
+  border-color:rgba(212,175,106,0.35);
+  opacity:1;
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;
+  background:rgba(212,175,106,0.03);
+}
+.theme-mindmovie .step-input::placeholder { color:rgba(212,175,106,0.3); font-style:italic; }
+.theme-mindmovie .step-input:focus {
+  border-color:var(--accent2);
+  box-shadow:0 0 16px rgba(184,141,255,0.2);
+  background:rgba(184,141,255,0.04);
+}
+.theme-mindmovie textarea.step-input {
+  background:rgba(212,175,106,0.04);
+  border-color:rgba(212,175,106,0.25);
+  border-width:1px;
+}
+.theme-mindmovie textarea.step-input:focus { border-color:var(--accent2); }
+.theme-mindmovie .lang-btn {
+  color:var(--accent);
+  border-color:rgba(212,175,106,0.25);
+  opacity:1;
+  background:transparent;
+}
+.theme-mindmovie .lang-btn.active {
+  background:linear-gradient(135deg, var(--accent), #b88dff);
+  color:#08060d;
+  border-color:var(--accent);
+}
+.theme-mindmovie .btn-back { color:rgba(250,246,238,0.4); }
+.theme-mindmovie .btn-next {
+  border-color:rgba(212,175,106,0.5);
+  color:var(--accent);
+  letter-spacing:6px;
+  font-weight:500;
+  position:relative;
+  overflow:hidden;
+}
+.theme-mindmovie .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(212,175,106,0.15), rgba(184,141,255,0.1));
+  opacity:0; transition:opacity 0.3s;
+}
+.theme-mindmovie .btn-next:hover {
+  background:transparent;
+  border-color:var(--accent2);
+  color:#fff;
+  box-shadow:0 0 24px rgba(184,141,255,0.3), inset 0 0 16px rgba(212,175,106,0.1);
+}
+.theme-mindmovie .btn-next:hover::before { opacity:1; }
+.theme-mindmovie .intro-card {
+  background:linear-gradient(135deg, rgba(212,175,106,0.06), rgba(184,141,255,0.04));
+  border:1px solid rgba(212,175,106,0.18);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+.theme-mindmovie .mm-intro { padding-top:96px; }
+.theme-mindmovie .mm-reel {
+  position:absolute;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:14px;
+  z-index:1;
+}
+.theme-mindmovie .mm-reel-circle {
+  width:36px; height:36px;
+  border-radius:50%;
+  border:2px solid var(--accent);
+  position:relative;
+  animation:mm-spin 6s linear infinite;
+}
+.theme-mindmovie .mm-reel-circle:nth-child(2) { animation-direction:reverse; animation-duration:8s; }
+.theme-mindmovie .mm-reel-circle::before,
+.theme-mindmovie .mm-reel-circle::after {
+  content:''; position:absolute;
+  width:6px; height:6px; border-radius:50%;
+  background:var(--accent);
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+}
+.theme-mindmovie .mm-reel-circle::after {
+  width:24px; height:2px; border-radius:2px;
+  background:var(--accent);
+}
+@keyframes mm-spin { to { transform:rotate(360deg); } }
+.theme-mindmovie .intro-card-label { color:var(--accent2); letter-spacing:7px; }
+.theme-mindmovie .intro-card-title {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-size:48px;
+  letter-spacing:-1px;
+}
+.theme-mindmovie .intro-card-title em {
+  color:var(--accent);
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.theme-mindmovie .intro-card-desc { color:var(--text-soft); font-size:14px; line-height:1.9; }
+.theme-mindmovie #page-result {
+  background:radial-gradient(ellipse at top, #1a1228 0%, #08060d 60%) !important;
+  color:var(--text) !important;
+}
+.theme-mindmovie .result-header {
+  background:#050308;
+  border-bottom:1px solid rgba(212,175,106,0.15);
+  position:relative;
+}
+.theme-mindmovie .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(184,141,255,0.4), transparent);
+}
+.theme-mindmovie .result-tag { color:var(--accent2); letter-spacing:5px; }
+.theme-mindmovie .result-htitle {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+}
+.theme-mindmovie .result-htitle em {
+  color:var(--accent);
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.theme-mindmovie .script-wrap {
+  border-color:rgba(212,175,106,0.18);
+  background:rgba(212,175,106,0.02);
+}
+.theme-mindmovie .script-head { background:#050308; }
+.theme-mindmovie .script-content {
+  font-family:'Cormorant Garamond',serif;
+  color:var(--text) !important;
+  background:#0c0815 !important;
+  line-height:2.1;
+  font-size:16px;
+}
+.theme-mindmovie .btn-dl {
+  border-color:rgba(212,175,106,0.25);
+  color:rgba(212,175,106,0.5);
+  background:transparent;
+}
+.theme-mindmovie .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-mindmovie .result-note {
+  border-color:rgba(184,141,255,0.2);
+  color:rgba(250,246,238,0.45);
+  background:rgba(184,141,255,0.04);
+  padding:24px 32px;
+}
+.theme-mindmovie .btn-copy {
+  border-color:rgba(212,175,106,0.28);
+  background:rgba(212,175,106,0.06);
+  color:rgba(212,175,106,0.75);
+}
+.theme-mindmovie .btn-copy:hover { background:rgba(212,175,106,0.15); color:var(--accent); }
+.theme-mindmovie .step.active {
+  animation:mm-fade-in 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes mm-fade-in {
+  from { opacity:0; transform:translateY(30px) scale(0.98); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
 </style>
 </head>
 <body>
@@ -2028,6 +2268,18 @@ const AUDIOS = {
     systemPrompt: getErior3System,
     dualScript: true,
   },
+  'mimindmovie33': {
+    name: 'MIND MOVIE',
+    theme: 'theme-mindmovie',
+    steps: 8,
+    headerLabel: 'ERIORCENTER — MIND MOVIE 🎬',
+    introTitle: 'MIND <em>MOVIE</em>',
+    introDesc: 'Tu vida ideal, convertida en película mental personalizada 🎬✨',
+    fields: ['name','email','mainresult','ideallife','emotions','mustinclude','yourversion','avoid'],
+    buildSteps: buildMindmovieSteps,
+    buildPrompt: buildMindmoviePrompt,
+    systemPrompt: getMindmovieSystem,
+  },
 };
 
 // ═══════════════════════════════════
@@ -2101,6 +2353,7 @@ const THEME_BG = {
   'theme-whiterabbit': '#040404',
   'theme-curious': '#08040f',
   'theme-erior3': '#050505',
+  'theme-mindmovie': '#08060d',
 };
 const THEME_COLOR = {
   'theme-you': '#faf6f0',
@@ -2128,6 +2381,7 @@ const THEME_COLOR = {
   'theme-whiterabbit': '#f8f8f8',
   'theme-curious': '#f4eeff',
   'theme-erior3': '#e8e6e1',
+  'theme-mindmovie': '#faf6ee',
 };
 
 function applyTheme(theme) {
@@ -2260,6 +2514,12 @@ function validateStep(n) {
   if(fields[n-1]==='fear'){hide('e-fear');if(!v('f-fear')){show('e-fear');return false;}}
   if(fields[n-1]==='desire'){hide('e-desire');if(!v('f-desire')){show('e-desire');return false;}}
   if(fields[n-1]==='personality'){hide('e-personality');if(!v('f-personality')){show('e-personality');return false;}}
+  if(fields[n-1]==='mainresult'){hide('e-mainresult');if(!v('f-mainresult')){show('e-mainresult');return false;}}
+  if(fields[n-1]==='ideallife'){hide('e-ideallife');if(!v('f-ideallife')){show('e-ideallife');return false;}}
+  if(fields[n-1]==='emotions'){hide('e-emotions');if(!v('f-emotions')){show('e-emotions');return false;}}
+  if(fields[n-1]==='mustinclude'){hide('e-mustinclude');if(!v('f-mustinclude')){show('e-mustinclude');return false;}}
+  if(fields[n-1]==='yourversion'){hide('e-yourversion');if(!v('f-yourversion')){show('e-yourversion');return false;}}
+  if(fields[n-1]==='avoid'){hide('e-avoid');if(!v('f-avoid')){show('e-avoid');return false;}}
   if(fields[n-1]==='clientscript'){
     hide('e-clientscript');
     const sc=document.getElementById('f-clientscript');
@@ -2324,6 +2584,12 @@ function collectStep(n) {
   if(f==='fear') fd.fear=g('f-fear');
   if(f==='desire') fd.desire=g('f-desire');
   if(f==='personality') fd.personality=g('f-personality');
+  if(f==='mainresult') fd.mainresult=g('f-mainresult');
+  if(f==='ideallife') fd.ideallife=g('f-ideallife');
+  if(f==='emotions') fd.emotions=g('f-emotions');
+  if(f==='mustinclude') fd.mustinclude=g('f-mustinclude');
+  if(f==='yourversion') fd.yourversion=g('f-yourversion');
+  if(f==='avoid') fd.avoid=g('f-avoid');
   if(f==='clientscript') fd.clientscript=g('f-clientscript');
   if(f==='specificname') fd.specificname=g('f-specificname');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
@@ -2406,7 +2672,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -6111,6 +6377,195 @@ And yes…
 isn't it a delicious madness that EVERYTHING is turning out better than I imagined?
 
 Return ONLY this. No explanations.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — MIND MOVIE
+// ═══════════════════════════════════
+function buildMindmovieSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card mm-intro">
+      <div class="mm-reel">
+        <div class="mm-reel-circle"></div>
+        <div class="mm-reel-circle"></div>
+      </div>
+      <div class="intro-card-label">ERIORCENTER — Experiencia</div>
+      <div class="intro-card-title">MIND <em>MOVIE</em> 🎬</div>
+      <div class="intro-card-desc"><strong>Tu vida ideal, convertida en película mental.</strong><br><br>Vamos a diseñar juntos tu Mind Movie personalizado. Mientras más específic@ y detallad@ seas en tus respuestas, más poderosa será tu experiencia ✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>Mind Movie</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar 🎬</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">ESCENA 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La forma en que te dices, sin apellidos 🎬</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">ESCENA 02 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu Mind Movie?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste — aquí recibirás el resumen completo de tu experiencia 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">ESCENA 03 — Resultado principal</div>
+    <h2 class="step-q">¿Cuál es el <em>resultado principal</em> que quieres manifestar?</h2>
+    <p class="step-hint">Sé direct@ y concreto. Ejemplos: "Ganar $200,000 al mes con mi negocio online", "Vivir en un penthouse en Miami con vista al mar", "Tener una relación apasionada con el amor de mi vida", "Bajar 15 kilos y verme tonificad@" 🎬</p>
+    <textarea class="step-input" id="f-mainresult" placeholder="Mi resultado principal es..." style="height:140px;"></textarea>
+    <div class="field-err" id="e-mainresult">Por favor describe tu resultado principal</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">ESCENA 04 — Vida ideal</div>
+    <h2 class="step-q">Describe tu <em>vida ideal</em> como si ya estuviera pasando ahora mismo</h2>
+    <p class="step-hint">Queremos <strong>escenas, no conceptos</strong>. ¿Cómo es tu día a día? ¿Dónde estás? ¿Con quién? ¿Qué estás haciendo? Mientras más visual y específico, mejor 🎬</p>
+    <textarea class="step-input" id="f-ideallife" placeholder="Mi vida ideal se ve así..." style="height:180px;"></textarea>
+    <div class="field-err" id="e-ideallife">Por favor describe tu vida ideal</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">ESCENA 05 — Emociones</div>
+    <h2 class="step-q">¿Qué <em>emociones</em> quieres sentir en tu realidad final?</h2>
+    <p class="step-hint">Ejemplos: seguridad, paz, emoción, poder, libertad, amor… Describe cómo se sienten en tu cuerpo. ¿Cómo respiras? ¿Cómo te mueves? ¿Qué sensación llevas en el pecho? 🎬</p>
+    <textarea class="step-input" id="f-emotions" placeholder="Las emociones que siento son..." style="height:140px;"></textarea>
+    <div class="field-err" id="e-emotions">Por favor describe tus emociones</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="6">
+    <div class="step-eyebrow">ESCENA 06 — Elementos clave</div>
+    <h2 class="step-q">¿Qué cosas <em>específicas</em> deben aparecer SÍ o SÍ en tu Mind Movie?</h2>
+    <p class="step-hint">Mientras más detalle, mejor. Ejemplos: tipo de casa, ciudad, cuerpo, pareja, dinero exacto, objetos, experiencias, marcas, viajes, lugares… 🎬</p>
+    <textarea class="step-input" id="f-mustinclude" placeholder="Sí o sí debe aparecer..." style="height:160px;"></textarea>
+    <div class="field-err" id="e-mustinclude">Por favor describe qué debe aparecer</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="7">
+    <div class="step-eyebrow">ESCENA 07 — Tu versión</div>
+    <h2 class="step-q">¿Qué <em>versión de ti mism@</em> aparece en esta realidad?</h2>
+    <p class="step-hint">Describe cómo te ves, cómo hablas, cómo te mueves, cómo piensas. ¿Qué energía irradias? ¿Cómo te perciben los demás? 🎬</p>
+    <textarea class="step-input" id="f-yourversion" placeholder="En esta realidad yo soy..." style="height:160px;"></textarea>
+    <div class="field-err" id="e-yourversion">Por favor describe tu versión</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="8">
+    <div class="step-eyebrow">ESCENA 08 — Lo que NO va</div>
+    <h2 class="step-q">¿Hay algo que <em>NO quieres</em> que aparezca?</h2>
+    <p class="step-hint">Cosas que debemos evitar definitivamente: ciertos escenarios, estéticas, situaciones, personas, colores, etc. Si no hay nada, escribe "nada" 🎬</p>
+    <textarea class="step-input" id="f-avoid" placeholder="Definitivamente NO quiero..." style="height:120px;"></textarea>
+    <div class="field-err" id="e-avoid">Por favor responde esta pregunta</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi Mind Movie 🎬</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — MIND MOVIE
+// ═══════════════════════════════════
+function getMindmovieSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el director creativo de Mind Movies de ERIORCENTER. Recibes las respuestas del cliente y generas un RESUMEN EJECUTIVO de cómo será su Mind Movie personalizado. Tu job NO es generar el script de un audio. Tu job es darle al cliente una visión clara y emocionante de qué se incluirá en SU película mental y cómo se representará visualmente.
+
+TONO:
+- Cinematográfico, evocador, emocional
+- Como si fueras un director de cine describiendo el storyboard de la película de su vida
+- Específico y visual, no abstracto
+- Confidente, profesional, premium
+
+ESTRUCTURA DEL RESUMEN (sin títulos visibles, fluido):
+1. Apertura emocional con su nombre — confirmar que has captado su visión
+2. CONCEPTO CENTRAL: la esencia de su Mind Movie en 2-3 líneas
+3. ESCENAS PRINCIPALES: lista de 5-7 escenas concretas que se incluirán, descritas visualmente (qué se ve, dónde, con quién)
+4. ATMÓSFERA Y ESTÉTICA: paleta de colores, mood, cinematografía
+5. SU PRESENCIA: cómo aparecerá la versión de él/ella
+6. ELEMENTOS CLAVE: confirmación de los detalles específicos que pidió
+7. EMOCIÓN GUÍA: la sensación dominante que provocará
+8. LO QUE EVITAREMOS: confirmación breve de lo que NO se incluirá
+9. CIERRE: invitación a enviar las fotografías de referencia
+
+REGLAS:
+- Máximo 600 palabras
+- En presente como si la película ya existiera
+- Conserva TODOS los detalles específicos que el cliente mencionó (lugares, personas, cantidades, marcas)
+- No menciones "guión" ni "audio" — esto es una película
+- Termina con invitación clara a enviar máximo 6 fotografías a eriorcenter@gmail.com
+
+Devuelve SOLO el resumen. Sin explicaciones meta.`
+    :`You are ERIORCENTER's Mind Movie creative director. Generate an executive summary of how the client's personalized Mind Movie will look. NOT a script — a clear, exciting cinematic vision of what will be included and how it will be visually represented. Tone: cinematographic, emotional, premium. Max 600 words. Keep all specific details. Close with invitation to send max 6 reference photos to eriorcenter@gmail.com.`;
+}
+
+function buildMindmoviePrompt(fd){
+  const name=fd.name||'_';
+  if(fd.lang==='es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Resultado principal a manifestar: """${fd.mainresult||''}"""
+- Vida ideal (escenas): """${fd.ideallife||''}"""
+- Emociones deseadas: """${fd.emotions||''}"""
+- Elementos que SÍ deben aparecer: """${fd.mustinclude||''}"""
+- Versión de sí mism@: """${fd.yourversion||''}"""
+- Lo que NO debe aparecer: """${fd.avoid||''}"""
+
+Genera el resumen ejecutivo del Mind Movie de ${name} siguiendo EXACTAMENTE esta estructura. Conserva todos los detalles específicos que mencionó.
+
+✨ TU MIND MOVIE — VISIÓN PERSONALIZADA ✨
+
+[APERTURA: 2-3 líneas confirmando que captaste la visión de ${name}. Emocional, cinematográfica, como si le hablaras como director.]
+
+🎬 CONCEPTO CENTRAL
+[2-3 líneas describiendo la esencia de su Mind Movie. La idea madre que conecta todo.]
+
+🎞️ ESCENAS PRINCIPALES QUE INCLUIREMOS
+[Lista de 5-7 escenas concretas extraídas de su descripción de vida ideal y elementos clave. Cada escena en 1-2 líneas, con detalles visuales específicos. Formato: 
+• Escena 1: [descripción visual]
+• Escena 2: [descripción visual]
+...]
+
+🎨 ATMÓSFERA Y ESTÉTICA
+[2-3 líneas describiendo el mood visual: paleta de colores, tipo de iluminación, cinematografía. Inspirado en lo que pidió.]
+
+✨ TU PRESENCIA EN PANTALLA
+[2-3 líneas sobre cómo aparecerá ${name} en la película — estilo, presencia, energía. Basado en su "versión de sí mism@".]
+
+💎 ELEMENTOS CLAVE CONFIRMADOS
+[Lista breve de los detalles específicos que pidió: marcas, lugares, cantidades, personas, objetos. Que se sienta visto y escuchado en cada detalle.]
+
+💛 EMOCIÓN GUÍA
+[1-2 líneas describiendo la sensación dominante que provocará ver el Mind Movie. Basado en sus emociones deseadas.]
+
+🚫 LO QUE EVITAREMOS
+[1-2 líneas confirmando lo que NO incluiremos, según lo que pidió evitar.]
+
+📸 PRÓXIMO PASO
+Si te encanta cómo se ve tu Mind Movie, por favor envía un máximo de 6 fotografías de referencia (lugares, estilo de vida, cuerpo, estética, etc.) al correo eriorcenter@gmail.com. Esto es CLAVE para lograr una representación fiel a tu visión.
+
+Una vez recibidas tus fotos, comenzaremos la producción de tu Mind Movie personalizado 🎬✨
+
+Con cariño,
+El equipo ERIORCENTER ☁️🌸💎
+
+REGLAS:
+- Devuelve SOLO el resumen completo
+- Sin comentarios meta ni explicaciones
+- Conserva TODOS los detalles específicos del cliente
+- Tono cinematográfico, emocional, premium`;
+  } else {
+    return `Client data: Name: ${name}, Main result: "${fd.mainresult||''}", Ideal life: "${fd.ideallife||''}", Emotions: "${fd.emotions||''}", Must include: "${fd.mustinclude||''}", Their version: "${fd.yourversion||''}", Avoid: "${fd.avoid||''}". Generate Mind Movie executive summary in English following same structure: opening, central concept, main scenes (5-7), atmosphere/aesthetics, on-screen presence, confirmed key elements, guiding emotion, what we'll avoid, next step (send max 6 reference photos to eriorcenter@gmail.com). Cinematographic, emotional, premium tone. Return ONLY the summary.`;
   }
 }
 

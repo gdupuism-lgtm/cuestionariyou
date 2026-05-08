@@ -3277,8 +3277,10 @@ async function generate() {
 
       // Combinar las 2 partes en el formato esperado: SCRIPT1 ===SCRIPT2=== SCRIPT2 ===SCRIPT3=== SCRIPT3 ===MINISCRIPT=== MINISCRIPT
       const combined = partA.trim() + '\n\n===SCRIPT3===\n\n' + partB.trim();
+      // 1) Dividir PRIMERO (mientras los marcadores existen) para mostrar los 4 bloques en pantalla
+      splitScript(combined);
+      // 2) DESPUÉS formatear para el mail (el formato reemplaza los marcadores con encabezados bonitos)
       fullScript = formatEmergencyEmail(combined, fd.name||'');
-      splitScript(fullScript);
       showPage('page-result');
       sendEmails();
       return;

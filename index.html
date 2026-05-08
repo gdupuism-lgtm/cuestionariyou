@@ -2431,6 +2431,288 @@ textarea.step-input:focus { opacity:1; }
   from { opacity:0; transform:translateY(30px) scale(0.98); }
   to { opacity:1; transform:translateY(0) scale(1); }
 }
+
+/* KEEP COOL — Meditación bajo las estrellas */
+.theme-keepcool {
+  --bg: #060912;
+  --surface: #0c1320;
+  --accent: #c9d4e8;
+  --accent2: #7fb6d6;
+  --accent3: #e8f4ff;
+  --text: #f0f4fa;
+  --text-soft: rgba(240,244,250,0.7);
+  --header-bg: #040711;
+  --pdot-off: rgba(201,212,232,0.18);
+  --pdot-on: #c9d4e8;
+}
+.theme-keepcool .form-header {
+  background:var(--header-bg);
+  color:var(--accent);
+  border-bottom:1px solid rgba(201,212,232,0.2);
+  position:relative;
+}
+.theme-keepcool .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(127,182,214,0.5), rgba(232,244,255,0.4), transparent);
+}
+.theme-keepcool .fh-brand { color:rgba(201,212,232,0.55); letter-spacing:7px; }
+.theme-keepcool .pdot { background:var(--pdot-off); }
+.theme-keepcool .pdot.done { background:rgba(201,212,232,0.55); }
+.theme-keepcool .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 18px rgba(201,212,232,0.6), 0 0 32px rgba(127,182,214,0.3);
+  animation:kc-breath 3s ease-in-out infinite;
+}
+@keyframes kc-breath {
+  0%,100% { transform:scale(1); opacity:0.85; }
+  50% { transform:scale(1.35); opacity:1; }
+}
+.theme-keepcool #page-form {
+  background:radial-gradient(ellipse at top, #15213a 0%, #060912 55%, #030510 100%);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+.theme-keepcool #page-form::before {
+  content:''; position:fixed;
+  top:-200px; left:50%; transform:translateX(-50%);
+  width:800px; height:600px;
+  background:radial-gradient(ellipse at center top, rgba(127,182,214,0.18) 0%, rgba(201,212,232,0.08) 30%, transparent 60%);
+  pointer-events:none; z-index:0;
+  animation:kc-glow-pulse 6s ease-in-out infinite;
+}
+@keyframes kc-glow-pulse {
+  0%,100% { opacity:0.7; }
+  50% { opacity:1; }
+}
+.theme-keepcool #page-form::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(232,244,255,0.7), transparent),
+    radial-gradient(1px 1px at 28% 38%, rgba(201,212,232,0.5), transparent),
+    radial-gradient(1px 1px at 48% 18%, rgba(232,244,255,0.6), transparent),
+    radial-gradient(1px 1px at 67% 32%, rgba(127,182,214,0.4), transparent),
+    radial-gradient(1px 1px at 82% 12%, rgba(232,244,255,0.5), transparent),
+    radial-gradient(1px 1px at 22% 65%, rgba(201,212,232,0.4), transparent),
+    radial-gradient(1px 1px at 58% 75%, rgba(232,244,255,0.5), transparent),
+    radial-gradient(1px 1px at 78% 58%, rgba(127,182,214,0.45), transparent),
+    radial-gradient(2px 2px at 38% 88%, rgba(232,244,255,0.45), transparent),
+    radial-gradient(1px 1px at 88% 82%, rgba(201,212,232,0.4), transparent);
+  opacity:0.7;
+  animation:kc-stars-twinkle 8s ease-in-out infinite;
+}
+@keyframes kc-stars-twinkle {
+  0%,100% { opacity:0.55; }
+  50% { opacity:0.85; }
+}
+.theme-keepcool .form-main { position:relative; z-index:1; }
+.theme-keepcool .step-eyebrow {
+  color:var(--accent2);
+  letter-spacing:7px;
+  font-family:'Courier New',monospace;
+  font-weight:500;
+  text-shadow:0 0 14px rgba(127,182,214,0.45);
+}
+.theme-keepcool .step-q {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-weight:400;
+  letter-spacing:-1px;
+  text-shadow:0 2px 28px rgba(127,182,214,0.18);
+}
+.theme-keepcool .step-q em {
+  color:var(--accent3);
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent3), var(--accent2) 50%, var(--accent3));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.theme-keepcool .step-hint { color:var(--text-soft); }
+.theme-keepcool .step-input {
+  color:var(--text);
+  border-color:rgba(201,212,232,0.4);
+  opacity:1;
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;
+  background:rgba(127,182,214,0.04);
+}
+.theme-keepcool .step-input::placeholder { color:rgba(201,212,232,0.35); font-style:italic; }
+.theme-keepcool .step-input:focus {
+  border-color:var(--accent3);
+  box-shadow:0 0 18px rgba(232,244,255,0.25);
+  background:rgba(232,244,255,0.05);
+}
+.theme-keepcool textarea.step-input {
+  background:rgba(127,182,214,0.04);
+  border-color:rgba(201,212,232,0.3);
+}
+.theme-keepcool textarea.step-input:focus { border-color:var(--accent3); }
+.theme-keepcool .lang-btn {
+  color:var(--accent3);
+  border-color:rgba(232,244,255,0.3);
+  opacity:1;
+  background:transparent;
+}
+.theme-keepcool .lang-btn.active {
+  background:linear-gradient(135deg, var(--accent2), var(--accent3));
+  color:#060912;
+  border-color:var(--accent3);
+}
+.theme-keepcool .btn-back { color:rgba(240,244,250,0.4); }
+.theme-keepcool .btn-next {
+  border-color:rgba(127,182,214,0.5);
+  color:var(--accent3);
+  letter-spacing:6px;
+  font-weight:500;
+  position:relative;
+  overflow:hidden;
+}
+.theme-keepcool .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(127,182,214,0.15), rgba(232,244,255,0.1));
+  opacity:0; transition:opacity 0.3s;
+}
+.theme-keepcool .btn-next:hover {
+  background:transparent;
+  border-color:var(--accent3);
+  color:#fff;
+  box-shadow:0 0 28px rgba(127,182,214,0.35), inset 0 0 18px rgba(232,244,255,0.1);
+}
+.theme-keepcool .btn-next:hover::before { opacity:1; }
+.theme-keepcool .intro-card {
+  background:linear-gradient(135deg, rgba(127,182,214,0.08), rgba(232,244,255,0.04));
+  border:1px solid rgba(201,212,232,0.22);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+.theme-keepcool .kc-intro { padding-top:130px; padding-bottom:48px; }
+.theme-keepcool .kc-moon {
+  position:absolute;
+  top:38px; left:50%; transform:translateX(-50%);
+  width:74px; height:74px;
+  border-radius:50%;
+  background:radial-gradient(circle at 60% 40%, #ffffff 0%, #e8f4ff 30%, #c9d4e8 70%, #7fb6d6 100%);
+  box-shadow:0 0 40px rgba(232,244,255,0.5), 0 0 80px rgba(127,182,214,0.25);
+  z-index:2;
+  animation:kc-moon-pulse 5s ease-in-out infinite;
+}
+@keyframes kc-moon-pulse {
+  0%,100% { box-shadow:0 0 40px rgba(232,244,255,0.5), 0 0 80px rgba(127,182,214,0.25); }
+  50% { box-shadow:0 0 50px rgba(232,244,255,0.7), 0 0 100px rgba(127,182,214,0.4); }
+}
+.theme-keepcool .kc-aura {
+  position:absolute;
+  top:-30px; left:50%; transform:translateX(-50%);
+  width:280px; height:280px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(232,244,255,0.25) 0%, rgba(127,182,214,0.12) 30%, transparent 70%);
+  pointer-events:none;
+  animation:kc-aura-breath 5s ease-in-out infinite;
+  filter:blur(8px);
+}
+@keyframes kc-aura-breath {
+  0%,100% { transform:translateX(-50%) scale(1); opacity:0.7; }
+  50% { transform:translateX(-50%) scale(1.15); opacity:1; }
+}
+.theme-keepcool .intro-card-label {
+  color:var(--accent2);
+  letter-spacing:7px;
+  position:relative;
+  z-index:2;
+}
+.theme-keepcool .intro-card-title {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-size:50px;
+  letter-spacing:1px;
+  position:relative;
+  z-index:2;
+  text-shadow:0 4px 32px rgba(127,182,214,0.3);
+}
+.theme-keepcool .intro-card-title em {
+  color:var(--accent3);
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent3) 0%, #ffffff 50%, var(--accent3) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  background-size:200% auto;
+  animation:kc-title-shine 6s linear infinite;
+}
+@keyframes kc-title-shine {
+  to { background-position:200% center; }
+}
+.theme-keepcool .intro-card-desc {
+  color:var(--text-soft);
+  font-size:14px;
+  line-height:1.95;
+  position:relative;
+  z-index:2;
+}
+.theme-keepcool #page-result {
+  background:radial-gradient(ellipse at top, #15213a 0%, #060912 60%) !important;
+  color:var(--text) !important;
+}
+.theme-keepcool .result-header {
+  background:#040711;
+  border-bottom:1px solid rgba(201,212,232,0.2);
+  position:relative;
+}
+.theme-keepcool .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(127,182,214,0.5), rgba(232,244,255,0.4), transparent);
+}
+.theme-keepcool .result-tag { color:var(--accent2); letter-spacing:5px; }
+.theme-keepcool .result-htitle {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+}
+.theme-keepcool .result-htitle em {
+  color:var(--accent3);
+  background:linear-gradient(135deg, var(--accent3), var(--accent2) 50%, var(--accent3));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.theme-keepcool .script-wrap {
+  border-color:rgba(201,212,232,0.2);
+  background:rgba(127,182,214,0.02);
+}
+.theme-keepcool .script-head { background:#040711; }
+.theme-keepcool .script-content {
+  font-family:'Cormorant Garamond',serif;
+  color:var(--text) !important;
+  background:#080d18 !important;
+  line-height:2.1;
+  font-size:16px;
+}
+.theme-keepcool .btn-dl {
+  border-color:rgba(201,212,232,0.28);
+  color:rgba(201,212,232,0.55);
+  background:transparent;
+}
+.theme-keepcool .btn-dl:hover { border-color:var(--accent3); color:var(--accent3); }
+.theme-keepcool .result-note {
+  border-color:rgba(127,182,214,0.22);
+  color:rgba(240,244,250,0.45);
+  background:rgba(127,182,214,0.04);
+  padding:24px 32px;
+}
+.theme-keepcool .btn-copy {
+  border-color:rgba(127,182,214,0.32);
+  background:rgba(127,182,214,0.08);
+  color:rgba(232,244,255,0.85);
+}
+.theme-keepcool .btn-copy:hover { background:rgba(127,182,214,0.18); color:var(--accent3); }
+.theme-keepcool .step.active {
+  animation:kc-fade-in 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes kc-fade-in {
+  from { opacity:0; transform:translateY(30px) scale(0.98); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
 </style>
 </head>
 <body>
@@ -2854,6 +3136,18 @@ const AUDIOS = {
     systemPrompt: getEmergencySystem,
     quadScript: true,
   },
+  'mikeepcool222': {
+    name: 'KEEP COOL',
+    theme: 'theme-keepcool',
+    steps: 4,
+    headerLabel: 'ERIORCENTER — KEEP COOL ☾',
+    introTitle: 'KEEP <em>COOL</em>',
+    introDesc: 'Meditación que te recuerda todos los días quién eres realmente ☾',
+    fields: ['name','email','keepcooltopics'],
+    buildSteps: buildKeepcoolSteps,
+    buildPrompt: buildKeepcoolPrompt,
+    systemPrompt: getKeepcoolSystem,
+  },
 };
 
 // ═══════════════════════════════════
@@ -2930,6 +3224,7 @@ const THEME_BG = {
   'theme-mindmovie': '#08060d',
   'theme-iconaura': '#050505',
   'theme-emergency': '#0a0303',
+  'theme-keepcool': '#060912',
 };
 const THEME_COLOR = {
   'theme-you': '#faf6f0',
@@ -2960,6 +3255,7 @@ const THEME_COLOR = {
   'theme-mindmovie': '#faf6ee',
   'theme-iconaura': '#fafaf6',
   'theme-emergency': '#faf3f0',
+  'theme-keepcool': '#f0f4fa',
 };
 
 function applyTheme(theme) {
@@ -3099,6 +3395,7 @@ function validateStep(n) {
   if(fields[n-1]==='yourversion'){hide('e-yourversion');if(!v('f-yourversion')){show('e-yourversion');return false;}}
   if(fields[n-1]==='avoid'){hide('e-avoid');if(!v('f-avoid')){show('e-avoid');return false;}}
   if(fields[n-1]==='iconintention'){hide('e-iconintention');if(!v('f-iconintention')){show('e-iconintention');return false;}}
+  if(fields[n-1]==='keepcooltopics'){hide('e-keepcooltopics');if(!v('f-keepcooltopics')){show('e-keepcooltopics');return false;}}
   if(fields[n-1]==='emergencysituation'){
     hide('e-emergencysituation');
     const sc=document.getElementById('f-emergencysituation');
@@ -3176,6 +3473,7 @@ function collectStep(n) {
   if(f==='avoid') fd.avoid=g('f-avoid');
   if(f==='iconintention') fd.iconintention=g('f-iconintention');
   if(f==='emergencysituation') fd.emergencysituation=g('f-emergencysituation');
+  if(f==='keepcooltopics') fd.keepcooltopics=g('f-keepcooltopics');
   if(f==='clientscript') fd.clientscript=g('f-clientscript');
   if(f==='specificname') fd.specificname=g('f-specificname');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
@@ -3450,7 +3748,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -7703,6 +8001,147 @@ REGLAS:
 - Devuelve SOLO los 4 bloques, sin explicaciones ni meta-comentarios`;
   } else {
     return `Client data: Name: ${name}, Situation: """${situation}""". Generate 4 blocks separated by ===SCRIPT2===, ===SCRIPT3===, ===MINISCRIPT===. SCRIPT 1 loving/regulating with Pauline closing. SCRIPT 2 quantum with Zero Point + "What if" questions. SCRIPT 3 pure Zero Point with suggestive question in CAPS repeating between every block as mantra. MINI SCRIPT single continuous hypnotic paragraph. Keep all situation details. Return ONLY the 4 blocks.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — KEEP COOL
+// ═══════════════════════════════════
+function buildKeepcoolSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card kc-intro">
+      <div class="kc-moon"></div>
+      <div class="kc-aura"></div>
+      <div class="intro-card-label">ERIORCENTER — Meditación</div>
+      <div class="intro-card-title">KEEP <em>COOL</em> ☾</div>
+      <div class="intro-card-desc">Esta meditación te ayudará a <strong>incrementar tu práctica</strong> y a recordarte todos los días <strong>quién eres realmente</strong> ☾✨<br><br>Antes de comenzar — por favor manda a <strong>eriorcenter@gmail.com</strong> un correo donde brevemente expliques para qué quieres tu meditación.</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>mini script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar ☾</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">RESPIRO 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La manera en que te dices ☾</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">RESPIRO 02 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu mini script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">RESPIRO 03 — Tu intención</div>
+    <h2 class="step-q">En máximo 5 renglones, platícanos los <em>tres temas</em> que quieres que lleve tu meditación</h2>
+    <p class="step-hint">⚠️ <strong>IMPORTANTE</strong>: hazlo con calma porque <strong>no hay cambios</strong>. Una vez que envíes tu formulario así se queda. Sé específic@ con los 3 temas que quieres trabajar (ejemplos: dinero, salud, relación, paz interna, autoestima, propósito, abundancia) ☾</p>
+    <textarea class="step-input" id="f-keepcooltopics" placeholder="Los tres temas que quiero en mi meditación son..." style="height:200px;"></textarea>
+    <div class="field-err" id="e-keepcooltopics">Por favor describe los tres temas</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi mini script ☾</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — KEEP COOL
+// ═══════════════════════════════════
+function getKeepcoolSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de mini scripts KEEP COOL de ERIORCENTER. Generas un MINI SCRIPT corto, hipnótico, en formato de 3 párrafos densos. Tono: calmante, fluido, regulador, suave pero potente. Todo en presente, todo en positivo.
+
+ESTRUCTURA OBLIGATORIA (3 párrafos exactos, NO más, NO menos):
+
+PÁRRAFO 1 — Disponibilidad + imagen + sensación + 1 pregunta:
+- Comienza: "Yo [NOMBRE], [tema/resultado] ya está disponible para mí…"
+- 1 pregunta de facilidad: "¿por qué será que es tan fácil [acción]?"
+- Visualización breve y concreta del resultado: "veo [imagen del resultado], veo [otra imagen]"
+- Sensación con repetición tipo eco: "lo siento, lo siento, lo siento integrarse [en mi cuerpo / con calma / etc.]"
+
+PÁRRAFO 2 — Alineación + flujo + 1 pregunta:
+- "Todo en mí se alinea y lo permite…"
+- 1 pregunta de rapidez/fluidez: "¿por qué será que [resultado] llega tan rápido y tan fácil?"
+- Movimiento del resultado: "se organiza, se acerca, se completa [sin esfuerzo / naturalmente]"
+
+PÁRRAFO 3 — Cierre + repetición:
+- Declaración de hecho: "Ya está [hecho/pagado/resuelto/cerrado], ya está cerrado, ya está [resuelto/integrado]"
+- Repetición de permiso: "lo permito, lo permito…"
+- Cierre: "ya es mío."
+
+REGLAS CRÍTICAS:
+- 3 párrafos separados por salto de línea, NADA más
+- El cliente da 3 temas. Adapta el script para integrar los 3 temas de forma fluida y natural en los 3 párrafos
+- Si los temas son muy distintos (ej: dinero, salud, relación), entrelázalos con elegancia o dedica un párrafo a cada uno manteniendo la estructura
+- TODOS los elementos de cada párrafo deben estar presentes (las preguntas, las repeticiones, las imágenes)
+- Conserva el ritmo hipnótico y las repeticiones — son CLAVE
+- Total aproximado: 100-180 palabras. Corto y potente.
+
+Devuelve SOLO el mini script de 3 párrafos. Sin meta-comentarios.`
+    :`You are ERIORCENTER's KEEP COOL mini script editor. Generate a short hypnotic mini script in 3 dense paragraphs. Tone: calming, flowing, regulating, soft but potent. Present tense, positive. P1: availability + image + sensation + 1 ease question. P2: alignment + flow + 1 speed question. P3: closure + repetition. Adapt to the 3 topics from the client. 100-180 words total. Return ONLY the mini script.`;
+}
+
+function buildKeepcoolPrompt(fd){
+  const name=fd.name||'_';
+  const topics=fd.keepcooltopics||'';
+  if(fd.lang==='es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Los 3 temas que quiere en su meditación: """${topics}"""
+
+INSTRUCCIONES:
+1. Identifica los 3 temas específicos que el cliente quiere (puede mencionarlos directamente o describir resultados específicos)
+2. Genera el mini script siguiendo la estructura exacta de 3 párrafos
+3. Integra los 3 temas de forma natural en los 3 párrafos
+4. Conserva el ritmo hipnótico, las preguntas y las repeticiones tipo eco
+
+Entrega EXACTAMENTE este formato:
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+
+[Aquí va el mini script de 3 párrafos para ${name}, integrando sus 3 temas con la estructura exacta]
+
+
+
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+REGLAS:
+- Devuelve SOLO el mini script completo en el formato exacto de arriba
+- Sin explicaciones meta
+- 3 párrafos exactos en el script
+- Conserva el ritmo hipnótico (preguntas y repeticiones)`;
+  } else {
+    return `Client data: Name: ${name}, 3 topics: """${topics}""". Generate KEEP COOL mini script in English following the exact 3-paragraph structure with all elements (questions, repetitions, images). Use the same email format wrapper. Return ONLY the complete mini script.`;
   }
 }
 

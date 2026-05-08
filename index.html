@@ -3250,6 +3250,47 @@ async function generate() {
   showPage('page-generating');
   const items=['gs1','gs2','gs3','gs4'];
   for(let i=0;i<items.length;i++){await delay(800);document.getElementById(items[i]).classList.add('done');}
+
+  // EMERGENCY (quadScript): 2 peticiones separadas para evitar timeout de Netlify
+  if(currentAudio && currentAudio.quadScript){
+    try {
+      const baseSystem = buildHardenedSystem(currentAudio.systemPrompt(fd), fd.lang);
+      const basePrompt = currentAudio.buildPrompt(fd);
+
+      // Petición A: Scripts 1 y 2
+      const promptA = basePrompt + '\n\n⚠️ ESTA PETICIÓN ES LA PARTE A: GENERA SOLAMENTE EL SCRIPT 1 Y SCRIPT 2. Devuelve SCRIPT 1 completo, luego ===SCRIPT2===, luego SCRIPT 2 completo. NO generes Script 3 ni Mini Script en esta petición.';
+      const resA = await fetch('/.netlify/functions/generate', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ system: baseSystem, prompt: promptA })
+      });
+      const dataA = await resA.json();
+      const partA = dataA.text || '';
+
+      // Petición B: Script 3 y Mini Script
+      const promptB = basePrompt + '\n\n⚠️ ESTA PETICIÓN ES LA PARTE B: GENERA SOLAMENTE EL SCRIPT 3 Y EL MINI SCRIPT. Devuelve SCRIPT 3 completo, luego ===MINISCRIPT===, luego MINI SCRIPT completo. NO generes Script 1 ni Script 2 en esta petición.';
+      const resB = await fetch('/.netlify/functions/generate', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ system: baseSystem, prompt: promptB })
+      });
+      const dataB = await resB.json();
+      const partB = dataB.text || '';
+
+      // Combinar las 2 partes en el formato esperado: SCRIPT1 ===SCRIPT2=== SCRIPT2 ===SCRIPT3=== SCRIPT3 ===MINISCRIPT=== MINISCRIPT
+      const combined = partA.trim() + '\n\n===SCRIPT3===\n\n' + partB.trim();
+      fullScript = formatEmergencyEmail(combined, fd.name||'');
+      splitScript(fullScript);
+      showPage('page-result');
+      sendEmails();
+      return;
+    } catch(e) {
+      fullScript='Error generando el script. Por favor contacta a ERIORCENTER.';
+      splitScript(fullScript);
+      showPage('page-result');
+      return;
+    }
+  }
+
+  // Audios normales (1 petición)
   try {
     const res=await fetch('/.netlify/functions/generate',{
       method:'POST',headers:{'Content-Type':'application/json'},
@@ -3257,10 +3298,6 @@ async function generate() {
     });
     const data=await res.json();
     fullScript=data.text||'';
-    // For EMERGENCY: format fullScript with the email template (replace markers with section labels)
-    if(currentAudio && currentAudio.quadScript){
-      fullScript = formatEmergencyEmail(fullScript, fd.name||'');
-    }
     splitScript(fullScript);
     showPage('page-result');
     sendEmails();

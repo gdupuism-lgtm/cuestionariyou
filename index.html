@@ -2164,6 +2164,273 @@ textarea.step-input:focus { opacity:1; }
   from { opacity:0; transform:translateY(30px) scale(0.98); }
   to { opacity:1; transform:translateY(0) scale(1); }
 }
+
+/* EMERGENCY — Urgencia elegante */
+.theme-emergency {
+  --bg: #0a0303;
+  --surface: #14060a;
+  --accent: #e84545;
+  --accent2: #ffb84d;
+  --accent3: #ffe5a0;
+  --text: #faf3f0;
+  --text-soft: rgba(250,243,240,0.7);
+  --header-bg: #050202;
+  --pdot-off: rgba(232,69,69,0.18);
+  --pdot-on: #e84545;
+}
+.theme-emergency .form-header {
+  background:var(--header-bg);
+  color:var(--accent2);
+  border-bottom:1px solid rgba(232,69,69,0.2);
+  position:relative;
+}
+.theme-emergency .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(232,69,69,0.6), rgba(255,184,77,0.6), transparent);
+}
+.theme-emergency .fh-brand { color:rgba(255,184,77,0.55); letter-spacing:7px; }
+.theme-emergency .pdot { background:var(--pdot-off); }
+.theme-emergency .pdot.done { background:rgba(232,69,69,0.55); }
+.theme-emergency .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 18px rgba(232,69,69,0.7), 0 0 32px rgba(255,184,77,0.3);
+  animation:em-pulse 1.5s ease-in-out infinite;
+}
+@keyframes em-pulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.5); box-shadow:0 0 28px rgba(232,69,69,0.9), 0 0 48px rgba(255,184,77,0.5); }
+}
+.theme-emergency #page-form {
+  background:radial-gradient(ellipse at top, #1f0608 0%, #0a0303 55%, #050101 100%);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+.theme-emergency #page-form::before {
+  content:''; position:fixed;
+  top:-150px; left:50%; transform:translateX(-50%);
+  width:700px; height:500px;
+  background:radial-gradient(ellipse at center top, rgba(232,69,69,0.2) 0%, rgba(232,69,69,0.08) 30%, transparent 60%);
+  pointer-events:none; z-index:0;
+  animation:em-bg-pulse 4s ease-in-out infinite;
+}
+@keyframes em-bg-pulse {
+  0%,100% { opacity:0.6; }
+  50% { opacity:1; }
+}
+.theme-emergency #page-form::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 18% 30%, rgba(232,69,69,0.5), transparent),
+    radial-gradient(1px 1px at 82% 20%, rgba(255,184,77,0.4), transparent),
+    radial-gradient(1px 1px at 55% 60%, rgba(232,69,69,0.3), transparent),
+    radial-gradient(2px 2px at 35% 75%, rgba(255,184,77,0.4), transparent),
+    radial-gradient(1px 1px at 70% 85%, rgba(255,229,160,0.35), transparent);
+  opacity:0.6;
+}
+.theme-emergency .form-main { position:relative; z-index:1; }
+.theme-emergency .step-eyebrow {
+  color:var(--accent);
+  letter-spacing:7px;
+  font-family:'Courier New',monospace;
+  font-weight:600;
+  text-shadow:0 0 14px rgba(232,69,69,0.4);
+}
+.theme-emergency .step-q {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-weight:400;
+  letter-spacing:-1px;
+  text-shadow:0 2px 28px rgba(232,69,69,0.15);
+}
+.theme-emergency .step-q em {
+  color:var(--accent2);
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent2), var(--accent3) 50%, var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.theme-emergency .step-hint { color:var(--text-soft); }
+.theme-emergency .step-input {
+  color:var(--text);
+  border-color:rgba(232,69,69,0.4);
+  opacity:1;
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;
+  background:rgba(232,69,69,0.03);
+}
+.theme-emergency .step-input::placeholder { color:rgba(232,69,69,0.35); font-style:italic; }
+.theme-emergency .step-input:focus {
+  border-color:var(--accent2);
+  box-shadow:0 0 18px rgba(255,184,77,0.25);
+  background:rgba(255,184,77,0.05);
+}
+.theme-emergency textarea.step-input {
+  background:rgba(232,69,69,0.04);
+  border-color:rgba(232,69,69,0.3);
+}
+.theme-emergency textarea.step-input:focus { border-color:var(--accent2); }
+.theme-emergency .lang-btn {
+  color:var(--accent2);
+  border-color:rgba(255,184,77,0.3);
+  opacity:1;
+  background:transparent;
+}
+.theme-emergency .lang-btn.active {
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  color:#0a0303;
+  border-color:var(--accent);
+}
+.theme-emergency .btn-back { color:rgba(250,243,240,0.4); }
+.theme-emergency .btn-next {
+  border-color:rgba(232,69,69,0.5);
+  color:var(--accent2);
+  letter-spacing:6px;
+  font-weight:500;
+  position:relative;
+  overflow:hidden;
+}
+.theme-emergency .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(232,69,69,0.15), rgba(255,184,77,0.1));
+  opacity:0; transition:opacity 0.3s;
+}
+.theme-emergency .btn-next:hover {
+  background:transparent;
+  border-color:var(--accent2);
+  color:#fff;
+  box-shadow:0 0 28px rgba(232,69,69,0.4), inset 0 0 18px rgba(255,184,77,0.1);
+}
+.theme-emergency .btn-next:hover::before { opacity:1; }
+.theme-emergency .intro-card {
+  background:linear-gradient(135deg, rgba(232,69,69,0.08), rgba(255,184,77,0.04));
+  border:1px solid rgba(232,69,69,0.22);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+.theme-emergency .em-intro { padding-top:120px; padding-bottom:48px; }
+.theme-emergency .em-pulse {
+  position:absolute;
+  top:30px; left:50%; transform:translateX(-50%);
+  width:90px; height:90px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(232,69,69,0.7) 0%, rgba(232,69,69,0.25) 30%, transparent 70%);
+  pointer-events:none;
+  animation:em-icon-pulse 1.6s ease-in-out infinite;
+  filter:blur(2px);
+}
+@keyframes em-icon-pulse {
+  0%,100% { transform:translateX(-50%) scale(1); opacity:0.7; }
+  50% { transform:translateX(-50%) scale(1.3); opacity:1; }
+}
+.theme-emergency .em-cross {
+  position:absolute;
+  top:55px; left:50%; transform:translateX(-50%);
+  font-size:38px;
+  color:var(--accent3);
+  z-index:2;
+  text-shadow:0 0 18px rgba(255,184,77,0.6);
+  animation:em-cross-glow 2s ease-in-out infinite;
+}
+@keyframes em-cross-glow {
+  0%,100% { opacity:0.85; }
+  50% { opacity:1; transform:translateX(-50%) scale(1.05); }
+}
+.theme-emergency .intro-card-label {
+  color:var(--accent);
+  letter-spacing:7px;
+  position:relative;
+  z-index:2;
+}
+.theme-emergency .intro-card-title {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-size:48px;
+  letter-spacing:1px;
+  position:relative;
+  z-index:2;
+  text-shadow:0 4px 32px rgba(232,69,69,0.3);
+}
+.theme-emergency .intro-card-title em {
+  color:var(--accent);
+  font-style:normal;
+  margin:0 8px;
+}
+.theme-emergency .intro-card-desc {
+  color:var(--text-soft);
+  font-size:14px;
+  line-height:1.95;
+  position:relative;
+  z-index:2;
+}
+.theme-emergency #page-result {
+  background:radial-gradient(ellipse at top, #1f0608 0%, #0a0303 60%) !important;
+  color:var(--text) !important;
+}
+.theme-emergency .result-header {
+  background:#050202;
+  border-bottom:1px solid rgba(232,69,69,0.2);
+  position:relative;
+}
+.theme-emergency .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(232,69,69,0.6), rgba(255,184,77,0.6), transparent);
+}
+.theme-emergency .result-tag { color:var(--accent); letter-spacing:5px; }
+.theme-emergency .result-htitle {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+}
+.theme-emergency .result-htitle em {
+  color:var(--accent2);
+  background:linear-gradient(135deg, var(--accent2), var(--accent3) 50%, var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.theme-emergency .script-wrap {
+  border-color:rgba(232,69,69,0.2);
+  background:rgba(232,69,69,0.02);
+  margin-bottom:18px;
+}
+.theme-emergency .script-head { background:#050202; }
+.theme-emergency .script-head-label {
+  color:var(--accent2) !important;
+}
+.theme-emergency .script-content {
+  font-family:'Cormorant Garamond',serif;
+  color:var(--text) !important;
+  background:#0c0304 !important;
+  line-height:2.1;
+  font-size:16px;
+}
+.theme-emergency .btn-dl {
+  border-color:rgba(232,69,69,0.28);
+  color:rgba(255,184,77,0.6);
+  background:transparent;
+}
+.theme-emergency .btn-dl:hover { border-color:var(--accent); color:var(--accent2); }
+.theme-emergency .result-note {
+  border-color:rgba(232,69,69,0.22);
+  color:rgba(250,243,240,0.45);
+  background:rgba(232,69,69,0.04);
+  padding:24px 32px;
+}
+.theme-emergency .btn-copy {
+  border-color:rgba(232,69,69,0.32);
+  background:rgba(232,69,69,0.08);
+  color:rgba(255,184,77,0.85);
+}
+.theme-emergency .btn-copy:hover { background:rgba(232,69,69,0.18); color:var(--accent2); }
+.theme-emergency .step.active {
+  animation:em-fade-in 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes em-fade-in {
+  from { opacity:0; transform:translateY(30px) scale(0.98); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
 </style>
 </head>
 <body>
@@ -2574,6 +2841,19 @@ const AUDIOS = {
     buildPrompt: buildIconauraPrompt,
     systemPrompt: getIconauraSystem,
   },
+  'miemergenc55': {
+    name: 'EMERGENCY',
+    theme: 'theme-emergency',
+    steps: 4,
+    headerLabel: 'ERIORCENTER — EMERGENCY ✦',
+    introTitle: 'EMERGENCY <em>·</em> AUDIO',
+    introDesc: 'Para solucionar cualquier emergencia. 3 scripts + 1 mini script personalizados ✦',
+    fields: ['name','last','email','emergencysituation'],
+    buildSteps: buildEmergencySteps,
+    buildPrompt: buildEmergencyPrompt,
+    systemPrompt: getEmergencySystem,
+    quadScript: true,
+  },
 };
 
 // ═══════════════════════════════════
@@ -2649,6 +2929,7 @@ const THEME_BG = {
   'theme-erior3': '#050505',
   'theme-mindmovie': '#08060d',
   'theme-iconaura': '#050505',
+  'theme-emergency': '#0a0303',
 };
 const THEME_COLOR = {
   'theme-you': '#faf6f0',
@@ -2678,6 +2959,7 @@ const THEME_COLOR = {
   'theme-erior3': '#e8e6e1',
   'theme-mindmovie': '#faf6ee',
   'theme-iconaura': '#fafaf6',
+  'theme-emergency': '#faf3f0',
 };
 
 function applyTheme(theme) {
@@ -2817,6 +3099,11 @@ function validateStep(n) {
   if(fields[n-1]==='yourversion'){hide('e-yourversion');if(!v('f-yourversion')){show('e-yourversion');return false;}}
   if(fields[n-1]==='avoid'){hide('e-avoid');if(!v('f-avoid')){show('e-avoid');return false;}}
   if(fields[n-1]==='iconintention'){hide('e-iconintention');if(!v('f-iconintention')){show('e-iconintention');return false;}}
+  if(fields[n-1]==='emergencysituation'){
+    hide('e-emergencysituation');
+    const sc=document.getElementById('f-emergencysituation');
+    if(!sc||sc.value.trim().length<20){show('e-emergencysituation');return false;}
+  }
   if(fields[n-1]==='clientscript'){
     hide('e-clientscript');
     const sc=document.getElementById('f-clientscript');
@@ -2888,6 +3175,7 @@ function collectStep(n) {
   if(f==='yourversion') fd.yourversion=g('f-yourversion');
   if(f==='avoid') fd.avoid=g('f-avoid');
   if(f==='iconintention') fd.iconintention=g('f-iconintention');
+  if(f==='emergencysituation') fd.emergencysituation=g('f-emergencysituation');
   if(f==='clientscript') fd.clientscript=g('f-clientscript');
   if(f==='specificname') fd.specificname=g('f-specificname');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
@@ -2969,6 +3257,10 @@ async function generate() {
     });
     const data=await res.json();
     fullScript=data.text||'';
+    // For EMERGENCY: format fullScript with the email template (replace markers with section labels)
+    if(currentAudio && currentAudio.quadScript){
+      fullScript = formatEmergencyEmail(fullScript, fd.name||'');
+    }
     splitScript(fullScript);
     showPage('page-result');
     sendEmails();
@@ -2979,7 +3271,101 @@ async function generate() {
   }
 }
 
+
+function formatEmergencyEmail(text, name){
+  // Replace markers with section labels for the email
+  const sep2 = text.indexOf('===SCRIPT2===');
+  const sep3 = text.indexOf('===SCRIPT3===');
+  const sepM = text.indexOf('===MINISCRIPT===');
+  if(sep2 === -1 || sep3 === -1 || sepM === -1) return text;
+  const s1 = text.substring(0, sep2).trim();
+  const s2 = text.substring(sep2 + 13, sep3).trim();
+  const s3 = text.substring(sep3 + 13, sepM).trim();
+  const s4 = text.substring(sepM + 16).trim();
+  return `💛☁️ TUS SCRIPTS ☁️💛
+✯ En este mail encontrarás 3 scripts y 1 mini script. Por favor grábalos por separado. En total serían 4 grabaciones. 🂱🐇
+
+
+SCRIPT 1
+
+${s1}
+
+
+
+SCRIPT 2
+
+${s2}
+
+
+
+SCRIPT 3
+
+${s3}
+
+
+
+MINI SCRIPT
+
+${s4}
+
+
+
+
+📩 IMPORTANTE:
+Una vez que envíes tus CUATRO grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎`;
+}
+
 function splitScript(text) {
+  // EMERGENCY: 4 blocks separated by ===SCRIPT2===, ===SCRIPT3===, ===MINISCRIPT===
+  if(currentAudio && currentAudio.quadScript){
+    const sep2 = text.indexOf('===SCRIPT2===');
+    const sep3 = text.indexOf('===SCRIPT3===');
+    const sepM = text.indexOf('===MINISCRIPT===');
+    let s1='', s2='', s3='', s4='';
+    if(sep2 !== -1 && sep3 !== -1 && sepM !== -1){
+      s1 = text.substring(0, sep2).trim();
+      s2 = text.substring(sep2 + 13, sep3).trim();
+      s3 = text.substring(sep3 + 13, sepM).trim();
+      s4 = text.substring(sepM + 16).trim();
+    } else {
+      const q = Math.floor(text.length/4);
+      s1 = text.substring(0, q).trim();
+      s2 = text.substring(q, q*2).trim();
+      s3 = text.substring(q*2, q*3).trim();
+      s4 = text.substring(q*3).trim();
+    }
+    // Build the 4-block UI
+    const resultBody = document.querySelector('.result-body');
+    // Get existing wrap0 and wrap1 to clean up
+    const existingWraps = resultBody.querySelectorAll('.script-wrap');
+    existingWraps.forEach(w => w.remove());
+    // Insert 4 blocks before email-stat
+    const emailStat = document.getElementById('email-stat');
+    const labels = ['SCRIPT 1 — PRIMERA GRABACIÓN', 'SCRIPT 2 — SEGUNDA GRABACIÓN', 'SCRIPT 3 — TERCERA GRABACIÓN', 'MINI SCRIPT — CUARTA GRABACIÓN'];
+    const contents = [s1, s2, s3, s4];
+    for(let i=0; i<4; i++){
+      const wrap = document.createElement('div');
+      wrap.className = 'script-wrap';
+      wrap.innerHTML = '<div class="script-head"><span class="script-head-label">' + labels[i] + '</span><button class="btn-copy" onclick="copyEm(' + i + ')">Copiar</button></div><div class="script-content" id="emsc' + i + '"></div>';
+      resultBody.insertBefore(wrap, emailStat);
+      document.getElementById('emsc' + i).textContent = contents[i];
+    }
+    // Save for copy buttons
+    window._emBlocks = [s1, s2, s3, s4];
+    return;
+  }
   // CURIOUS CURIOUSER: dual scripts separated by ===DESEO===
   if(currentAudio && currentAudio.dualScript){
     const isErior3Audio = currentAudio && currentAudio.theme === 'theme-erior3';
@@ -3045,6 +3431,20 @@ function copyS(n){
     setTimeout(()=>btns[n-1].textContent='Copiar',2000);
   });
 }
+
+
+function copyEm(idx){
+  const txt = (window._emBlocks || [])[idx] || '';
+  navigator.clipboard.writeText(txt).then(()=>{
+    const btns = document.querySelectorAll('.script-wrap .btn-copy');
+    if(btns[idx]){
+      btns[idx].textContent = '✓ Copiado';
+      setTimeout(()=>btns[idx].textContent='Copiar', 2000);
+    }
+  });
+}
+
+
 
 function dlScript(){
   const b=new Blob([fullScript],{type:'text/plain'});
@@ -7100,6 +7500,168 @@ REGLAS:
 - Mantén coherencia de género en todo el texto.`;
   } else {
     return `Client data: Name: ${name}, Intention: """${intention}""". Extract GOAL and BLOCK from intention. Generate ICON AURA mini script in English following the 14-section structure as flowing letter. Block #11 must follow exact structure adapted with [NAME], [GOAL], [BLOCK]. Gender coherent. Use the same email format wrapper. Return ONLY the complete mini script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — EMERGENCY
+// ═══════════════════════════════════
+function buildEmergencySteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card em-intro">
+      <div class="em-pulse"></div>
+      <div class="em-cross">✦</div>
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">EMERGENCY <em>·</em> AUDIO</div>
+      <div class="intro-card-desc"><strong>Para solucionar cualquier emergencia.</strong><br><br>Recibirás <strong>3 scripts + 1 mini script</strong> diseñados específicamente para tu situación. Cuatro grabaciones que trabajan en capas diferentes para movilizar tu realidad ahora ✦</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tus <em>scripts</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar ✦</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">PROTOCOLO 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La forma en que te dices, sin apellidos ✦</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">PROTOCOLO 02 — Tu firma</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">PROTOCOLO 03 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tus 4 scripts?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">PROTOCOLO 04 — Tu situación</div>
+    <h2 class="step-q">Cuéntanos cuál es la <em>situación</em> que te gustaría solucionar</h2>
+    <p class="step-hint">Sé específic@. Mientras más detalle des sobre tu emergencia (qué está pasando, qué quieres resolver, qué necesitas), más precisos serán tus 4 scripts ✦</p>
+    <textarea class="step-input" id="f-emergencysituation" placeholder="Mi situación es..." style="height:200px;"></textarea>
+    <div class="field-err" id="e-emergencysituation">Por favor describe tu situación</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mis 4 scripts ✦</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — EMERGENCY
+// ═══════════════════════════════════
+function getEmergencySystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts EMERGENCY de ERIORCENTER. Generas EXACTAMENTE 4 bloques en este orden, separados por marcadores específicos:
+
+[SCRIPT 1] - Estructura amorosa/reguladora con cierre tipo Pauline
+[SCRIPT 2] - Estructura cuántica moderada con Zero Point + preguntas "¿Qué pasaría si...?"
+[SCRIPT 3] - Estructura Zero Point puro avanzado con la pregunta sugestiva repetida como mantra entre cada bloque
+[MINI SCRIPT] - Estructura hipnótica con loops de preguntas y repeticiones tipo eco, todo en UN solo párrafo continuo
+
+REGLAS GLOBALES:
+- Todo en presente y positivo
+- Conserva detalles específicos de la situación del cliente (cifras, nombres, contextos)
+- Cada script tiene su tono distinto — NO los mezcles
+- Separa los 4 bloques con marcadores EXACTOS: ===SCRIPT2===, ===SCRIPT3===, ===MINISCRIPT===
+
+ESTRUCTURA SCRIPT 1 (amoroso/regulador, cierre tipo Pauline):
+1. Identidad + merecimiento ("Yo [NOMBRE], soy amor perfecto y por eso tengo el poder de [resolver situación] con el simple hecho de existir...")
+2. Confianza total (en mí, en la vida, en el proceso)
+3. Seguridad + protección (regulación del sistema nervioso)
+4. Declaración del resultado (la situación específica ya resuelta)
+5. Normalización (que se sienta natural, fácil)
+6. Identidad alineada (quién es ahora con el resultado)
+7. Alivio emocional (calma, paz, sensación de "ya pasó")
+8. Cierre de resolución ("ya está hecho, ya está resuelto")
+9. Cierre final con fe ("Yo [NOMBRE], confío en que sí pude...") + pregunta tipo Pauline ("¿No es maravilloso que [situación resuelta] se haya dado de forma tan fácil y perfecta?")
+Tono: calmante, no intenso, lenguaje simple repetitivo.
+
+ESTRUCTURA SCRIPT 2 (cuántico moderado):
+1. Identidad poderosa ("Yo [NOMBRE], soy una consciencia libre que ya no se define por...")
+2. Validación suave de emoción (sin victimizar)
+3. Reinterpretación (transforma el problema en neutro/útil)
+4. Zero Point — anular el reflejo + colapsar realidad + elección directa
+5. Desidentificación profunda ("No soy esto, no soy mi pasado, soy elección")
+6. Activación/Rendering (lista clara de lo nuevo en presente)
+7. Reprogramación emocional + corporal (cuerpo se relaja, mente se calma)
+8. Nueva identidad ("Soy alguien que resuelve, soy alguien que recibe")
+9. Principio clave de no esfuerzo ("Yo no manifiesto, yo no lucho, yo no persigo. La realidad responde a mi elección.")
+10. Cierre con preguntas expansivas ("¿Qué tan fácil puede volverse esto ahora?", "¿Qué se está acomodando sin que lo vea?")
+Tono: mental, claro, regulador del sistema nervioso.
+
+ESTRUCTURA SCRIPT 3 (Zero Point puro avanzado):
+PRIMERO: Genera la pregunta sugestiva mantra basada en la situación. Formato: "¿POR QUÉ SERÁ QUE ME ES TAN FÁCIL [resolver/lograr X]? ¿POR QUÉ SERÁ QUE [resultado positivo Y]?"
+DESPUÉS: Construye el script con 20 secciones (entrada al punto cero, desidentificación, identidad real, principio base, anular reflejo, elección directa, colapso, rendering, integración corporal, reprogramación inconsciente, normalización, disolución de límites, estado emocional, movimiento del resultado, permitir, preferencia clara, auto-organización, observación sin apego, anclaje en identidad final, cierre en certeza).
+CRÍTICO: La pregunta sugestiva mantra (en MAYÚSCULAS) se REPITE LITERALMENTE entre cada bloque o cada 2-3 líneas — esto es lo que hace único al Script 3. NO la cambies, repítela exacta cada vez.
+Tono: vacío total, neutralidad absoluta, hipnótico por repetición.
+
+ESTRUCTURA MINI SCRIPT (hipnótico):
+- UN solo párrafo continuo (sin saltos largos), denso
+- Comienza: "Yo [NOMBRE], esto ya está dentro de mí, esto ya existe en mi campo, esto ya está disponible ahora…"
+- Loops de preguntas: "¿por qué será que esto se siente tan natural?, ¿por qué será que todo en mí ya sabe cómo hacerlo?"
+- Visualización directa: "lo veo claro, lo veo hecho, lo veo completo..."
+- Repetición sensorial tipo eco: "lo siento, lo siento, lo siento... se expande, se acomoda, se integra..."
+- Coherencia interna: "mi mente se relaja, mi cuerpo se alinea..."
+- Permitir + recibir: "todo en mí elige esto, permite esto, recibe esto..."
+- Segundo loop preguntas: "¿por qué será que esto se mueve tan rápido?"
+- Movimiento automático: "se organiza, se ordena, se acerca, se completa..."
+- Repetición de permiso: "lo permito, lo permito, lo permito..."
+- Cierre repetido: "ya está hecho, ya está cerrado, ya está integrado, ya es mío, ya es mío, ya es mío."
+
+Devuelve los 4 bloques con sus separadores exactos. Sin meta-comentarios.`
+    :`You are ERIORCENTER's EMERGENCY script editor. Generate EXACTLY 4 blocks separated by ===SCRIPT2===, ===SCRIPT3===, ===MINISCRIPT===. SCRIPT 1: loving/regulating tone with Pauline-style closing question. SCRIPT 2: moderate quantum with Zero Point + "What if..." questions. SCRIPT 3: pure advanced Zero Point with one suggestive question in CAPS that REPEATS literally between every block as a mantra (this is critical). MINI SCRIPT: hypnotic, single continuous paragraph, with loops of questions and echo-style repetitions ("I feel it, I feel it, I feel it"). Keep all client situation details. Return only the 4 blocks.`;
+}
+
+function buildEmergencyPrompt(fd){
+  const name=fd.name||'_';
+  const situation=fd.emergencysituation||'';
+  if(fd.lang==='es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Situación a solucionar: """${situation}"""
+
+INSTRUCCIONES:
+Genera 4 bloques (3 scripts + 1 mini script) personalizados para la situación de ${name}. Conserva detalles específicos (cifras, nombres, contextos). Sigue ESTRICTAMENTE las 4 estructuras del system prompt.
+
+Estructura del entregable EXACTAMENTE así (con los marcadores de separación):
+
+Yo ${name}, soy amor perfecto y por eso tengo el poder de [resolver la situación específica] con el simple hecho de existir porque lo merezco por estar aquí.
+[Genera el SCRIPT 1 completo siguiendo la estructura amoroso/regulador con sus 9 secciones, adaptado a la situación de ${name}. Termina con la pregunta tipo Pauline sobre la situación resuelta.]
+
+===SCRIPT2===
+
+Yo ${name}, soy una consciencia libre que ya no se define por [el problema específico].
+[Genera el SCRIPT 2 completo siguiendo la estructura cuántica moderada con sus 10 secciones, incluyendo "Anulo el reflejo", "Colapso", "Activo ahora:" con lista, y termina con preguntas expansivas adaptadas a la situación.]
+
+===SCRIPT3===
+
+Yo ${name}, entro en este momento en el punto cero.
+[Genera el SCRIPT 3 completo. PRIMERO crea UNA pregunta sugestiva en MAYÚSCULAS basada en la situación, formato: "¿POR QUÉ SERÁ QUE ME ES TAN FÁCIL [acción positiva]? ¿POR QUÉ SERÁ QUE [resultado positivo]?". Esta pregunta se REPITE LITERALMENTE entre cada bloque corto del script, como un mantra. Sigue las 20 secciones del Zero Point puro. Incluye "Rendering now:" con lista específica adaptada a la situación.]
+
+===MINISCRIPT===
+
+Yo ${name}, esto ya está dentro de mí, esto ya existe en mi campo, esto ya está disponible ahora…
+[Genera el MINI SCRIPT completo en UN solo párrafo continuo siguiendo la estructura hipnótica con loops de preguntas, visualización, repeticiones tipo eco, coherencia interna, permitir, segundo loop, movimiento automático, repetición de permiso "lo permito, lo permito, lo permito" y cierre "ya está hecho, ya está cerrado, ya está integrado, ya es mío, ya es mío, ya es mío." Adaptado a la situación de ${name}.]
+
+REGLAS:
+- 4 bloques separados con los marcadores EXACTOS: ===SCRIPT2===, ===SCRIPT3===, ===MINISCRIPT===
+- Cada script con su tono y estructura distinta — NO los mezcles
+- Conserva todos los detalles específicos de la situación
+- Devuelve SOLO los 4 bloques, sin explicaciones ni meta-comentarios`;
+  } else {
+    return `Client data: Name: ${name}, Situation: """${situation}""". Generate 4 blocks separated by ===SCRIPT2===, ===SCRIPT3===, ===MINISCRIPT===. SCRIPT 1 loving/regulating with Pauline closing. SCRIPT 2 quantum with Zero Point + "What if" questions. SCRIPT 3 pure Zero Point with suggestive question in CAPS repeating between every block as mantra. MINI SCRIPT single continuous hypnotic paragraph. Keep all situation details. Return ONLY the 4 blocks.`;
   }
 }
 

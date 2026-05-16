@@ -6449,6 +6449,224 @@ textarea.step-input:focus { opacity:1; }
   from { opacity:0; transform:translateY(30px) scale(0.98); }
   to { opacity:1; transform:translateY(0) scale(1); }
 }
+
+/* GOD/GODDESS — Deidad suprema */
+.theme-godgoddess {
+  --bg: #060400;
+  --surface: #110e00;
+  --accent: #d4af37;
+  --accent2: #ffd700;
+  --accent3: #fffacd;
+  --text: #fafaf0;
+  --text-soft: rgba(250,250,240,0.7);
+  --header-bg: #030200;
+  --pdot-off: rgba(212,175,55,0.18);
+  --pdot-on: #d4af37;
+}
+.theme-godgoddess .form-header {
+  background:var(--header-bg);
+  color:var(--accent);
+  border-bottom:1px solid rgba(212,175,55,0.25);
+  position:relative;
+}
+.theme-godgoddess .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(212,175,55,0.8), rgba(255,255,255,0.3), rgba(212,175,55,0.8), transparent);
+}
+.theme-godgoddess .fh-brand { color:rgba(212,175,55,0.6); letter-spacing:7px; }
+.theme-godgoddess .pdot { background:var(--pdot-off); }
+.theme-godgoddess .pdot.done { background:rgba(212,175,55,0.6); }
+.theme-godgoddess .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 20px rgba(212,175,55,0.9), 0 0 40px rgba(255,215,0,0.4);
+  animation:gg-pulse 1.8s ease-in-out infinite;
+}
+@keyframes gg-pulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.5); box-shadow:0 0 30px rgba(212,175,55,1), 0 0 60px rgba(255,215,0,0.6); }
+}
+.theme-godgoddess #page-form {
+  background:radial-gradient(ellipse at top, #1a1500 0%, #060400 50%, #020200 100%);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+.theme-godgoddess #page-form::before {
+  content:''; position:fixed;
+  top:-180px; left:50%; transform:translateX(-50%);
+  width:900px; height:700px;
+  background:radial-gradient(ellipse at center top, rgba(212,175,55,0.22) 0%, rgba(212,175,55,0.08) 30%, transparent 60%);
+  pointer-events:none; z-index:0;
+  animation:gg-divine-glow 5s ease-in-out infinite;
+}
+@keyframes gg-divine-glow {
+  0%,100% { opacity:0.7; transform:translateX(-50%) scale(1); }
+  50% { opacity:1; transform:translateX(-50%) scale(1.05); }
+}
+.theme-godgoddess #page-form::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(255,215,0,0.7), transparent),
+    radial-gradient(2px 2px at 25% 35%, rgba(212,175,55,0.5), transparent),
+    radial-gradient(1px 1px at 45% 10%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 65% 28%, rgba(255,215,0,0.5), transparent),
+    radial-gradient(1px 1px at 80% 18%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(2px 2px at 90% 45%, rgba(212,175,55,0.6), transparent),
+    radial-gradient(1px 1px at 18% 68%, rgba(255,215,0,0.45), transparent),
+    radial-gradient(1px 1px at 52% 75%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 75% 62%, rgba(212,175,55,0.5), transparent),
+    radial-gradient(2px 2px at 35% 88%, rgba(255,215,0,0.45), transparent),
+    radial-gradient(1px 1px at 92% 82%, rgba(255,255,255,0.4), transparent);
+  opacity:0.65;
+  animation:gg-stars 7s ease-in-out infinite;
+}
+@keyframes gg-stars {
+  0%,100% { opacity:0.55; }
+  50% { opacity:0.85; }
+}
+.theme-godgoddess .form-main { position:relative; z-index:1; }
+.theme-godgoddess .step-eyebrow {
+  color:var(--accent2);
+  letter-spacing:7px;
+  font-family:'Courier New',monospace;
+  font-weight:500;
+  text-shadow:0 0 16px rgba(255,215,0,0.5);
+}
+.theme-godgoddess .step-q {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-weight:400;
+  letter-spacing:-1px;
+  text-shadow:0 2px 32px rgba(212,175,55,0.2);
+}
+.theme-godgoddess .step-q em {
+  color:var(--accent);
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 40%, var(--accent3) 60%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:gg-shine 4s linear infinite;
+}
+@keyframes gg-shine { to { background-position:200% center; } }
+.theme-godgoddess .step-hint { color:var(--text-soft); }
+.theme-godgoddess .step-input {
+  color:var(--text);
+  border-color:rgba(212,175,55,0.45);
+  opacity:1;
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;
+  background:rgba(212,175,55,0.04);
+}
+.theme-godgoddess .step-input::placeholder { color:rgba(212,175,55,0.35); font-style:italic; }
+.theme-godgoddess .step-input:focus {
+  border-color:var(--accent2);
+  box-shadow:0 0 20px rgba(255,215,0,0.25);
+  background:rgba(255,215,0,0.05);
+}
+.theme-godgoddess textarea.step-input {
+  background:rgba(212,175,55,0.04);
+  border-color:rgba(212,175,55,0.3);
+}
+.theme-godgoddess textarea.step-input:focus { border-color:var(--accent2); }
+.theme-godgoddess .lang-btn {
+  color:var(--accent2); border-color:rgba(212,175,55,0.35);
+  opacity:1; background:transparent;
+}
+.theme-godgoddess .lang-btn.active {
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  color:#060400; border-color:var(--accent2);
+}
+.theme-godgoddess .btn-back { color:rgba(250,250,240,0.4); }
+.theme-godgoddess .btn-next {
+  border-color:rgba(212,175,55,0.55);
+  color:var(--accent2); letter-spacing:6px; font-weight:500;
+  position:relative; overflow:hidden;
+}
+.theme-godgoddess .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(255,215,0,0.08));
+  opacity:0; transition:opacity 0.3s;
+}
+.theme-godgoddess .btn-next:hover {
+  background:transparent; border-color:var(--accent2); color:#fff;
+  box-shadow:0 0 32px rgba(255,215,0,0.4), inset 0 0 20px rgba(212,175,55,0.1);
+}
+.theme-godgoddess .btn-next:hover::before { opacity:1; }
+.theme-godgoddess .intro-card {
+  background:linear-gradient(135deg, rgba(212,175,55,0.1), rgba(255,215,0,0.05), rgba(255,255,255,0.03));
+  border:1px solid rgba(212,175,55,0.28);
+  color:var(--text); position:relative; overflow:hidden;
+}
+.theme-godgoddess .gg-intro { padding-top:130px; padding-bottom:48px; }
+.theme-godgoddess .gg-crown {
+  position:absolute;
+  top:30px; left:50%; transform:translateX(-50%);
+  font-size:56px; z-index:2;
+  filter:drop-shadow(0 0 20px rgba(255,215,0,0.8)) drop-shadow(0 0 40px rgba(212,175,55,0.4));
+  animation:gg-crown-glow 3s ease-in-out infinite;
+}
+@keyframes gg-crown-glow {
+  0%,100% { transform:translateX(-50%) scale(1); filter:drop-shadow(0 0 20px rgba(255,215,0,0.8)); }
+  50% { transform:translateX(-50%) scale(1.08); filter:drop-shadow(0 0 32px rgba(255,215,0,1)) drop-shadow(0 0 60px rgba(212,175,55,0.6)); }
+}
+.theme-godgoddess .gg-aura {
+  position:absolute;
+  top:-50px; left:50%; transform:translateX(-50%);
+  width:320px; height:320px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(212,175,55,0.12) 35%, transparent 70%);
+  pointer-events:none; filter:blur(12px);
+  animation:gg-aura-pulse 4s ease-in-out infinite;
+}
+@keyframes gg-aura-pulse {
+  0%,100% { transform:translateX(-50%) scale(1); opacity:0.7; }
+  50% { transform:translateX(-50%) scale(1.2); opacity:1; }
+}
+.theme-godgoddess .intro-card-label { color:var(--accent2); letter-spacing:7px; position:relative; z-index:2; }
+.theme-godgoddess .intro-card-title {
+  font-family:'DM Serif Display',serif; color:var(--text);
+  font-size:44px; letter-spacing:1px; position:relative; z-index:2;
+  text-shadow:0 4px 32px rgba(212,175,55,0.3);
+}
+.theme-godgoddess .intro-card-title em {
+  color:var(--accent); font-style:italic;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 40%, var(--accent3) 60%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:gg-shine 4s linear infinite;
+}
+.theme-godgoddess .intro-card-desc { color:var(--text-soft); font-size:14px; line-height:1.95; position:relative; z-index:2; }
+.theme-godgoddess #page-result {
+  background:radial-gradient(ellipse at top, #1a1500 0%, #060400 60%) !important;
+  color:var(--text) !important;
+}
+.theme-godgoddess .result-header { background:#030200; border-bottom:1px solid rgba(212,175,55,0.25); position:relative; }
+.theme-godgoddess .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(212,175,55,0.8), rgba(255,215,0,0.5), transparent);
+}
+.theme-godgoddess .result-tag { color:var(--accent2); letter-spacing:5px; }
+.theme-godgoddess .result-htitle { font-family:'DM Serif Display',serif; color:var(--text); }
+.theme-godgoddess .result-htitle em {
+  color:var(--accent);
+  background:linear-gradient(135deg, var(--accent), var(--accent2) 50%, var(--accent));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.theme-godgoddess .script-wrap { border-color:rgba(212,175,55,0.22); background:rgba(212,175,55,0.02); }
+.theme-godgoddess .script-head { background:#030200; }
+.theme-godgoddess .script-content {
+  font-family:'Cormorant Garamond',serif; color:var(--text) !important;
+  background:#080600 !important; line-height:2.1; font-size:16px;
+}
+.theme-godgoddess .btn-dl { border-color:rgba(212,175,55,0.3); color:rgba(212,175,55,0.6); background:transparent; }
+.theme-godgoddess .btn-dl:hover { border-color:var(--accent2); color:var(--accent2); }
+.theme-godgoddess .result-note { border-color:rgba(212,175,55,0.22); color:rgba(250,250,240,0.45); background:rgba(212,175,55,0.04); padding:24px 32px; }
+.theme-godgoddess .btn-copy { border-color:rgba(212,175,55,0.35); background:rgba(212,175,55,0.08); color:rgba(255,215,0,0.85); }
+.theme-godgoddess .btn-copy:hover { background:rgba(212,175,55,0.18); color:var(--accent2); }
+.theme-godgoddess .step.active { animation:gg-fade 0.6s cubic-bezier(0.16,1,0.3,1); }
+@keyframes gg-fade {
+  from { opacity:0; transform:translateY(28px) scale(0.98); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
 </style>
 </head>
 <body>
@@ -6885,6 +7103,18 @@ const AUDIOS = {
     buildPrompt: buildKeepcoolPrompt,
     systemPrompt: getKeepcoolSystem,
   },
+  'migodess444': {
+    name: 'GOD/GODDESS',
+    theme: 'theme-godgoddess',
+    steps: 3,
+    headerLabel: 'ERIORCENTER — GOD/GODDESS ♛',
+    introTitle: 'GOD / <em>GODDESS</em>',
+    introDesc: 'Audio que te hará tocar con tu divinidad y tu magia ♛✨',
+    fields: ['name','email','godintention'],
+    buildSteps: buildGodgoddessSteps,
+    buildPrompt: buildGodgoddessPrompt,
+    systemPrompt: getGodgoddessSystem,
+  },
 };
 
 // ═══════════════════════════════════
@@ -6962,6 +7192,7 @@ const THEME_BG = {
   'theme-iconaura': '#050505',
   'theme-emergency': '#0a0303',
   'theme-keepcool': '#060912',
+  'theme-godgoddess': '#060400',
 };
 const THEME_COLOR = {
   'theme-you': '#faf8f5',
@@ -6993,6 +7224,7 @@ const THEME_COLOR = {
   'theme-iconaura': '#fafaf6',
   'theme-emergency': '#faf3f0',
   'theme-keepcool': '#f0f4fa',
+  'theme-godgoddess': '#fafaf0',
 };
 
 function applyTheme(theme) {
@@ -7133,6 +7365,7 @@ function validateStep(n) {
   if(fields[n-1]==='avoid'){hide('e-avoid');if(!v('f-avoid')){show('e-avoid');return false;}}
   if(fields[n-1]==='iconintention'){hide('e-iconintention');if(!v('f-iconintention')){show('e-iconintention');return false;}}
   if(fields[n-1]==='keepcooltopics'){hide('e-keepcooltopics');if(!v('f-keepcooltopics')){show('e-keepcooltopics');return false;}}
+  if(fields[n-1]==='godintention'){hide('e-godintention');if(!v('f-godintention')){show('e-godintention');return false;}}
   if(fields[n-1]==='emergencysituation'){
     hide('e-emergencysituation');
     const sc=document.getElementById('f-emergencysituation');
@@ -7211,6 +7444,7 @@ function collectStep(n) {
   if(f==='iconintention') fd.iconintention=g('f-iconintention');
   if(f==='emergencysituation') fd.emergencysituation=g('f-emergencysituation');
   if(f==='keepcooltopics') fd.keepcooltopics=g('f-keepcooltopics');
+  if(f==='godintention') fd.godintention=g('f-godintention');
   if(f==='clientscript') fd.clientscript=g('f-clientscript');
   if(f==='specificname') fd.specificname=g('f-specificname');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
@@ -7485,7 +7719,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -11883,6 +12117,148 @@ REGLAS:
 - Conserva el ritmo hipnótico (preguntas y repeticiones)`;
   } else {
     return `Client data: Name: ${name}, 3 topics: """${topics}""". Generate KEEP COOL mini script in English following the exact 3-paragraph structure with all elements (questions, repetitions, images). Use the same email format wrapper. Return ONLY the complete mini script.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — GOD/GODDESS
+// ═══════════════════════════════════
+function buildGodgoddessSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card gg-intro">
+      <div class="gg-crown">♛</div>
+      <div class="gg-aura"></div>
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">GOD / <em>GODDESS</em></div>
+      <div class="intro-card-desc">Audio que te hará tocar con tu <strong>divinidad</strong> y tu <strong>magia</strong>. Aquí recopilaremos información para crear tu mini script personalizado ♛✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>mini script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar ♛</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">REINO 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La forma en que te dices ♛</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">REINO 02 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu mini script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">REINO 03 — Tu intención divina</div>
+    <h2 class="step-q">¿Para qué te gustaría que sea <em>intencionado</em> este audio?</h2>
+    <p class="step-hint">Solo un tema por favor. Sé específic@ — mientras más claro, más poderoso será tu mini script ♛<br><br><strong>Ejemplos:</strong> quiero tener un cuerpo esbelto · quiero tener mi propia empresa · quiero estar completamente sano · quiero ser irresistible para mi persona</p>
+    <textarea class="step-input" id="f-godintention" placeholder="Quiero..." style="height:160px;"></textarea>
+    <div class="field-err" id="e-godintention">Por favor describe tu intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Activar mi divinidad ♛</button></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — GOD/GODDESS
+// ═══════════════════════════════════
+function getGodgoddessSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de GODDESS/GOD SCRIPTS de ERIORCENTER. Generas mini scripts de identidad divina, magnética y expansiva. El cliente se reconoce como la figura suprema de su realidad.
+
+TONO OBLIGATORIO: encantador, glamuroso, poderoso, seguro, magnético, divertido, expansivo, ligeramente teatral/divino. NUNCA analítico, nunca desde carencia, nunca habla de sanar heridas.
+
+ESTRUCTURA OBLIGATORIA:
+
+1. APERTURA (obligatoria, exacta):
+   - Si la intención sugiere género femenino o es neutral: "Yo, [NOMBRE], soy la DIOSA suprema de mi REALIDAD."
+   - Si la intención sugiere género masculino: "Yo, [NOMBRE], soy el DIOS supremo de mi REALIDAD."
+
+2. IDENTIDAD ABSOLUTA: Declara que la persona YA ES lo que desea. Usa frases glamorosas y visuales exageradamente bellos. Ejemplos de tono: "Hasta el viento me aplaude cuando paso.", "Los espejos me felicitan.", "Mi presencia transforma los espacios.", "Cuando entro, el universo suspira."
+
+3. ZERO POINT INTEGRADO (obligatorio, elegante):
+   Incluye de forma natural y mágica (nunca técnica ni fría):
+   - "Yo no manifiesto, yo no espero, yo no hago nada. Simplemente el universo responde a mis preferencias."
+   - "Anulo el reflejo."
+   - "Colapso esta realidad."
+   - "Se rendea ahora…" (con lista ✨ de elementos específicos al tema)
+   - "Desde este punto cero…" o "Yo elijo…"
+
+4. CIERRE CINEMATOGRÁFICO (obligatorio):
+   - Preguntas expansivas: "¿Por qué será que...?" (2 preguntas adaptadas al tema)
+   - Cierre divino: "Y esto… esto apenas es el inicio de mi era dorada." o variante poderosa
+
+REGLAS CRÍTICAS:
+- Adapta el script al tema específico del cliente (cuerpo, dinero, amor, empresa, etc.)
+- Conserva el género detectado (DIOSA/DIOS) en todo el script
+- Frases glamorosas obligatorias — debe sentirse como una deidad eligiendo su realidad
+- Total: 300-450 palabras. Poderoso y conciso.
+- Incluye emojis divinos estratégicamente (💫 ✨ 🌟 ♛) pero sin exagerar
+
+Devuelve SOLO el mini script. Sin meta-comentarios.`
+    :`You are ERIORCENTER's GOD/GODDESS script editor. Generate a divine identity mini script. Tone: enchanting, glamorous, powerful, magnetic, theatrical/divine. NEVER analytical or from lack. Structure: 1) Opening: "I, [NAME], am the supreme GODDESS/GOD of my REALITY." 2) Absolute identity declarations as if already having the desire 3) Zero Point integrated elegantly: "I don't manifest, I don't wait, I don't do anything. The universe simply responds to my preferences." + "I cancel the reflection." + "I collapse this reality." + "It renders now..." with list 4) Closing with expansive questions "Why is it that...?" and cinematic divine close. Adapt to client's specific intention. 300-450 words. Return ONLY the script.`;
+}
+
+function buildGodgoddessPrompt(fd){
+  const name=fd.name||'_';
+  const intention=fd.godintention||'';
+  if(fd.lang==='es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Intención del audio (1 tema): """${intention}"""
+
+INSTRUCCIONES:
+1. Detecta el género implícito en el nombre o intención. Si no es claro, usa DIOSA (femenino) por defecto.
+2. Extrae el tema central y adáptalo a la identidad divina.
+3. Genera el GODDESS/GOD SCRIPT siguiendo la estructura exacta.
+
+Entrega EXACTAMENTE este formato:
+
+💛☁️ TU MINI SCRIPT ☁️💛
+✯ Segunda grabación 🂱🐇
+
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
+Este mini script es un tema adicional creado para potenciar aún más tu grabación principal.
+
+Además del audio del PDF que ya enviaste,
+¿podrías enviarnos también la grabación de este script específico? 🎧🌙
+
+
+[Aquí va el GODDESS/GOD SCRIPT completo para ${name}, adaptado a su intención: "${intention}". Sigue EXACTAMENTE la estructura de 4 partes con el tono glamuroso, teatral y divino.]
+
+
+
+
+📩 IMPORTANTE:
+Una vez que envíes tus dos grabaciones, por favor vuelve a llenar el formulario 💫
+(Es indispensable para poder enviarte tu audio final; si no lo llenas nuevamente, tu audio no podrá llegar).
+
+Existe un solo formulario por audio,
+es el mismo que recibiste en el primer correo. 🐇💛
+
+Si decides no grabar este audio después de recibir el script, simplemente vuelve a llenar el formulario seleccionando la opción "grabar por mí".
+
+Estamos muy felices de acompañarte en este proceso de magia y transformación. 🌷🌈
+Tu voz crea universos, y nosotros estamos aquí para amplificar su poder. ⚡💖
+
+Con cariño,
+El equipo ☁️🌸💎
+
+REGLAS:
+- Devuelve SOLO el mini script en el formato exacto
+- Sin explicaciones meta
+- Tono glamuroso, teatral, divino — nunca analítico`;
+  } else {
+    return `Client: Name: ${name}, Intention: "${intention}". Generate GOD/GODDESS SCRIPT in English in the exact email format. Detect gender from name/intention (default GODDESS). Glamorous, theatrical, divine tone. 4-part structure. Return ONLY the complete script in email wrapper format.`;
   }
 }
 

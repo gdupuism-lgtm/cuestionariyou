@@ -6897,6 +6897,161 @@ textarea.step-input:focus { opacity:1; }
 .theme-unlimited .btn-copy:hover { background:rgba(0,212,255,0.18); color:var(--accent); }
 .theme-unlimited .step.active { animation:ul-fade 0.6s cubic-bezier(0.16,1,0.3,1); }
 @keyframes ul-fade { from{opacity:0;transform:translateY(28px) scale(0.98);} to{opacity:1;transform:translateY(0) scale(1);} }
+
+/* SIMULATION-U — La entrevista de tu vida */
+.theme-simulation {
+  --bg: #080508;
+  --surface: #130b10;
+  --accent: #ff3d6e;
+  --accent2: #ff8fa3;
+  --accent3: #ffffff;
+  --text: #faf5f7;
+  --text-soft: rgba(250,245,247,0.7);
+  --header-bg: #040205;
+  --pdot-off: rgba(255,61,110,0.18);
+  --pdot-on: #ff3d6e;
+}
+.theme-simulation .form-header {
+  background:var(--header-bg); color:var(--accent);
+  border-bottom:1px solid rgba(255,61,110,0.2); position:relative;
+}
+.theme-simulation .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(255,61,110,0.6), rgba(255,143,163,0.4), transparent);
+}
+.theme-simulation .fh-brand { color:rgba(255,61,110,0.55); letter-spacing:7px; }
+.theme-simulation .pdot { background:var(--pdot-off); }
+.theme-simulation .pdot.done { background:rgba(255,61,110,0.55); }
+.theme-simulation .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 18px rgba(255,61,110,0.7), 0 0 36px rgba(255,143,163,0.3);
+  animation:sim-rec 1.5s ease-in-out infinite;
+}
+@keyframes sim-rec {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.5); box-shadow:0 0 28px rgba(255,61,110,0.9); }
+}
+.theme-simulation #page-form {
+  background:radial-gradient(ellipse at top, #1f0812 0%, #080508 55%, #040205 100%);
+  color:var(--text); position:relative; overflow:hidden;
+}
+.theme-simulation #page-form::before {
+  content:''; position:fixed; top:-150px; left:50%; transform:translateX(-50%);
+  width:800px; height:600px;
+  background:radial-gradient(ellipse at center top, rgba(255,61,110,0.15) 0%, rgba(255,61,110,0.06) 35%, transparent 65%);
+  pointer-events:none; z-index:0;
+  animation:sim-glow 5s ease-in-out infinite;
+}
+@keyframes sim-glow { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
+.theme-simulation #page-form::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 12% 20%, rgba(255,61,110,0.5), transparent),
+    radial-gradient(1px 1px at 35% 12%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 62% 25%, rgba(255,143,163,0.45), transparent),
+    radial-gradient(1px 1px at 85% 18%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(2px 2px at 20% 70%, rgba(255,61,110,0.4), transparent),
+    radial-gradient(1px 1px at 55% 78%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 80% 65%, rgba(255,143,163,0.4), transparent);
+  opacity:0.6; animation:sim-stars 7s ease-in-out infinite;
+}
+@keyframes sim-stars { 0%,100%{opacity:0.5;} 50%{opacity:0.8;} }
+.theme-simulation .form-main { position:relative; z-index:1; }
+.theme-simulation .step-eyebrow {
+  color:var(--accent2); letter-spacing:7px; font-family:'Courier New',monospace; font-weight:600;
+  text-shadow:0 0 14px rgba(255,143,163,0.45);
+}
+.theme-simulation .step-q { font-family:'DM Serif Display',serif; color:var(--text); font-weight:400; letter-spacing:-1px; }
+.theme-simulation .step-q em {
+  color:var(--accent); font-style:italic;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 75%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:sim-shine 4s linear infinite;
+}
+@keyframes sim-shine { to { background-position:200% center; } }
+.theme-simulation .step-hint { color:var(--text-soft); }
+.theme-simulation .step-input {
+  color:var(--text); border-color:rgba(255,61,110,0.4); opacity:1;
+  font-family:'Cormorant Garamond',serif; font-size:17px; background:rgba(255,61,110,0.04);
+}
+.theme-simulation .step-input::placeholder { color:rgba(255,61,110,0.35); font-style:italic; }
+.theme-simulation .step-input:focus { border-color:var(--accent2); box-shadow:0 0 18px rgba(255,143,163,0.2); background:rgba(255,143,163,0.05); }
+.theme-simulation .choice-opt { border-color:rgba(255,61,110,0.2); color:var(--text); opacity:1; background:rgba(255,61,110,0.03); }
+.theme-simulation .choice-opt:hover { border-color:rgba(255,61,110,0.45); background:rgba(255,61,110,0.08); }
+.theme-simulation .choice-opt.selected { border-color:var(--accent); background:rgba(255,61,110,0.1); box-shadow:0 0 16px rgba(255,61,110,0.2); }
+.theme-simulation .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); box-shadow:0 0 8px rgba(255,61,110,0.6); }
+.theme-simulation .lang-btn { color:var(--accent); border-color:rgba(255,61,110,0.3); opacity:1; background:transparent; }
+.theme-simulation .lang-btn.active { background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#080508; border-color:var(--accent); }
+.theme-simulation .btn-back { color:rgba(250,245,247,0.4); }
+.theme-simulation .btn-next {
+  border-color:rgba(255,61,110,0.5); color:var(--accent); letter-spacing:6px; font-weight:500;
+  position:relative; overflow:hidden;
+}
+.theme-simulation .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(255,61,110,0.15), rgba(255,143,163,0.08));
+  opacity:0; transition:opacity 0.3s;
+}
+.theme-simulation .btn-next:hover { background:transparent; border-color:var(--accent2); color:#fff; box-shadow:0 0 28px rgba(255,61,110,0.35); }
+.theme-simulation .btn-next:hover::before { opacity:1; }
+.theme-simulation .intro-card {
+  background:linear-gradient(135deg, rgba(255,61,110,0.08), rgba(255,143,163,0.04));
+  border:1px solid rgba(255,61,110,0.22); color:var(--text); position:relative; overflow:hidden;
+}
+.theme-simulation .sim-intro { padding-top:130px; padding-bottom:48px; }
+.theme-simulation .sim-mic {
+  position:absolute; top:28px; left:50%; transform:translateX(-50%);
+  font-size:52px; z-index:2;
+  filter:drop-shadow(0 0 16px rgba(255,61,110,0.7));
+  animation:sim-mic-pulse 2s ease-in-out infinite;
+}
+@keyframes sim-mic-pulse {
+  0%,100% { transform:translateX(-50%) scale(1); filter:drop-shadow(0 0 16px rgba(255,61,110,0.7)); }
+  50% { transform:translateX(-50%) scale(1.08); filter:drop-shadow(0 0 28px rgba(255,61,110,1)); }
+}
+.theme-simulation .sim-aura {
+  position:absolute; top:-50px; left:50%; transform:translateX(-50%);
+  width:300px; height:300px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,61,110,0.2) 0%, rgba(255,143,163,0.1) 35%, transparent 70%);
+  pointer-events:none; filter:blur(12px);
+  animation:sim-aura-pulse 4s ease-in-out infinite;
+}
+@keyframes sim-aura-pulse {
+  0%,100% { transform:translateX(-50%) scale(1); opacity:0.6; }
+  50% { transform:translateX(-50%) scale(1.2); opacity:1; }
+}
+.theme-simulation .intro-card-label { color:var(--accent2); letter-spacing:7px; position:relative; z-index:2; }
+.theme-simulation .intro-card-title {
+  font-family:'DM Serif Display',serif; color:var(--text);
+  font-size:44px; letter-spacing:1px; position:relative; z-index:2;
+  text-shadow:0 4px 32px rgba(255,61,110,0.3);
+}
+.theme-simulation .intro-card-title em {
+  color:var(--accent); font-style:italic;
+  background:linear-gradient(135deg, var(--accent), var(--accent2) 50%, var(--accent3) 75%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:sim-shine 4s linear infinite;
+}
+.theme-simulation .intro-card-desc { color:var(--text-soft); font-size:14px; line-height:1.95; position:relative; z-index:2; }
+.sim-areas-counter { font-size:11px; letter-spacing:4px; color:var(--text-soft); text-transform:uppercase; margin:12px 0 16px; transition:color 0.3s; }
+.theme-simulation #page-result { background:radial-gradient(ellipse at top, #1f0812 0%, #080508 60%) !important; color:var(--text) !important; }
+.theme-simulation .result-header { background:#040205; border-bottom:1px solid rgba(255,61,110,0.2); position:relative; }
+.theme-simulation .result-header::after { content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:linear-gradient(90deg, transparent, rgba(255,61,110,0.6), transparent); }
+.theme-simulation .result-tag { color:var(--accent2); letter-spacing:5px; }
+.theme-simulation .result-htitle { font-family:'DM Serif Display',serif; color:var(--text); }
+.theme-simulation .result-htitle em { color:var(--accent); background:linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.theme-simulation .script-wrap { border-color:rgba(255,61,110,0.2); background:rgba(255,61,110,0.02); }
+.theme-simulation .script-head { background:#040205; }
+.theme-simulation .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#0a0406 !important; line-height:2.1; font-size:16px; }
+.theme-simulation .btn-dl { border-color:rgba(255,61,110,0.28); color:rgba(255,61,110,0.55); background:transparent; }
+.theme-simulation .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-simulation .result-note { border-color:rgba(255,61,110,0.2); color:rgba(250,245,247,0.45); background:rgba(255,61,110,0.04); padding:24px 32px; }
+.theme-simulation .btn-copy { border-color:rgba(255,61,110,0.32); background:rgba(255,61,110,0.08); color:rgba(255,143,163,0.85); }
+.theme-simulation .btn-copy:hover { background:rgba(255,61,110,0.18); color:var(--accent); }
+.theme-simulation .step.active { animation:sim-fade 0.6s cubic-bezier(0.16,1,0.3,1); }
+@keyframes sim-fade { from{opacity:0;transform:translateY(28px) scale(0.98);} to{opacity:1;transform:translateY(0) scale(1);} }
 </style>
 </head>
 <body>
@@ -7358,6 +7513,18 @@ const AUDIOS = {
     systemPrompt: getUnlimitedSystem,
     noAI: true,
   },
+  'misimulation11': {
+    name: 'SIMULATION-U',
+    theme: 'theme-simulation',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — SIMULATION-U 🎙',
+    introTitle: 'SIMULATION-<em>U</em>',
+    introDesc: 'La entrevista de tu vida — ya eres esa persona 🎙',
+    fields: ['name','simtitle','email','simareas','simmantra'],
+    buildSteps: buildSimulationSteps,
+    buildPrompt: buildSimulationPrompt,
+    systemPrompt: getSimulationSystem,
+  },
 };
 
 // ═══════════════════════════════════
@@ -7437,6 +7604,7 @@ const THEME_BG = {
   'theme-keepcool': '#060912',
   'theme-godgoddess': '#060400',
   'theme-unlimited': '#020510',
+  'theme-simulation': '#080508',
 };
 const THEME_COLOR = {
   'theme-you': '#faf8f5',
@@ -7470,6 +7638,7 @@ const THEME_COLOR = {
   'theme-keepcool': '#f0f4fa',
   'theme-godgoddess': '#fafaf0',
   'theme-unlimited': '#f0f5ff',
+  'theme-simulation': '#faf5f7',
 };
 
 function applyTheme(theme) {
@@ -7615,6 +7784,17 @@ function validateStep(n) {
     // UN-LIMITED: validation handled by generateUnlimited(), skip here
     return true;
   }
+  if(fields[n-1]==='simtitle'){hide('e-simtitle');if(!v('f-simtitle')){show('e-simtitle');return false;}}
+  if(fields[n-1]==='simareas'){
+    hide('e-simareas');
+    const checked = document.querySelectorAll('.sim-area-cb:checked').length;
+    if(checked !== 3){show('e-simareas');return false;}
+  }
+  if(fields[n-1]==='simmantra'){
+    hide('e-simmantra');
+    const picked = document.querySelector('.sim-mantra-rb:checked');
+    if(!picked){show('e-simmantra');return false;}
+  }
   if(fields[n-1]==='emergencysituation'){
     hide('e-emergencysituation');
     const sc=document.getElementById('f-emergencysituation');
@@ -7695,6 +7875,14 @@ function collectStep(n) {
   if(f==='keepcooltopics') fd.keepcooltopics=g('f-keepcooltopics');
   if(f==='godintention') fd.godintention=g('f-godintention');
   if(f==='ulintentions') fd.ulintentions=''; // handled by generateUnlimited
+  if(f==='simtitle') fd.simtitle=g('f-simtitle');
+  if(f==='simareas'){
+    fd.simareas = Array.from(document.querySelectorAll('.sim-area-cb:checked')).map(cb=>cb.value).join(', ');
+  }
+  if(f==='simmantra'){
+    const picked = document.querySelector('.sim-mantra-rb:checked');
+    fd.simmantra = picked ? SIM_MANTRAS[parseInt(picked.value)] : '';
+  }
   if(f==='clientscript') fd.clientscript=g('f-clientscript');
   if(f==='specificname') fd.specificname=g('f-specificname');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
@@ -7969,7 +8157,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess','theme-unlimited'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess','theme-unlimited','theme-simulation'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -12734,6 +12922,252 @@ ${withName.map((int, i) => `${i+1}. ${int}`).join('\n\n')}`;
 // ═══════════════════════════════════
 function getUnlimitedSystem(fd){ return ''; }
 function buildUnlimitedPrompt(fd){ return ''; }
+
+// ═══════════════════════════════════
+// SIMULATION-U MANTRAS LIST
+// ═══════════════════════════════════
+const SIM_MANTRAS = [
+  "Yo ______, siempre he sido muy amado y muy importante para todas las personas.",
+  "Yo ______, siempre he sido magnético para atraer el amor de quien yo quiera.",
+  "Yo ______, siempre he tenido mucha suerte en el amor y todas mis relaciones siempre han sido maravillosas.",
+  "Yo ______, siempre he atraído personas magníficas. Todas las personas siempre han sido buenas conmigo.",
+  "Yo ______, siempre he tenido una familia estable, amorosa y unida.",
+  "Yo ______, siempre he recibido lo mejor de todas las personas: amor, comprensión, empatía y confianza.",
+  "Yo ______, siempre he sido un vínculo de amor y armonía en mi familia.",
+  "Yo ______, siempre he sido reconocido e importante para todas las personas.",
+  "Yo ______, siempre he sido reconocido como una persona importante, inteligente, virtuosa y carismática.",
+  "Yo ______, siempre he recibido respeto y admiración de todas las personas.",
+  "Todas las personas siempre buscan mi bienestar y me dan lo mejor de ellas.",
+  "Yo ______, siempre he sido muy abundante en todas las áreas de mi vida. Yo ______, siempre he atraído el dinero con facilidad.",
+  "Yo ______, siempre he recibido más dinero del que necesito, mis ingresos siempre han aumentado día a día.",
+  "Yo ______, siempre he tenido la mejor relación con el dinero. Siempre he sido millonario, el dinero me ama.",
+  "Yo ______, siempre he sido una persona muy saludable. Mi cuerpo siempre ha funcionado de manera perfecta.",
+  "Yo ______, y mi familia siempre hemos gozado de perfecta salud física, emocional y mental.",
+  "Yo ______, siempre he sido salud perfecta. Todas mis células funcionan a la perfección.",
+  "Yo ______, siempre he sido exitoso en todo lo que hago. Siempre he sido aclamado y todo lo hago bien.",
+  "Yo ______, siempre he sido la persona más afortunada, todos mis proyectos tienen gran éxito.",
+  "Yo ______, siempre he tenido la mejor suerte del mundo, todo siempre va a mi favor.",
+  "Yo ______, siempre he sido famos@ y reconocido ante todas las personas. Mi presencia siempre ha sido imponente.",
+  "Yo ______, siempre me he amado como soy y cada parte de mi cuerpo.",
+  "Yo ______, siempre he sido buen@ manifestando todos los cambios en mi cuerpo que deseo.",
+  "Yo ______, siempre he tenido el cuerpo que deseo sin necesidad de hacer nada.",
+  "Yo ______, siempre he sido una belleza y personalidad exquisita para mí y para todas las personas.",
+  "Yo ______, siempre he sido la persona más segura de si misma, confío plenamente en mí y en mis capacidades.",
+  "Yo ______, siempre he tenido la personalidad más atractiva y magnética.",
+  "Yo ______, siempre he sido la mejor versión de mi mism@. Siempre doy saltos cuánticos increíbles.",
+  "Yo ______, siempre asumo lo mejor de las personas y por lo tanto siempre recibo lo mejor de ellas."
+];
+
+const SIM_AREAS = [
+  "RELACIONES PERSONALES",
+  "DINERO",
+  "SALUD",
+  "APARIENCIA FÍSICA",
+  "PERSONALIDAD",
+  "ÉXITO",
+  "CAMBIAR MI PASADO"
+];
+
+// ═══════════════════════════════════
+// BUILD STEPS — SIMULATION-U
+// ═══════════════════════════════════
+function buildSimulationSteps(){
+  const areasHTML = SIM_AREAS.map((area, i) =>
+    `<label class="choice-opt sim-area-opt" id="sim-area-${i}" onclick="simToggleArea(this,${i})">
+      <input type="checkbox" class="sim-area-cb" value="${area}" style="display:none;">
+      <div class="choice-radio"></div>
+      <span class="choice-label">${area}</span>
+    </label>`
+  ).join('');
+
+  const mantrasHTML = SIM_MANTRAS.map((mantra, i) =>
+    `<label class="choice-opt sim-mantra-opt" onclick="simPickMantra(this,${i})">
+      <input type="radio" name="simmantra" class="sim-mantra-rb" value="${i}" style="display:none;">
+      <div class="choice-radio"></div>
+      <span class="choice-label">${mantra}</span>
+    </label>`
+  ).join('');
+
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card sim-intro">
+      <div class="sim-mic">🎙</div>
+      <div class="sim-aura"></div>
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">SIMULATION-<em>U</em></div>
+      <div class="intro-card-desc"><strong>La entrevista de tu vida.</strong><br><br>Una experiencia diseñada para conectarte con tu visión y la versión más expansiva de ti. La IA generará 3 preguntas y 3 respuestas como si ya fueras esa persona que deseas ser 🎙✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>entrevista</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar 🎙</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">TOMA 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">El nombre con el que te identificas 🎙</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">TOMA 02 — Tu crédito en pantalla</div>
+    <h2 class="step-q">¿Cómo te referimos en la <em>entrevista</em>?</h2>
+    <p class="step-hint">Escribe cómo quieres que te presenten — como si ya fueras esa persona ✨<br><br><strong>Ejemplos:</strong> "La empresaria María López" · "El artista Ricardo Vega" · "La coach de vida Ana Torres" · "El atleta profesional Luis Mora"</p>
+    <input type="text" class="step-input" id="f-simtitle" placeholder="La/El ..." autocomplete="off">
+    <div class="field-err" id="e-simtitle">Por favor escribe cómo te referimos</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">TOMA 03 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu entrevista?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">TOMA 04 — Tus áreas</div>
+    <h2 class="step-q">Elige tus <em>3 áreas</em> de trabajo</h2>
+    <p class="step-hint">Exactamente 3 — las que más quieres transformar 🎙</p>
+    <div class="sim-areas-counter" id="sim-areas-counter">0/3 seleccionadas</div>
+    <div class="choices" style="gap:10px;">
+      ${areasHTML}
+    </div>
+    <div class="field-err" id="e-simareas">Debes seleccionar exactamente 3 áreas</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">TOMA 05 — Tu mantra</div>
+    <h2 class="step-q">Elige tu <em>mantra subliminal</em></h2>
+    <p class="step-hint">El que mejor vaya con lo que quieres manifestar 🎙</p>
+    <div class="choices" style="gap:10px;">
+      ${mantrasHTML}
+    </div>
+    <div class="field-err" id="e-simmantra">Por favor selecciona un mantra</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi entrevista 🎙</button></div>
+  </div>`;
+}
+
+function simToggleArea(label, idx){
+  const cb = label.querySelector('.sim-area-cb');
+  const selected = document.querySelectorAll('.sim-area-cb:checked').length;
+  if(cb.checked){
+    cb.checked = false;
+    label.classList.remove('selected');
+  } else {
+    if(selected >= 3) return;
+    cb.checked = true;
+    label.classList.add('selected');
+  }
+  const count = document.querySelectorAll('.sim-area-cb:checked').length;
+  const counter = document.getElementById('sim-areas-counter');
+  if(counter){
+    counter.textContent = `${count}/3 seleccionadas`;
+    counter.style.color = count === 3 ? 'var(--accent)' : 'var(--text-soft)';
+  }
+  // Disable unchecked if 3 selected
+  document.querySelectorAll('.sim-area-opt').forEach(opt => {
+    const c = opt.querySelector('.sim-area-cb');
+    if(!c.checked && count >= 3){
+      opt.style.opacity = '0.35';
+      opt.style.pointerEvents = 'none';
+    } else {
+      opt.style.opacity = '1';
+      opt.style.pointerEvents = 'auto';
+    }
+  });
+}
+
+function simPickMantra(label, idx){
+  document.querySelectorAll('.sim-mantra-opt').forEach(o => o.classList.remove('selected'));
+  label.classList.add('selected');
+  label.querySelector('.sim-mantra-rb').checked = true;
+}
+
+// ═══════════════════════════════════
+// PROMPTS — SIMULATION-U
+// ═══════════════════════════════════
+function getSimulationSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el guionista de entrevistas SIMULATION-U de ERIORCENTER. Generas una entrevista de 3 preguntas y 3 respuestas, como si el cliente ya fuera la persona que desea ser. El objetivo es reprogramar el inconsciente — el cliente grabará esta entrevista con su propia voz.
+
+TONO: conversacional, natural, auténtico. Como una entrevista real de revista, podcast o televisión. NO artificial, NO exagerado, NO discurso motivacional.
+
+ESTRUCTURA (EXACTA — 3 bloques):
+
+ENTREVISTADOR: [Pregunta 1 — relacionada con una de sus áreas, natural y específica]
+${fd.simtitle||'ENTREVISTADO/A'}: [Respuesta 1 — máximo 6-8 líneas. En primera persona. Como si ya viviera eso. Específica, emotiva pero natural. Habla de logros, sensaciones, rutinas concretas.]
+
+ENTREVISTADOR: [Pregunta 2 — profundiza en otra área, pregunta sobre cómo llegó ahí o qué cambió]
+${fd.simtitle||'ENTREVISTADO/A'}: [Respuesta 2 — máximo 6-8 líneas. Menciona el proceso, la transformación, algún momento clave.]
+
+ENTREVISTADOR: [Pregunta 3 — cierre inspirador, qué le diría a otros, qué viene después]
+${fd.simtitle||'ENTREVISTADO/A'}: [Respuesta 3 — máximo 6-8 líneas. Cierre poderoso pero humano y real.]
+
+REGLAS CRÍTICAS:
+- Las preguntas son del entrevistador, las respuestas son del cliente (en primera persona)
+- Las respuestas hablan como si YA tuviera todo — no "quiero" sino "tengo", "soy", "hago"
+- Respuestas conversacionales — no discursos. Frases cortas, pausas naturales, algún "la verdad es que…", "lo que más me sorprendió fue…"
+- Adapta TODO a las 3 áreas elegidas y al título/identidad del cliente
+- Total: máximo 400 palabras entre preguntas y respuestas
+- El formato debe ser EXACTAMENTE: ENTREVISTADOR: / [NOMBRE O TÍTULO]: (alternando)
+
+Devuelve SOLO la entrevista formateada. Sin meta-comentarios.`
+    :`You are ERIORCENTER's SIMULATION-U interview scriptwriter. Generate a 3 question/answer interview as if the client already IS the person they want to be. Tone: conversational, natural, authentic — like a real magazine/podcast interview. Answers in first person, present tense, already living it. Max 6-8 lines per answer. Format exactly: INTERVIEWER: / [TITLE]: alternating. Adapt to the 3 chosen areas. Max 400 words total. Return ONLY the formatted interview.`;
+}
+
+function buildSimulationPrompt(fd){
+  const name = fd.name || '_';
+  const title = fd.simtitle || name;
+  const areas = fd.simareas || '';
+  const mantra = fd.simmantra || '';
+
+  if(fd.lang==='es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Cómo referirse en entrevista: "${title}"
+- 3 áreas de trabajo: ${areas}
+- Mantra subliminal elegido: "${mantra}"
+
+Genera la entrevista SIMULATION-U para ${name} (${title}).
+
+Entrega EXACTAMENTE este formato completo:
+
+Gracias por adquirir SIMULATION-U ✨
+La entrevista de tu vida ya está aquí 🪽
+
+Dentro de esta experiencia encontrarás preguntas diseñadas para ayudarte a conectar con tu visión, tu autenticidad y la versión más expansiva de ti. Esta entrevista es un espacio para imaginar en grande, expresarte con libertad y darle voz a la realidad que deseas vivir 🌷💫
+
+A continuación encontrarás tu entrevista completa. Por favor, graba tus respuestas con intención, autenticidad y conexión contigo misma, y envíalas a eriorcenter@gmail.com 💌
+
+No necesitas hacerlo perfecto. Solo permítete sentir, expresarte y entrar en la energía de la vida que estás creando 🎧✨🌍
+
+
+[AQUÍ VA LA ENTREVISTA COMPLETA — 3 bloques ENTREVISTADOR / ${title}]
+
+
+🎙 TU MANTRA SUBLIMINAL:
+${mantra.replace(/______+/g, name)}
+
+
+Con cariño,
+El equipo ERIORCENTER ☁️🌸💎
+
+REGLAS:
+- Devuelve SOLO el contenido completo en el formato exacto
+- Respuestas en primera persona como si ya viviera esa realidad
+- Conversacional, natural, humano — no discurso motivacional
+- Adapta las 3 preguntas a las áreas: ${areas}`;
+  } else {
+    return `Client: Name: ${name}, Interview title: "${title}", 3 areas: ${areas}, Mantra: "${mantra}". Generate SIMULATION-U interview in English with the same email format wrapper. 3 Q&A blocks, first person present tense as if already living it. Conversational and natural. Return ONLY the complete formatted content.`;
+  }
+}
 
 (function(){
   const canvas = document.getElementById('fireworks-canvas');

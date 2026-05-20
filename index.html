@@ -6667,6 +6667,236 @@ textarea.step-input:focus { opacity:1; }
   from { opacity:0; transform:translateY(28px) scale(0.98); }
   to { opacity:1; transform:translateY(0) scale(1); }
 }
+
+/* UN-LIMITED — Infinito, expansión, todo es posible */
+.theme-unlimited {
+  --bg: #020510;
+  --surface: #060d1f;
+  --accent: #00d4ff;
+  --accent2: #7b8fff;
+  --accent3: #ffffff;
+  --text: #f0f5ff;
+  --text-soft: rgba(240,245,255,0.7);
+  --header-bg: #010308;
+  --pdot-off: rgba(0,212,255,0.18);
+  --pdot-on: #00d4ff;
+}
+.theme-unlimited .form-header {
+  background:var(--header-bg);
+  color:var(--accent);
+  border-bottom:1px solid rgba(0,212,255,0.2);
+  position:relative;
+}
+.theme-unlimited .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(0,212,255,0.7), rgba(123,143,255,0.5), transparent);
+}
+.theme-unlimited .fh-brand { color:rgba(0,212,255,0.55); letter-spacing:7px; }
+.theme-unlimited .pdot { background:var(--pdot-off); }
+.theme-unlimited .pdot.done { background:rgba(0,212,255,0.55); }
+.theme-unlimited .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 18px rgba(0,212,255,0.8), 0 0 36px rgba(123,143,255,0.4);
+  animation:ul-pulse 2s ease-in-out infinite;
+}
+@keyframes ul-pulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.4); box-shadow:0 0 28px rgba(0,212,255,1), 0 0 56px rgba(123,143,255,0.6); }
+}
+.theme-unlimited #page-form {
+  background:radial-gradient(ellipse at top, #0a1530 0%, #020510 55%, #010208 100%);
+  color:var(--text); position:relative; overflow:hidden;
+}
+.theme-unlimited #page-form::before {
+  content:''; position:fixed;
+  top:-180px; left:50%; transform:translateX(-50%);
+  width:900px; height:700px;
+  background:radial-gradient(ellipse at center top, rgba(0,212,255,0.15) 0%, rgba(123,143,255,0.08) 30%, transparent 65%);
+  pointer-events:none; z-index:0;
+  animation:ul-glow 6s ease-in-out infinite;
+}
+@keyframes ul-glow { 0%,100%{opacity:0.7;} 50%{opacity:1;} }
+.theme-unlimited #page-form::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 8% 12%, rgba(0,212,255,0.6), transparent),
+    radial-gradient(1px 1px at 22% 28%, rgba(123,143,255,0.5), transparent),
+    radial-gradient(1px 1px at 45% 8%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 68% 22%, rgba(0,212,255,0.5), transparent),
+    radial-gradient(1px 1px at 85% 15%, rgba(123,143,255,0.45), transparent),
+    radial-gradient(2px 2px at 15% 65%, rgba(0,212,255,0.45), transparent),
+    radial-gradient(1px 1px at 55% 72%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 78% 60%, rgba(123,143,255,0.45), transparent),
+    radial-gradient(1px 1px at 38% 88%, rgba(0,212,255,0.4), transparent),
+    radial-gradient(2px 2px at 92% 80%, rgba(255,255,255,0.45), transparent);
+  opacity:0.65; animation:ul-stars 8s ease-in-out infinite;
+}
+@keyframes ul-stars { 0%,100%{opacity:0.55;} 50%{opacity:0.85;} }
+.theme-unlimited .form-main { position:relative; z-index:1; }
+.theme-unlimited .step-eyebrow {
+  color:var(--accent2); letter-spacing:7px;
+  font-family:'Courier New',monospace; font-weight:500;
+  text-shadow:0 0 14px rgba(123,143,255,0.5);
+}
+.theme-unlimited .step-q { font-family:'DM Serif Display',serif; color:var(--text); font-weight:400; letter-spacing:-1px; }
+.theme-unlimited .step-q em {
+  color:var(--accent); font-style:italic;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 75%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:ul-shine 5s linear infinite;
+}
+@keyframes ul-shine { to { background-position:200% center; } }
+.theme-unlimited .step-hint { color:var(--text-soft); }
+.theme-unlimited .step-input {
+  color:var(--text); border-color:rgba(0,212,255,0.4); opacity:1;
+  font-family:'Cormorant Garamond',serif; font-size:17px;
+  background:rgba(0,212,255,0.04);
+}
+.theme-unlimited .step-input::placeholder { color:rgba(0,212,255,0.35); font-style:italic; }
+.theme-unlimited .step-input:focus {
+  border-color:var(--accent2);
+  box-shadow:0 0 18px rgba(123,143,255,0.25);
+  background:rgba(123,143,255,0.05);
+}
+.theme-unlimited textarea.step-input { background:rgba(0,212,255,0.04); border-color:rgba(0,212,255,0.25); }
+.theme-unlimited textarea.step-input:focus { border-color:var(--accent2); }
+.theme-unlimited .lang-btn { color:var(--accent); border-color:rgba(0,212,255,0.3); opacity:1; background:transparent; }
+.theme-unlimited .lang-btn.active { background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#020510; border-color:var(--accent); }
+.theme-unlimited .btn-back { color:rgba(240,245,255,0.4); }
+.theme-unlimited .btn-next {
+  border-color:rgba(0,212,255,0.5); color:var(--accent); letter-spacing:6px; font-weight:500;
+  position:relative; overflow:hidden;
+}
+.theme-unlimited .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(0,212,255,0.15), rgba(123,143,255,0.1));
+  opacity:0; transition:opacity 0.3s;
+}
+.theme-unlimited .btn-next:hover { background:transparent; border-color:var(--accent2); color:#fff; box-shadow:0 0 28px rgba(0,212,255,0.4); }
+.theme-unlimited .btn-next:hover::before { opacity:1; }
+.theme-unlimited .intro-card {
+  background:linear-gradient(135deg, rgba(0,212,255,0.07), rgba(123,143,255,0.05));
+  border:1px solid rgba(0,212,255,0.22); color:var(--text); position:relative; overflow:hidden;
+}
+.theme-unlimited .ul-intro { padding-top:130px; padding-bottom:48px; }
+.theme-unlimited .ul-infinity {
+  position:absolute; top:22px; left:50%; transform:translateX(-50%);
+  font-size:64px; font-family:'DM Serif Display',serif; z-index:2;
+  background:linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter:drop-shadow(0 0 16px rgba(0,212,255,0.6));
+  animation:ul-inf-pulse 4s ease-in-out infinite;
+}
+@keyframes ul-inf-pulse {
+  0%,100% { transform:translateX(-50%) scale(1); filter:drop-shadow(0 0 16px rgba(0,212,255,0.6)); }
+  50% { transform:translateX(-50%) scale(1.1); filter:drop-shadow(0 0 28px rgba(0,212,255,0.9)) drop-shadow(0 0 48px rgba(123,143,255,0.5)); }
+}
+.theme-unlimited .ul-aura {
+  position:absolute; top:-60px; left:50%; transform:translateX(-50%);
+  width:350px; height:350px; border-radius:50%;
+  background:radial-gradient(circle, rgba(0,212,255,0.2) 0%, rgba(123,143,255,0.1) 35%, transparent 70%);
+  pointer-events:none; filter:blur(15px);
+  animation:ul-aura-pulse 5s ease-in-out infinite;
+}
+@keyframes ul-aura-pulse {
+  0%,100% { transform:translateX(-50%) scale(1); opacity:0.6; }
+  50% { transform:translateX(-50%) scale(1.2); opacity:1; }
+}
+.theme-unlimited .intro-card-label { color:var(--accent2); letter-spacing:7px; position:relative; z-index:2; }
+.theme-unlimited .intro-card-title {
+  font-family:'DM Serif Display',serif; color:var(--text);
+  font-size:46px; letter-spacing:2px; position:relative; z-index:2;
+  text-shadow:0 4px 32px rgba(0,212,255,0.25);
+}
+.theme-unlimited .intro-card-title em {
+  color:var(--accent); font-style:italic;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 75%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:ul-shine 5s linear infinite;
+}
+.theme-unlimited .intro-card-desc { color:var(--text-soft); font-size:14px; line-height:1.95; position:relative; z-index:2; }
+
+/* ── Intentions list ── */
+.ul-counter-wrap {
+  display:flex; align-items:center; gap:16px;
+  margin:24px 0 20px; padding:0 4px;
+}
+.ul-counter {
+  width:72px; height:72px; border-radius:50%;
+  border:2px solid rgba(0,212,255,0.4);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  font-size:28px; font-weight:300; font-family:'DM Serif Display',serif;
+  color:rgba(240,245,255,0.7);
+  transition:all 0.4s;
+  flex-shrink:0;
+}
+.ul-counter-of { font-size:12px; letter-spacing:2px; opacity:0.6; }
+.ul-counter-msg { font-size:12px; letter-spacing:3px; color:rgba(240,245,255,0.5); text-transform:uppercase; }
+.ul-intentions-list { display:flex; flex-direction:column; gap:10px; margin:8px 0 24px; }
+.ul-intention-item {
+  display:flex; align-items:flex-start; gap:14px;
+  padding:14px 18px; border:1px solid rgba(0,212,255,0.15);
+  cursor:pointer; transition:all 0.3s;
+  background:rgba(0,212,255,0.03);
+  position:relative;
+}
+.ul-intention-item:hover { border-color:rgba(0,212,255,0.35); background:rgba(0,212,255,0.07); }
+.ul-intention-item input[type=checkbox] { display:none; }
+.ul-check-icon {
+  width:22px; height:22px; border:1px solid rgba(0,212,255,0.4);
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; color:transparent; flex-shrink:0; margin-top:2px;
+  transition:all 0.3s;
+}
+.ul-intention-item.ul-selected .ul-check-icon {
+  background:var(--accent); border-color:var(--accent);
+  color:#020510; box-shadow:0 0 12px rgba(0,212,255,0.5);
+}
+.ul-intention-item.ul-selected { border-color:rgba(0,212,255,0.5); background:rgba(0,212,255,0.08); }
+.ul-intention-item.ul-disabled { opacity:0.35; cursor:not-allowed; }
+.ul-intention-text { font-family:'Cormorant Garamond',serif; font-size:15px; line-height:1.7; color:var(--text-soft); }
+.ul-intention-item.ul-selected .ul-intention-text { color:var(--text); }
+.ul-custom-section { margin-top:8px; padding-top:24px; border-top:1px solid rgba(0,212,255,0.15); }
+.ul-custom-label { font-size:11px; letter-spacing:4px; color:var(--accent2); text-transform:uppercase; margin-bottom:12px; }
+.ul-custom-input-wrap { display:flex; gap:10px; align-items:stretch; margin-bottom:14px; }
+.ul-custom-input-wrap .ul-custom-input { flex:1; margin-bottom:0 !important; }
+.ul-add-btn {
+  padding:0 20px; background:transparent;
+  border:1px solid rgba(0,212,255,0.4); color:rgba(0,212,255,0.8);
+  font-family:'Cormorant Garamond',serif; font-size:14px; letter-spacing:2px;
+  cursor:pointer; transition:all 0.3s; white-space:nowrap; flex-shrink:0;
+}
+.ul-add-btn:hover { border-color:var(--accent); color:var(--accent); background:rgba(0,212,255,0.08); }
+.ul-custom-tags { display:flex; flex-direction:column; gap:8px; }
+.ul-remove-tag {
+  margin-left:auto; flex-shrink:0;
+  background:transparent; border:none;
+  color:rgba(0,212,255,0.5); font-size:13px; cursor:pointer;
+  padding:4px 8px; transition:color 0.2s;
+}
+.ul-remove-tag:hover { color:#e84545; }
+
+.theme-unlimited #page-result { background:radial-gradient(ellipse at top, #0a1530 0%, #020510 60%) !important; color:var(--text) !important; }
+.theme-unlimited .result-header { background:#010308; border-bottom:1px solid rgba(0,212,255,0.2); position:relative; }
+.theme-unlimited .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(0,212,255,0.7), rgba(123,143,255,0.5), transparent);
+}
+.theme-unlimited .result-tag { color:var(--accent2); letter-spacing:5px; }
+.theme-unlimited .result-htitle { font-family:'DM Serif Display',serif; color:var(--text); }
+.theme-unlimited .result-htitle em { color:var(--accent); background:linear-gradient(135deg, var(--accent), var(--accent2) 50%, var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.theme-unlimited .script-wrap { border-color:rgba(0,212,255,0.2); background:rgba(0,212,255,0.02); }
+.theme-unlimited .script-head { background:#010308; }
+.theme-unlimited .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#030812 !important; line-height:2.1; font-size:16px; }
+.theme-unlimited .btn-dl { border-color:rgba(0,212,255,0.28); color:rgba(0,212,255,0.55); background:transparent; }
+.theme-unlimited .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-unlimited .result-note { border-color:rgba(0,212,255,0.22); color:rgba(240,245,255,0.45); background:rgba(0,212,255,0.04); padding:24px 32px; }
+.theme-unlimited .btn-copy { border-color:rgba(0,212,255,0.32); background:rgba(0,212,255,0.08); color:rgba(0,212,255,0.85); }
+.theme-unlimited .btn-copy:hover { background:rgba(0,212,255,0.18); color:var(--accent); }
+.theme-unlimited .step.active { animation:ul-fade 0.6s cubic-bezier(0.16,1,0.3,1); }
+@keyframes ul-fade { from{opacity:0;transform:translateY(28px) scale(0.98);} to{opacity:1;transform:translateY(0) scale(1);} }
 </style>
 </head>
 <body>
@@ -7115,6 +7345,19 @@ const AUDIOS = {
     buildPrompt: buildGodgoddessPrompt,
     systemPrompt: getGodgoddessSystem,
   },
+  'miunlimited00': {
+    name: 'UN-LIMITED',
+    theme: 'theme-unlimited',
+    steps: 3,
+    headerLabel: 'ERIORCENTER — UN-LIMITED ∞',
+    introTitle: 'UN-<em>LIMITED</em>',
+    introDesc: 'Todo es posible. Selecciona tus 11 intenciones ∞',
+    fields: ['name','email','ulintentions'],
+    buildSteps: buildUnlimitedSteps,
+    buildPrompt: buildUnlimitedPrompt,
+    systemPrompt: getUnlimitedSystem,
+    noAI: true,
+  },
 };
 
 // ═══════════════════════════════════
@@ -7193,6 +7436,7 @@ const THEME_BG = {
   'theme-emergency': '#0a0303',
   'theme-keepcool': '#060912',
   'theme-godgoddess': '#060400',
+  'theme-unlimited': '#020510',
 };
 const THEME_COLOR = {
   'theme-you': '#faf8f5',
@@ -7225,6 +7469,7 @@ const THEME_COLOR = {
   'theme-emergency': '#faf3f0',
   'theme-keepcool': '#f0f4fa',
   'theme-godgoddess': '#fafaf0',
+  'theme-unlimited': '#f0f5ff',
 };
 
 function applyTheme(theme) {
@@ -7366,6 +7611,10 @@ function validateStep(n) {
   if(fields[n-1]==='iconintention'){hide('e-iconintention');if(!v('f-iconintention')){show('e-iconintention');return false;}}
   if(fields[n-1]==='keepcooltopics'){hide('e-keepcooltopics');if(!v('f-keepcooltopics')){show('e-keepcooltopics');return false;}}
   if(fields[n-1]==='godintention'){hide('e-godintention');if(!v('f-godintention')){show('e-godintention');return false;}}
+  if(fields[n-1]==='ulintentions'){
+    // UN-LIMITED: validation handled by generateUnlimited(), skip here
+    return true;
+  }
   if(fields[n-1]==='emergencysituation'){
     hide('e-emergencysituation');
     const sc=document.getElementById('f-emergencysituation');
@@ -7445,6 +7694,7 @@ function collectStep(n) {
   if(f==='emergencysituation') fd.emergencysituation=g('f-emergencysituation');
   if(f==='keepcooltopics') fd.keepcooltopics=g('f-keepcooltopics');
   if(f==='godintention') fd.godintention=g('f-godintention');
+  if(f==='ulintentions') fd.ulintentions=''; // handled by generateUnlimited
   if(f==='clientscript') fd.clientscript=g('f-clientscript');
   if(f==='specificname') fd.specificname=g('f-specificname');
   if(f==='version'){const r=document.querySelector('input[name="version"]:checked');fd.version=r?r.value:'';};
@@ -7719,7 +7969,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess','theme-unlimited'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -12261,6 +12511,229 @@ REGLAS:
     return `Client: Name: ${name}, Intention: "${intention}". Generate GOD/GODDESS SCRIPT in English in the exact email format. Detect gender from name/intention (default GODDESS). Glamorous, theatrical, divine tone. 4-part structure. Return ONLY the complete script in email wrapper format.`;
   }
 }
+
+// ═══════════════════════════════════
+// UN-LIMITED INTENTIONS LIST
+// ═══════════════════════════════════
+const UNLIMITED_INTENTIONS = [
+  "Yo _________, soy la creador@ de mi realidad, todo es posible y yo lo manifiesto fácil y rápido.",
+  "Yo _________, siempre creo mi realidad a mi beneficio, el Universo siempre trabaja a mi favor.",
+  "Yo _________, confío plenamente en que el Universo me ayuda a manifestar todo lo que quiero.",
+  "No hay nada que no pueda tener. Yo _________, manifiesto todo lo que quiero.",
+  "Yo _________, me merezco todo lo mejor, todo el amor, todo el dinero y toda la abundancia y siempre lo atraigo y sé recibirlo.",
+  "Yo _________, me amo infinitamente, cada día me amo más y ese amor se refleja en toda mi vida.",
+  "Yo _________, suelto muy fácil todo, nada me lo tomo personal y confío en que todo siempre va a mi favor.",
+  "Yo _________, sé recibir todas las cosas buenas que el Universo tiene para mí, pues soy muy valios@.",
+  "Yo _________, me acepto y me válido como soy, confío en mi poder y soy muy segur@ de mi mism@.",
+  "Yo _________, vibro en la frecuencia más alta. Cada día me siento más feliz.",
+  "Yo _________, suelto todo fácilmente y todo se me soluciona solo.",
+  "Yo _________, estoy muy agradecid@ por ser una persona extremadamente abundante.",
+  "El dinero llega a mí en grandes cantidades y todos los días, estoy muy agradecid@ por ser millonari@.",
+  "Yo ________, gozo de excelente salud, cada día estoy más saludable.",
+  "Mi vida cada vez se pone mejor, yo _______, me siento plen@.",
+  "Yo __________, tengo mucho trabajo. Todo el trabajo que me llega es muy divertido y lo disfruto.",
+  "Yo __________, siempre puedo comer y tomar lo que yo quiera y siempre estoy delgad@.",
+  "Yo __________, cada día tengo la piel más bonita, joven y radiante.",
+  "Yo __________, suelto el pasado y fluyo con mi presente. Me siento liger@ y el Universo siempre trabaja a mi favor.",
+  "Yo _________, disfruto del dinero y la abundancia. Siempre atraigo todo lo que quiero.",
+  "En mi vida solo hay soluciones. El Universo me brinda todo lo que necesito en el momento que lo necesito.",
+  "Yo ________, tengo una vida exitosa, llena de amor, paz, abundancia y felicidad.",
+  "Todas mis relaciones están llenas de energía positiva, amor y compasión.",
+  "Hoy es el día en el que todas mis manifestaciones se cumplen.",
+  "Yo _______, creo mi realidad, confío en mí y en la ley de atracción, tengo la certeza de que todo siempre sale a mi favor y atraigo personas llenas de energía positiva y amor."
+];
+
+// ═══════════════════════════════════
+// BUILD STEPS — UN-LIMITED
+// ═══════════════════════════════════
+function buildUnlimitedSteps(){
+  const intentionsHTML = UNLIMITED_INTENTIONS.map((intention, i) =>
+    `<label class="ul-intention-item" id="ul-item-${i}">
+      <input type="checkbox" class="ul-checkbox" value="${i}" onchange="ulUpdateCount()">
+      <div class="ul-check-icon">✦</div>
+      <span class="ul-intention-text">${intention}</span>
+    </label>`
+  ).join('');
+
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card ul-intro">
+      <div class="ul-infinity">∞</div>
+      <div class="ul-aura"></div>
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">UN-<em>LIMITED</em></div>
+      <div class="intro-card-desc">Todo es posible. <strong>Selecciona exactamente 11 intenciones</strong> que resonarán en tu audio personalizado — las que más sientas tuyas, las que más vibres, las que más quieras activar ∞✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>audio</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar ∞</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">DIMENSIÓN 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">La forma en que te dices ∞</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">DIMENSIÓN 02 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tus intenciones?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">DIMENSIÓN 03 — Tus 11 intenciones</div>
+    <h2 class="step-q">Selecciona <em>exactamente 11</em> intenciones</h2>
+    <p class="step-hint">Elige las que más resuenen contigo. El contador te dice cuántas llevas ∞</p>
+    <div class="ul-counter-wrap">
+      <div class="ul-counter" id="ul-counter">
+        <span id="ul-count">0</span><span class="ul-counter-of">/11</span>
+      </div>
+      <div class="ul-counter-msg" id="ul-counter-msg">Selecciona 11 intenciones</div>
+    </div>
+    <div class="ul-intentions-list">
+      ${intentionsHTML}
+    </div>
+    <div class="ul-custom-section">
+      <div class="ul-custom-label">¿Tienes tus propias intenciones? (opcional)</div>
+      <p class="step-hint" style="margin-top:4px;">Escribe una y presiona <strong>Enter</strong> — se agregará como casilla y contará en el total ∞</p>
+      <div class="ul-custom-input-wrap">
+        <input type="text" class="step-input ul-custom-input" id="f-ulcustom-input" placeholder="Escribe tu intención y presiona Enter..." autocomplete="off" onkeydown="ulAddCustomOnEnter(event)">
+        <button class="ul-add-btn" onclick="ulAddCustom()">+ Agregar</button>
+      </div>
+      <div class="ul-custom-tags" id="ul-custom-tags"></div>
+    </div>
+    <div class="field-err" id="e-ulintentions">Debes seleccionar exactamente 11 intenciones en total</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generateUnlimited()">Activar mis intenciones ∞</button></div>
+  </div>`;
+}
+
+function ulGetCustomCount(){
+  return document.querySelectorAll('.ul-custom-tag').length;
+}
+
+function ulUpdateCount(){
+  const checked = document.querySelectorAll('.ul-checkbox:checked').length;
+  const customCount = ulGetCustomCount();
+  const total = checked + customCount;
+
+  const countEl = document.getElementById('ul-count');
+  const msgEl = document.getElementById('ul-counter-msg');
+  const counterEl = document.getElementById('ul-counter');
+
+  if(countEl) countEl.textContent = total;
+
+  if(total < 11){
+    if(counterEl){ counterEl.style.borderColor = 'rgba(255,255,255,0.3)'; counterEl.style.color = 'rgba(255,255,255,0.7)'; }
+    if(msgEl){ msgEl.textContent = `Faltan ${11-total} más`; msgEl.style.color = 'rgba(240,245,255,0.5)'; }
+  } else if(total === 11){
+    if(counterEl){ counterEl.style.borderColor = 'var(--accent)'; counterEl.style.color = 'var(--accent)'; }
+    if(msgEl){ msgEl.textContent = '¡Perfecto! Exactamente 11 ✦'; msgEl.style.color = 'var(--accent)'; }
+  } else {
+    if(counterEl){ counterEl.style.borderColor = '#e84545'; counterEl.style.color = '#e84545'; }
+    if(msgEl){ msgEl.textContent = `Tienes ${total-11} de más — elimina algunas`; msgEl.style.color = '#e84545'; }
+  }
+
+  // Disable/enable unchecked checkboxes based on total
+  document.querySelectorAll('.ul-checkbox').forEach(cb => {
+    const item = cb.closest('.ul-intention-item');
+    if(!cb.checked && total >= 11){
+      cb.disabled = true;
+      if(item) item.classList.add('ul-disabled');
+    } else {
+      cb.disabled = false;
+      if(item) item.classList.remove('ul-disabled');
+    }
+    if(cb.checked){
+      if(item) item.classList.add('ul-selected');
+    } else {
+      if(item) item.classList.remove('ul-selected');
+    }
+  });
+}
+
+function ulAddCustomOnEnter(e){
+  if(e.key === 'Enter'){ e.preventDefault(); ulAddCustom(); }
+}
+
+function ulAddCustom(){
+  const input = document.getElementById('f-ulcustom-input');
+  if(!input) return;
+  const text = input.value.trim();
+  if(!text) return;
+
+  const checked = document.querySelectorAll('.ul-checkbox:checked').length;
+  const customCount = ulGetCustomCount();
+  const total = checked + customCount;
+  if(total >= 11){ return; } // already at 11
+
+  const container = document.getElementById('ul-custom-tags');
+  if(!container) return;
+
+  const tag = document.createElement('div');
+  tag.className = 'ul-intention-item ul-selected ul-custom-tag';
+  tag.innerHTML = `<div class="ul-check-icon">✦</div><span class="ul-intention-text">${text}</span><button class="ul-remove-tag" onclick="ulRemoveTag(this)" title="Eliminar">✕</button>`;
+  container.appendChild(tag);
+
+  input.value = '';
+  ulUpdateCount();
+}
+
+function ulRemoveTag(btn){
+  const tag = btn.closest('.ul-custom-tag');
+  if(tag) tag.remove();
+  ulUpdateCount();
+}
+
+function generateUnlimited(){
+  const checked = Array.from(document.querySelectorAll('.ul-checkbox:checked'));
+  const customTags = Array.from(document.querySelectorAll('.ul-custom-tag .ul-intention-text')).map(el => el.textContent);
+  const customLines = customTags;
+  const total = checked.length + customLines.length;
+
+  if(total !== 11){
+    const errEl = document.getElementById('e-ulintentions');
+    if(errEl) errEl.style.display='block';
+    return;
+  }
+  const errEl2 = document.getElementById('e-ulintentions');
+  if(errEl2) errEl2.style.display='none';
+
+  // Collect all 11 intentions
+  const selectedIntentions = checked.map(cb => UNLIMITED_INTENTIONS[parseInt(cb.value)]);
+  const allIntentions = [...selectedIntentions, ...customLines];
+
+  // Replace ________ with name
+  const name = fd.name || '_';
+  const withName = allIntentions.map(i => i.replace(/________+|_______+/g, name));
+
+  // Build the result text (no AI needed)
+  const resultText = `Aquí están tus 11 intenciones ✨
+
+Por favor, tómate un momento para anotarlas con claridad, grabarlas con intención y enviarlas a eriorcenter@gmail.com 💌
+
+Hazlo desde un espacio de calma, confianza y conexión contigo. Cada intención representa una dirección poderosa para tu energía y tu enfoque 🌷🎧🪽
+
+${withName.map((int, i) => `${i+1}. ${int}`).join('\n\n')}`;
+
+  fullScript = resultText;
+  splitScript(fullScript);
+  showPage('page-result');
+  sendEmails();
+}
+
+// ═══════════════════════════════════
+// PROMPTS — UN-LIMITED (not used for AI, but required by system)
+// ═══════════════════════════════════
+function getUnlimitedSystem(fd){ return ''; }
+function buildUnlimitedPrompt(fd){ return ''; }
 
 (function(){
   const canvas = document.getElementById('fireworks-canvas');

@@ -7966,21 +7966,29 @@ async function generate() {
 
       // Petición A: Scripts 1 y 2
       const promptA = basePrompt + '\n\n⚠️ ESTA PETICIÓN ES LA PARTE A: GENERA SOLAMENTE EL SCRIPT 1 Y SCRIPT 2. Devuelve SCRIPT 1 completo, luego ===SCRIPT2===, luego SCRIPT 2 completo. NO generes Script 3 ni Mini Script en esta petición.';
-      const resA = await fetch('/.netlify/functions/generate', {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ system: baseSystem, prompt: promptA })
-      });
-      const dataA = await resA.json();
-      const partA = dataA.text || '';
+      let partA='';
+      for(let ra=0;ra<3;ra++){
+        if(ra>0) await delay(ra===1?3000:5000);
+        try{
+          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA})});
+          const dataA=await resA.json();
+          const txtA=dataA.text||'';
+          if(!txtA.includes('overloaded_error')&&!txtA.includes('API ERROR')&&txtA.length>20){partA=txtA;break;}
+        }catch(e){}
+      }
 
       // Petición B: Script 3 y Mini Script
       const promptB = basePrompt + '\n\n⚠️ ESTA PETICIÓN ES LA PARTE B: GENERA SOLAMENTE EL SCRIPT 3 Y EL MINI SCRIPT. Devuelve SCRIPT 3 completo, luego ===MINISCRIPT===, luego MINI SCRIPT completo. NO generes Script 1 ni Script 2 en esta petición.';
-      const resB = await fetch('/.netlify/functions/generate', {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ system: baseSystem, prompt: promptB })
-      });
-      const dataB = await resB.json();
-      const partB = dataB.text || '';
+      let partB='';
+      for(let rb=0;rb<3;rb++){
+        if(rb>0) await delay(rb===1?3000:5000);
+        try{
+          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB})});
+          const dataB=await resB.json();
+          const txtB=dataB.text||'';
+          if(!txtB.includes('overloaded_error')&&!txtB.includes('API ERROR')&&txtB.length>20){partB=txtB;break;}
+        }catch(e){}
+      }
 
       // Combinar las 2 partes en el formato esperado: SCRIPT1 ===SCRIPT2=== SCRIPT2 ===SCRIPT3=== SCRIPT3 ===MINISCRIPT=== MINISCRIPT
       const combined = partA.trim() + '\n\n===SCRIPT3===\n\n' + partB.trim();
@@ -7999,22 +8007,29 @@ async function generate() {
     }
   }
 
-  // Audios normales (1 petición)
-  try {
-    const res=await fetch('/.netlify/functions/generate',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({system:buildHardenedSystem(currentAudio.systemPrompt(fd),fd.lang),prompt:currentAudio.buildPrompt(fd)})
-    });
-    const data=await res.json();
-    fullScript=data.text||'';
-    splitScript(fullScript);
-    showPage('page-result');
-    sendEmails();
-  } catch(e) {
-    fullScript='Error generando el script. Por favor contacta a ERIORCENTER.';
-    splitScript(fullScript);
-    showPage('page-result');
+  // Audios normales (1 petición) — con reintento automático
+  const maxRetries=3;
+  const retryDelays=[0,3000,5000];
+  for(let attempt=0;attempt<maxRetries;attempt++){
+    try {
+      if(attempt>0) await delay(retryDelays[attempt]);
+      const res=await fetch('/.netlify/functions/generate',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({system:buildHardenedSystem(currentAudio.systemPrompt(fd),fd.lang),prompt:currentAudio.buildPrompt(fd)})
+      });
+      const data=await res.json();
+      const txt=data.text||'';
+      if(txt.includes('overloaded_error')||txt.includes('API ERROR')||txt.length<20) continue;
+      fullScript=txt;
+      splitScript(fullScript);
+      showPage('page-result');
+      sendEmails();
+      return;
+    } catch(e){}
   }
+  fullScript='Error generando el script. Por favor intenta de nuevo o contacta a ERIORCENTER.';
+  splitScript(fullScript);
+  showPage('page-result');
 }
 
 

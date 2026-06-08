@@ -8029,22 +8029,9 @@ function collectStep(n) {
 
 
 // ═══ WARNING MODAL ═══
-var _warningConfirmedFor = null;
 
-function showWarning(audioTheme) {
-  _warningConfirmedFor = audioTheme;
-  document.getElementById('warning-overlay').classList.add('active');
-}
 
-function warningConfirm() {
-  document.getElementById('warning-overlay').classList.remove('active');
-  _doGenerate();
-}
 
-function warningCancel() {
-  document.getElementById('warning-overlay').classList.remove('active');
-  _warningConfirmedFor = null;
-}
 
 // ═══════════════════════════════════
 // UNIVERSAL HARDENED SYSTEM PROMPT
@@ -8117,12 +8104,7 @@ function confirmGenerate() {
 }
 async function generate() {
   if(!validateStep(currentAudio.steps)) return;
-  // Show warning modal on first attempt
-  if(_warningConfirmedFor !== currentAudio.theme) {
-    collectStep(currentAudio.steps);
-    showWarning(currentAudio.theme);
-    return;
-  }
+  // Warning is handled externally by showWarning()/confirmGenerate()
   showPage('page-generating');
   const items=['gs1','gs2','gs3','gs4'];
   for(let i=0;i<items.length;i++){await delay(800);document.getElementById(items[i]).classList.add('done');}

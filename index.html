@@ -7907,7 +7907,11 @@ function validateStep(n) {
   if(fields[n-1]==='yourversion'){hide('e-yourversion');if(!v('f-yourversion')){show('e-yourversion');return false;}}
   if(fields[n-1]==='avoid'){hide('e-avoid');if(!v('f-avoid')){show('e-avoid');return false;}}
   if(fields[n-1]==='iconintention'){hide('e-iconintention');if(!v('f-iconintention')){show('e-iconintention');return false;}}
-  if(fields[n-1]==='keepcooltopics'){hide('e-keepcooltopics');if(!v('f-keepcooltopics')){show('e-keepcooltopics');return false;}}
+  if(fields[n-1]==='keepcooltopics'){
+    hide('e-keepcooltopics');
+    const kcEl=document.getElementById('f-keepcooltopics');
+    if(!kcEl||kcEl.value.trim().length<10){show('e-keepcooltopics');return false;}
+  }
   if(fields[n-1]==='godintention'){hide('e-godintention');if(!v('f-godintention')){show('e-godintention');return false;}}
   if(fields[n-1]==='ulintentions'){
     // UN-LIMITED: validation handled by generateUnlimited(), skip here
@@ -8107,6 +8111,8 @@ function closeWarning() {
 }
 function confirmGenerate() {
   closeWarning();
+  // Re-collect all steps to ensure fd has fresh data
+  for(let i=1; i<=currentAudio.steps; i++) collectStep(i);
   generate();
 }
 async function generate() {

@@ -7052,6 +7052,135 @@ textarea.step-input:focus { opacity:1; }
 .theme-simulation .btn-copy:hover { background:rgba(255,61,110,0.18); color:var(--accent); }
 .theme-simulation .step.active { animation:sim-fade 0.6s cubic-bezier(0.16,1,0.3,1); }
 @keyframes sim-fade { from{opacity:0;transform:translateY(28px) scale(0.98);} to{opacity:1;transform:translateY(0) scale(1);} }
+
+/* ═══ WARNING MODAL ═══ */
+.warning-overlay {
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.85);
+  align-items:center; justify-content:center;
+  animation:wo-fade-in 0.3s ease;
+}
+.warning-overlay.active { display:flex; }
+@keyframes wo-fade-in { from{opacity:0;} to{opacity:1;} }
+
+.warning-box {
+  max-width:420px; width:90%;
+  background:#0f0305;
+  border:1.5px solid rgba(220,38,38,0.7);
+  border-radius:4px;
+  padding:36px 32px 28px;
+  position:relative;
+  animation:wo-box-in 0.35s cubic-bezier(0.16,1,0.3,1);
+  box-shadow:0 0 40px rgba(220,38,38,0.25), 0 0 80px rgba(220,38,38,0.1), inset 0 0 30px rgba(220,38,38,0.04);
+}
+.warning-box::before {
+  content:''; position:absolute; inset:-1.5px; border-radius:4px;
+  border:1.5px solid rgba(220,38,38,0.5);
+  animation:wo-pulse-border 2s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes wo-pulse-border {
+  0%,100% { box-shadow:0 0 12px rgba(220,38,38,0.4); opacity:1; }
+  50% { box-shadow:0 0 28px rgba(220,38,38,0.7); opacity:0.85; }
+}
+@keyframes wo-box-in {
+  from { opacity:0; transform:scale(0.94) translateY(20px); }
+  to { opacity:1; transform:scale(1) translateY(0); }
+}
+.warning-icon {
+  text-align:center; font-size:36px; margin-bottom:16px;
+  animation:wo-icon-pulse 2s ease-in-out infinite;
+}
+@keyframes wo-icon-pulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.08); }
+}
+.warning-title {
+  font-family:'DM Serif Display',serif;
+  color:#fca5a5; font-size:18px; text-align:center;
+  margin-bottom:18px; letter-spacing:0.5px;
+}
+.warning-body {
+  font-family:'Cormorant Garamond',serif;
+  color:rgba(250,240,240,0.82); font-size:14px;
+  line-height:1.85; text-align:center; margin-bottom:28px;
+}
+.warning-body strong { color:#fca5a5; }
+.warning-buttons { display:flex; flex-direction:column; gap:10px; }
+.warning-btn-confirm {
+  width:100%; padding:14px;
+  background:rgba(220,38,38,0.15);
+  border:1px solid rgba(220,38,38,0.6);
+  color:#fca5a5; font-family:'Cormorant Garamond',serif;
+  font-size:13px; letter-spacing:4px; text-transform:uppercase;
+  cursor:pointer; transition:all 0.3s;
+}
+.warning-btn-confirm:hover {
+  background:rgba(220,38,38,0.28);
+  border-color:rgba(220,38,38,0.9);
+  box-shadow:0 0 20px rgba(220,38,38,0.3);
+}
+.warning-btn-cancel {
+  width:100%; padding:10px;
+  background:transparent; border:none;
+  color:rgba(250,240,240,0.35); font-family:'Cormorant Garamond',serif;
+  font-size:11px; letter-spacing:3px; text-transform:uppercase;
+  cursor:pointer; transition:color 0.3s;
+}
+.warning-btn-cancel:hover { color:rgba(250,240,240,0.65); }
+
+/* ═══ WARNING MODAL ═══ */
+.warning-overlay {
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.75); backdrop-filter:blur(4px);
+  align-items:center; justify-content:center;
+}
+.warning-overlay.active { display:flex; animation:wo-fade 0.3s ease; }
+@keyframes wo-fade { from{opacity:0} to{opacity:1} }
+.warning-box {
+  background:#0e0a0a; max-width:420px; width:90%;
+  border:1.5px solid #e84545;
+  border-radius:4px; padding:36px 32px 28px;
+  position:relative; text-align:center;
+  box-shadow:0 0 40px rgba(232,69,69,0.35), 0 0 80px rgba(232,69,69,0.15), inset 0 0 30px rgba(232,69,69,0.04);
+  animation:wb-pulse 2s ease-in-out infinite;
+}
+@keyframes wb-pulse {
+  0%,100% { box-shadow:0 0 40px rgba(232,69,69,0.35), 0 0 80px rgba(232,69,69,0.15); }
+  50% { box-shadow:0 0 55px rgba(232,69,69,0.55), 0 0 100px rgba(232,69,69,0.25); }
+}
+.warning-icon { font-size:42px; margin-bottom:12px; animation:wi-shake 3s ease-in-out infinite; }
+@keyframes wi-shake {
+  0%,90%,100% { transform:rotate(0deg); }
+  92% { transform:rotate(-8deg); }
+  94% { transform:rotate(8deg); }
+  96% { transform:rotate(-5deg); }
+  98% { transform:rotate(5deg); }
+}
+.warning-title {
+  font-family:'DM Serif Display',serif; font-size:20px;
+  color:#e84545; letter-spacing:1px; margin-bottom:16px;
+}
+.warning-text {
+  font-family:'Cormorant Garamond',serif; font-size:14px;
+  color:rgba(250,245,240,0.8); line-height:1.85; margin-bottom:24px;
+}
+.warning-btn-yes {
+  width:100%; padding:14px; margin-bottom:10px;
+  background:#e84545; border:none; color:#fff;
+  font-family:'Cormorant Garamond',serif; font-size:13px;
+  letter-spacing:4px; text-transform:uppercase; cursor:pointer;
+  transition:all 0.3s;
+}
+.warning-btn-yes:hover { background:#c53030; }
+.warning-btn-back {
+  width:100%; padding:12px; background:transparent;
+  border:1px solid rgba(232,69,69,0.3); color:rgba(250,245,240,0.5);
+  font-family:'Cormorant Garamond',serif; font-size:12px;
+  letter-spacing:3px; text-transform:uppercase; cursor:pointer;
+  transition:all 0.3s;
+}
+.warning-btn-back:hover { border-color:rgba(232,69,69,0.6); color:rgba(250,245,240,0.8); }
 </style>
 </head>
 <body>
@@ -7894,6 +8023,25 @@ function collectStep(n) {
 }
 
 
+
+// ═══ WARNING MODAL ═══
+var _warningConfirmedFor = null;
+
+function showWarning(audioTheme) {
+  _warningConfirmedFor = audioTheme;
+  document.getElementById('warning-overlay').classList.add('active');
+}
+
+function warningConfirm() {
+  document.getElementById('warning-overlay').classList.remove('active');
+  _doGenerate();
+}
+
+function warningCancel() {
+  document.getElementById('warning-overlay').classList.remove('active');
+  _warningConfirmedFor = null;
+}
+
 // ═══════════════════════════════════
 // UNIVERSAL HARDENED SYSTEM PROMPT
 // Injects strict rules into every audio's system prompt
@@ -7951,9 +8099,103 @@ UNIVERSAL MANDATORY RULES (ABSOLUTE PRIORITY)
 // ═══════════════════════════════════
 // GENERATE
 // ═══════════════════════════════════
+function showWarning() {
+  document.getElementById('warning-overlay').classList.add('active');
+}
+function closeWarning() {
+  document.getElementById('warning-overlay').classList.remove('active');
+}
+function confirmGenerate() {
+  closeWarning();
+  generate();
+}
 async function generate() {
   if(!validateStep(currentAudio.steps)) return;
-  collectStep(currentAudio.steps);
+  // Show warning modal on first attempt
+  if(_warningConfirmedFor !== currentAudio.theme) {
+    collectStep(currentAudio.steps);
+    showWarning(currentAudio.theme);
+    return;
+  }
+  showPage('page-generating');
+  const items=['gs1','gs2','gs3','gs4'];
+  for(let i=0;i<items.length;i++){await delay(800);document.getElementById(items[i]).classList.add('done');}
+
+  // EMERGENCY (quadScript): 2 peticiones separadas para evitar timeout de Netlify
+  if(currentAudio && currentAudio.quadScript){
+    try {
+      const baseSystem = buildHardenedSystem(currentAudio.systemPrompt(fd), fd.lang);
+      const basePrompt = currentAudio.buildPrompt(fd);
+
+      // Petición A: Scripts 1 y 2
+      const promptA = basePrompt + '\n\n⚠️ ESTA PETICIÓN ES LA PARTE A: GENERA SOLAMENTE EL SCRIPT 1 Y SCRIPT 2. Devuelve SCRIPT 1 completo, luego ===SCRIPT2===, luego SCRIPT 2 completo. NO generes Script 3 ni Mini Script en esta petición.';
+      let partA='';
+      for(let ra=0;ra<3;ra++){
+        if(ra>0) await delay(ra===1?3000:5000);
+        try{
+          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA})});
+          const dataA=await resA.json();
+          const txtA=dataA.text||'';
+          if(!txtA.includes('overloaded_error')&&!txtA.includes('API ERROR')&&txtA.length>20){partA=txtA;break;}
+        }catch(e){}
+      }
+
+      // Petición B: Script 3 y Mini Script
+      const promptB = basePrompt + '\n\n⚠️ ESTA PETICIÓN ES LA PARTE B: GENERA SOLAMENTE EL SCRIPT 3 Y EL MINI SCRIPT. Devuelve SCRIPT 3 completo, luego ===MINISCRIPT===, luego MINI SCRIPT completo. NO generes Script 1 ni Script 2 en esta petición.';
+      let partB='';
+      for(let rb=0;rb<3;rb++){
+        if(rb>0) await delay(rb===1?3000:5000);
+        try{
+          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB})});
+          const dataB=await resB.json();
+          const txtB=dataB.text||'';
+          if(!txtB.includes('overloaded_error')&&!txtB.includes('API ERROR')&&txtB.length>20){partB=txtB;break;}
+        }catch(e){}
+      }
+
+      // Combinar las 2 partes en el formato esperado: SCRIPT1 ===SCRIPT2=== SCRIPT2 ===SCRIPT3=== SCRIPT3 ===MINISCRIPT=== MINISCRIPT
+      const combined = partA.trim() + '\n\n===SCRIPT3===\n\n' + partB.trim();
+      // 1) Dividir PRIMERO (mientras los marcadores existen) para mostrar los 4 bloques en pantalla
+      splitScript(combined);
+      // 2) DESPUÉS formatear para el mail (el formato reemplaza los marcadores con encabezados bonitos)
+      fullScript = formatEmergencyEmail(combined, fd.name||'');
+      showPage('page-result');
+      sendEmails();
+      return;
+    } catch(e) {
+      fullScript='Error generando el script. Por favor contacta a ERIORCENTER.';
+      splitScript(fullScript);
+      showPage('page-result');
+      return;
+    }
+  }
+
+  // Audios normales (1 petición) — con reintento automático
+  const maxRetries=3;
+  const retryDelays=[0,3000,5000];
+  for(let attempt=0;attempt<maxRetries;attempt++){
+    try {
+      if(attempt>0) await delay(retryDelays[attempt]);
+      const res=await fetch('/.netlify/functions/generate',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({system:buildHardenedSystem(currentAudio.systemPrompt(fd),fd.lang),prompt:currentAudio.buildPrompt(fd)})
+      });
+      const data=await res.json();
+      const txt=data.text||'';
+      if(txt.includes('overloaded_error')||txt.includes('API ERROR')||txt.length<20) continue;
+      fullScript=txt;
+      splitScript(fullScript);
+      showPage('page-result');
+      sendEmails();
+      return;
+    } catch(e){}
+  }
+  fullScript='Error generando el script. Por favor intenta de nuevo o contacta a ERIORCENTER.';
+  splitScript(fullScript);
+  showPage('page-result');
+}
+
+async function _doGenerate() {
   showPage('page-generating');
   const items=['gs1','gs2','gs3','gs4'];
   for(let i=0;i<items.length;i++){await delay(800);document.getElementById(items[i]).classList.add('done');}
@@ -8383,7 +8625,7 @@ function buildYouSteps(){
       <label class="choice-opt" onclick="pickChoice(this,'time')"><input type="radio" name="time" value="night"><div class="choice-radio"></div><span class="choice-label">🌙 De noche</span></label>
     </div>
     <div class="field-err" id="e-time">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script ✨</button></div>
   </div>`;
 }
 
@@ -8440,7 +8682,7 @@ function buildIdentitySteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script ✨</button></div>
   </div>`;
 }
 
@@ -8497,7 +8739,7 @@ function buildAmorSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script ✨</button></div>
   </div>`;
 }
 
@@ -8554,7 +8796,7 @@ function buildBoosterSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script ✨</button></div>
   </div>`;
 }
 
@@ -9058,7 +9300,7 @@ function buildHombreSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💎</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 💎</button></div>
   </div>`;
 }
 
@@ -9204,7 +9446,7 @@ function buildVitamindSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💊</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 💊</button></div>
   </div>`;
 }
 
@@ -9384,7 +9626,7 @@ function buildAbundanceSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💰</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 💰</button></div>
   </div>`;
 }
 
@@ -9539,7 +9781,7 @@ function buildMoneytechSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💻</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 💻</button></div>
   </div>`;
 }
 
@@ -9695,7 +9937,7 @@ function buildSatoriSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🌿</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 🌿</button></div>
   </div>`;
 }
 
@@ -9840,7 +10082,7 @@ function buildMesmerizingSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🌹</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 🌹</button></div>
   </div>`;
 }
 
@@ -9977,7 +10219,7 @@ function buildFitwaveSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💪</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 💪</button></div>
   </div>`;
 }
 
@@ -10088,7 +10330,7 @@ function buildSelectSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script ✨</button></div>
   </div>`;
 }
 
@@ -10220,7 +10462,7 @@ function buildWonderlandSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🌀</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 🌀</button></div>
   </div>`;
 }
 
@@ -10346,7 +10588,7 @@ function buildLuckySteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🍀</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 🍀</button></div>
   </div>`;
 }
 
@@ -10472,7 +10714,7 @@ function buildAmorpropio2Steps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🌸</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 🌸</button></div>
   </div>`;
 }
 
@@ -10594,7 +10836,7 @@ function buildEclatSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script ✨</button></div>
   </div>`;
 }
 
@@ -10782,7 +11024,7 @@ function buildAttractionSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💖</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 💖</button></div>
   </div>`;
 }
 
@@ -10923,7 +11165,7 @@ function buildMastermindSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🧠</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 🧠</button></div>
   </div>`;
 }
 
@@ -11048,7 +11290,7 @@ function buildOnceonceSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script ✨</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script ✨</button></div>
   </div>`;
 }
 
@@ -11173,7 +11415,7 @@ function buildKidsSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar script 🌟</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar script 🌟</button></div>
   </div>`;
 }
 
@@ -11304,7 +11546,7 @@ function buildEriorloveSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 💛</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 💛</button></div>
   </div>`;
 }
 
@@ -11427,7 +11669,7 @@ function buildMentalglowSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🧠</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 🧠</button></div>
   </div>`;
 }
 
@@ -11549,7 +11791,7 @@ function buildWhiterabbitSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi script 🐇</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script 🐇</button></div>
   </div>`;
 }
 
@@ -11680,7 +11922,7 @@ function buildCuriousSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mis scripts 🐇</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mis scripts 🐇</button></div>
   </div>`;
 }
 
@@ -11797,7 +12039,7 @@ function buildErior3Steps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mis scripts ⟁</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mis scripts ⟁</button></div>
   </div>`;
 }
 
@@ -11992,7 +12234,7 @@ function buildMindmovieSteps(){
     <p class="step-hint">Cosas que debemos evitar definitivamente: ciertos escenarios, estéticas, situaciones, personas, colores, etc. Si no hay nada, escribe "nada" 🎬</p>
     <textarea class="step-input" id="f-avoid" placeholder="Definitivamente NO quiero..." style="height:120px;"></textarea>
     <div class="field-err" id="e-avoid">Por favor responde esta pregunta</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi Mind Movie 🎬</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi Mind Movie 🎬</button></div>
   </div>`;
 }
 
@@ -12153,7 +12395,7 @@ function buildIconauraSteps(){
       <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
     </div>
     <div class="field-err" id="e-record">Por favor selecciona una opción</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi mini script ✦</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi mini script ✦</button></div>
   </div>`;
 }
 
@@ -12319,7 +12561,7 @@ function buildEmergencySteps(){
     <p class="step-hint">Sé específic@. Mientras más detalle des sobre tu emergencia (qué está pasando, qué quieres resolver, qué necesitas), más precisos serán tus 4 scripts ✦</p>
     <textarea class="step-input" id="f-emergencysituation" placeholder="Mi situación es..." style="height:200px;"></textarea>
     <div class="field-err" id="e-emergencysituation">Por favor describe tu situación</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mis 4 scripts ✦</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mis 4 scripts ✦</button></div>
   </div>`;
 }
 
@@ -12475,7 +12717,7 @@ function buildKeepcoolSteps(){
     <p class="step-hint">⚠️ <strong>IMPORTANTE</strong>: hazlo con calma porque <strong>no hay cambios</strong>. Una vez que envíes tu formulario así se queda. Sé específic@ con los 3 temas que quieres trabajar (ejemplos: dinero, salud, relación, paz interna, autoestima, propósito, abundancia) ☾</p>
     <textarea class="step-input" id="f-keepcooltopics" placeholder="Los tres temas que quiero en mi meditación son..." style="height:200px;"></textarea>
     <div class="field-err" id="e-keepcooltopics">Por favor describe los tres temas</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi mini script ☾</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi mini script ☾</button></div>
   </div>`;
 }
 
@@ -12616,7 +12858,7 @@ function buildGodgoddessSteps(){
     <p class="step-hint">Solo un tema por favor. Sé específic@ — mientras más claro, más poderoso será tu mini script ♛<br><br><strong>Ejemplos:</strong> quiero tener un cuerpo esbelto · quiero tener mi propia empresa · quiero estar completamente sano · quiero ser irresistible para mi persona</p>
     <textarea class="step-input" id="f-godintention" placeholder="Quiero..." style="height:160px;"></textarea>
     <div class="field-err" id="e-godintention">Por favor describe tu intención</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Activar mi divinidad ♛</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Activar mi divinidad ♛</button></div>
   </div>`;
 }
 
@@ -13065,7 +13307,7 @@ function buildSimulationSteps(){
       ${mantrasHTML}
     </div>
     <div class="field-err" id="e-simmantra">Por favor selecciona un mantra</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="generate()">Generar mi entrevista 🎙</button></div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi entrevista 🎙</button></div>
   </div>`;
 }
 
@@ -13334,5 +13576,39 @@ REGLAS:
   loop();
 })();
 </script>
+
+<!-- WARNING MODAL -->
+<div class="warning-overlay" id="warning-overlay">
+  <div class="warning-box">
+    <div class="warning-icon">⚠️</div>
+    <div class="warning-title">Antes de continuar</div>
+    <div class="warning-body">
+      Por favor, responde este cuestionario <strong>solo una vez</strong>.<br><br>
+      Tómate un momento para pensar bien en tu intención y en lo que realmente deseas, ya que tus respuestas serán utilizadas para <strong>programar las frecuencias de tu audio de forma personalizada</strong>.<br><br>
+      La primera respuesta que envíes será la que se tome en cuenta. Si completas el formulario varias veces o cambias tus respuestas después, el resultado puede no quedar correctamente alineado con tu intención original.<br><br>
+      Gracias por tu atención y por responder con claridad. ✨
+    </div>
+    <div class="warning-buttons">
+      <button class="warning-btn-confirm" onclick="warningConfirm()">Entiendo — continuar con mi intención</button>
+      <button class="warning-btn-cancel" onclick="warningCancel()">Espera, quiero revisar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- WARNING MODAL -->
+<div class="warning-overlay" id="warning-overlay">
+  <div class="warning-box">
+    <div class="warning-icon">⚠️</div>
+    <div class="warning-title">Importante</div>
+    <div class="warning-text">
+      Por favor, responde este cuestionario <strong>solo una vez</strong>. Tómate un momento para pensar bien en tu intención y en lo que realmente deseas — tus respuestas serán utilizadas para programar las frecuencias de tu audio de forma personalizada.<br><br>
+      La primera respuesta que envíes será la que se tome en cuenta. Si completas el formulario varias veces, el resultado puede no quedar correctamente alineado con tu intención original.<br><br>
+      Gracias por tu atención y por responder con claridad ✨
+    </div>
+    <button class="warning-btn-yes" onclick="confirmGenerate()">Sí, estoy list@ — generar mi script</button>
+    <button class="warning-btn-back" onclick="closeWarning()">Espera, reviso mis respuestas</button>
+  </div>
+</div>
 </body>
 </html>

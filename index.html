@@ -8925,7 +8925,126 @@ Con cariño, El equipo ☁️🌸💎
 
 Devuelve SOLO el script final sin explicaciones.`;
   } else {
-    return `Client data: Name: ${name}, Wish1: ${w1}, Wish2: ${w2}, Wish3: ${w3}, Hobby: ${fd.hobby}, Desire: ${fd.desire}, Strength: ${fd.strength}, Wound: ${fd.wound}, Money: ${fd.money}. Generate the YOU audio script in English following the same structure as the Spanish version. Use the client's data naturally. Return ONLY the final script.`;
+    return `Client data:
+- Name: ${name}
+- Wish 1: ${w1}
+- Wish 2: ${w2}
+- Wish 3: ${w3}
+- Inner child hobby: ${fd.hobby||''}
+- Inner child greatest desire: ${fd.desire||''}
+- Strength: ${fd.strength||''}
+- Wound/fear: ${fd.wound||''}
+- Inner child and money: ${fd.money||''}
+- Moment: ${fd.time==='night'?'night':'day'}
+
+BASE SCRIPT — Replace ONLY the marked sections with the client data. Keep everything else IDENTICAL including emojis and line breaks:
+
+💛☁️ YOUR FIRST SCRIPT ☁️💛
+✯ first recording 🂱🐇
+
+Hello! 💖✨
+Thank you infinitely for your trust. 🌸
+This mini script is an additional theme created to further enhance your main recording.
+Could you send us the recording of this script? 🎧🌙
+
+I, ${name}, am my inner child and that is why I look so young.
+
+People are completely mesmerized by my presence and I am so natural, so childlike, so authentic and fun that people become addicted to my energy.
+I play like my inner child and that is why I am always so powerful and it is always so easy for me to enter and stay in neutrality.
+I always feel safe, relaxed, protected…
+My body loosens.
+My breathing becomes soft.
+My mind rests.
+My heart feels accompanied.
+My energy organizes itself calmly.
+I relax within myself.
+Everything is joy. Everything is peace.
+Everything becomes simple and loving. ✨🪽🌸🎠💖🧸🤍
+
+My player is my inner child.
+That alive, elegant and resilient part that understands reality as a loving game.
+From here, everything settles easily. Nothing weighs. Nothing threatens.
+Life cooperates with me. 🌈✨
+
+I feel light. Open. Present.
+I inhabit the natural innocence that was always mine.
+My energy feels stable and safe. Being me feels good. 🤍🧸
+
+My inner child takes the lead with joy.
+Chooses without fear. Creates without effort. Trusts without doubt. ✨
+
+Money loves me.
+Money is an energy deeply in love with me.
+It comes to me with ease, softness and consistency.
+[MONEY: 1-2 lines about how their inner child would earn money: ${fd.money||''}]
+I enjoy money. I enjoy receiving it. I enjoy spending it.
+I love spending because I know I always earn more. 💸🪄
+
+I live in natural abundance.
+I receive daily abundance that comes to me with ease.
+My recognition grows. My name is valued. My presence matters.
+Success accompanies me in a stable and elegant way. 🌟✨
+
+I wonder why walking through life with this confidence makes everything feel so good? 🌸
+
+[STRENGTH: adapt 2-3 lines with: ${fd.strength||''}]
+My resilience is soft but firm. That is a gift. ✨🧸🤍
+
+[WOUND: integrate with tenderness: ${fd.wound||''}]
+My inner child understands something new now:
+I do not have to compete to be seen.
+My place exists. I exist. I matter.
+I accompany myself. I choose myself. I support myself. 🫶🏻✨
+
+[WISH 1: 3-4 poetic lines for: ${w1}]
+[WISH 2: 3-4 poetic lines for: ${w2}]
+[WISH 3: 3-4 poetic lines for: ${w3}]
+
+Life takes care of me. 💸🌈
+
+I hand the lead to my inner child and I trust.
+I trust in my spontaneity. I trust in my sensitivity.
+I trust in my unique way of being in the world. 🤍🧸
+
+Getting ready feels fun. Feeling pretty feels natural.
+I enjoy my image. I enjoy my presence.
+Being seen no longer scares me. Being admired feels good. ✨👗💖
+
+I, ${name}, am the most innocent, pure, fun, authentic, tender, loving, light and sweet person in this world.
+
+My heart is the purest in this world. I am pure love, I am purity, I am innocence, I am magic, I am beauty, I am grace.
+
+I return to my divine inner child, I return to my purity, I return to my innocence.
+I let go of the past completely.
+
+I, ${name}, am my conscious inner child.
+I fill my life with play, laughter, lightness, joy, love, tenderness and fun.
+
+Everything is easy. Everything flows. Everything is done. And so it is. ✨🧸🤍
+
+💛☁️ YOUR MINI SCRIPT ☁️💛
+✯ Second recording 🂱🐇
+
+I, ${name}, am my inner child.
+I am my most powerful version and my purest version.
+I see everything with love and that is why nothing feels like a threat.
+I learned to receive, I learned to choose. Everything is easy, I deserve everything.
+Fear no longer exists, only love exists within me.
+
+In this reality I am the inner child, the power that operates everything.
+[MONEY MINI: 1-2 lines: ${fd.money||''}]
+I am very recognized, important and respected for what I do.
+My success is built with ease, authenticity and enjoyment.
+Everything I touch expands, prospers and becomes valuable.
+I wonder why I became the happiest person in the world being successful, recognized and abundant?
+I am grateful for everything and I celebrate that money and success flow to me constantly. ✨
+
+📩 IMPORTANT:
+Once you send your two recordings, please fill out the form again 💫
+It is essential to be able to send you your final audio. 🐇💛
+With love, The team ☁️🌸💎
+
+Return ONLY the final script without explanations. No Markdown. No headers. No ** or ## symbols.`;
   }
 }
 

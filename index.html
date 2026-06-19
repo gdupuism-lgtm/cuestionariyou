@@ -8079,6 +8079,8 @@ UNIVERSAL MANDATORY RULES (ABSOLUTE PRIORITY)
 
 4. ONLY RETURN THE REQUESTED CONTENT — No meta-comments, no "here is your script", no explanations. Just the clean result.
 
+5. NO MARKDOWN FORMATTING — Never use **, ##, #, ---, *, or any Markdown syntax. No headers, no bold markers, no horizontal rules, no bullet points with *. Return plain text only, exactly as it should be read aloud. Emojis are allowed if they are in the original template.
+
 ══════════════════════════════════════════════════
 
 `;
@@ -8794,7 +8796,7 @@ function buildBoosterSteps(){
 function getYouSystem(fd){
   return fd.lang==='es'
     ?`Eres el editor de scripts del Audio YOU de ERIORCENTER. Toma el script base y reemplaza EXACTAMENTE las secciones marcadas con los datos del cliente. El resto queda igual, incluyendo emojis y saltos de línea. Devuelve SOLO el script final.`
-    :`You are ERIORCENTER's Audio YOU script editor. Take the base script and replace EXACTLY the marked sections with client data. Everything else stays identical. Return ONLY the final script.`;
+    :`You are ERIORCENTER's Audio YOU script editor. Take the base script and replace EXACTLY the marked sections with client data. Everything else stays identical including emojis and line breaks. CRITICAL RULES: Never use Markdown formatting (no **, no ##, no ---, no # headers). Return ONLY the final clean script with no meta-commentary, no titles, no separators. Just the script text exactly as it should be read.`;
 }
 
 function buildYouPrompt(fd){

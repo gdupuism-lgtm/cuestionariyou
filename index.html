@@ -7181,6 +7181,262 @@ textarea.step-input:focus { opacity:1; }
   transition:all 0.3s;
 }
 .warning-btn-back:hover { border-color:rgba(232,69,69,0.6); color:rgba(250,245,240,0.8); }
+
+/* ═══════════════════════════════════════
+   AMOR PROPIO MAGIC 4.0 — Oro líquido + Rosa cristal
+   ═══════════════════════════════════════ */
+.theme-apm4 {
+  --bg: #080508;
+  --accent: #f7c948;
+  --accent2: #f9a8d4;
+  --accent3: #fef9c3;
+  --accent4: #c084fc;
+  --text: #fdf8f0;
+  --text-soft: rgba(253,248,240,0.72);
+  --header-bg: #050305;
+  --pdot-off: rgba(247,201,72,0.18);
+  --pdot-on: #f7c948;
+}
+
+/* Header */
+.theme-apm4 .form-header {
+  background:var(--header-bg);
+  border-bottom:1px solid rgba(247,201,72,0.2);
+  position:relative; overflow:hidden;
+}
+.theme-apm4 .form-header::before {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,
+    transparent 0%, rgba(247,201,72,0.06) 30%,
+    rgba(249,168,212,0.06) 60%, transparent 100%);
+  animation:apm4-header-flow 6s ease-in-out infinite;
+}
+@keyframes apm4-header-flow {
+  0%,100%{opacity:0.5} 50%{opacity:1}
+}
+.theme-apm4 .fh-brand {
+  background:linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:apm4-shimmer 4s linear infinite;
+  letter-spacing:7px;
+}
+@keyframes apm4-shimmer { to{background-position:200% center} }
+
+/* Progress dots */
+.theme-apm4 .pdot { background:var(--pdot-off); }
+.theme-apm4 .pdot.done { background:rgba(247,201,72,0.55); }
+.theme-apm4 .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 16px rgba(247,201,72,0.9), 0 0 32px rgba(249,168,212,0.4);
+  animation:apm4-dot 2s ease-in-out infinite;
+}
+@keyframes apm4-dot {
+  0%,100%{transform:scale(1);box-shadow:0 0 16px rgba(247,201,72,0.9),0 0 32px rgba(249,168,212,0.4)}
+  50%{transform:scale(1.5);box-shadow:0 0 28px rgba(247,201,72,1),0 0 55px rgba(249,168,212,0.6)}
+}
+
+/* Page background */
+.theme-apm4 #page-form {
+  background:#080508;
+  position:relative; overflow:hidden; color:var(--text);
+}
+.theme-apm4 #page-form::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(247,201,72,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(249,168,212,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(192,132,252,0.06) 0%, transparent 60%);
+  animation:apm4-bg-breathe 8s ease-in-out infinite;
+}
+@keyframes apm4-bg-breathe {
+  0%,100%{opacity:0.7} 50%{opacity:1}
+}
+
+/* Liquid gold animated gradient line at top */
+.theme-apm4 #page-form::after {
+  content:''; position:fixed; top:0; left:0; right:0; height:2px; z-index:2;
+  background:linear-gradient(90deg,
+    transparent, #f7c948, #f9a8d4, #c084fc, #f7c948, transparent);
+  background-size:200% 100%;
+  animation:apm4-topline 4s linear infinite;
+}
+@keyframes apm4-topline { to{background-position:200% center} }
+
+.theme-apm4 .form-main { position:relative; z-index:1; }
+
+/* Intro card */
+.theme-apm4 .intro-card {
+  background:linear-gradient(135deg,
+    rgba(247,201,72,0.1), rgba(249,168,212,0.08), rgba(192,132,252,0.05));
+  border:1px solid transparent;
+  background-clip:padding-box;
+  position:relative; overflow:hidden;
+}
+.theme-apm4 .intro-card::before {
+  content:''; position:absolute; inset:-1px;
+  background:linear-gradient(135deg, rgba(247,201,72,0.5), rgba(249,168,212,0.4), rgba(192,132,252,0.3));
+  z-index:-1; border-radius:inherit;
+  animation:apm4-border 4s linear infinite;
+  background-size:200% 200%;
+}
+@keyframes apm4-border { to{background-position:200% 200%} }
+
+.theme-apm4 .apm4-intro { padding-top:160px; padding-bottom:52px; }
+
+/* Orb */
+.theme-apm4 .apm4-orb {
+  position:absolute; top:-40px; left:50%; transform:translateX(-50%);
+  width:280px; height:280px; border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(247,201,72,0.5) 0%,
+    rgba(249,168,212,0.35) 30%,
+    rgba(192,132,252,0.2) 55%,
+    transparent 75%);
+  filter:blur(20px);
+  animation:apm4-orb 5s ease-in-out infinite;
+}
+@keyframes apm4-orb {
+  0%,100%{transform:translateX(-50%) scale(1);opacity:0.8}
+  50%{transform:translateX(-50%) scale(1.15);opacity:1}
+}
+
+/* Particles */
+.theme-apm4 .apm4-particles {
+  position:absolute; inset:0; pointer-events:none; overflow:hidden;
+}
+.apm4-particle {
+  position:absolute; border-radius:50%;
+  background:radial-gradient(circle, rgba(247,201,72,0.9), rgba(249,168,212,0.5));
+  animation:apm4-float linear infinite;
+}
+@keyframes apm4-float {
+  0%{transform:translateY(100px) scale(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:0.8}
+  100%{transform:translateY(-200px) scale(1.5);opacity:0}
+}
+
+/* Titles */
+.theme-apm4 .intro-card-label {
+  position:relative; z-index:2; letter-spacing:5px;
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.theme-apm4 .intro-card-title {
+  font-family:'DM Serif Display',serif;
+  font-size:42px; line-height:1.1; position:relative; z-index:2;
+  color:var(--text);
+}
+.theme-apm4 .intro-card-title em {
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 40%, var(--accent3) 70%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:apm4-shimmer 4s linear infinite;
+}
+.theme-apm4 .intro-card-desc {
+  color:var(--text-soft); font-size:14px; line-height:2;
+  position:relative; z-index:2;
+}
+
+/* Steps */
+.theme-apm4 .step-eyebrow {
+  background:linear-gradient(90deg, var(--accent), var(--accent2), var(--accent4));
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:apm4-shimmer 4s linear infinite;
+  letter-spacing:7px; font-family:'Courier New',monospace; font-weight:600;
+}
+.theme-apm4 .step-q {
+  font-family:'DM Serif Display',serif; color:var(--text);
+  font-weight:400; letter-spacing:-1px;
+}
+.theme-apm4 .step-q em {
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent), var(--accent2) 50%, var(--accent3) 75%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:apm4-shimmer 4s linear infinite;
+}
+.theme-apm4 .step-hint { color:var(--text-soft); }
+.theme-apm4 .step-input {
+  color:var(--text); opacity:1;
+  border-color:rgba(247,201,72,0.35);
+  background:rgba(247,201,72,0.04);
+  font-family:'Cormorant Garamond',serif; font-size:17px;
+}
+.theme-apm4 .step-input::placeholder { color:rgba(247,201,72,0.3); font-style:italic; }
+.theme-apm4 .step-input:focus {
+  border-color:var(--accent2);
+  box-shadow:0 0 20px rgba(249,168,212,0.2), 0 0 40px rgba(247,201,72,0.1);
+  background:rgba(249,168,212,0.04);
+}
+.theme-apm4 textarea.step-input { background:rgba(247,201,72,0.03); }
+
+/* Buttons */
+.theme-apm4 .lang-btn {
+  color:var(--accent); border-color:rgba(247,201,72,0.35);
+  opacity:1; background:transparent;
+}
+.theme-apm4 .lang-btn.active {
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  color:#080508; border-color:var(--accent);
+}
+.theme-apm4 .btn-back { color:rgba(253,248,240,0.4); }
+.theme-apm4 .btn-next {
+  position:relative; overflow:hidden;
+  border-color:rgba(247,201,72,0.5);
+  color:var(--accent); letter-spacing:6px; font-weight:500;
+}
+.theme-apm4 .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(247,201,72,0.15), rgba(249,168,212,0.1), rgba(247,201,72,0.15));
+  background-size:200% 100%;
+  opacity:0; transition:opacity 0.3s;
+  animation:apm4-btn-shimmer 3s linear infinite;
+}
+@keyframes apm4-btn-shimmer { to{background-position:200% center} }
+.theme-apm4 .btn-next:hover {
+  background:transparent; border-color:var(--accent2); color:#fff;
+  box-shadow:0 0 30px rgba(249,168,212,0.4), 0 0 60px rgba(247,201,72,0.2);
+}
+.theme-apm4 .btn-next:hover::before { opacity:1; }
+
+/* Result page */
+.theme-apm4 #page-result {
+  background:#080508 !important; color:var(--text) !important;
+}
+.theme-apm4 .result-header { background:#050305; border-bottom:1px solid rgba(247,201,72,0.2); }
+.theme-apm4 .result-tag {
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  letter-spacing:5px;
+}
+.theme-apm4 .result-htitle { font-family:'DM Serif Display',serif; color:var(--text); }
+.theme-apm4 .result-htitle em {
+  background:linear-gradient(135deg, var(--accent), var(--accent2) 50%, var(--accent3));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.theme-apm4 .script-wrap { border-color:rgba(247,201,72,0.2); background:rgba(247,201,72,0.02); }
+.theme-apm4 .script-head { background:#050305; }
+.theme-apm4 .script-content {
+  font-family:'Cormorant Garamond',serif;
+  color:var(--text) !important; background:#060405 !important;
+  line-height:2.1; font-size:16px;
+}
+.theme-apm4 .btn-dl { border-color:rgba(247,201,72,0.28); color:rgba(247,201,72,0.55); background:transparent; }
+.theme-apm4 .btn-dl:hover { border-color:var(--accent); color:var(--accent); }
+.theme-apm4 .result-note { border-color:rgba(247,201,72,0.2); color:rgba(253,248,240,0.45); background:rgba(247,201,72,0.04); padding:24px 32px; }
+.theme-apm4 .btn-copy { border-color:rgba(247,201,72,0.32); background:rgba(247,201,72,0.08); color:rgba(247,201,72,0.85); }
+.theme-apm4 .btn-copy:hover { background:rgba(249,168,212,0.15); color:var(--accent2); }
+
+/* Step animation */
+.theme-apm4 .step.active { animation:apm4-step-in 0.7s cubic-bezier(0.16,1,0.3,1); }
+@keyframes apm4-step-in {
+  from{opacity:0;transform:translateY(32px) scale(0.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
 </style>
 </head>
 <body>
@@ -7654,6 +7910,19 @@ const AUDIOS = {
     buildPrompt: buildSimulationPrompt,
     systemPrompt: getSimulationSystem,
   },
+  'miapm40': {
+    name: 'Amor Propio Magic 4.0',
+    theme: 'theme-apm4',
+    steps: 3,
+    headerLabel: 'ERIORCENTER — AMOR PROPIO MAGIC 4.0 💛',
+    introTitle: 'Amor Propio<br><em>Magic 4.0</em>',
+    introDesc: 'La versión más poderosa. Personalizada para ti 💛✨',
+    fields: ['name','email','apm4tema'],
+    buildSteps: buildApm4Steps,
+    buildPrompt: buildApm4Prompt,
+    systemPrompt: getApm4System,
+    singleOnly: true,
+  },
 };
 
 // ═══════════════════════════════════
@@ -7734,6 +8003,7 @@ const THEME_BG = {
   'theme-godgoddess': '#060400',
   'theme-unlimited': '#020510',
   'theme-simulation': '#080508',
+  'theme-apm4': '#080508',
 };
 const THEME_COLOR = {
   'theme-you': '#faf8f5',
@@ -7768,6 +8038,7 @@ const THEME_COLOR = {
   'theme-godgoddess': '#fafaf0',
   'theme-unlimited': '#f0f5ff',
   'theme-simulation': '#faf5f7',
+  'theme-apm4': '#fdf8f0',
 };
 
 function applyTheme(theme) {
@@ -7923,6 +8194,11 @@ function validateStep(n) {
     const checked = document.querySelectorAll('.sim-area-cb:checked').length;
     if(checked !== 3){show('e-simareas');return false;}
   }
+  if(fields[n-1]==='apm4tema'){
+    hide('e-apm4tema');
+    const el=document.getElementById('f-apm4tema');
+    if(!el||el.value.trim().length<5){show('e-apm4tema');return false;}
+  }
   if(fields[n-1]==='simmantra'){
     hide('e-simmantra');
     const picked = document.querySelector('.sim-mantra-rb:checked');
@@ -8008,6 +8284,7 @@ function collectStep(n) {
   if(f==='keepcooltopics') fd.keepcooltopics=g('f-keepcooltopics');
   if(f==='godintention') fd.godintention=g('f-godintention');
   if(f==='ulintentions') fd.ulintentions=''; // handled by generateUnlimited
+  if(f==='apm4tema') fd.apm4tema=g('f-apm4tema');
   if(f==='simtitle') fd.simtitle=g('f-simtitle');
   if(f==='simareas'){
     fd.simareas = Array.from(document.querySelectorAll('.sim-area-cb:checked')).map(cb=>cb.value).join(', ');
@@ -8404,7 +8681,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess','theme-unlimited','theme-simulation'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess','theme-unlimited','theme-simulation','theme-apm4'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -13532,6 +13809,156 @@ REGLAS:
 - Adapta las 3 preguntas a las áreas: ${areas}`;
   } else {
     return `Client: Name: ${name}, Interview title: "${title}", 3 areas: ${areas}, Mantra: "${mantra}". Generate SIMULATION-U interview in English with the same email format wrapper. 3 Q&A blocks, first person present tense as if already living it. Conversational and natural. Return ONLY the complete formatted content.`;
+  }
+}
+
+// ═══════════════════════════════════
+// BUILD STEPS — AMOR PROPIO MAGIC 4.0
+// ═══════════════════════════════════
+function buildApm4Steps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card apm4-intro">
+      <div class="apm4-orb"></div>
+      <div class="apm4-particles" id="apm4-particles"></div>
+      <div class="intro-card-label">ERIORCENTER — NUEVO LANZAMIENTO ✦</div>
+      <div class="intro-card-title">Amor Propio<br><em>Magic 4.0</em></div>
+      <div class="intro-card-desc">La versión más poderosa del amor propio ha llegado. Personalizada para ti, para tu tema, para tu momento. Esta es tu era dorada 💛✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>mini script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar ✦</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">MAGIA 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">El nombre con el que te amas 💛</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">MAGIA 02 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu mini script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 📩</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">MAGIA 03 — Tu intención</div>
+    <h2 class="step-q">¿Para qué tema quieres que se <em>personalice</em> este audio?</h2>
+    <p class="step-hint">Escribe tu intención con claridad y desde el corazón 💛<br><br><strong>Ejemplos:</strong> para ser más desapegad@, para tener un mejor trabajo, para sanar mi cuerpo, para manifestar una pareja, para amar más mi imagen</p>
+    <textarea class="step-input" id="f-apm4tema" placeholder="Quiero este audio para..." style="height:150px;"></textarea>
+    <div class="field-err" id="e-apm4tema">Por favor describe tu intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Activar mi magia ✦</button></div>
+  </div>`;
+
+  // Spawn particles
+  setTimeout(() => {
+    const container = document.getElementById('apm4-particles');
+    if(!container) return;
+    for(let i=0;i<18;i++){
+      const p = document.createElement('div');
+      p.className = 'apm4-particle';
+      p.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${3+Math.random()*4}s;width:${2+Math.random()*4}px;height:${2+Math.random()*4}px;opacity:${0.3+Math.random()*0.5}`;
+      container.appendChild(p);
+    }
+  }, 100);
+}
+
+// ═══════════════════════════════════
+// PROMPTS — AMOR PROPIO MAGIC 4.0
+// ═══════════════════════════════════
+function getApm4System(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts de Amor Propio Magic 4.0 de ERIORCENTER. Generas mini scripts de amor propio profundo, personalizados al tema del cliente.
+
+TONO: amoroso, poético, poderoso, expansivo. Todo en presente. Identidad ya vivida. Sin carencia ni futuro.
+
+ESTRUCTURA OBLIGATORIA (en este orden exacto):
+
+1. INICIO OBLIGATORIO (siempre igual, solo cambia el nombre):
+"Yo [NOMBRE], soy mi prioridad y me amo profundamente. Mi cuerpo libera con amor todo lo que ya no necesita y cada día me siento más libre, bell@ y en paz.
+Mi belleza, mi juventud, mi abundancia y mi magia florecen de forma natural. Todo fluye a mi favor porque confío plenamente en mí."
+
+2. PERSONALIZACIÓN DEL TEMA: 3-5 líneas poéticas adaptadas al tema específico del cliente. Siempre en primera persona, presente, desde el amor propio. Si el tema es desapego → habla de soltar con amor. Si es trabajo → el trabajo fluye porque te amas. Si es cuerpo → tu cuerpo te ama. Si es pareja → el amor te encuentra porque te amas. Adapta naturalmente.
+
+3. PÁRRAFO OBLIGATORIO DE DESAPEGO (siempre incluirlo):
+"Me es muy fácil vivir desde el desapego. Confío en que todo lo que es para mí permanece con facilidad y todo llega en el momento perfecto. Me siento complet@ conmigo mism@, disfruto mi propia compañía y vivo con el corazón ligero, libre y lleno de paz."
+
+4. CIERRE OBLIGATORIO (siempre estas 5 preguntas en este orden exacto):
+"¿Por qué será que cada día me veo más bell@ y radiante?
+¿Por qué será que mi cuerpo se siente cada vez más ligero, libre y lleno de amor?
+¿Por qué será que estoy tan enamorad@ de mí?
+¿Por qué será que me amo tanto?
+¿Por qué será que siempre he sido la identidad completa y por eso cada día me va mejor? 💛🐻🧋✨"
+
+REGLAS CRÍTICAS:
+- Nunca uses Markdown (no **, no ##, no ---)
+- Siempre incluye los 4 bloques en el orden exacto
+- El inicio y el cierre son INVARIABLES — solo el nombre y la personalización cambian
+- Total: 150-250 palabras
+- Devuelve SOLO el script final sin explicaciones`
+    :`You are ERIORCENTER's Amor Propio Magic 4.0 script editor. Generate a deep self-love mini script personalized to the client's theme. Tone: loving, poetic, powerful, expansive. Everything in present tense. Already lived identity. No lack.
+
+MANDATORY STRUCTURE (in this exact order):
+1. MANDATORY OPENING (always the same, only name changes): "I, [NAME], am my priority and I love myself deeply. My body lovingly releases everything it no longer needs and every day I feel more free, beautiful and at peace. My beauty, my youth, my abundance and my magic flourish naturally. Everything flows in my favor because I fully trust myself."
+2. THEME PERSONALIZATION: 3-5 poetic lines adapted to the client's specific theme. First person, present tense, from self-love.
+3. MANDATORY DETACHMENT PARAGRAPH: "It is very easy for me to live from detachment. I trust that everything that is for me remains easily and everything arrives at the perfect moment. I feel complete within myself, I enjoy my own company and I live with a light, free and peaceful heart."
+4. MANDATORY CLOSING (always these 5 questions in this exact order): "Why is it that every day I look more beautiful and radiant? Why is it that my body feels lighter, freer and more full of love? Why is it that I am so in love with myself? Why is it that I love myself so much? Why is it that I have always been the complete identity and that is why every day gets better for me? 💛🐻🧋✨"
+
+CRITICAL RULES: No Markdown. Always include all 4 blocks in exact order. Return ONLY the final script.`;
+}
+
+function buildApm4Prompt(fd){
+  const name = fd.name || '_';
+  const tema = fd.apm4tema || '';
+
+  if(fd.lang==='es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Tema de personalización: "${tema}"
+
+Genera el mini script de Amor Propio Magic 4.0 siguiendo la estructura obligatoria de 4 bloques.
+
+Entrega EXACTAMENTE este formato completo:
+
+✨💛 ¡Aquí tienes tu Mini Script! 💛✨
+
+🎙️ Siguiente paso: Grábalo con una voz clara, natural y entusiasmada, como si ya estuvieras viviendo esa realidad.
+
+📧 Cuando termines, envía tu grabación a:
+eriorcenter@gmail.com
+
+🧋✨ ¡Estamos emocionados de escucharte!
+
+[AQUÍ VA EL MINI SCRIPT COMPLETO — 4 bloques en orden: inicio obligatorio con nombre ${name} → personalización del tema "${tema}" → párrafo de desapego → cierre con las 5 preguntas + emojis 💛🐻🧋✨]
+
+REGLAS:
+- Devuelve SOLO el contenido en el formato exacto
+- Sin explicaciones ni meta-comentarios
+- Sin Markdown
+- El inicio y el cierre son exactamente como están en las instrucciones`;
+  } else {
+    return `Client data: Name: ${name}, Theme: "${tema}". Generate Amor Propio Magic 4.0 mini script in English following the exact 4-block structure. Deliver in this exact format:
+
+✨💛 Here is your Mini Script! 💛✨
+
+🎙️ Next step: Record it with a clear, natural and enthusiastic voice, as if you were already living that reality.
+
+📧 When you finish, send your recording to:
+eriorcenter@gmail.com
+
+🧋✨ We are excited to hear you!
+
+[FULL MINI SCRIPT HERE — 4 blocks in order: mandatory opening with name ${name} → theme personalization "${tema}" → detachment paragraph → closing with 5 questions + emojis 💛🐻🧋✨]
+
+No Markdown. No meta-comments. Return ONLY the formatted content.`;
   }
 }
 

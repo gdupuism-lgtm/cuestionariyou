@@ -8099,6 +8099,18 @@ function showStep(n) {
 
 function nextStep() {
   if(!validateStep(currentStep)) return;
+  // FIT WAVE step 6: capture intentions from DOM before navigating away
+  if(currentAudio && currentAudio.name === 'FIT WAVE' && currentStep === 6){
+    const cbs = document.querySelectorAll('.fw-checkbox:checked');
+    if(cbs.length > 0){
+      const name = fd.name||'_';
+      const lines = Array.from(cbs).map((cb,i)=>`${i+1}. ${FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name)}`);
+      _fwSavedIntentions = lines.join('\n');
+      fd.fwintentions = _fwSavedIntentions;
+      const ta = document.getElementById('fw-hidden-intentions');
+      if(ta) ta.value = _fwSavedIntentions;
+    }
+  }
   collectStep(currentStep);
   if(currentStep < currentAudio.steps) { currentStep++; showStep(currentStep); }
 }
@@ -10704,7 +10716,22 @@ function buildFitwavePrompt(fd){
   const name=fd.name||'_';
   const goal=fd.goal||'';
   const context=fd.context||'';
-  const intentions = fd.fwintentions||'';
+  // Read intentions from ALL possible sources at generation time
+  let rawIntentions = '';
+  // Source 1: hidden textarea (most reliable)
+  const ta = document.getElementById('fw-hidden-intentions');
+  if(ta && ta.value && ta.value.trim()) rawIntentions = ta.value.trim();
+  // Source 2: global variable
+  else if(_fwSavedIntentions && _fwSavedIntentions.trim()) rawIntentions = _fwSavedIntentions.trim();
+  // Source 3: fd
+  else if(fd.fwintentions && fd.fwintentions.trim()) rawIntentions = fd.fwintentions.trim();
+  // Source 4: read directly from checkboxes if still in DOM
+  else {
+    const cbs = document.querySelectorAll('.fw-checkbox:checked');
+    if(cbs.length > 0) rawIntentions = Array.from(cbs).map((cb,i)=>`${i+1}. ${FW_INTENTIONS[parseInt(cb.value)]}`).join('\n');
+  }
+  // Replace blanks with name
+  const intentions = rawIntentions.replace(/__+/g, name);
   const intentionsBlock = intentions ? `💛☁️ TUS 11 INTENCIONES Y TU MINI SCRIPT ☁️💛
 
 ¡Hola! 💖✨
@@ -10712,7 +10739,7 @@ Gracias infinitas por tu confianza. 🌸
 
 Por favor graba en una sola grabación estas 11 intenciones que elegiste:
 
-${intentions.split('\n').map((line,i)=>`${i+1}. ${line}`).join('\n')}
+${intentions}
 
 Tu segunda grabación sería esta, tu mini script 🎧🌙:
 

@@ -10763,11 +10763,21 @@ Tu segunda grabación sería esta, tu mini script 🎧🌙:
 
 ` : '';
   if(fd.lang==='es'){
-    return `Datos: Nombre: ${name}, Objetivo: "${goal}", Contexto: "${context}"
+    const introBlock = intentions ? `💛☁️ TUS 11 INTENCIONES Y TU MINI SCRIPT ☁️💛
 
-Genera el MINI SCRIPT FIT WAVE de ERIORCENTER siguiendo esta estructura exacta. Personaliza con el objetivo y contexto del cliente.
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
 
-${intentionsBlock}💛☁️ TU MINI SCRIPT ☁️💛
+Por favor graba en una sola grabación estas 11 intenciones que elegiste:
+
+${intentions}
+
+Tu segunda grabación sería esta, tu mini script 🎧🌙:
+
+` : '';
+    return `${introBlock}INSTRUCCIÓN PARA LA IA: Genera el mini script FIT WAVE para ${name}, objetivo: "${goal}", contexto: "${context}". Devuelve SOLO el mini script, sin repetir las intenciones de arriba.
+
+💛☁️ TU MINI SCRIPT ☁️💛
 ✯ Segunda grabación 🂱🐇
 
 ¡Hola! 💖✨

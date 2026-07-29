@@ -8095,6 +8095,18 @@ function showStep(n) {
   if(currentAudio && currentAudio.name === 'FIT WAVE' && n === 6){
     setTimeout(fwInitIntentions, 50);
   }
+  // At step 7, re-capture intentions from step 6 checkboxes (still in DOM)
+  if(currentAudio && currentAudio.name === 'FIT WAVE' && n === 7){
+    const cbs = document.querySelectorAll('.fw-checkbox:checked');
+    if(cbs.length > 0){
+      const name = fd.name||'_';
+      const lines = Array.from(cbs).map((cb,i)=>`${i+1}. ${FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name)}`);
+      _fwSavedIntentions = lines.join('\n');
+      fd.fwintentions = _fwSavedIntentions;
+      const ta = document.getElementById('fw-hidden-intentions');
+      if(ta) ta.value = _fwSavedIntentions;
+    }
+  }
 }
 
 function nextStep() {
@@ -10718,6 +10730,12 @@ function buildFitwavePrompt(fd){
   const context=fd.context||'';
   // Read intentions from ALL possible sources at generation time
   let rawIntentions = '';
+  // DEBUG - remove after fix
+  const _debug_ta = document.getElementById('fw-hidden-intentions');
+  console.log('FW DEBUG - fd.fwintentions:', fd.fwintentions ? fd.fwintentions.substring(0,50) : 'EMPTY');
+  console.log('FW DEBUG - _fwSavedIntentions:', _fwSavedIntentions ? _fwSavedIntentions.substring(0,50) : 'EMPTY');
+  console.log('FW DEBUG - hidden textarea:', _debug_ta ? (_debug_ta.value ? _debug_ta.value.substring(0,50) : 'EMPTY') : 'NOT FOUND');
+  console.log('FW DEBUG - checkboxes checked:', document.querySelectorAll('.fw-checkbox:checked').length);
   // Source 1: hidden textarea (most reliable)
   const ta = document.getElementById('fw-hidden-intentions');
   if(ta && ta.value && ta.value.trim()) rawIntentions = ta.value.trim();

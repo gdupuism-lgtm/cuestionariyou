@@ -8294,10 +8294,20 @@ function collectStep(n) {
   if(f==='godintention') fd.godintention=g('f-godintention');
   if(f==='ulintentions') fd.ulintentions=''; // handled by generateUnlimited
   if(f==='fwintentions'){
+    // Update name replacement in case name was filled after selection
     const name = fd.name||'_';
-    fd.fwintentions = Array.from(document.querySelectorAll('.fw-checkbox:checked'))
-      .map(cb => FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name))
-      .join('\n');
+    if(fd.fwintentions){
+      // Re-apply name to already saved intentions
+      fd.fwintentions = fd.fwintentions.replace(/_+/g, name);
+    } else {
+      // Fallback: try to collect from DOM if still available
+      const cbs = document.querySelectorAll('.fw-checkbox:checked');
+      if(cbs.length > 0){
+        fd.fwintentions = Array.from(cbs)
+          .map(cb => FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name))
+          .join('\n');
+      }
+    }
   }
   if(f==='apm4tema') fd.apm4tema=g('f-apm4tema');
   if(f==='simtitle') fd.simtitle=g('f-simtitle');
@@ -10691,12 +10701,17 @@ function buildFitwavePrompt(fd){
   const goal=fd.goal||'';
   const context=fd.context||'';
   const intentions = fd.fwintentions||'';
-  const intentionsBlock = intentions ? `💪 TUS 11 INTENCIONES FIT WAVE 💪
-Elige tus 11 intenciones y, por favor, envíalas todas en una sola grabación a eriorcenter@gmail.com
+  const intentionsBlock = intentions ? `💛☁️ TUS 11 INTENCIONES Y TU MINI SCRIPT ☁️💛
 
-${intentions}
+¡Hola! 💖✨
+Gracias infinitas por tu confianza. 🌸
 
----
+Por favor graba en una sola grabación estas 11 intenciones que elegiste:
+
+${intentions.split('\n').map((line,i)=>`${i+1}. ${line}`).join('\n')}
+
+Tu segunda grabación sería esta, tu mini script 🎧🌙:
+
 ` : '';
   if(fd.lang==='es'){
     return `Datos: Nombre: ${name}, Objetivo: "${goal}", Contexto: "${context}"
@@ -14078,6 +14093,13 @@ function fwInitIntentions(){
 }
 
 function fwUpdateCount(){
+  // Save to fd immediately so data persists across popup/step changes
+  const name = (fd && fd.name) ? fd.name : '_';
+  if(typeof fd !== 'undefined'){
+    fd.fwintentions = Array.from(document.querySelectorAll('.fw-checkbox:checked'))
+      .map(cb => FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name))
+      .join('\n');
+  }
   const checked = document.querySelectorAll('.fw-checkbox:checked').length;
   const countEl = document.getElementById('fw-count');
   const msgEl = document.getElementById('fw-counter-msg');

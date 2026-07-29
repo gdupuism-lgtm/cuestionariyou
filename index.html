@@ -8294,20 +8294,16 @@ function collectStep(n) {
   if(f==='godintention') fd.godintention=g('f-godintention');
   if(f==='ulintentions') fd.ulintentions=''; // handled by generateUnlimited
   if(f==='fwintentions'){
-    // Update name replacement in case name was filled after selection
+    // Always try to read from DOM first (most accurate)
     const name = fd.name||'_';
-    if(fd.fwintentions){
-      // Re-apply name to already saved intentions
-      fd.fwintentions = fd.fwintentions.replace(/_+/g, name);
-    } else {
-      // Fallback: try to collect from DOM if still available
-      const cbs = document.querySelectorAll('.fw-checkbox:checked');
-      if(cbs.length > 0){
-        fd.fwintentions = Array.from(cbs)
-          .map(cb => FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name))
-          .join('\n');
-      }
+    const cbs = document.querySelectorAll('.fw-checkbox:checked');
+    if(cbs.length > 0){
+      fd.fwintentions = Array.from(cbs)
+        .map(cb => FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name))
+        .join('\n');
     }
+    // If DOM is gone but we have saved data, keep it (don't overwrite with empty)
+    // fd.fwintentions already has data from fwUpdateCount clicks - don't touch it
   }
   if(f==='apm4tema') fd.apm4tema=g('f-apm4tema');
   if(f==='simtitle') fd.simtitle=g('f-simtitle');
@@ -8402,8 +8398,12 @@ function closeWarning() {
 }
 function confirmGenerate() {
   closeWarning();
+  // Save FIT WAVE intentions before re-collecting (DOM step 6 may not be active)
+  const savedIntentions = fd.fwintentions || '';
   // Re-collect all steps to ensure fd has fresh data
   for(let i=1; i<=currentAudio.steps; i++) collectStep(i);
+  // Restore intentions if collectStep wiped them
+  if(savedIntentions && !fd.fwintentions) fd.fwintentions = savedIntentions;
   generate();
 }
 async function generate() {
@@ -14093,13 +14093,13 @@ function fwInitIntentions(){
 }
 
 function fwUpdateCount(){
-  // Save to fd immediately so data persists across popup/step changes
-  const name = (fd && fd.name) ? fd.name : '_';
-  if(typeof fd !== 'undefined'){
+  // Save to fd immediately so data persists even after DOM changes
+  try {
+    const name = (fd && fd.name) ? fd.name : '_';
     fd.fwintentions = Array.from(document.querySelectorAll('.fw-checkbox:checked'))
       .map(cb => FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name))
       .join('\n');
-  }
+  } catch(e) {}
   const checked = document.querySelectorAll('.fw-checkbox:checked').length;
   const countEl = document.getElementById('fw-count');
   const msgEl = document.getElementById('fw-counter-msg');

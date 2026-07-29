@@ -7932,6 +7932,7 @@ let currentAudio = null;
 let currentStep = 0;
 let lang = 'es';
 let fd = {};
+let _fwSavedIntentions = ''; // Global store for FIT WAVE intentions
 let fullScript = '';
 let s1 = '', s2 = '';
 
@@ -7956,7 +7957,7 @@ function doLogin() {
   }
   err.classList.remove('show');
   currentAudio = audio;
-  fd = {}; lang = 'es'; currentStep = 0;
+  fd = {}; lang = 'es'; currentStep = 0; _fwSavedIntentions = '';
   applyTheme(audio.theme);
   document.getElementById('fh-brand-text').textContent = audio.headerLabel;
   document.getElementById('result-title').innerHTML = '💛☁️ ' + audio.name + ' ☁️💛';
@@ -8294,16 +8295,18 @@ function collectStep(n) {
   if(f==='godintention') fd.godintention=g('f-godintention');
   if(f==='ulintentions') fd.ulintentions=''; // handled by generateUnlimited
   if(f==='fwintentions'){
-    // Always try to read from DOM first (most accurate)
+    // Use global variable - always has latest selections regardless of DOM state
     const name = fd.name||'_';
-    const cbs = document.querySelectorAll('.fw-checkbox:checked');
-    if(cbs.length > 0){
-      fd.fwintentions = Array.from(cbs)
-        .map(cb => FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name))
-        .join('\n');
+    if(_fwSavedIntentions){
+      fd.fwintentions = _fwSavedIntentions.replace(/__+/g, name);
+    } else {
+      // Fallback: try DOM
+      const cbs = document.querySelectorAll('.fw-checkbox:checked');
+      if(cbs.length > 0){
+        _fwSavedIntentions = Array.from(cbs).map(cb=>FW_INTENTIONS[parseInt(cb.value)]).join('\n');
+        fd.fwintentions = _fwSavedIntentions.replace(/__+/g, name);
+      }
     }
-    // If DOM is gone but we have saved data, keep it (don't overwrite with empty)
-    // fd.fwintentions already has data from fwUpdateCount clicks - don't touch it
   }
   if(f==='apm4tema') fd.apm4tema=g('f-apm4tema');
   if(f==='simtitle') fd.simtitle=g('f-simtitle');
@@ -8398,12 +8401,13 @@ function closeWarning() {
 }
 function confirmGenerate() {
   closeWarning();
-  // Save FIT WAVE intentions before re-collecting (DOM step 6 may not be active)
-  const savedIntentions = fd.fwintentions || '';
-  // Re-collect all steps to ensure fd has fresh data
+  // Re-collect all steps
   for(let i=1; i<=currentAudio.steps; i++) collectStep(i);
-  // Restore intentions if collectStep wiped them
-  if(savedIntentions && !fd.fwintentions) fd.fwintentions = savedIntentions;
+  // Always restore FW intentions from global (survives everything)
+  if(_fwSavedIntentions && currentAudio && currentAudio.name === 'FIT WAVE'){
+    const name = fd.name||'_';
+    fd.fwintentions = _fwSavedIntentions.replace(/__+/g, name);
+  }
   generate();
 }
 async function generate() {
@@ -14093,12 +14097,12 @@ function fwInitIntentions(){
 }
 
 function fwUpdateCount(){
-  // Save to fd immediately so data persists even after DOM changes
+  // Save to global variable immediately - survives DOM changes and popup
   try {
-    const name = (fd && fd.name) ? fd.name : '_';
-    fd.fwintentions = Array.from(document.querySelectorAll('.fw-checkbox:checked'))
-      .map(cb => FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name))
+    _fwSavedIntentions = Array.from(document.querySelectorAll('.fw-checkbox:checked'))
+      .map(cb => FW_INTENTIONS[parseInt(cb.value)])
       .join('\n');
+    fd.fwintentions = _fwSavedIntentions;
   } catch(e) {}
   const checked = document.querySelectorAll('.fw-checkbox:checked').length;
   const countEl = document.getElementById('fw-count');

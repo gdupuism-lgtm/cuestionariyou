@@ -7645,11 +7645,11 @@ const AUDIOS = {
   'mifitwave11': {
     name: 'FIT WAVE',
     theme: 'theme-fitwave',
-    steps: 6,
+    steps: 7,
     headerLabel: 'ERIORCENTER — FIT WAVE 💪',
     introTitle: 'FIT <em>WAVE</em>',
     introDesc: 'Muchas gracias por adquirir nuestro programa <strong>FIT WAVE</strong>. Esta fórmula está diseñada para que conectes y tengas el cuerpo que tú quieras 💪⚡',
-    fields: ['name','last','email','goal','context','record'],
+    fields: ['name','last','email','goal','context','fwintentions','record'],
     buildSteps: buildFitwaveSteps,
     buildPrompt: buildFitwavePrompt,
     systemPrompt: getFitwaveSystem,
@@ -8090,6 +8090,10 @@ function showStep(n) {
   if(steps[n]) steps[n].classList.add('active');
   updateDots(n);
   window.scrollTo(0,0);
+  // Init FIT WAVE intentions when reaching step 6
+  if(currentAudio && currentAudio.name === 'FIT WAVE' && n === 6){
+    setTimeout(fwInitIntentions, 50);
+  }
 }
 
 function nextStep() {
@@ -8194,6 +8198,11 @@ function validateStep(n) {
     const checked = document.querySelectorAll('.sim-area-cb:checked').length;
     if(checked !== 3){show('e-simareas');return false;}
   }
+  if(fields[n-1]==='fwintentions'){
+    hide('e-fwintentions');
+    const checked = document.querySelectorAll('.fw-checkbox:checked').length;
+    if(checked !== 11){show('e-fwintentions');return false;}
+  }
   if(fields[n-1]==='apm4tema'){
     hide('e-apm4tema');
     const el=document.getElementById('f-apm4tema');
@@ -8284,6 +8293,12 @@ function collectStep(n) {
   if(f==='keepcooltopics') fd.keepcooltopics=g('f-keepcooltopics');
   if(f==='godintention') fd.godintention=g('f-godintention');
   if(f==='ulintentions') fd.ulintentions=''; // handled by generateUnlimited
+  if(f==='fwintentions'){
+    const name = fd.name||'_';
+    fd.fwintentions = Array.from(document.querySelectorAll('.fw-checkbox:checked'))
+      .map(cb => FW_INTENTIONS[parseInt(cb.value)].replace(/__+/g, name))
+      .join('\n');
+  }
   if(f==='apm4tema') fd.apm4tema=g('f-apm4tema');
   if(f==='simtitle') fd.simtitle=g('f-simtitle');
   if(f==='simareas'){
@@ -9825,7 +9840,20 @@ function buildVitamindSteps(){
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="6">
-    <div class="step-eyebrow">06 — Grabación</div>
+    <div class="step-eyebrow">06 — Tus 11 intenciones</div>
+    <h2 class="step-q">Selecciona <em>exactamente 11</em> intenciones para tu cuerpo</h2>
+    <p class="step-hint">Las que más resuenen contigo. El contador te dice cuántas llevas 💪</p>
+    <div class="ul-counter-wrap">
+      <div class="ul-counter" id="fw-counter"><span id="fw-count">0</span><span class="ul-counter-of">/11</span></div>
+      <div class="ul-counter-msg" id="fw-counter-msg">Selecciona 11 intenciones</div>
+    </div>
+    <div class="ul-intentions-list" id="fw-intentions-list"></div>
+    <div class="field-err" id="e-fwintentions">Debes seleccionar exactamente 11 intenciones</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="7">
+    <div class="step-eyebrow">07 — Grabación</div>
     <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
     <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
     <div class="choices">
@@ -10005,7 +10033,20 @@ function buildAbundanceSteps(){
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="6">
-    <div class="step-eyebrow">06 — Grabación</div>
+    <div class="step-eyebrow">06 — Tus 11 intenciones</div>
+    <h2 class="step-q">Selecciona <em>exactamente 11</em> intenciones para tu cuerpo</h2>
+    <p class="step-hint">Las que más resuenen contigo. El contador te dice cuántas llevas 💪</p>
+    <div class="ul-counter-wrap">
+      <div class="ul-counter" id="fw-counter"><span id="fw-count">0</span><span class="ul-counter-of">/11</span></div>
+      <div class="ul-counter-msg" id="fw-counter-msg">Selecciona 11 intenciones</div>
+    </div>
+    <div class="ul-intentions-list" id="fw-intentions-list"></div>
+    <div class="field-err" id="e-fwintentions">Debes seleccionar exactamente 11 intenciones</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="7">
+    <div class="step-eyebrow">07 — Grabación</div>
     <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
     <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
     <div class="choices">
@@ -10160,7 +10201,20 @@ function buildMoneytechSteps(){
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="6">
-    <div class="step-eyebrow">06 — Grabación</div>
+    <div class="step-eyebrow">06 — Tus 11 intenciones</div>
+    <h2 class="step-q">Selecciona <em>exactamente 11</em> intenciones para tu cuerpo</h2>
+    <p class="step-hint">Las que más resuenen contigo. El contador te dice cuántas llevas 💪</p>
+    <div class="ul-counter-wrap">
+      <div class="ul-counter" id="fw-counter"><span id="fw-count">0</span><span class="ul-counter-of">/11</span></div>
+      <div class="ul-counter-msg" id="fw-counter-msg">Selecciona 11 intenciones</div>
+    </div>
+    <div class="ul-intentions-list" id="fw-intentions-list"></div>
+    <div class="field-err" id="e-fwintentions">Debes seleccionar exactamente 11 intenciones</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="7">
+    <div class="step-eyebrow">07 — Grabación</div>
     <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
     <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
     <div class="choices">
@@ -10598,7 +10652,20 @@ function buildFitwaveSteps(){
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="6">
-    <div class="step-eyebrow">06 — Grabación</div>
+    <div class="step-eyebrow">06 — Tus 11 intenciones</div>
+    <h2 class="step-q">Selecciona <em>exactamente 11</em> intenciones para tu cuerpo</h2>
+    <p class="step-hint">Las que más resuenen contigo. El contador te dice cuántas llevas 💪</p>
+    <div class="ul-counter-wrap">
+      <div class="ul-counter" id="fw-counter"><span id="fw-count">0</span><span class="ul-counter-of">/11</span></div>
+      <div class="ul-counter-msg" id="fw-counter-msg">Selecciona 11 intenciones</div>
+    </div>
+    <div class="ul-intentions-list" id="fw-intentions-list"></div>
+    <div class="field-err" id="e-fwintentions">Debes seleccionar exactamente 11 intenciones</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="7">
+    <div class="step-eyebrow">07 — Grabación</div>
     <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
     <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
     <div class="choices">
@@ -10616,18 +10683,27 @@ function getFitwaveSystem(fd){
   return fd.lang==='es'
     ?`Eres el editor de scripts FIT WAVE de ERIORCENTER. Estilo: fluido, energético, enfocado en fitness y cuerpo. Mezcla Zero Point, identidad y reprogramación física. Frases clave: "Yo _, anulo el reflejo", "Yo elijo…", "Se rendea ahora…", "Colapso…". Todo en presente positivo. Sin esfuerzo forzado. El cuerpo coopera naturalmente. Termina siempre con "¿Por qué será que…?" Devuelve SOLO el script final.`
     :`You are ERIORCENTER's FIT WAVE script editor. Style: fluid, energetic, focused on fitness and body. Mix of Zero Point, identity and physical reprogramming. Key phrases: "I _, cancel the reflection", "I choose…", "It renders now…", "I collapse…". Everything positive present tense. No forced effort. The body cooperates naturally. Always ends with "Why is it that…?" Return ONLY the final script.`;
+  setTimeout(fwInitIntentions, 50);
 }
 
 function buildFitwavePrompt(fd){
   const name=fd.name||'_';
   const goal=fd.goal||'';
   const context=fd.context||'';
+  const intentions = fd.fwintentions||'';
+  const intentionsBlock = intentions ? `💪 TUS 11 INTENCIONES FIT WAVE 💪
+Elige tus 11 intenciones y, por favor, envíalas todas en una sola grabación a eriorcenter@gmail.com
+
+${intentions}
+
+---
+` : '';
   if(fd.lang==='es'){
     return `Datos: Nombre: ${name}, Objetivo: "${goal}", Contexto: "${context}"
 
 Genera el MINI SCRIPT FIT WAVE de ERIORCENTER siguiendo esta estructura exacta. Personaliza con el objetivo y contexto del cliente.
 
-💛☁️ TU MINI SCRIPT ☁️💛
+\${intentionsBlock}💛☁️ TU MINI SCRIPT ☁️💛
 ✯ Segunda grabación 🂱🐇
 
 ¡Hola! 💖✨
@@ -11403,7 +11479,20 @@ function buildAttractionSteps(){
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="6">
-    <div class="step-eyebrow">06 — Grabación</div>
+    <div class="step-eyebrow">06 — Tus 11 intenciones</div>
+    <h2 class="step-q">Selecciona <em>exactamente 11</em> intenciones para tu cuerpo</h2>
+    <p class="step-hint">Las que más resuenen contigo. El contador te dice cuántas llevas 💪</p>
+    <div class="ul-counter-wrap">
+      <div class="ul-counter" id="fw-counter"><span id="fw-count">0</span><span class="ul-counter-of">/11</span></div>
+      <div class="ul-counter-msg" id="fw-counter-msg">Selecciona 11 intenciones</div>
+    </div>
+    <div class="ul-intentions-list" id="fw-intentions-list"></div>
+    <div class="field-err" id="e-fwintentions">Debes seleccionar exactamente 11 intenciones</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="7">
+    <div class="step-eyebrow">07 — Grabación</div>
     <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
     <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
     <div class="choices">
@@ -12301,7 +12390,20 @@ function buildCuriousSteps(){
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="6">
-    <div class="step-eyebrow">06 — Grabación</div>
+    <div class="step-eyebrow">06 — Tus 11 intenciones</div>
+    <h2 class="step-q">Selecciona <em>exactamente 11</em> intenciones para tu cuerpo</h2>
+    <p class="step-hint">Las que más resuenen contigo. El contador te dice cuántas llevas 💪</p>
+    <div class="ul-counter-wrap">
+      <div class="ul-counter" id="fw-counter"><span id="fw-count">0</span><span class="ul-counter-of">/11</span></div>
+      <div class="ul-counter-msg" id="fw-counter-msg">Selecciona 11 intenciones</div>
+    </div>
+    <div class="ul-intentions-list" id="fw-intentions-list"></div>
+    <div class="field-err" id="e-fwintentions">Debes seleccionar exactamente 11 intenciones</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="7">
+    <div class="step-eyebrow">07 — Grabación</div>
     <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
     <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
     <div class="choices">
@@ -13961,6 +14063,46 @@ eriorcenter@gmail.com
 No Markdown. No meta-comments. Return ONLY the formatted content.`;
   }
 }
+
+
+function fwInitIntentions(){
+  const container = document.getElementById('fw-intentions-list');
+  if(!container) return;
+  container.innerHTML = FW_INTENTIONS.map((int, i) =>
+    `<label class="ul-intention-item" id="fw-item-${i}">
+      <input type="checkbox" class="fw-checkbox ul-checkbox" value="${i}" onchange="fwUpdateCount()">
+      <div class="ul-check-icon">✦</div>
+      <span class="ul-intention-text">${int}</span>
+    </label>`
+  ).join('');
+}
+
+function fwUpdateCount(){
+  const checked = document.querySelectorAll('.fw-checkbox:checked').length;
+  const countEl = document.getElementById('fw-count');
+  const msgEl = document.getElementById('fw-counter-msg');
+  const counterEl = document.getElementById('fw-counter');
+  if(countEl) countEl.textContent = checked;
+  if(checked < 11){
+    if(counterEl){counterEl.style.borderColor='rgba(255,255,255,0.3)';counterEl.style.color='rgba(255,255,255,0.7)';}
+    if(msgEl){msgEl.textContent=`Faltan ${11-checked} más`;msgEl.style.color='rgba(255,255,255,0.5)';}
+  } else if(checked === 11){
+    if(counterEl){counterEl.style.borderColor='var(--accent)';counterEl.style.color='var(--accent)';}
+    if(msgEl){msgEl.textContent='¡Perfecto! Exactamente 11 ✦';msgEl.style.color='var(--accent)';}
+  } else {
+    if(counterEl){counterEl.style.borderColor='#e84545';counterEl.style.color='#e84545';}
+    if(msgEl){msgEl.textContent=`Tienes ${checked-11} de más`;msgEl.style.color='#e84545';}
+  }
+  document.querySelectorAll('.fw-checkbox').forEach(cb => {
+    const item = cb.closest('.ul-intention-item');
+    if(!cb.checked && checked >= 11){cb.disabled=true;if(item)item.classList.add('ul-disabled');}
+    else{cb.disabled=false;if(item)item.classList.remove('ul-disabled');}
+    if(cb.checked){if(item)item.classList.add('ul-selected');}
+    else{if(item)item.classList.remove('ul-selected');}
+  });
+}
+
+const FW_INTENTIONS = ["Yo, ____, amo mi cuerpo. Estoy muy agradecid@ por todas las maneras en las que mi cuerpo me sirve.", "Yo, ____, puedo comer y tomar todo lo que quiero y siempre estoy delgad@.", "Yo, ____, dejo de criticar mi cuerpo. Lo trato con amor y eso se refleja en mi exterior.", "Yo, ____, tengo un cuerpo esbelto y firme. Cada día mis músculos están más tonificados.", "Yo, ____, disfruto cuidar de mi cuerpo todos los días. Me gusta hacer ejercicio y comer saludablemente.", "Todo lo que como nutre mi cuerpo y me ayuda a tener mi figura ideal.", "Yo, ____, estoy en mi peso ideal. Cada día me resulta más fácil mantenerme en él.", "Yo, ____, cada día tengo un cuerpo mucho más atractivo. Disfruto mi cuerpo.", "A mí, ____, solo se me antoja comer alimentos saludables que benefician a mi cuerpo.", "No siento culpa al comer. Todo lo que yo, ____, como, lo disfruto.", "Mi cuerpo es mi templo. Tomo las mejores decisiones para cuidarlo diariamente.", "Mi metabolismo trabaja siempre a mi favor. Está en su nivel óptimo.", "Yo, ____, voy al gimnasio todos los días con seguridad y entusiasmo.", "Para mí, ____, es muy fácil estar en forma y tener el cuerpo que quiero.", "Mi desempeño en el gimnasio es excelente. Realizo mis rutinas con facilidad y nunca me siento cansad@.", "Yo, ____, gano músculo con mucha facilidad. Tengo el cuerpo que siempre he querido.", "Yo, ____, tengo un cuerpo muy saludable. Siempre me siento llen@ de energía y mis músculos se recuperan con facilidad.", "Yo, ____, con poco ejercicio consigo rápidamente el cuerpo que quiero.", "Naturalmente, yo, ____, soy delgad@ y tengo un cuerpo esbelto y atractivo.", "Yo, ____, sé escuchar a mi cuerpo. Sé exactamente lo que necesita y se lo doy.", "Yo, ____, irradio salud, juventud y belleza. Mi cuerpo es delgado, fuerte, firme y bien proporcionado.", "Yo, ____, sin hacer dieta ni ejercicio tengo el cuerpo que quiero.", "Yo, ____, tengo un cuerpo esbelto y firme. Cada día mis músculos y mi piel están más tonificados.", "Mi cuerpo siempre se ve increíble y tonificado. Yo, ____, reflejo seguridad y las personas se sienten atraídas hacia mí.", "Cada día que pasa, mi abdomen es más firme y plano.", "Yo, ____, aumento masa muscular con facilidad y soy constante al hacer ejercicio.", "Yo, ____, siempre estoy desinflamad@, quemo grasa muy rápido y desarrollo músculo con facilidad.", "Yo, ____, tengo los brazos y las piernas firmes y bien tonificados.", "Yo, ____, cuando hago ejercicio mi cerebro se vuelve más receptivo a nuevas ideas. Me siento más creativ@, más atractiv@ y con más energía.", "Yo, ____, siempre he sido un@ gran deportista. Cada día mi condición física mejora y me resulta muy fácil practicar cualquier deporte con destreza y fuerza.", "Yo, ____, tengo un cuerpo mágico y hermoso que está realizando constantemente un detox emocional, mental y físico.", "Yo, ____, mi cuerpo suelta fácilmente todo lo que ya no le sirve y conserva únicamente lo que me hace sentir saludable y en equilibrio.", "Yo, ____, mi apetito está perfectamente equilibrado. Como únicamente la cantidad que mi cuerpo necesita para sentirse satisfecho y lleno de energía.", "Yo, ____, cada día mi cuerpo se vuelve más ligero, fuerte y ágil. Amo la sensación de bienestar que siento.", "Yo, ____, mi cuerpo elige naturalmente hábitos que me ayudan a mantenerme delgad@ y llen@ de vitalidad.", "Yo, ____, alcanzar y mantener mi peso ideal es completamente natural para mí. Mi cuerpo sabe exactamente cómo hacerlo."];
 
 (function(){
   const canvas = document.getElementById('fireworks-canvas');

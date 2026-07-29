@@ -8295,17 +8295,13 @@ function collectStep(n) {
   if(f==='godintention') fd.godintention=g('f-godintention');
   if(f==='ulintentions') fd.ulintentions=''; // handled by generateUnlimited
   if(f==='fwintentions'){
-    // Use global variable - always has latest selections regardless of DOM state
     const name = fd.name||'_';
-    if(_fwSavedIntentions){
+    // Read from hidden textarea first (most reliable)
+    const ta = document.getElementById('fw-hidden-intentions');
+    if(ta && ta.value){
+      fd.fwintentions = ta.value.replace(/__+/g, name);
+    } else if(_fwSavedIntentions){
       fd.fwintentions = _fwSavedIntentions.replace(/__+/g, name);
-    } else {
-      // Fallback: try DOM
-      const cbs = document.querySelectorAll('.fw-checkbox:checked');
-      if(cbs.length > 0){
-        _fwSavedIntentions = Array.from(cbs).map(cb=>FW_INTENTIONS[parseInt(cb.value)]).join('\n');
-        fd.fwintentions = _fwSavedIntentions.replace(/__+/g, name);
-      }
     }
   }
   if(f==='apm4tema') fd.apm4tema=g('f-apm4tema');
@@ -8401,12 +8397,16 @@ function closeWarning() {
 }
 function confirmGenerate() {
   closeWarning();
+  // Read FW intentions from hidden textarea BEFORE re-collecting
+  const ta = document.getElementById('fw-hidden-intentions');
+  const savedTA = ta ? ta.value : '';
   // Re-collect all steps
   for(let i=1; i<=currentAudio.steps; i++) collectStep(i);
-  // Always restore FW intentions from global (survives everything)
-  if(_fwSavedIntentions && currentAudio && currentAudio.name === 'FIT WAVE'){
+  // Restore FW intentions (most reliable source)
+  if(currentAudio && currentAudio.name === 'FIT WAVE'){
     const name = fd.name||'_';
-    fd.fwintentions = _fwSavedIntentions.replace(/__+/g, name);
+    if(savedTA) fd.fwintentions = savedTA.replace(/__+/g, name);
+    else if(_fwSavedIntentions) fd.fwintentions = _fwSavedIntentions.replace(/__+/g, name);
   }
   generate();
 }
@@ -14087,7 +14087,15 @@ No Markdown. No meta-comments. Return ONLY the formatted content.`;
 function fwInitIntentions(){
   const container = document.getElementById('fw-intentions-list');
   if(!container) return;
-  container.innerHTML = FW_INTENTIONS.map((int, i) =>
+  // Create hidden textarea to store selected intentions
+let hiddenArea = document.getElementById('fw-hidden-intentions');
+if(!hiddenArea){
+  hiddenArea = document.createElement('textarea');
+  hiddenArea.id = 'fw-hidden-intentions';
+  hiddenArea.style.display = 'none';
+  document.body.appendChild(hiddenArea);
+}
+container.innerHTML = FW_INTENTIONS.map((int, i) =>
     `<label class="ul-intention-item" id="fw-item-${i}">
       <input type="checkbox" class="fw-checkbox ul-checkbox" value="${i}" onchange="fwUpdateCount()">
       <div class="ul-check-icon">✦</div>
@@ -14097,12 +14105,14 @@ function fwInitIntentions(){
 }
 
 function fwUpdateCount(){
-  // Save to global variable immediately - survives DOM changes and popup
+  // Save to hidden textarea - survives everything
   try {
-    _fwSavedIntentions = Array.from(document.querySelectorAll('.fw-checkbox:checked'))
-      .map(cb => FW_INTENTIONS[parseInt(cb.value)])
-      .join('\n');
+    const selected = Array.from(document.querySelectorAll('.fw-checkbox:checked'))
+      .map(cb => FW_INTENTIONS[parseInt(cb.value)]);
+    _fwSavedIntentions = selected.join('\n');
     fd.fwintentions = _fwSavedIntentions;
+    const ta = document.getElementById('fw-hidden-intentions');
+    if(ta) ta.value = selected.map((s,i)=>`${i+1}. ${s}`).join('\n');
   } catch(e) {}
   const checked = document.querySelectorAll('.fw-checkbox:checked').length;
   const countEl = document.getElementById('fw-count');

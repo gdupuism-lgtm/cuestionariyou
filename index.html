@@ -8503,7 +8503,17 @@ async function generate() {
       const data=await res.json();
       const txt=data.text||'';
       if(txt.includes('overloaded_error')||txt.includes('API ERROR')||txt.length<20) continue;
-      fullScript=txt;
+      // FIT WAVE: prepend intentions block directly (bypass AI)
+      let finalScript = txt;
+      if(currentAudio && currentAudio.name === 'FIT WAVE' && _fwSavedIntentions){
+        const name = fd.name||'_';
+        const intentionsWithName = _fwSavedIntentions.replace(/__+/g, name);
+        const lines = intentionsWithName.split('\n');
+        const numbered = lines.map((l,i)=>`${i+1}. ${l}`).join('\n');
+        const header = `💛☁️ TUS 11 INTENCIONES Y TU MINI SCRIPT ☁️💛\n\n¡Hola! 💖✨\nGracias infinitas por tu confianza. 🌸\n\nPor favor graba en una sola grabación estas 11 intenciones que elegiste:\n\n${numbered}\n\nTu segunda grabación sería esta, tu mini script 🎧🌙:\n\n`;
+        finalScript = header + txt;
+      }
+      fullScript=finalScript;
       splitScript(fullScript);
       showPage('page-result');
       sendEmails();
@@ -8582,7 +8592,17 @@ async function _doGenerate() {
       const data=await res.json();
       const txt=data.text||'';
       if(txt.includes('overloaded_error')||txt.includes('API ERROR')||txt.length<20) continue;
-      fullScript=txt;
+      // FIT WAVE: prepend intentions block directly (bypass AI)
+      let finalScript = txt;
+      if(currentAudio && currentAudio.name === 'FIT WAVE' && _fwSavedIntentions){
+        const name = fd.name||'_';
+        const intentionsWithName = _fwSavedIntentions.replace(/__+/g, name);
+        const lines = intentionsWithName.split('\n');
+        const numbered = lines.map((l,i)=>`${i+1}. ${l}`).join('\n');
+        const header = `💛☁️ TUS 11 INTENCIONES Y TU MINI SCRIPT ☁️💛\n\n¡Hola! 💖✨\nGracias infinitas por tu confianza. 🌸\n\nPor favor graba en una sola grabación estas 11 intenciones que elegiste:\n\n${numbered}\n\nTu segunda grabación sería esta, tu mini script 🎧🌙:\n\n`;
+        finalScript = header + txt;
+      }
+      fullScript=finalScript;
       splitScript(fullScript);
       showPage('page-result');
       sendEmails();

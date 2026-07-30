@@ -10673,7 +10673,19 @@ function buildFitwaveSteps(){
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="6">
-    <div class="step-eyebrow">06 — Grabación</div>
+    <div class="step-eyebrow">06 — Tus 11 intenciones</div>
+    <h2 class="step-q">Selecciona <em>exactamente 11</em> intenciones para tu cuerpo</h2>
+    <p class="step-hint">Las que más resuenen contigo. El contador te dice cuántas llevas 💪</p>
+    <div class="ul-counter-wrap">
+      <div class="ul-counter" id="fw-counter"><span id="fw-count">0</span><span class="ul-counter-of">/11</span></div>
+      <div class="ul-counter-msg" id="fw-counter-msg">Selecciona 11 intenciones</div>
+    </div>
+    <div class="ul-intentions-list" id="fw-intentions-list"></div>
+    <div class="field-err" id="e-fwintentions">Debes seleccionar exactamente 11 intenciones</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="7">
+    <div class="step-eyebrow">07 — Grabación</div>
     <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
     <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
     <div class="choices">
@@ -10685,13 +10697,12 @@ function buildFitwaveSteps(){
 }
 
 // ═══════════════════════════════════
-// PROMPTS — FIT WAVE
+// SYSTEM + PROMPTS — FIT WAVE
 // ═══════════════════════════════════
 function getFitwaveSystem(fd){
   return fd.lang==='es'
     ?`Eres el editor de scripts FIT WAVE de ERIORCENTER. Estilo: fluido, energético, enfocado en fitness y cuerpo. Mezcla Zero Point, identidad y reprogramación física. Frases clave: "Yo _, anulo el reflejo", "Yo elijo…", "Se rendea ahora…", "Colapso…". Todo en presente positivo. Sin esfuerzo forzado. El cuerpo coopera naturalmente. Termina siempre con "¿Por qué será que…?" Devuelve SOLO el script final.`
     :`You are ERIORCENTER's FIT WAVE script editor. Style: fluid, energetic, focused on fitness and body. Mix of Zero Point, identity and physical reprogramming. Key phrases: "I _, cancel the reflection", "I choose…", "It renders now…", "I collapse…". Everything positive present tense. No forced effort. The body cooperates naturally. Always ends with "Why is it that…?" Return ONLY the final script.`;
-  setTimeout(fwInitIntentions, 50);
 }
 
 function buildFitwavePrompt(fd){

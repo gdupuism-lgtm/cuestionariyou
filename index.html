@@ -7437,6 +7437,249 @@ textarea.step-input:focus { opacity:1; }
   from{opacity:0;transform:translateY(32px) scale(0.97)}
   to{opacity:1;transform:translateY(0) scale(1)}
 }
+
+/* ═══════════════════════════════════════
+   SEDUCTION — Carmesí · Magnético · Sensual
+   ═══════════════════════════════════════ */
+.theme-seduction {
+  --bg: #080306;
+  --accent: #c0392b;
+  --accent2: #e74c3c;
+  --accent3: #f1948a;
+  --gold: #d4af37;
+  --gold2: #f5e6a3;
+  --text: #faf5f5;
+  --text-soft: rgba(250,245,245,0.72);
+  --header-bg: #040103;
+  --pdot-off: rgba(192,57,43,0.2);
+  --pdot-on: #c0392b;
+}
+
+/* Header */
+.theme-seduction .form-header {
+  background:var(--header-bg);
+  border-bottom:1px solid rgba(192,57,43,0.25);
+  position:relative; overflow:hidden;
+}
+.theme-seduction .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(192,57,43,0.8), rgba(212,175,55,0.5), rgba(192,57,43,0.8), transparent);
+  animation:sed-headerline 4s linear infinite;
+  background-size:200% 100%;
+}
+@keyframes sed-headerline { to{background-position:200% center} }
+.theme-seduction .fh-brand {
+  background:linear-gradient(90deg, var(--accent2), var(--gold), var(--accent3));
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:sed-shimmer 5s linear infinite; letter-spacing:7px;
+}
+@keyframes sed-shimmer { to{background-position:200% center} }
+
+/* Dots */
+.theme-seduction .pdot { background:var(--pdot-off); }
+.theme-seduction .pdot.done { background:rgba(192,57,43,0.55); }
+.theme-seduction .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 16px rgba(192,57,43,0.9), 0 0 32px rgba(212,175,55,0.3);
+  animation:sed-dot 2s ease-in-out infinite;
+}
+@keyframes sed-dot {
+  0%,100%{transform:scale(1)} 50%{transform:scale(1.5);box-shadow:0 0 28px rgba(192,57,43,1),0 0 50px rgba(212,175,55,0.4)}
+}
+
+/* Background */
+.theme-seduction #page-form {
+  background:#080306; position:relative; overflow:hidden; color:var(--text);
+}
+.theme-seduction #page-form::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse at 25% 25%, rgba(192,57,43,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 75%, rgba(192,57,43,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 10%, rgba(212,175,55,0.07) 0%, transparent 40%);
+  animation:sed-bg 7s ease-in-out infinite;
+}
+@keyframes sed-bg { 0%,100%{opacity:0.7} 50%{opacity:1} }
+
+/* Stars */
+.theme-seduction #page-form::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(212,175,55,0.7), transparent),
+    radial-gradient(1px 1px at 30% 40%, rgba(192,57,43,0.6), transparent),
+    radial-gradient(1px 1px at 55% 12%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 70% 35%, rgba(212,175,55,0.55), transparent),
+    radial-gradient(1px 1px at 88% 20%, rgba(192,57,43,0.5), transparent),
+    radial-gradient(1px 1px at 15% 65%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 45% 80%, rgba(212,175,55,0.5), transparent),
+    radial-gradient(1px 1px at 82% 70%, rgba(192,57,43,0.45), transparent),
+    radial-gradient(2px 2px at 60% 55%, rgba(212,175,55,0.4), transparent),
+    radial-gradient(1px 1px at 25% 90%, rgba(255,255,255,0.4), transparent);
+  opacity:0.65; animation:sed-stars 8s ease-in-out infinite;
+}
+@keyframes sed-stars { 0%,100%{opacity:0.55} 50%{opacity:0.85} }
+
+.theme-seduction .form-main { position:relative; z-index:1; }
+
+/* Intro card */
+.theme-seduction .intro-card {
+  background:linear-gradient(135deg, rgba(192,57,43,0.12), rgba(212,175,55,0.06), rgba(192,57,43,0.08));
+  border:1px solid transparent; background-clip:padding-box;
+  position:relative; overflow:hidden;
+}
+.theme-seduction .intro-card::before {
+  content:''; position:absolute; inset:-1px; z-index:-1; border-radius:inherit;
+  background:linear-gradient(135deg, rgba(192,57,43,0.6), rgba(212,175,55,0.4), rgba(192,57,43,0.3), rgba(212,175,55,0.5));
+  background-size:300% 300%;
+  animation:sed-border 5s linear infinite;
+}
+@keyframes sed-border { to{background-position:300% 300%} }
+
+.theme-seduction .sed-intro { padding-top:155px; padding-bottom:52px; }
+
+/* Orb */
+.theme-seduction .sed-orb {
+  position:absolute; top:-30px; left:50%; transform:translateX(-50%);
+  width:260px; height:260px; border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(192,57,43,0.55) 0%,
+    rgba(212,175,55,0.25) 30%,
+    rgba(192,57,43,0.12) 55%,
+    transparent 75%);
+  filter:blur(18px);
+  animation:sed-orb 4s ease-in-out infinite;
+}
+@keyframes sed-orb {
+  0%,100%{transform:translateX(-50%) scale(1);opacity:0.8}
+  50%{transform:translateX(-50%) scale(1.2);opacity:1}
+}
+
+/* Ring */
+.theme-seduction .sed-ring {
+  position:absolute; top:20px; left:50%; transform:translateX(-50%);
+  width:130px; height:130px; border-radius:50%;
+  border:1px solid rgba(212,175,55,0.3);
+  box-shadow:0 0 30px rgba(192,57,43,0.4), inset 0 0 20px rgba(192,57,43,0.2);
+  animation:sed-ring 3s ease-in-out infinite;
+}
+@keyframes sed-ring {
+  0%,100%{transform:translateX(-50%) scale(1);opacity:0.6}
+  50%{transform:translateX(-50%) scale(1.1);opacity:1}
+}
+
+/* Particles */
+.theme-seduction .sed-particles {
+  position:absolute; inset:0; pointer-events:none; overflow:hidden;
+}
+.sed-particle {
+  position:absolute; border-radius:50%;
+  background:radial-gradient(circle, rgba(212,175,55,0.9), rgba(192,57,43,0.4));
+  animation:sed-float linear infinite;
+}
+@keyframes sed-float {
+  0%{transform:translateY(80px) scale(0) rotate(0deg);opacity:0}
+  10%{opacity:1}
+  90%{opacity:0.7}
+  100%{transform:translateY(-180px) scale(1.5) rotate(180deg);opacity:0}
+}
+
+/* Card text */
+.theme-seduction .intro-card-label {
+  position:relative; z-index:2; letter-spacing:5px;
+  background:linear-gradient(90deg, var(--gold), var(--accent3));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.theme-seduction .intro-card-title {
+  font-family:'DM Serif Display',serif; font-size:52px; line-height:1;
+  position:relative; z-index:2;
+}
+.theme-seduction .intro-card-title em {
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--gold) 35%, var(--accent3) 60%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:sed-shimmer 4s linear infinite;
+}
+.theme-seduction .intro-card-desc {
+  color:var(--text-soft); font-size:14px; line-height:2; position:relative; z-index:2;
+}
+
+/* Step elements */
+.theme-seduction .step-eyebrow {
+  background:linear-gradient(90deg, var(--accent2), var(--gold), var(--accent3));
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:sed-shimmer 5s linear infinite;
+  letter-spacing:7px; font-family:'Courier New',monospace; font-weight:600;
+}
+.theme-seduction .step-q { font-family:'DM Serif Display',serif; color:var(--text); font-weight:400; letter-spacing:-1px; }
+.theme-seduction .step-q em {
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent2), var(--gold) 50%, var(--accent3) 75%, var(--accent2) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:sed-shimmer 4s linear infinite;
+}
+.theme-seduction .step-hint { color:var(--text-soft); }
+.theme-seduction .step-input {
+  color:var(--text); opacity:1; border-color:rgba(192,57,43,0.4);
+  background:rgba(192,57,43,0.04); font-family:'Cormorant Garamond',serif; font-size:17px;
+}
+.theme-seduction .step-input::placeholder { color:rgba(192,57,43,0.35); font-style:italic; }
+.theme-seduction .step-input:focus {
+  border-color:var(--gold); box-shadow:0 0 20px rgba(212,175,55,0.2), 0 0 40px rgba(192,57,43,0.1);
+  background:rgba(212,175,55,0.04);
+}
+.theme-seduction textarea.step-input { background:rgba(192,57,43,0.03); }
+.theme-seduction .lang-btn { color:var(--accent2); border-color:rgba(192,57,43,0.35); opacity:1; background:transparent; }
+.theme-seduction .lang-btn.active { background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#080306; }
+.theme-seduction .choice-opt { border-color:rgba(192,57,43,0.2); color:var(--text); opacity:1; background:rgba(192,57,43,0.03); }
+.theme-seduction .choice-opt:hover { border-color:rgba(192,57,43,0.45); background:rgba(192,57,43,0.08); }
+.theme-seduction .choice-opt.selected { border-color:var(--gold); background:rgba(212,175,55,0.08); box-shadow:0 0 16px rgba(212,175,55,0.2); }
+.theme-seduction .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); box-shadow:0 0 8px rgba(192,57,43,0.6); }
+.theme-seduction .btn-back { color:rgba(250,245,245,0.4); }
+.theme-seduction .btn-next {
+  position:relative; overflow:hidden;
+  border-color:rgba(192,57,43,0.5); color:var(--accent2); letter-spacing:6px; font-weight:500;
+}
+.theme-seduction .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(192,57,43,0.15), rgba(212,175,55,0.1), rgba(192,57,43,0.15));
+  background-size:200% 100%; opacity:0; transition:opacity 0.3s;
+  animation:sed-btn 3s linear infinite;
+}
+@keyframes sed-btn { to{background-position:200% center} }
+.theme-seduction .btn-next:hover { background:transparent; border-color:var(--gold); color:var(--gold2); box-shadow:0 0 30px rgba(192,57,43,0.35); }
+.theme-seduction .btn-next:hover::before { opacity:1; }
+
+/* Result */
+.theme-seduction #page-result { background:#080306 !important; color:var(--text) !important; }
+.theme-seduction .result-header { background:#040103; border-bottom:1px solid rgba(192,57,43,0.22); position:relative; }
+.theme-seduction .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(192,57,43,0.7), rgba(212,175,55,0.5), transparent);
+}
+.theme-seduction .result-tag {
+  background:linear-gradient(90deg, var(--accent2), var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  letter-spacing:5px;
+}
+.theme-seduction .result-htitle { font-family:'DM Serif Display',serif; color:var(--text); }
+.theme-seduction .result-htitle em {
+  background:linear-gradient(135deg, var(--accent2), var(--gold) 50%, var(--accent3));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.theme-seduction .script-wrap { border-color:rgba(192,57,43,0.2); background:rgba(192,57,43,0.02); }
+.theme-seduction .script-head { background:#040103; }
+.theme-seduction .script-content { font-family:'Cormorant Garamond',serif; color:var(--text) !important; background:#060204 !important; line-height:2.1; font-size:16px; }
+.theme-seduction .btn-dl { border-color:rgba(192,57,43,0.28); color:rgba(192,57,43,0.55); background:transparent; }
+.theme-seduction .btn-dl:hover { border-color:var(--accent2); color:var(--accent2); }
+.theme-seduction .result-note { border-color:rgba(192,57,43,0.2); color:rgba(250,245,245,0.45); background:rgba(192,57,43,0.04); padding:24px 32px; }
+.theme-seduction .btn-copy { border-color:rgba(212,175,55,0.32); background:rgba(192,57,43,0.08); color:rgba(212,175,55,0.85); }
+.theme-seduction .btn-copy:hover { background:rgba(212,175,55,0.15); color:var(--gold); }
+.theme-seduction .step.active { animation:sed-step-in 0.7s cubic-bezier(0.16,1,0.3,1); }
+@keyframes sed-step-in { from{opacity:0;transform:translateY(32px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
 </style>
 </head>
 <body>
@@ -7923,6 +8166,19 @@ const AUDIOS = {
     systemPrompt: getApm4System,
     singleOnly: true,
   },
+  'miseduction11': {
+    name: 'SEDUCTION',
+    theme: 'theme-seduction',
+    steps: 6,
+    headerLabel: 'ERIORCENTER — SEDUCTION 🌹',
+    introTitle: '<em>SEDUCTION</em>',
+    introDesc: 'El audio que convierte tu energía en magnetismo puro 🌹✨',
+    fields: ['name','last','email','sedintent','sedperson_or_sednewgoal','sedgoal'],
+    buildSteps: buildSeductionSteps,
+    buildPrompt: buildSeductionPrompt,
+    systemPrompt: getSeductionSystem,
+    singleOnly: true,
+  },
 };
 
 // ═══════════════════════════════════
@@ -8007,6 +8263,7 @@ const THEME_BG = {
   'theme-unlimited': '#020510',
   'theme-simulation': '#080508',
   'theme-apm4': '#080508',
+  'theme-seduction': '#080306',
 };
 const THEME_COLOR = {
   'theme-you': '#faf8f5',
@@ -8042,6 +8299,7 @@ const THEME_COLOR = {
   'theme-unlimited': '#f0f5ff',
   'theme-simulation': '#faf5f7',
   'theme-apm4': '#fdf8f0',
+  'theme-seduction': '#faf5f5',
 };
 
 function applyTheme(theme) {
@@ -8093,6 +8351,25 @@ function showStep(n) {
   if(steps[n]) steps[n].classList.add('active');
   updateDots(n);
   window.scrollTo(0,0);
+  // SEDUCTION: show correct conditional step
+  if(currentAudio && currentAudio.name === 'SEDUCTION'){
+    const intent = fd.sedintent || '';
+    if(n === 5){
+      const s5spec = document.getElementById('sed-step5-specific');
+      const s5new = document.getElementById('sed-step5-new');
+      if(intent === 'specific'){
+        if(s5spec){ s5spec.style.display=''; s5spec.classList.add('active'); }
+        if(s5new) s5new.style.display='none';
+      } else {
+        if(s5new){ s5new.style.display=''; s5new.classList.add('active'); }
+        if(s5spec) s5spec.style.display='none';
+      }
+    }
+    if(n === 6 && intent === 'specific'){
+      const s6 = document.getElementById('sed-step6-specific');
+      if(s6){ s6.style.display=''; s6.classList.add('active'); }
+    }
+  }
   // Init FIT WAVE intentions when reaching step 6
   if(currentAudio && currentAudio.name === 'FIT WAVE' && n === 6){
     setTimeout(fwInitIntentions, 50);
@@ -8230,6 +8507,37 @@ function validateStep(n) {
     const checked = document.querySelectorAll('.fw-checkbox:checked').length;
     if(checked !== 11){show('e-fwintentions');return false;}
   }
+  if(fields[n-1]==='sedintent'){
+    hide('e-sedintent');
+    const picked = document.querySelector('input[name="sedintent"]:checked');
+    if(!picked){show('e-sedintent');return false;}
+    fd.sedintent = picked.value;
+    // Show correct step 5
+    const s5spec = document.getElementById('sed-step5-specific');
+    const s5new = document.getElementById('sed-step5-new');
+    if(s5spec) s5spec.style.display = picked.value==='specific' ? '' : 'none';
+    if(s5new) s5new.style.display = picked.value==='new' ? '' : 'none';
+  }
+  if(fields[n-1]==='sedperson_or_sednewgoal'){
+    const intent = fd.sedintent || '';
+    if(intent === 'specific'){
+      hide('e-sedperson');
+      if(!v('f-sedperson')){show('e-sedperson');return false;}
+      // Show step 6
+      const s6 = document.getElementById('sed-step6-specific');
+      if(s6) s6.style.display = '';
+    } else {
+      hide('e-sednewgoal');
+      if(!v('f-sednewgoal')){show('e-sednewgoal');return false;}
+    }
+  }
+  if(fields[n-1]==='sedgoal'){
+    const intent = fd.sedintent || '';
+    if(intent === 'specific'){
+      hide('e-sedgoal');
+      if(!v('f-sedgoal')){show('e-sedgoal');return false;}
+    }
+  }
   if(fields[n-1]==='apm4tema'){
     hide('e-apm4tema');
     const el=document.getElementById('f-apm4tema');
@@ -8330,6 +8638,15 @@ function collectStep(n) {
       fd.fwintentions = _fwSavedIntentions.replace(/__+/g, name);
     }
   }
+  if(f==='sedintent'){
+    const picked = document.querySelector('input[name="sedintent"]:checked');
+    if(picked) fd.sedintent = picked.value;
+  }
+  if(f==='sedperson_or_sednewgoal'){
+    fd.sedperson = g('f-sedperson');
+    fd.sednewgoal = g('f-sednewgoal');
+  }
+  if(f==='sedgoal') fd.sedgoal = g('f-sedgoal');
   if(f==='apm4tema') fd.apm4tema=g('f-apm4tema');
   if(f==='simtitle') fd.simtitle=g('f-simtitle');
   if(f==='simareas'){
@@ -8756,7 +9073,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess','theme-unlimited','theme-simulation','theme-apm4'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess','theme-unlimited','theme-simulation','theme-apm4','theme-seduction'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -14149,6 +14466,246 @@ function fwUpdateCount(){
 }
 
 const FW_INTENTIONS = ["Yo, ____, amo mi cuerpo. Estoy muy agradecid@ por todas las maneras en las que mi cuerpo me sirve.", "Yo, ____, puedo comer y tomar todo lo que quiero y siempre estoy delgad@.", "Yo, ____, dejo de criticar mi cuerpo. Lo trato con amor y eso se refleja en mi exterior.", "Yo, ____, tengo un cuerpo esbelto y firme. Cada día mis músculos están más tonificados.", "Yo, ____, disfruto cuidar de mi cuerpo todos los días. Me gusta hacer ejercicio y comer saludablemente.", "Todo lo que como nutre mi cuerpo y me ayuda a tener mi figura ideal.", "Yo, ____, estoy en mi peso ideal. Cada día me resulta más fácil mantenerme en él.", "Yo, ____, cada día tengo un cuerpo mucho más atractivo. Disfruto mi cuerpo.", "A mí, ____, solo se me antoja comer alimentos saludables que benefician a mi cuerpo.", "No siento culpa al comer. Todo lo que yo, ____, como, lo disfruto.", "Mi cuerpo es mi templo. Tomo las mejores decisiones para cuidarlo diariamente.", "Mi metabolismo trabaja siempre a mi favor. Está en su nivel óptimo.", "Yo, ____, voy al gimnasio todos los días con seguridad y entusiasmo.", "Para mí, ____, es muy fácil estar en forma y tener el cuerpo que quiero.", "Mi desempeño en el gimnasio es excelente. Realizo mis rutinas con facilidad y nunca me siento cansad@.", "Yo, ____, gano músculo con mucha facilidad. Tengo el cuerpo que siempre he querido.", "Yo, ____, tengo un cuerpo muy saludable. Siempre me siento llen@ de energía y mis músculos se recuperan con facilidad.", "Yo, ____, con poco ejercicio consigo rápidamente el cuerpo que quiero.", "Naturalmente, yo, ____, soy delgad@ y tengo un cuerpo esbelto y atractivo.", "Yo, ____, sé escuchar a mi cuerpo. Sé exactamente lo que necesita y se lo doy.", "Yo, ____, irradio salud, juventud y belleza. Mi cuerpo es delgado, fuerte, firme y bien proporcionado.", "Yo, ____, sin hacer dieta ni ejercicio tengo el cuerpo que quiero.", "Yo, ____, tengo un cuerpo esbelto y firme. Cada día mis músculos y mi piel están más tonificados.", "Mi cuerpo siempre se ve increíble y tonificado. Yo, ____, reflejo seguridad y las personas se sienten atraídas hacia mí.", "Cada día que pasa, mi abdomen es más firme y plano.", "Yo, ____, aumento masa muscular con facilidad y soy constante al hacer ejercicio.", "Yo, ____, siempre estoy desinflamad@, quemo grasa muy rápido y desarrollo músculo con facilidad.", "Yo, ____, tengo los brazos y las piernas firmes y bien tonificados.", "Yo, ____, cuando hago ejercicio mi cerebro se vuelve más receptivo a nuevas ideas. Me siento más creativ@, más atractiv@ y con más energía.", "Yo, ____, siempre he sido un@ gran deportista. Cada día mi condición física mejora y me resulta muy fácil practicar cualquier deporte con destreza y fuerza.", "Yo, ____, tengo un cuerpo mágico y hermoso que está realizando constantemente un detox emocional, mental y físico.", "Yo, ____, mi cuerpo suelta fácilmente todo lo que ya no le sirve y conserva únicamente lo que me hace sentir saludable y en equilibrio.", "Yo, ____, mi apetito está perfectamente equilibrado. Como únicamente la cantidad que mi cuerpo necesita para sentirse satisfecho y lleno de energía.", "Yo, ____, cada día mi cuerpo se vuelve más ligero, fuerte y ágil. Amo la sensación de bienestar que siento.", "Yo, ____, mi cuerpo elige naturalmente hábitos que me ayudan a mantenerme delgad@ y llen@ de vitalidad.", "Yo, ____, alcanzar y mantener mi peso ideal es completamente natural para mí. Mi cuerpo sabe exactamente cómo hacerlo."];
+
+// ═══════════════════════════════════
+// BUILD STEPS — SEDUCTION
+// ═══════════════════════════════════
+function buildSeductionSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card sed-intro">
+      <div class="sed-orb"></div>
+      <div class="sed-particles" id="sed-particles"></div>
+      <div class="sed-ring"></div>
+      <div class="intro-card-label">ERIORCENTER — NUEVO AUDIO ✦</div>
+      <div class="intro-card-title"><em>SEDUCTION</em></div>
+      <div class="intro-card-desc">El audio que convierte tu energía en magnetismo puro. Atrae lo que deseas con el poder de tu voz y tu intención más profunda 🌹✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>mini script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar 🌹</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">✦ 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">El nombre con el que manifiestas 🌹</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">✦ 02 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">✦ 03 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu mini script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 💌</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">✦ 04 — Tu intención</div>
+    <h2 class="step-q">¿Por qué estás <em>aquí</em>?</h2>
+    <p class="step-hint">Elige la intención que más resuena contigo 🌹</p>
+    <div class="choices">
+      <label class="choice-opt" onclick="sedPickIntent(this,'specific')">
+        <input type="radio" name="sedintent" value="specific">
+        <div class="choice-radio"></div>
+        <span class="choice-label">🌹 Atraer a una persona en específico</span>
+      </label>
+      <label class="choice-opt" onclick="sedPickIntent(this,'new')">
+        <input type="radio" name="sedintent" value="new">
+        <div class="choice-radio"></div>
+        <span class="choice-label">💫 Atraer una nueva pareja</span>
+      </label>
+    </div>
+    <div class="field-err" id="e-sedintent">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="5" id="sed-step5-specific" style="display:none">
+    <div class="step-eyebrow">✦ 05 — Tu persona especial</div>
+    <h2 class="step-q">¿Cómo le dices a tu <em>persona especial</em>?</h2>
+    <p class="step-hint">El nombre o apodo con el que lo/la conoces 🌹</p>
+    <input type="text" class="step-input" id="f-sedperson" placeholder="Le digo..." autocomplete="off">
+    <div class="field-err" id="e-sedperson">Por favor escribe cómo le dices</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="5" id="sed-step5-new" style="display:none">
+    <div class="step-eyebrow">✦ 05 — Tu visión</div>
+    <h2 class="step-q">¿Qué te gustaría <em>lograr</em> en la pareja?</h2>
+    <p class="step-hint">Describe cómo quieres sentirte, qué tipo de relación deseas, cómo quieres que te vean 🌹</p>
+    <textarea class="step-input" id="f-sednewgoal" placeholder="Quiero..." style="height:140px;"></textarea>
+    <div class="field-err" id="e-sednewgoal">Por favor describe tu visión</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Activar mi seducción 🌹</button></div>
+  </div>
+
+  <div class="step" data-step="6" id="sed-step6-specific" style="display:none">
+    <div class="step-eyebrow">✦ 06 — Tu intención profunda</div>
+    <h2 class="step-q">¿Qué quieres lograr con <em>él/ella</em>?</h2>
+    <p class="step-hint">Sé específic@ — mientras más claro, más poderoso será tu script 🌹</p>
+    <textarea class="step-input" id="f-sedgoal" placeholder="Lo que quiero lograr es..." style="height:140px;"></textarea>
+    <div class="field-err" id="e-sedgoal">Por favor describe lo que quieres lograr</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Activar mi seducción 🌹</button></div>
+  </div>`;
+
+  // Init particles
+  setTimeout(() => {
+    const container = document.getElementById('sed-particles');
+    if(!container) return;
+    for(let i=0;i<22;i++){
+      const p = document.createElement('div');
+      p.className = 'sed-particle';
+      p.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*5}s;animation-duration:${3+Math.random()*5}s;width:${1.5+Math.random()*3}px;height:${1.5+Math.random()*3}px;opacity:${0.2+Math.random()*0.6}`;
+      container.appendChild(p);
+    }
+  }, 100);
+}
+
+function sedPickIntent(label, intent){
+  document.querySelectorAll('.choice-opt').forEach(o=>o.classList.remove('selected'));
+  label.classList.add('selected');
+  label.querySelector('input').checked = true;
+  fd.sedintent = intent;
+}
+
+// ═══════════════════════════════════
+// STEP OVERRIDE — SEDUCTION
+// ═══════════════════════════════════
+function sedGetStep5(){
+  const intent = fd.sedintent || (document.querySelector('input[name="sedintent"]:checked') && document.querySelector('input[name="sedintent"]:checked').value);
+  return intent;
+}
+
+// ═══════════════════════════════════
+// VALIDATE + COLLECT — SEDUCTION extras
+// ═══════════════════════════════════
+function sedValidateStep5(){
+  const intent = sedGetStep5();
+  if(intent === 'specific'){
+    hide('e-sedperson');
+    if(!v('f-sedperson')){show('e-sedperson');return false;}
+  } else {
+    hide('e-sednewgoal');
+    if(!v('f-sednewgoal')){show('e-sednewgoal');return false;}
+    return 'final'; // step 5 is final for 'new'
+  }
+  return true;
+}
+
+function sedValidateStep6(){
+  hide('e-sedgoal');
+  if(!v('f-sedgoal')){show('e-sedgoal');return false;}
+  return true;
+}
+
+// ═══════════════════════════════════
+// SYSTEM PROMPTS — SEDUCTION
+// ═══════════════════════════════════
+function getSeductionSystem(fd){
+  const isSpecific = fd.sedintent === 'specific';
+  if(fd.lang === 'es'){
+    if(isSpecific){
+      return `Eres el editor de scripts SEDUCTION de ERIORCENTER para atracción de persona específica. Creas mini scripts de manifestación en primera persona que suenan como recuerdos vívidos y emocionales de algo que ya ocurrió.
+
+TONO: íntimo, poderoso, sensual, emocional. Como un recuerdo real que se está reviviendo.
+
+REGLAS:
+- Empieza SIEMPRE con "YO [NOMBRE]:" (usa el nombre real)
+- Todo en presente o pasado como si ya ocurrió
+- Incluye preguntas retóricas que refuercen que ya pasó
+- Adapta el género (él/ella, mío/mía) según contexto
+- Integra naturalmente el nombre de la persona específica y el objetivo
+- Incluye SIEMPRE: "Entre más escucho este audio, más le quito mi energía a [PERSONA] y yo la recupero, y por lo mismo me vuelvo irresistible para él/ella"
+- Termina con: "Todo esto ya es real. Ya lo viví. Ya lo siento. Ya es mío."
+- Sin Markdown, sin **, sin ##
+- Fluido, íntimo, listo para grabar en bucle
+- Devuelve SOLO el script final`;
+    } else {
+      return `Eres el editor de scripts SEDUCTION de ERIORCENTER para atraer nueva pareja. Creas mini scripts de manifestación en primera persona que suenan como recuerdos vívidos y reales de algo que ya ocurrió.
+
+TONO: íntimo, magnético, confiado, emocional. Como un recuerdo sensorial que se está reviviendo.
+
+REGLAS:
+- Empieza SIEMPRE con "YO [NOMBRE]:" (usa el nombre real)
+- TODO en positivo — NUNCA menciones inseguridades, dolores del pasado ni nada negativo
+- Incluye preguntas retóricas sensoriales (cómo te ves, cómo te sientes, cómo te miran)
+- Integra SIEMPRE: "Entre más escucho este audio, más recupero mi energía y mi poder… y por eso me vuelvo cada día más irresistible / magnética / atractiva"
+- Adapta el género femenino/masculino según el nombre
+- Termina SIEMPRE con: "Todo esto ya es real. Ya lo viví. Ya lo siento. Ya soy esa mujer/ese hombre."
+- 12 a 18 líneas, fluido, íntimo, listo para grabar
+- Sin Markdown, sin **, sin ##
+- Devuelve SOLO el script final`;
+    }
+  } else {
+    return `You are ERIORCENTER's SEDUCTION script editor. Create a manifestation mini script in first person that sounds like a vivid emotional memory of something that already happened. Tone: intimate, powerful, magnetic. Start with "I [NAME]:". Everything positive present/past tense as if already lived. Include rhetorical questions. ${isSpecific ? 'Include the specific person\'s name naturally and the goal. Always include: "The more I listen to this audio, the more I reclaim my energy from [PERSON] and become irresistible to them." End with: "All of this is already real. I already lived it. I already feel it. It is already mine."' : 'Never mention negativity or insecurities. Include: "The more I listen, the more I reclaim my power and become irresistible." End with: "All of this is already real. I already lived it. I already feel it. I am already that woman/man."'} 12-18 lines. No Markdown. Return ONLY the final script.`;
+  }
+}
+
+function buildSeductionPrompt(fd){
+  const name = fd.name || '_';
+  const last = fd.last || '';
+  const fullName = `${name} ${last}`.trim();
+  const intent = fd.sedintent || 'specific';
+  const person = fd.sedperson || '';
+  const goal = intent === 'specific' ? (fd.sedgoal || '') : (fd.sednewgoal || '');
+
+  const deliveryHeader = `Hola 𓂃𓈒𓏸🫧👽🧚🏻‍♀️💖𓏸𓈒𓂃
+Aquí está tu mini script de seduction ✨
+Por favor grábalo junto con las intenciones del PDF 🎤📄
+Cuando lo tengas listo, envíalo a:
+eriorcenter@gmail.com 💌
+¡Gracias! 🌸💫`;
+
+  if(fd.lang === 'es'){
+    if(intent === 'specific'){
+      return `Datos del cliente:
+- Nombre completo: ${fullName}
+- Nombre de su persona específica: "${person}"
+- Lo que quiere lograr con él/ella: "${goal}"
+
+Genera el SEDUCTION SCRIPT para persona específica siguiendo la estructura exacta.
+
+Entrega EXACTAMENTE en este formato:
+
+${deliveryHeader}
+
+[AQUÍ VA EL SCRIPT completo para ${fullName}, con ${person} integrado naturalmente, adaptando género según contexto. Sigue la estructura con preguntas retóricas, frase de recuperar energía y cierre "Todo esto ya es real."]
+
+REGLAS: Sin Markdown. Sin explicaciones. Solo el header de entrega y el script.`;
+    } else {
+      return `Datos del cliente:
+- Nombre completo: ${fullName}
+- Lo que quiere lograr en la pareja: "${goal}"
+
+Genera el SEDUCTION SCRIPT para nueva pareja siguiendo la estructura exacta.
+
+Entrega EXACTAMENTE en este formato:
+
+${deliveryHeader}
+
+[AQUÍ VA EL SCRIPT completo para ${fullName}, adaptando género. Todo positivo. Preguntas sensoriales. Frase de recuperar energía. Cierre "Todo esto ya es real. Ya lo viví. Ya lo siento. Ya soy esa mujer/ese hombre."]
+
+REGLAS: Sin Markdown. Sin explicaciones. Solo el header de entrega y el script.`;
+    }
+  } else {
+    const intentEN = intent === 'specific'
+      ? `Specific person: "${person}", Goal: "${goal}"`
+      : `New partner goal: "${goal}"`;
+    return `Client: Full name: ${fullName}, Intent: ${intent === 'specific' ? 'attract specific person' : 'attract new partner'}, ${intentEN}. Generate SEDUCTION script in English. Delivery format: Start with the greeting header (in Spanish as provided), then the script. No Markdown. Return ONLY the formatted content.`;
+  }
+}
 
 (function(){
   const canvas = document.getElementById('fireworks-canvas');

@@ -14656,7 +14656,7 @@ REGLAS:
 function buildSeductionPrompt(fd){
   const name = fd.name || '_';
   const last = fd.last || '';
-  const fullName = `${name} ${last}`.trim();
+  const fullName = name; // Solo nombre, sin apellido en el script
   const intent = fd.sedintent || 'specific';
   const person = fd.sedperson || '';
   const goal = intent === 'specific' ? (fd.sedgoal || '') : (fd.sednewgoal || '');

@@ -7680,6 +7680,235 @@ textarea.step-input:focus { opacity:1; }
 .theme-seduction .btn-copy:hover { background:rgba(212,175,55,0.15); color:var(--gold); }
 .theme-seduction .step.active { animation:sed-step-in 0.7s cubic-bezier(0.16,1,0.3,1); }
 @keyframes sed-step-in { from{opacity:0;transform:translateY(32px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+
+/* ═══════════════════════════════════════
+   IMAGINE — Púrpura · Opalino · Visión
+   ═══════════════════════════════════════ */
+.theme-imagine {
+  --bg: #020105;
+  --accent: #9d5dff;
+  --accent2: #c896ff;
+  --accent3: #e8d5ff;
+  --gold: #d4a9ff;
+  --gold2: #f0e6ff;
+  --text: #ffffff;
+  --text-soft: rgba(255,255,255,0.9);
+  --header-bg: #030107;
+  --pdot-off: rgba(157,93,255,0.3);
+  --pdot-on: #9d5dff;
+}
+
+/* Header */
+.theme-imagine .form-header {
+  background:var(--header-bg);
+  border-bottom:1px solid rgba(157,93,255,0.25);
+  position:relative; overflow:hidden;
+}
+.theme-imagine .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(157,93,255,0.8), rgba(212,169,255,0.5), rgba(157,93,255,0.8), transparent);
+  animation:img-headerline 4s linear infinite;
+  background-size:200% 100%;
+}
+@keyframes img-headerline { to{background-position:200% center} }
+.theme-imagine .fh-brand {
+  background:linear-gradient(90deg, var(--accent2), var(--gold), var(--accent3));
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:img-shimmer 5s linear infinite; letter-spacing:7px;
+}
+@keyframes img-shimmer { to{background-position:200% center} }
+
+/* Dots */
+.theme-imagine .pdot { background:var(--pdot-off); }
+.theme-imagine .pdot.done { background:rgba(157,93,255,0.55); }
+.theme-imagine .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 16px rgba(157,93,255,0.9), 0 0 32px rgba(212,169,255,0.3);
+  animation:img-dot 2s ease-in-out infinite;
+}
+@keyframes img-dot {
+  0%,100%{transform:scale(1)} 50%{transform:scale(1.5);box-shadow:0 0 28px rgba(157,93,255,1),0 0 50px rgba(212,169,255,0.4)}
+}
+
+/* Background */
+.theme-imagine #page-form {
+  background:#010001; position:relative; overflow:hidden; color:var(--text);
+}
+.theme-imagine #page-form::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse at 25% 25%, rgba(157,93,255,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 75%, rgba(157,93,255,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 10%, rgba(212,169,255,0.07) 0%, transparent 40%);
+  animation:img-bg 7s ease-in-out infinite;
+}
+@keyframes img-bg { 0%,100%{opacity:0.7} 50%{opacity:1} }
+
+/* Stars */
+.theme-imagine #page-form::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(212,169,255,0.7), transparent),
+    radial-gradient(1px 1px at 30% 40%, rgba(157,93,255,0.6), transparent),
+    radial-gradient(1px 1px at 55% 12%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 70% 35%, rgba(212,169,255,0.55), transparent),
+    radial-gradient(1px 1px at 88% 20%, rgba(157,93,255,0.5), transparent),
+    radial-gradient(1px 1px at 15% 65%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 45% 80%, rgba(212,169,255,0.5), transparent),
+    radial-gradient(1px 1px at 82% 70%, rgba(157,93,255,0.45), transparent),
+    radial-gradient(2px 2px at 60% 55%, rgba(212,169,255,0.4), transparent),
+    radial-gradient(1px 1px at 25% 90%, rgba(255,255,255,0.4), transparent);
+  opacity:0.65; animation:img-stars 8s ease-in-out infinite;
+}
+@keyframes img-stars { 0%,100%{opacity:0.55} 50%{opacity:0.85} }
+
+.theme-imagine .form-main { position:relative; z-index:1; }
+
+/* Intro card */
+.theme-imagine .intro-card {
+  background:linear-gradient(135deg, rgba(157,93,255,0.35), rgba(212,169,255,0.25), rgba(157,93,255,0.3));
+  border:2px solid rgba(157,93,255,0.5); background-clip:padding-box;
+  position:relative; overflow:hidden;
+  backdrop-filter:blur(12px);
+}
+.theme-imagine .intro-card::before {
+  content:''; position:absolute; inset:-1px; z-index:-1; border-radius:inherit;
+  background:linear-gradient(135deg, rgba(157,93,255,0.6), rgba(212,169,255,0.4), rgba(157,93,255,0.3), rgba(212,169,255,0.5));
+  background-size:300% 300%;
+  animation:img-border 5s linear infinite;
+}
+@keyframes img-border { to{background-position:300% 300%} }
+
+.theme-imagine .img-intro { padding-top:155px; padding-bottom:52px; }
+
+/* Orb */
+.theme-imagine .img-orb {
+  position:absolute; top:-30px; left:50%; transform:translateX(-50%);
+  width:260px; height:260px; border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(157,93,255,0.55) 0%,
+    rgba(212,169,255,0.25) 30%,
+    rgba(157,93,255,0.12) 55%,
+    transparent 75%);
+  filter:blur(18px);
+  animation:img-orb 4s ease-in-out infinite;
+}
+@keyframes img-orb {
+  0%,100%{transform:translateX(-50%) scale(1);opacity:0.8}
+  50%{transform:translateX(-50%) scale(1.2);opacity:1}
+}
+
+/* Ring */
+.theme-imagine .img-ring {
+  position:absolute; top:20px; left:50%; transform:translateX(-50%);
+  width:130px; height:130px; border-radius:50%;
+  border:1px solid rgba(212,169,255,0.3);
+  box-shadow:0 0 30px rgba(157,93,255,0.4), inset 0 0 20px rgba(157,93,255,0.2);
+  animation:img-ring 3s ease-in-out infinite;
+}
+@keyframes img-ring {
+  0%,100%{transform:translateX(-50%) scale(1);opacity:0.6}
+  50%{transform:translateX(-50%) scale(1.1);opacity:1}
+}
+
+/* Card text */
+.theme-imagine .intro-card-label {
+  position:relative; z-index:2; letter-spacing:5px;
+  background:linear-gradient(90deg, var(--gold), var(--accent3));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.theme-imagine .intro-card-title {
+  font-family:'DM Serif Display',serif; font-size:52px; line-height:1;
+  position:relative; z-index:2;
+}
+.theme-imagine .intro-card-title em {
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--gold) 35%, var(--accent3) 60%, var(--accent) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:img-shimmer 4s linear infinite;
+}
+.theme-imagine .intro-card-desc {
+  color:#ffffff; font-size:14px; line-height:2; position:relative; z-index:2; font-weight:500;
+}
+
+/* Step elements */
+.theme-imagine .step-eyebrow {
+  background:linear-gradient(90deg, #d4a9ff, #e8d5ff, #c896ff);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:img-shimmer 5s linear infinite;
+  letter-spacing:7px; font-family:'Courier New',monospace; font-weight:700;
+}
+.theme-imagine .step-q { font-family:'DM Serif Display',serif; color:#ffffff; font-weight:600; letter-spacing:-1px; font-size:clamp(24px,4vw,38px); }
+.theme-imagine .step-q em {
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent2), var(--gold) 50%, var(--accent3) 75%, var(--accent2) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:img-shimmer 4s linear infinite;
+}
+.theme-imagine .step-hint { color:#ffffff; font-size:14px; opacity:0.95; }
+.theme-imagine .step-input {
+  color:#ffffff; opacity:1; border-color:#9d5dff;
+  background:#1a0d2e; font-family:'Cormorant Garamond',serif; font-size:17px; border-width:2px;
+}
+.theme-imagine .step-input::placeholder { color:#c896ff; font-style:italic; opacity:1; }
+.theme-imagine .step-input:focus {
+  border-color:#d4a9ff; box-shadow:0 0 20px rgba(212,169,255,0.6), 0 0 40px rgba(157,93,255,0.3);
+  background:#220f3a;
+}
+.theme-imagine textarea.step-input { background:#1a0d2e; border-width:2px; }
+.theme-imagine textarea.step-input::placeholder { color:#c896ff; opacity:1; }
+.theme-imagine .lang-btn { color:var(--accent2); border-color:rgba(157,93,255,0.35); opacity:1; background:transparent; }
+.theme-imagine .lang-btn.active { background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#0a0412; }
+.theme-imagine .choice-opt { border-color:rgba(157,93,255,0.2); color:var(--text); opacity:1; background:rgba(157,93,255,0.03); }
+.theme-imagine .choice-opt:hover { border-color:rgba(157,93,255,0.45); background:rgba(157,93,255,0.08); }
+.theme-imagine .choice-opt.selected { border-color:var(--gold); background:rgba(212,169,255,0.08); box-shadow:0 0 16px rgba(212,169,255,0.2); }
+.theme-imagine .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); box-shadow:0 0 8px rgba(157,93,255,0.6); }
+.theme-imagine .btn-back { color:rgba(250,245,245,0.4); }
+.theme-imagine .btn-next {
+  position:relative; overflow:hidden;
+  border-color:#d4a9ff; color:#ffffff; letter-spacing:6px; font-weight:600;
+}
+.theme-imagine .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(157,93,255,0.15), rgba(212,169,255,0.1), rgba(157,93,255,0.15));
+  background-size:200% 100%; opacity:0; transition:opacity 0.3s;
+  animation:img-btn 3s linear infinite;
+}
+@keyframes img-btn { to{background-position:200% center} }
+.theme-imagine .btn-next:hover { background:transparent; border-color:#e8d5ff; color:#ffffff; box-shadow:0 0 30px rgba(212,169,255,0.7); }
+.theme-imagine .btn-next:hover::before { opacity:1; }
+
+/* Result */
+.theme-imagine #page-result { background:#010001 !important; color:var(--text) !important; }
+.theme-imagine .result-header { background:#020107; border-bottom:2px solid rgba(157,93,255,0.4); position:relative; }
+.theme-imagine .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(157,93,255,0.7), rgba(212,169,255,0.5), transparent);
+}
+.theme-imagine .result-tag {
+  background:linear-gradient(90deg, var(--accent2), var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  letter-spacing:5px;
+}
+.theme-imagine .result-htitle { font-family:'DM Serif Display',serif; color:var(--text); }
+.theme-imagine .result-htitle em {
+  background:linear-gradient(135deg, var(--accent2), var(--gold) 50%, var(--accent3));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.theme-imagine .script-wrap { border-color:rgba(157,93,255,0.4); background:#0a0515; }
+.theme-imagine .script-head { background:#020107; }
+.theme-imagine .script-content { font-family:'Cormorant Garamond',serif; color:#ffffff !important; background:#0a0515 !important; line-height:2.1; font-size:16px; }
+.theme-imagine .btn-dl { border-color:rgba(157,93,255,0.28); color:rgba(157,93,255,0.55); background:transparent; }
+.theme-imagine .btn-dl:hover { border-color:var(--accent2); color:var(--accent2); }
+.theme-imagine .result-note { border-color:rgba(157,93,255,0.2); color:rgba(250,245,245,0.45); background:rgba(157,93,255,0.04); padding:24px 32px; }
+.theme-imagine .btn-copy { border-color:#9d5dff; background:#1a0d2e; color:#d4a9ff; font-weight:600; }
+.theme-imagine .btn-copy:hover { background:#220f3a; color:#e8d5ff; }
+.theme-imagine .step.active { animation:img-step-in 0.7s cubic-bezier(0.16,1,0.3,1); }
+@keyframes img-step-in { from{opacity:0;transform:translateY(32px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
 </style>
 </head>
 <body>
@@ -8179,6 +8408,19 @@ const AUDIOS = {
     systemPrompt: getSeductionSystem,
     singleOnly: true,
   },
+  'miimagine99': {
+    name: 'IMAGINE',
+    theme: 'theme-imagine',
+    steps: 4,
+    headerLabel: 'ERIORCENTER — IMAGINE 👽✨',
+    introTitle: '<em>IMAGINE</em>',
+    introDesc: 'Tu imaginación es tu herramienta más poderosa. Aquí la activamos para que todo lo que imagines se manifieste en tu realidad 👽✨',
+    fields: ['name','last','email','imagetheme'],
+    buildSteps: buildImagineSteps,
+    buildPrompt: buildImaginePrompt,
+    systemPrompt: getImagineSystem,
+    singleOnly: true,
+  },
 };
 
 // ═══════════════════════════════════
@@ -8264,6 +8506,7 @@ const THEME_BG = {
   'theme-simulation': '#080508',
   'theme-apm4': '#080508',
   'theme-seduction': '#080306',
+  'theme-imagine': '#010001',
 };
 const THEME_COLOR = {
   'theme-you': '#faf8f5',
@@ -8300,6 +8543,7 @@ const THEME_COLOR = {
   'theme-simulation': '#faf5f7',
   'theme-apm4': '#fdf8f0',
   'theme-seduction': '#faf5f5',
+  'theme-imagine': '#ffffff',
 };
 
 function applyTheme(theme) {
@@ -8486,6 +8730,7 @@ function validateStep(n) {
   if(fields[n-1]==='yourversion'){hide('e-yourversion');if(!v('f-yourversion')){show('e-yourversion');return false;}}
   if(fields[n-1]==='avoid'){hide('e-avoid');if(!v('f-avoid')){show('e-avoid');return false;}}
   if(fields[n-1]==='iconintention'){hide('e-iconintention');if(!v('f-iconintention')){show('e-iconintention');return false;}}
+  if(fields[n-1]==='imagetheme'){hide('e-imagetheme');if(!v('f-imagetheme')){show('e-imagetheme');return false;}}
   if(fields[n-1]==='keepcooltopics'){
     hide('e-keepcooltopics');
     const kcEl=document.getElementById('f-keepcooltopics');
@@ -8663,6 +8908,7 @@ function collectStep(n) {
   if(f==='gender'){const r=document.querySelector('input[name="gender"]:checked');fd.gender=r?r.value:'';};
   if(f==='record'){const r=document.querySelector('input[name="record"]:checked');fd.record=r?r.value:'';}
   if(f==='time'){const t=document.querySelector('input[name="time"]:checked');fd.time=t?t.value:'';}
+  if(f==='imagetheme') fd.imagetheme=g('f-imagetheme');
   fd.lang=lang;
 }
 
@@ -14705,6 +14951,153 @@ REGLAS: Sin Markdown. Sin explicaciones. Solo el header de entrega y el script.`
       : `New partner goal: "${goal}"`;
     return `Client: Full name: ${fullName}, Intent: ${intent === 'specific' ? 'attract specific person' : 'attract new partner'}, ${intentEN}. Generate SEDUCTION script in English. Delivery format: Start with the greeting header (in Spanish as provided), then the script. No Markdown. Return ONLY the formatted content.`;
   }
+}
+
+// ═══════════════════════════════════
+// IMAGINE — Funciones
+// ═══════════════════════════════════
+function buildImagineSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card img-intro">
+      <div class="img-orb"></div>
+      <div class="img-ring"></div>
+      <div class="intro-card-label">ERIORCENTER — NUEVO AUDIO ✦</div>
+      <div class="intro-card-title"><em>IMAGINE</em></div>
+      <div class="intro-card-desc">Tu imaginación es tu herramienta más poderosa. Aquí la activamos para que todo lo que imagines se manifieste en tu realidad 👽✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>mini script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar 👽</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">✦ 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <p class="step-hint">El nombre con el que imaginas 👽</p>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">✦ 02 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">✦ 03 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu mini script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 💌</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">✦ 04 — Tu visión</div>
+    <h2 class="step-q">¿Qué deseas <em>imaginar</em>?</h2>
+    <p class="step-hint">Describe lo que imaginas que se manifieste en tu realidad. Sé específic@ y detallad@ 👽✨</p>
+    <textarea class="step-input" id="f-imagetheme" placeholder="Deseo imaginar..." style="height:140px;"></textarea>
+    <div class="field-err" id="e-imagetheme">Por favor describe tu imaginación</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Activar mi imaginación 👽</button></div>
+  </div>`;
+}
+
+function buildImaginePrompt(fd){
+  const name = fd.name || '_';
+  const theme = fd.imagetheme || '';
+
+  const deliveryHeader = `Hola 𓂃𓈒𓏸🫧👽𓏸𓈒𓂃 
+Aquí está tu mini script de IMAGINE ✨
+Por favor grábalo y escúchalo diariamente 🎤📄
+Cuando lo tengas listo, envíalo a:
+eriorcenter@gmail.com 💌
+¡Gracias! 🌸💫`;
+
+  if(fd.lang === 'es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Tema de imaginación: "${theme}"
+
+Usa EXACTAMENTE el siguiente script base sin cambiar nada. Solo completa los espacios en blanco (____) con el nombre "${name}" y agrega una sección personalizada al final que integre el tema.
+
+SCRIPT BASE:
+Yo, ____, soy imaginación.
+Tengo una imaginación poderosa, vívida e ilimitada.
+¿Por qué será que todo lo que imagino intensamente se vuelve mi realidad?
+¿Por qué mi mente crea, mi imaginación lidera y mi realidad obedece tan fácilmente?
+¿Por qué no hay diferencia entre lo que imagino y lo que experimento?
+Yo, ____, sé cómo instalar dentro de mí el silencio verdadero.
+El ruido mental se apaga. La crítica interna se disuelve.
+Mi mente se vuelve solo una herramienta: clara, quieta y profunda.
+¿Por qué será que en este silencio puedo escucharme de verdad?
+¿Por qué este silencio ya está instalado y lo activo cuando yo quiera?
+Yo, ____, recupero mi niñ@ interior.
+Me siento segur@ para explorar, equivocarme y jugar sin miedo.
+Me doy permiso radical de jugar. Juego porque sí. Creo porque sí.
+¿Por qué será que mi niñ@ interior sabe que aquí dentro está protegido?
+¿Por qué todo se vuelve fácil, fluido y divertido cuando le dejo el mando?
+¿Por qué mi creatividad fluye sin esfuerzo cuando soy mi niñ@ interior?
+Yo, ____, instalo un amor propio que se nota en toda mi realidad.
+Me hablo con respeto. Me cuido. Elijo lo que me eleva.
+¿Por qué será que este amor propio ya no es solo un sentimiento, sino una forma de vivir?
+¿Por qué está programado en mí y transforma todo lo que toco?
+Yo, ____, limpio todos mis deseos de todo miedo y carencia.
+Lo que deseo ahora nace solo de expansión y verdad.
+La honestidad conmigo mism@ se vuelve natural y segura.
+¿Por qué será que estos deseos limpios se instalan en mi inconsciente y se vuelven mi realidad?
+¿Por qué ya no necesito mentirme?
+¿Por qué todo lo que imagino desde mi corazón se cumple de forma inmediata, natural y fácil?
+Todo es fácil.
+Todo fluye.
+Todo está hecho.
+Y así es.
+
+INSTRUCCIONES PARA LA SECCIÓN PERSONALIZADA:
+Después de "Y así es." agrega 6 a 10 líneas personalizadas que integren el tema "${theme}":
+- Empieza con: "Yo, ${name}, ahora aplico toda esta imaginación, este silencio, este niñ@ interior, este amor propio y estos deseos limpios a..."
+- Continúa con afirmaciones y preguntas en el mismo estilo (usando "¿Por qué será que...?")
+- Habla del tema como si ya se estuviera manifestando de forma natural, fácil y divertida
+- Mantén lenguaje neutral con "@"
+- Termina con:
+"Todo es fácil.
+Todo fluye.
+Todo está hecho.
+Y así es."
+
+Entrega EXACTAMENTE en este formato:
+
+${deliveryHeader}
+
+[AQUÍ VA EL SCRIPT COMPLETO con nombre y sección personalizada]
+
+REGLAS CRÍTICAS:
+- Sin Markdown
+- Sin explicaciones
+- No cambies el script base - es SAGRADO
+- Solo completa los ____ y agrega la sección personalizada
+- Solo el header y el script`;
+  } else {
+    return `Client: ${name}, Imagination theme: "${theme}". 
+Generate IMAGINE script in English using the exact base provided, completing blanks with name and adding personalized section for the theme. Delivery format: Start with greeting header (in Spanish as provided), then complete script. No Markdown. ONLY formatted content.`;
+  }
+}
+
+function getImagineSystem(fd){
+  return `Eres un creador de scripts de transformación personal. Tu tarea es tomar el script base IMAGINE exactamente como está (sin cambiar absolutamente nada) y:
+
+1. Completa todos los espacios en blanco (____) con el nombre de la persona
+2. Agrega una sección personalizada de 6-10 líneas al final que integre el tema elegido
+3. La sección personalizada sigue el patrón exacto del script base
+4. Mantén el lenguaje neutral con "@"
+5. El tono es poderoso, directo, sin explicaciones
+
+CRÍTICO: No cambies una sola palabra del script base. Es la estructura sagrada. Solo personalizas.`;
 }
 
 (function(){

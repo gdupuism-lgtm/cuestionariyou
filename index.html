@@ -9239,7 +9239,7 @@ async function generate() {
       for(let ra=0;ra<3;ra++){
         if(ra>0) await delay(ra===1?3000:5000);
         try{
-          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA})});
+          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA,max_tokens:2000})});
           const dataA=await resA.json();
           const txtA=dataA.text||'';
           if(!txtA.includes('overloaded_error')&&!txtA.includes('API ERROR')&&txtA.length>20){partA=txtA;break;}
@@ -9252,7 +9252,7 @@ async function generate() {
       for(let rb=0;rb<3;rb++){
         if(rb>0) await delay(rb===1?3000:5000);
         try{
-          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB})});
+          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB,max_tokens:2000})});
           const dataB=await resB.json();
           const txtB=dataB.text||'';
           if(!txtB.includes('overloaded_error')&&!txtB.includes('API ERROR')&&txtB.length>20){partB=txtB;break;}
@@ -9328,7 +9328,7 @@ async function _doGenerate() {
       for(let ra=0;ra<3;ra++){
         if(ra>0) await delay(ra===1?3000:5000);
         try{
-          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA})});
+          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA,max_tokens:2000})});
           const dataA=await resA.json();
           const txtA=dataA.text||'';
           if(!txtA.includes('overloaded_error')&&!txtA.includes('API ERROR')&&txtA.length>20){partA=txtA;break;}
@@ -9341,7 +9341,7 @@ async function _doGenerate() {
       for(let rb=0;rb<3;rb++){
         if(rb>0) await delay(rb===1?3000:5000);
         try{
-          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB})});
+          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB,max_tokens:2000})});
           const dataB=await resB.json();
           const txtB=dataB.text||'';
           if(!txtB.includes('overloaded_error')&&!txtB.includes('API ERROR')&&txtB.length>20){partB=txtB;break;}

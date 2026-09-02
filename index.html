@@ -7909,6 +7909,210 @@ textarea.step-input:focus { opacity:1; }
 .theme-imagine .btn-copy:hover { background:#220f3a; color:#e8d5ff; }
 .theme-imagine .step.active { animation:img-step-in 0.7s cubic-bezier(0.16,1,0.3,1); }
 @keyframes img-step-in { from{opacity:0;transform:translateY(32px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+
+/* ═══════════════════════════════════════
+   LIMITLESS — Dorado · Azul Eléctrico · Mente Extraordinaria
+   ═══════════════════════════════════════ */
+.theme-limitless {
+  --bg: #0a0805;
+  --accent: #ffd700;
+  --accent2: #ffed4e;
+  --accent3: #fff9e6;
+  --gold: #00d4ff;
+  --gold2: #00f0ff;
+  --text: #ffffff;
+  --text-soft: rgba(255,255,255,0.95);
+  --header-bg: #080600;
+  --pdot-off: rgba(255,215,0,0.25);
+  --pdot-on: #ffd700;
+}
+
+.theme-limitless .form-header {
+  background:var(--header-bg);
+  border-bottom:1px solid rgba(255,215,0,0.35);
+  position:relative; overflow:hidden;
+}
+.theme-limitless .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(255,215,0,0.9), rgba(0,212,255,0.6), rgba(255,215,0,0.9), transparent);
+  animation:lim-headerline 4s linear infinite;
+  background-size:200% 100%;
+}
+@keyframes lim-headerline { to{background-position:200% center} }
+.theme-limitless .fh-brand {
+  background:linear-gradient(90deg, #ffed4e, #ffd700, #00d4ff, #ffed4e);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:lim-shimmer 5s linear infinite; letter-spacing:7px;
+}
+@keyframes lim-shimmer { to{background-position:200% center} }
+
+.theme-limitless .pdot { background:var(--pdot-off); }
+.theme-limitless .pdot.done { background:rgba(255,215,0,0.55); }
+.theme-limitless .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 16px rgba(255,215,0,1), 0 0 32px rgba(0,212,255,0.4);
+  animation:lim-dot 2s ease-in-out infinite;
+}
+@keyframes lim-dot { 0%,100%{transform:scale(1)} 50%{transform:scale(1.5);box-shadow:0 0 28px rgba(255,215,0,1),0 0 50px rgba(0,212,255,0.5)} }
+
+.theme-limitless #page-form {
+  background:linear-gradient(135deg, #0a0805 0%, #0d0a04 50%, #0a0805 100%); position:relative; overflow:hidden; color:var(--text);
+}
+.theme-limitless #page-form::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse at 25% 25%, rgba(255,215,0,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 75%, rgba(0,212,255,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 10%, rgba(255,237,78,0.06) 0%, transparent 40%);
+  animation:lim-bg 7s ease-in-out infinite;
+}
+@keyframes lim-bg { 0%,100%{opacity:0.6} 50%{opacity:0.9} }
+
+.theme-limitless #page-form::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(255,237,78,0.8), transparent),
+    radial-gradient(1px 1px at 30% 40%, rgba(255,215,0,0.7), transparent),
+    radial-gradient(1px 1px at 55% 12%, rgba(0,212,255,0.6), transparent),
+    radial-gradient(1px 1px at 70% 35%, rgba(0,240,255,0.65), transparent),
+    radial-gradient(1px 1px at 88% 20%, rgba(255,215,0,0.6), transparent),
+    radial-gradient(1px 1px at 15% 65%, rgba(0,212,255,0.55), transparent),
+    radial-gradient(1px 1px at 45% 80%, rgba(255,237,78,0.6), transparent),
+    radial-gradient(1px 1px at 82% 70%, rgba(255,215,0,0.55), transparent),
+    radial-gradient(2px 2px at 60% 55%, rgba(0,240,255,0.5), transparent),
+    radial-gradient(1px 1px at 25% 90%, rgba(255,215,0,0.5), transparent);
+  opacity:0.75; animation:lim-stars 8s ease-in-out infinite;
+}
+@keyframes lim-stars { 0%,100%{opacity:0.65} 50%{opacity:0.95} }
+
+.theme-limitless .form-main { position:relative; z-index:1; }
+
+.theme-limitless .intro-card {
+  background:linear-gradient(135deg, rgba(255,215,0,0.15), rgba(0,212,255,0.1), rgba(255,215,0,0.12));
+  border:2px solid rgba(255,215,0,0.4); background-clip:padding-box;
+  position:relative; overflow:hidden;
+  backdrop-filter:blur(12px);
+}
+.theme-limitless .intro-card::before {
+  content:''; position:absolute; inset:-1px; z-index:-1; border-radius:inherit;
+  background:linear-gradient(135deg, rgba(255,215,0,0.7), rgba(0,212,255,0.4), rgba(255,215,0,0.3), rgba(0,212,255,0.5));
+  background-size:300% 300%;
+  animation:lim-border 5s linear infinite;
+}
+@keyframes lim-border { to{background-position:300% 300%} }
+
+.theme-limitless .lim-intro { padding-top:155px; padding-bottom:52px; }
+
+.theme-limitless .lim-orb {
+  position:absolute; top:-30px; left:50%; transform:translateX(-50%);
+  width:260px; height:260px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,215,0,0.6) 0%, rgba(0,212,255,0.3) 30%, rgba(255,215,0,0.15) 55%, transparent 75%);
+  filter:blur(18px);
+  animation:lim-orb 4s ease-in-out infinite;
+}
+@keyframes lim-orb { 0%,100%{transform:translateX(-50%) scale(1);opacity:0.85} 50%{transform:translateX(-50%) scale(1.2);opacity:1} }
+
+.theme-limitless .lim-ring {
+  position:absolute; top:20px; left:50%; transform:translateX(-50%);
+  width:130px; height:130px; border-radius:50%;
+  border:2px solid rgba(255,215,0,0.4);
+  box-shadow:0 0 40px rgba(255,215,0,0.5), inset 0 0 25px rgba(0,212,255,0.25);
+  animation:lim-ring 3s ease-in-out infinite;
+}
+@keyframes lim-ring { 0%,100%{transform:translateX(-50%) scale(1);opacity:0.7} 50%{transform:translateX(-50%) scale(1.1);opacity:1} }
+
+.theme-limitless .intro-card-label {
+  position:relative; z-index:2; letter-spacing:5px;
+  background:linear-gradient(90deg, #ffed4e, #ffd700, #00d4ff);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.theme-limitless .intro-card-title {
+  font-family:'DM Serif Display',serif; font-size:52px; line-height:1; position:relative; z-index:2;
+}
+.theme-limitless .intro-card-title em {
+  font-style:italic;
+  background:linear-gradient(135deg, #ffd700 0%, #ffed4e 35%, #00d4ff 60%, #ffd700 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:lim-shimmer 4s linear infinite;
+}
+.theme-limitless .intro-card-desc { color:#ffffff; font-size:14px; line-height:2; position:relative; z-index:2; font-weight:500; }
+
+.theme-limitless .step-eyebrow {
+  background:linear-gradient(90deg, #ffed4e, #ffd700, #00d4ff, #ffed4e);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:lim-shimmer 5s linear infinite;
+  letter-spacing:7px; font-family:'Courier New',monospace; font-weight:700;
+}
+.theme-limitless .step-q { font-family:'DM Serif Display',serif; color:#ffffff; font-weight:600; letter-spacing:-1px; font-size:clamp(24px,4vw,38px); }
+.theme-limitless .step-q em {
+  font-style:italic;
+  background:linear-gradient(135deg, #ffd700, #ffed4e 50%, #00d4ff);
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:lim-shimmer 4s linear infinite;
+}
+.theme-limitless .step-hint { color:#ffffff; font-size:14px; opacity:0.95; }
+.theme-limitless .step-input {
+  color:#ffffff; opacity:1; border-color:#ffd700;
+  background:#1a1505; font-family:'Cormorant Garamond',serif; font-size:17px; border-width:2px;
+}
+.theme-limitless .step-input::placeholder { color:#ffed4e; font-style:italic; opacity:1; }
+.theme-limitless .step-input:focus {
+  border-color:#00d4ff; box-shadow:0 0 20px rgba(0,212,255,0.5), 0 0 40px rgba(255,215,0,0.25);
+  background:#2a1f0a;
+}
+.theme-limitless textarea.step-input { background:#1a1505; border-width:2px; }
+.theme-limitless textarea.step-input::placeholder { color:#ffed4e; opacity:1; }
+.theme-limitless .lang-btn { color:#ffed4e; border-color:rgba(255,215,0,0.4); opacity:1; background:transparent; }
+.theme-limitless .lang-btn.active { background:linear-gradient(135deg, #ffd700, #ffed4e); color:#0a0805; }
+.theme-limitless .choice-opt { border-color:rgba(255,215,0,0.25); color:var(--text); opacity:1; background:rgba(255,215,0,0.05); }
+.theme-limitless .choice-opt:hover { border-color:rgba(255,215,0,0.5); background:rgba(255,215,0,0.1); }
+.theme-limitless .choice-opt.selected { border-color:#ffed4e; background:rgba(255,215,0,0.12); box-shadow:0 0 16px rgba(255,215,0,0.25); }
+.theme-limitless .choice-opt.selected .choice-radio { background:#ffd700; border-color:#ffd700; box-shadow:0 0 8px rgba(255,215,0,0.7); }
+.theme-limitless .btn-back { color:rgba(255,255,255,0.3); }
+.theme-limitless .btn-next {
+  position:relative; overflow:hidden;
+  border-color:#ffed4e; color:#ffffff; letter-spacing:6px; font-weight:600;
+}
+.theme-limitless .btn-next::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(255,215,0,0.15), rgba(0,212,255,0.1), rgba(255,215,0,0.15));
+  background-size:200% 100%; opacity:0; transition:opacity 0.3s;
+  animation:lim-btn 3s linear infinite;
+}
+@keyframes lim-btn { to{background-position:200% center} }
+.theme-limitless .btn-next:hover { background:transparent; border-color:#00d4ff; color:#ffffff; box-shadow:0 0 30px rgba(0,212,255,0.7); }
+.theme-limitless .btn-next:hover::before { opacity:1; }
+
+.theme-limitless #page-result { background:linear-gradient(135deg, #0a0805 0%, #0d0a04 100%) !important; color:var(--text) !important; }
+.theme-limitless .result-header { background:#080600; border-bottom:2px solid rgba(255,215,0,0.45); position:relative; }
+.theme-limitless .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(255,215,0,0.8), rgba(0,212,255,0.6), transparent);
+}
+.theme-limitless .result-tag {
+  background:linear-gradient(90deg, #ffed4e, #ffd700);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  letter-spacing:5px;
+}
+.theme-limitless .result-htitle { font-family:'DM Serif Display',serif; color:var(--text); }
+.theme-limitless .result-htitle em {
+  background:linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #00d4ff);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.theme-limitless .script-wrap { border-color:rgba(255,215,0,0.3); background:#0d0a04; }
+.theme-limitless .script-head { background:#080600; }
+.theme-limitless .script-content { font-family:'Cormorant Garamond',serif; color:#ffffff !important; background:#0d0a04 !important; line-height:2.1; font-size:16px; }
+.theme-limitless .btn-dl { border-color:rgba(255,215,0,0.35); color:rgba(255,215,0,0.65); background:transparent; }
+.theme-limitless .btn-dl:hover { border-color:#ffed4e; color:#ffed4e; }
+.theme-limitless .result-note { border-color:rgba(255,215,0,0.25); color:rgba(255,255,255,0.5); background:rgba(255,215,0,0.04); padding:24px 32px; }
+.theme-limitless .btn-copy { border-color:#ffd700; background:#1a1505; color:#ffed4e; font-weight:600; }
+.theme-limitless .btn-copy:hover { background:#2a1f0a; color:#00d4ff; }
+.theme-limitless .step.active { animation:lim-step-in 0.7s cubic-bezier(0.16,1,0.3,1); }
+@keyframes lim-step-in { from{opacity:0;transform:translateY(32px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
 </style>
 </head>
 <body>
@@ -8421,6 +8625,19 @@ const AUDIOS = {
     systemPrompt: getImagineSystem,
     singleOnly: true,
   },
+  'milimitless99': {
+    name: 'LIMITLESS',
+    theme: 'theme-limitless',
+    steps: 4,
+    headerLabel: 'ERIORCENTER — LIMITLESS 🧠⚡',
+    introTitle: '<em>LIMITLESS</em>',
+    introDesc: 'Tu mente es extraordinaria. Activa tu poder mental ilimitado 🧠✨',
+    fields: ['name','last','email','limitlessintention'],
+    buildSteps: buildLimitlessSteps,
+    buildPrompt: buildLimitlessPrompt,
+    systemPrompt: getLimitlessSystem,
+    singleOnly: true,
+  },
 };
 
 // ═══════════════════════════════════
@@ -8507,6 +8724,7 @@ const THEME_BG = {
   'theme-apm4': '#080508',
   'theme-seduction': '#080306',
   'theme-imagine': '#010001',
+  'theme-limitless': '#0a0805',
 };
 const THEME_COLOR = {
   'theme-you': '#faf8f5',
@@ -8544,6 +8762,7 @@ const THEME_COLOR = {
   'theme-apm4': '#fdf8f0',
   'theme-seduction': '#faf5f5',
   'theme-imagine': '#ffffff',
+  'theme-limitless': '#ffffff',
 };
 
 function applyTheme(theme) {
@@ -8731,6 +8950,7 @@ function validateStep(n) {
   if(fields[n-1]==='avoid'){hide('e-avoid');if(!v('f-avoid')){show('e-avoid');return false;}}
   if(fields[n-1]==='iconintention'){hide('e-iconintention');if(!v('f-iconintention')){show('e-iconintention');return false;}}
   if(fields[n-1]==='imagetheme'){hide('e-imagetheme');if(!v('f-imagetheme')){show('e-imagetheme');return false;}}
+  if(fields[n-1]==='limitlessintention'){hide('e-limitlessintention');if(!v('f-limitlessintention')){show('e-limitlessintention');return false;}}
   if(fields[n-1]==='keepcooltopics'){
     hide('e-keepcooltopics');
     const kcEl=document.getElementById('f-keepcooltopics');
@@ -8909,6 +9129,7 @@ function collectStep(n) {
   if(f==='record'){const r=document.querySelector('input[name="record"]:checked');fd.record=r?r.value:'';}
   if(f==='time'){const t=document.querySelector('input[name="time"]:checked');fd.time=t?t.value:'';}
   if(f==='imagetheme') fd.imagetheme=g('f-imagetheme');
+  if(f==='limitlessintention') fd.limitlessintention=g('f-limitlessintention');
   fd.lang=lang;
 }
 
@@ -15098,6 +15319,121 @@ function getImagineSystem(fd){
 5. El tono es poderoso, directo, sin explicaciones
 
 CRÍTICO: No cambies una sola palabra del script base. Es la estructura sagrada. Solo personalizas.`;
+}
+
+// ═══════════════════════════════════
+// LIMITLESS — Funciones
+// ═══════════════════════════════════
+function buildLimitlessSteps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card lim-intro">
+      <div class="lim-orb"></div>
+      <div class="lim-ring"></div>
+      <div class="intro-card-label">ERIORCENTER — PODER MENTAL ✦</div>
+      <div class="intro-card-title"><em>LIMITLESS</em></div>
+      <div class="intro-card-desc">Tu mente es extraordinaria. Activa tu poder mental ilimitado 🧠✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar 🧠</button></div>
+  </div>
+
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">✦ 01 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">✦ 02 — Identificación</div>
+    <h2 class="step-q">¿Cuál es tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">✦ 03 — Contacto</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <p class="step-hint">Por favor usa el mail con el que pagaste 💌</p>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">✦ 04 — Tu Intención</div>
+    <h2 class="step-q">¿Para qué quieres <em>intencionar</em> tu script?</h2>
+    <p class="step-hint">Por ejemplo: saber más idiomas, ser más disciplinado, ser menos cuadrado, entender mejor la física 🧠⚡</p>
+    <textarea class="step-input" id="f-limitlessintention" placeholder="Quiero poder..." style="height:140px;"></textarea>
+    <div class="field-err" id="e-limitlessintention">Por favor describe tu intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Activar mi mente 🧠⚡</button></div>
+  </div>`;
+}
+
+function buildLimitlessPrompt(fd){
+  const name = fd.name || '_';
+  const intention = fd.limitlessintention || '';
+
+  const deliveryHeader = `Hola 𓂃𓈒𓏸🧠⚡𓏸𓈒𓂃 
+Este es tu script para el audio de LIMITLESS. Por favor manda la grabación al correo eriorcenter@gmail.com`;
+
+  if(fd.lang === 'es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Intención: "${intention}"
+
+INSTRUCCIONES CRÍTICAS:
+Genera un Mini Script personalizado usando EXACTAMENTE esta estructura base:
+
+"Yo, ____, tengo una mente extraordinaria. 🧠✨
+Mi mente es poderosa y cada día descubro nuevas capacidades dentro de mí.
+Tengo el increíble poder de [TEMA PERSONALIZADO] y se siente completamente natural para mí.
+Mi mente sabe exactamente cómo crear y experimentar [RESULTADO PERSONALIZADO].
+Confío en mi poder, en mi imaginación y en todo mi potencial.
+¿Por qué será que [TEMA PERSONALIZADO] se siente tan natural para mí? ⚡✨"
+
+PASOS:
+1. Completa ____ con: "${name}"
+2. Adapta [TEMA PERSONALIZADO] según la intención: "${intention}"
+3. Adapta [RESULTADO PERSONALIZADO] de forma natural
+4. NO copies mecánicamente - adapta las frases para que tengan sentido gramatical
+5. El resultado debe sentirse escrito especialmente para esa persona
+6. Máximo 70-100 palabras total
+7. Tono: mágico, poderoso, positivo, extraordinario
+
+Devuelve EXACTAMENTE en este formato:
+
+${deliveryHeader}
+
+[AQUÍ VA EL SCRIPT COMPLETADO]
+
+REGLAS CRÍTICAS:
+- Sin Markdown
+- Sin explicaciones
+- Solo el header y el script`;
+  } else {
+    return `Client: ${name}, Intention: "${intention}". Generate complete LIMITLESS script (70-100 words) using exact base structure provided, naturally adapting theme and result. Tone: magical, powerful, positive. First person, present. Delivery format: greeting header (in Spanish as provided) then complete script. No Markdown. Only formatted content.`;
+  }
+}
+
+function getLimitlessSystem(fd){
+  return `Eres un creador de scripts de transformación personal. Tu tarea es generar un Script personalizado LIMITLESS usando exactamente la estructura base proporcionada.
+
+CRÍTICO:
+1. Usa la estructura exacta - NO cambies el patrón
+2. Completa los espacios en blanco con el nombre
+3. Adapta [TEMA PERSONALIZADO] y [RESULTADO PERSONALIZADO] según la intención del usuario
+4. NO copies mecánicamente - adapta las frases para que tengan sentido natural
+5. El resultado debe sentirse escrito especialmente para esa persona
+6. Mantén el tono mágico, poderoso, positivo, extraordinario
+7. Primera persona, presente
+8. 70-100 palabras máximo
+9. Devuelve solo el script - sin explicaciones`;
 }
 
 (function(){

@@ -8235,16 +8235,16 @@ const AUDIOS = {
     systemPrompt: getAmorSystem,
   },
   'mibooster44': {
-    name: 'Booster',
-    theme: 'theme-booster',
+    name: 'BOOSTER 2.0',
+    theme: 'theme-limitless',
     steps: 5,
-    headerLabel: 'ERIORCENTER — BOOSTER ⚡',
-    introTitle: 'Booster',
-    introDesc: 'Este audio ha sido creado para ayudarte a que <strong>todos tus otros audios funcionen más rápido y con mayor potencia</strong>, ya que te lleva al <strong>estado de neutralidad</strong> ⚡🌿',
-    fields: ['name','last','email','intention','record'],
-    buildSteps: buildBoosterSteps,
-    buildPrompt: buildBoosterPrompt,
-    systemPrompt: getBoosterSystem,
+    headerLabel: 'ERIORCENTER — BOOSTER 2.0 ⚡🚀',
+    introTitle: 'BOOSTER <em>2.0</em>',
+    introDesc: 'Entra en presencia, neutralidad y elección consciente. Domina el arte de regresar a tu centro y materializar tus preferencias sin esfuerzo ⚡✨',
+    fields: ['name','last','email','boosterintention','record'],
+    buildSteps: buildBooster2Steps,
+    buildPrompt: buildBooster2Prompt,
+    systemPrompt: getBooster2System,
   },
   'miamorpropioHombre55': {
     name: 'Amor Propio Magic Hombre',
@@ -8913,6 +8913,7 @@ function validateStep(n) {
     if(!v(fid)){show('e-'+fields[n-1]);return false;}
   }
   if(fields[n-1]==='intention'){hide('e-intention');if(!v('f-intention')){show('e-intention');return false;}}
+  if(fields[n-1]==='boosterintention'){hide('e-boosterintention');if(!v('f-boosterintention')){show('e-boosterintention');return false;}}
   if(fields[n-1]==='condition'){hide('e-condition');if(!v('f-condition')){show('e-condition');return false;}}
   if(fields[n-1]==='urgency'){hide('e-urgency');if(!v('f-urgency')){show('e-urgency');return false;}}
   if(fields[n-1]==='manifest'){hide('e-manifest');if(!v('f-manifest')){show('e-manifest');return false;}}
@@ -9056,7 +9057,7 @@ function collectStep(n) {
   if(f==='last') fd.last=g('f-last');
   if(f==='email') fd.email=g('f-email');
   if(f==='wish1') fd.wishes=[g('wish-1'),g('wish-2'),g('wish-3')].filter(Boolean);
-  if(['hobby','desire','strength','wound','money','intention'].includes(f)) fd[f]=g('f-'+f);
+  if(['hobby','desire','strength','wound','money','intention','imagetheme','limitlessintention','boosterintention'].includes(f)) fd[f]=g('f-'+f);
   if(f==='condition') fd.condition=g('f-condition');
   if(f==='urgency') fd.urgency=g('f-urgency');
   if(f==='manifest') fd.manifest=g('f-manifest');
@@ -15434,6 +15435,133 @@ CRÍTICO:
 7. Primera persona, presente
 8. 70-100 palabras máximo
 9. Devuelve solo el script - sin explicaciones`;
+}
+
+// ═══════════════════════════════════
+// BOOSTER 2.0 — Funciones
+// ═══════════════════════════════════
+function buildBooster2Steps(){
+  document.getElementById('form-main-area').innerHTML=`
+  <div class="step active" data-step="0">
+    <div class="intro-card lim-intro">
+      <div class="lim-orb"></div>
+      <div class="lim-ring"></div>
+      <div class="intro-card-label">ERIORCENTER — PODER POTENCIADO ✦</div>
+      <div class="intro-card-title">BOOSTER <em>2.0</em></div>
+      <div class="intro-card-desc">Entra en presencia, neutralidad y elección consciente. Domina el arte de regresar a tu centro y materializar tus preferencias sin esfuerzo ⚡✨</div>
+    </div>
+    <div class="step-eyebrow">Antes de comenzar</div>
+    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
+    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar ⚡</button></div>
+  </div>
+  <div class="step" data-step="1">
+    <div class="step-eyebrow">01 — Tu nombre</div>
+    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
+    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
+    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-eyebrow">02 — Tu apellido</div>
+    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
+    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
+    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Tu email</div>
+    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
+    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
+    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Tu intención</div>
+    <h2 class="step-q">¿Para qué quieres <em>intencionar</em> este audio?</h2>
+    <p class="step-hint">Un solo tema, breve. Si ya tienes tu script solo escribe "ya lo tengo" ⚡</p>
+    <textarea class="step-input" id="f-boosterintention" placeholder="Quiero..."></textarea>
+    <div class="field-err" id="e-boosterintention">Por favor escribe tu intención</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="5">
+    <div class="step-eyebrow">05 — Grabación</div>
+    <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
+    <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
+    <div class="choices">
+      <label class="choice-opt selected" onclick="pickChoice(this,'record')"><input type="radio" name="record" value="self" checked><div class="choice-radio"></div><span class="choice-label">✦ Sí, estoy listo/a para recibir mi mini script</span></label>
+    </div>
+    <div class="field-err" id="e-record">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Generar mi script ✨</button></div>
+  </div>`;
+}
+
+function buildBooster2Prompt(fd){
+  const name = fd.name || '_';
+  const intention = fd.boosterintention || '';
+
+  if(fd.lang === 'es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Intención: "${intention}"
+
+INSTRUCCIONES CRÍTICAS:
+
+Usa el siguiente script como estructura base obligatoria.
+REGLA PRINCIPAL: Conserva el script completo. No elimines, resumas, sustituyas ni cambies ninguna de sus partes.
+
+La única sección que debes expandir es la que comienza con:
+"Yo elijo la dirección de mi realidad: amor, salud, abundancia, paz, belleza, libertad y cualquier preferencia que quiera experimentar."
+
+Inmediatamente después de esa frase, agrega la intención específica del cliente utilizando esta estructura:
+"Yo elijo [INTENCIÓN DEL CLIENTE]."
+
+Después, desarrolla ampliamente esa intención en varios párrafos escritos en primera persona y en tiempo presente.
+
+El desarrollo debe:
+* Mantener el tono de presencia, neutralidad, elección y facilidad del script original.
+* Convertir la intención del cliente en una realidad ya elegida y natural.
+* Describir de forma concreta cómo se ve y se experimenta esa preferencia.
+* Incluir afirmaciones relacionadas directamente con la intención.
+* Reforzar que esa realidad se siente normal, natural y fácil para la persona.
+* Reforzar que no necesita perseguir, controlar ni descubrir cómo sucederá.
+* Mantener un lenguaje fluido, directo, positivo y adecuado para escucharse repetidamente en un audio.
+* Evitar explicaciones teóricas o consejos.
+* No agregar títulos ni subtítulos dentro del script.
+
+Después de desarrollar la intención, continúa EXACTAMENTE con el resto del script desde:
+"Todo se manifiesta sin esfuerzo…"
+
+SCRIPT BASE OBLIGATORIO:
+Yo ${name}, entro en una etapa de presencia, neutralidad y elección consciente. Dejo de analizarlo todo, de convertir cada pensamiento en una historia y de vivir intentando corregirme. Dejo de sanar a otros y de anticipar problemas.
+Todos los días observo lo que aparece sin juzgarlo, decido si me sirve o no y lo suelto rápidamente cuando no quiero alimentarlo. Así elimino cualquier bucle.
+Mi atención vuelve a mí, a lo que disfruto, a mis preferencias y a la experiencia que quiero vivir. No necesito tener todo resuelto ni conocer cada paso; puedo avanzar momento a momento, confiar más en mí y permitir que la vida también sea un juego. Vivo la vida con curiosidad, disfrute y expansión.
+Yo elijo la dirección de mi realidad: amor, salud, abundancia, paz, belleza, libertad y cualquier preferencia que quiera experimentar.
+
+[AQUÍ: Agrega "Yo elijo ${intention}." y desarrolla ampliamente]
+
+Todo se manifiesta sin esfuerzo. En vez de perseguir resultados, forzar procesos o quedarme atrapad@ midiendo mi progreso, domino el arte de regresar a mi centro, elegir mis preferencias y permitir que el universo las materialice sin esfuerzo.
+Yo ${name}, vivo en un presente limpio donde no necesito cargar continuamente con historias anteriores. Solo observo, elijo, permanezco en neutralidad y vivo desde mis preferencias.
+
+Devuelve SOLO el script completo, sin explicaciones ni títulos.`;
+  } else {
+    return `Client: ${name}, Intention: "${intention}". Use complete base script provided. Expand ONLY the "Yo elijo la dirección..." section with client's intention. Develop in first person, present tense, maintaining tone of presence, neutrality, ease. Do NOT change base script or add titles. Return complete script only, no explanations.`;
+  }
+}
+
+function getBooster2System(fd){
+  return `Eres un creador de scripts de presencia y neutralidad. Tu tarea es expandir el script BOOSTER 2.0 con la intención específica del cliente.
+
+CRÍTICO:
+1. Mantén el script base COMPLETO y sin cambios
+2. Solo expande la sección "Yo elijo la dirección de mi realidad..."
+3. Agrega la intención del cliente de forma natural
+4. Desarrolla ampliamente en primera persona, presente, sin teoría
+5. Mantén el tono de presencia, neutralidad, facilidad y poder
+6. No agrues explicaciones teóricas
+7. Devuelve SOLO el script - sin títulos ni meta-comentarios
+
+La calidad está en la personalización natural y auténtica.`;
 }
 
 (function(){

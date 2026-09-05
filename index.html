@@ -8247,16 +8247,16 @@ const AUDIOS = {
     systemPrompt: getBooster2System,
   },
   'miamorpropioHombre55': {
-    name: 'Amor Propio Magic Hombre',
-    theme: 'theme-hombre',
+    name: 'AMOR PROPIO MAGIC HOMBRE 2.0',
+    theme: 'theme-limitless',
     steps: 5,
-    headerLabel: 'ERIORCENTER — Amor Propio Magic Hombre 💎',
-    introTitle: 'Amor Propio Magic <em>Hombre</em>',
-    introDesc: 'Muchas gracias por adquirir nuestro programa para programar en tu inconsciente mucha <strong>magia</strong> y ser tu mejor versión <strong>masculina</strong> 💎⚡',
-    fields: ['name','last','email','intention','record'],
+    headerLabel: 'ERIORCENTER — AMOR PROPIO MAGIC HOMBRE 2.0 💎⚡',
+    introTitle: 'AMOR PROPIO MAGIC <em>HOMBRE 2.0</em>',
+    introDesc: 'Eres un hombre seguro, valioso y profundamente orgulloso de quien eres. Domina la seguridad, la abundancia y el poder de tu presencia 💎✨',
+    fields: ['name','last','email','hombreintention','record'],
     buildSteps: buildHombreSteps,
-    buildPrompt: buildHombrePrompt,
-    systemPrompt: getHombreSystem,
+    buildPrompt: buildHombrePrompt2,
+    systemPrompt: getHombreSystem2,
   },
   'mivitamind66': {
     name: 'VITAMIND',
@@ -8913,6 +8913,7 @@ function validateStep(n) {
     if(!v(fid)){show('e-'+fields[n-1]);return false;}
   }
   if(fields[n-1]==='intention'){hide('e-intention');if(!v('f-intention')){show('e-intention');return false;}}
+  if(fields[n-1]==='hombreintention'){hide('e-hombreintention');if(!v('f-hombreintention')){show('e-hombreintention');return false;}}
   if(fields[n-1]==='boosterintention'){hide('e-boosterintention');if(!v('f-boosterintention')){show('e-boosterintention');return false;}}
   if(fields[n-1]==='condition'){hide('e-condition');if(!v('f-condition')){show('e-condition');return false;}}
   if(fields[n-1]==='urgency'){hide('e-urgency');if(!v('f-urgency')){show('e-urgency');return false;}}
@@ -9057,7 +9058,7 @@ function collectStep(n) {
   if(f==='last') fd.last=g('f-last');
   if(f==='email') fd.email=g('f-email');
   if(f==='wish1') fd.wishes=[g('wish-1'),g('wish-2'),g('wish-3')].filter(Boolean);
-  if(['hobby','desire','strength','wound','money','intention','imagetheme','limitlessintention','boosterintention'].includes(f)) fd[f]=g('f-'+f);
+  if(['hobby','desire','strength','wound','money','intention','imagetheme','limitlessintention','boosterintention','hombreintention'].includes(f)) fd[f]=g('f-'+f);
   if(f==='condition') fd.condition=g('f-condition');
   if(f==='urgency') fd.urgency=g('f-urgency');
   if(f==='manifest') fd.manifest=g('f-manifest');
@@ -10534,8 +10535,8 @@ function buildHombreSteps(){
     <div class="step-eyebrow">04 — Tu intención</div>
     <h2 class="step-q">¿Para qué quieres que <em>intencionemos</em> este audio?</h2>
     <p class="step-hint">Por favor hazlo súper específico. Un solo tema. Entre más detalle, mejor. 💎<br><br>Ejemplos: "Quiero encontrar un mejor trabajo que sea desde mi casa", "Quiero conocer al amor de mi vida", "Quiero ser más disciplinado en el gym", "Quiero ganar más dinero con mi negocio".</p>
-    <textarea class="step-input" id="f-intention" placeholder="Quiero..."></textarea>
-    <div class="field-err" id="e-intention">Por favor escribe tu intención</div>
+    <textarea class="step-input" id="f-hombreintention" placeholder="Quiero..."></textarea>
+    <div class="field-err" id="e-hombreintention">Por favor escribe tu intención</div>
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="5">
@@ -15562,6 +15563,90 @@ CRÍTICO:
 7. Devuelve SOLO el script - sin títulos ni meta-comentarios
 
 La calidad está en la personalización natural y auténtica.`;
+}
+
+// ═══════════════════════════════════
+// AMOR PROPIO MAGIC HOMBRE 2.0 — Funciones
+// ═══════════════════════════════════
+function buildHombrePrompt2(fd){
+  const name = fd.name || '_';
+  const intention = fd.hombreintention || '';
+
+  const deliveryHeader = `Por favor, envía la grabación de tu Mini Script a nuestro correo: eriorcenter@gmail.com.
+Asegúrate de grabarlo con claridad y a un ritmo cómodo, ya que esta grabación será utilizada para crear tu experiencia personalizada.
+A continuación encontrarás tu Mini Script personalizado, creado especialmente a partir de la intención que elegiste:
+Aquí está tu mini script:`;
+
+  if(fd.lang === 'es'){
+    return `Datos del cliente:
+- Nombre: ${name}
+- Intención: "${intention}"
+
+INSTRUCCIONES CRÍTICAS:
+
+Usa el siguiente mini script como estructura base obligatoria.
+
+REGLA PRINCIPAL: Conserva el mini script EXACTAMENTE como está escrito. No elimines, resumas, sustituyas, reorganices ni modifiques ninguna palabra, frase, concepto o párrafo.
+
+MINI SCRIPT BASE (SIN CAMBIOS):
+Yo ${name}, soy un hombre seguro, firme, valioso y profundamente orgulloso de quien soy. Confío en mí, en mis decisiones y en mi capacidad para construir una vida extraordinaria. Mi mente es clara, mi energía tiene dirección y mi paz es mi mayor poder. Disfruto de mi libertad, de mi estabilidad y de todo lo que he construido. Las ideas correctas llegan a mí con naturalidad, las convierto en proyectos y negocios prósperos, y el dinero encuentra un lugar seguro conmigo porque sé generarlo, disfrutarlo y multiplicarlo con inteligencia, calma y confianza.
+Cada día admiro más al hombre en el que me estoy convirtiendo. Me gusta mi presencia, mi carácter, mi inteligencia, mi fuerza y la manera en que dirijo mi vida. Me amo, me respeto y soy mi propio respaldo. Mi creatividad genera riqueza, mis decisiones fortalecen mi futuro y mi abundancia crece junto con mi confianza. Soy dueño de mi energía, de mi atención y de mis respuestas; mi libertad se siente increíble y nadie ni nada tiene el poder de quitarme mi paz. ¿Qué voy a hacer ahora que me gusta tanto esta versión de mí, ahora que verdaderamente me amo?
+
+DESPUÉS DEL MINI SCRIPT, agrega UN SOLO párrafo completamente personalizado según la intención que la persona quiera mejorar.
+
+Este párrafo debe estar escrito:
+- En primera persona.
+- En presente.
+- Como una identidad que ya existe.
+- En masculino.
+- De manera directa, firme, segura y positiva.
+- Con frases sencillas y poderosas.
+- Reforzando que la persona YA ES el hombre que representa esa intención.
+- Manteniendo la energía de amor propio, seguridad, confianza, disfrute, facilidad y dominio personal del script original.
+- Sin explicar cómo manifestarlo.
+- Sin consejos.
+- Sin cambiar ninguna parte del mini script original.
+- Desarrollando únicamente la intención proporcionada: "${intention}"
+
+La estructura del párrafo personalizado debe comenzar así:
+"Soy el hombre [IDENTIDAD RELACIONADA CON LA INTENCIÓN]..."
+
+Después desarrolla esa identidad con afirmaciones específicas relacionadas con: ${intention}
+
+Devuelve EXACTAMENTE en este formato:
+
+${deliveryHeader}
+
+[AQUÍ VA EL MINI SCRIPT BASE SIN CAMBIOS, COMPLETAMENTE]
+
+[AQUÍ VA UN SOLO PÁRRAFO PERSONALIZADO comenzando con "Soy el hombre [IDENTIDAD]..."]
+
+REGLAS CRÍTICAS:
+- Sin Markdown
+- Sin explicaciones
+- Mini script base 100% intacto
+- Solo un párrafo personalizado al final
+- Mantén la energía de seguridad, confianza y amor propio`;
+  } else {
+    return `Client: ${name}, Intention: "${intention}". Use EXACT base mini script provided without any changes. After script, add ONE personalized paragraph starting with "Soy el hombre [IDENTITY]..." developing the intention. First person, present, masculine, direct, firm, confident. No explanations, no advice. Return formatted content only.`;
+  }
+}
+
+function getHombreSystem2(fd){
+  return `Eres el editor de Mini Scripts de Amor Propio Magic Hombre 2.0 de ERIORCENTER.
+
+CRÍTICO:
+1. El mini script base debe permanecer EXACTAMENTE como está - SIN CAMBIOS
+2. Agrega SOLO un párrafo personalizado al final
+3. Párrafo: "Soy el hombre [IDENTIDAD]..." desarrollando la intención
+4. Tono: Directo, firme, seguro, positivo, presente
+5. Identidad que YA EXISTE - no futura
+6. Masculino, sin drama, sin análisis terapéutico
+7. Mantén energía de: seguridad, confianza, disfrute, facilidad, dominio personal
+8. Sin explicaciones, sin consejos
+9. Devuelve SOLO el content final - sin títulos ni meta-comentarios
+
+La calidad está en la personalización auténtica y firme.`;
 }
 
 (function(){

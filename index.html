@@ -7739,112 +7739,6 @@ textarea.step-input:focus { opacity:1; }
   75% { opacity:0.95; }
 }
 
-/* ═══ FLOATING GOLD PARTICLES ═══ */
-.gold-particles-container {
-  position:fixed; inset:0; pointer-events:none; z-index:0.5;
-  overflow:hidden;
-}
-
-.gold-particle {
-  position:absolute; border-radius:2px;
-  pointer-events:none;
-  backdrop-filter: blur(0px);
-}
-
-.gold-particle.size-1 { width:12px; height:12px; background:linear-gradient(135deg, rgba(255,215,0,1), rgba(255,165,0,0.8)); box-shadow:0 0 20px rgba(255,215,0,1), 0 0 40px rgba(255,165,0,0.8), inset 0 0 10px rgba(255,255,255,0.4); border:1px solid rgba(255,228,92,0.6); }
-.gold-particle.size-2 { width:18px; height:18px; background:linear-gradient(135deg, rgba(255,228,92,1), rgba(255,215,0,0.9)); box-shadow:0 0 28px rgba(255,228,92,1), 0 0 50px rgba(255,215,0,0.9), inset 0 0 12px rgba(255,255,255,0.5); border:1px solid rgba(255,255,200,0.7); }
-.gold-particle.size-3 { width:24px; height:24px; background:linear-gradient(135deg, rgba(255,165,0,1), rgba(255,215,0,0.85)); box-shadow:0 0 35px rgba(255,165,0,1), 0 0 60px rgba(255,215,0,0.9), inset 0 0 14px rgba(255,255,255,0.6); border:2px solid rgba(255,240,100,0.8); }
-
-.gold-particle.float-1 { animation:float-up-1 4.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-.gold-particle.float-2 { animation:float-up-2 5s infinite cubic-bezier(0.33, 0.66, 0.66, 1); }
-.gold-particle.float-3 { animation:float-up-3 5.5s infinite cubic-bezier(0.42, 0, 0.58, 1); }
-.gold-particle.float-4 { animation:float-up-4 6s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-.gold-particle.float-5 { animation:float-up-5 6.5s infinite cubic-bezier(0.33, 0.66, 0.66, 1); }
-.gold-particle.float-6 { animation:float-up-6 7s infinite cubic-bezier(0.42, 0, 0.58, 1); }
-.gold-particle.float-7 { animation:float-up-7 7.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-.gold-particle.float-8 { animation:float-up-8 8s infinite cubic-bezier(0.33, 0.66, 0.66, 1); }
-
-@keyframes float-up-1 {
-  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
-  5% { opacity:1; }
-  95% { opacity:1; }
-  100% { transform:translateY(-100vh) translateX(60px) scale(0.5); opacity:0; }
-}
-
-@keyframes float-up-2 {
-  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
-  5% { opacity:1; }
-  95% { opacity:1; }
-  100% { transform:translateY(-100vh) translateX(-80px) scale(0.4); opacity:0; }
-}
-
-@keyframes float-up-3 {
-  0% { transform:translateY(100vh) translateX(0) rotate(0deg) scale(1); opacity:0; }
-  5% { opacity:1; }
-  50% { transform:translateY(50vh) translateX(40px) rotate(180deg) scale(1.1); }
-  95% { opacity:1; }
-  100% { transform:translateY(-100vh) translateX(120px) rotate(360deg) scale(0.6); opacity:0; }
-}
-
-@keyframes float-up-4 {
-  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
-  5% { opacity:1; }
-  50% { transform:translateY(50vh) translateX(-60px) scale(1.2); }
-  95% { opacity:1; }
-  100% { transform:translateY(-100vh) translateX(-40px) scale(0.5); opacity:0; }
-}
-
-@keyframes float-up-5 {
-  0% { transform:translateY(100vh) translateX(0) rotate(0deg) scale(1); opacity:0; }
-  5% { opacity:1; }
-  50% { transform:translateY(50vh) translateX(90px) rotate(180deg) scale(0.9); }
-  95% { opacity:1; }
-  100% { transform:translateY(-100vh) translateX(30px) rotate(360deg) scale(0.4); opacity:0; }
-}
-
-@keyframes float-up-6 {
-  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
-  5% { opacity:1; }
-  50% { transform:translateY(50vh) translateX(-100px) scale(1.15); }
-  95% { opacity:1; }
-  100% { transform:translateY(-100vh) translateX(-70px) scale(0.5); opacity:0; }
-}
-
-@keyframes float-up-7 {
-  0% { transform:translateY(100vh) translateX(0) rotate(0deg) scale(1); opacity:0; }
-  5% { opacity:1; }
-  50% { transform:translateY(50vh) translateX(75px) rotate(-180deg) scale(1.05); }
-  95% { opacity:1; }
-  100% { transform:translateY(-100vh) translateX(100px) rotate(-360deg) scale(0.5); opacity:0; }
-}
-
-@keyframes float-up-8 {
-  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
-  5% { opacity:1; }
-  50% { transform:translateY(50vh) translateX(-45px) scale(1.1); }
-  95% { opacity:1; }
-  100% { transform:translateY(-100vh) translateX(-110px) scale(0.5); opacity:0; }
-}
-
-.gold-particle.twinkle-1 { animation:twinkle-glow-1 2s infinite; }
-.gold-particle.twinkle-2 { animation:twinkle-glow-2 2.3s infinite; }
-.gold-particle.twinkle-3 { animation:twinkle-glow-3 2.7s infinite; }
-
-@keyframes twinkle-glow-1 {
-  0%,100% { filter:brightness(1) drop-shadow(0 0 8px rgba(255,215,0,0.6)); }
-  50% { filter:brightness(1.5) drop-shadow(0 0 20px rgba(255,215,0,1)); }
-}
-
-@keyframes twinkle-glow-2 {
-  0%,100% { filter:brightness(1) drop-shadow(0 0 10px rgba(255,165,0,0.5)); }
-  50% { filter:brightness(1.4) drop-shadow(0 0 24px rgba(255,165,0,1)); }
-}
-
-@keyframes twinkle-glow-3 {
-  0%,100% { filter:brightness(1) drop-shadow(0 0 6px rgba(255,228,92,0.7)); }
-  50% { filter:brightness(1.6) drop-shadow(0 0 18px rgba(255,228,92,1)); }
-}
-
 .theme-glitch .form-header {
   background:linear-gradient(90deg, rgba(5,4,2,0.95), rgba(26,20,16,0.8), rgba(5,4,2,0.95));
   color:var(--accent);
@@ -8195,6 +8089,112 @@ textarea.step-input:focus { opacity:1; }
   background:rgba(255,215,0,0.22);
   color:var(--accent);
   box-shadow:0 0 12px rgba(255,215,0,0.25);
+}
+
+/* ═══ FLOATING GOLD PARTICLES — SCOPED TO THEME-GLITCH ═══ */
+.theme-glitch #gold-particles {
+  position:fixed; inset:0; pointer-events:none; z-index:0.5;
+  overflow:hidden;
+}
+
+.theme-glitch .gold-particle {
+  position:absolute; border-radius:2px;
+  pointer-events:none;
+  backdrop-filter: blur(0px);
+}
+
+.theme-glitch .gold-particle.size-1 { width:12px; height:12px; background:linear-gradient(135deg, rgba(255,215,0,1), rgba(255,165,0,0.8)); box-shadow:0 0 20px rgba(255,215,0,1), 0 0 40px rgba(255,165,0,0.8), inset 0 0 10px rgba(255,255,255,0.4); border:1px solid rgba(255,228,92,0.6); }
+.theme-glitch .gold-particle.size-2 { width:18px; height:18px; background:linear-gradient(135deg, rgba(255,228,92,1), rgba(255,215,0,0.9)); box-shadow:0 0 28px rgba(255,228,92,1), 0 0 50px rgba(255,215,0,0.9), inset 0 0 12px rgba(255,255,255,0.5); border:1px solid rgba(255,255,200,0.7); }
+.theme-glitch .gold-particle.size-3 { width:24px; height:24px; background:linear-gradient(135deg, rgba(255,165,0,1), rgba(255,215,0,0.85)); box-shadow:0 0 35px rgba(255,165,0,1), 0 0 60px rgba(255,215,0,0.9), inset 0 0 14px rgba(255,255,255,0.6); border:2px solid rgba(255,240,100,0.8); }
+
+.theme-glitch .gold-particle.float-1 { animation:float-up-1 4.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.theme-glitch .gold-particle.float-2 { animation:float-up-2 5s infinite cubic-bezier(0.33, 0.66, 0.66, 1); }
+.theme-glitch .gold-particle.float-3 { animation:float-up-3 5.5s infinite cubic-bezier(0.42, 0, 0.58, 1); }
+.theme-glitch .gold-particle.float-4 { animation:float-up-4 6s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.theme-glitch .gold-particle.float-5 { animation:float-up-5 6.5s infinite cubic-bezier(0.33, 0.66, 0.66, 1); }
+.theme-glitch .gold-particle.float-6 { animation:float-up-6 7s infinite cubic-bezier(0.42, 0, 0.58, 1); }
+.theme-glitch .gold-particle.float-7 { animation:float-up-7 7.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.theme-glitch .gold-particle.float-8 { animation:float-up-8 8s infinite cubic-bezier(0.33, 0.66, 0.66, 1); }
+
+@keyframes float-up-1 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(60px) scale(0.5); opacity:0; }
+}
+
+@keyframes float-up-2 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(-80px) scale(0.4); opacity:0; }
+}
+
+@keyframes float-up-3 {
+  0% { transform:translateY(100vh) translateX(0) rotate(0deg) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(40px) rotate(180deg) scale(1.1); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(120px) rotate(360deg) scale(0.6); opacity:0; }
+}
+
+@keyframes float-up-4 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(-60px) scale(1.2); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(-40px) scale(0.5); opacity:0; }
+}
+
+@keyframes float-up-5 {
+  0% { transform:translateY(100vh) translateX(0) rotate(0deg) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(90px) rotate(180deg) scale(0.9); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(30px) rotate(360deg) scale(0.4); opacity:0; }
+}
+
+@keyframes float-up-6 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(-100px) scale(1.15); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(-70px) scale(0.5); opacity:0; }
+}
+
+@keyframes float-up-7 {
+  0% { transform:translateY(100vh) translateX(0) rotate(0deg) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(75px) rotate(-180deg) scale(1.05); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(100px) rotate(-360deg) scale(0.5); opacity:0; }
+}
+
+@keyframes float-up-8 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(-45px) scale(1.1); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(-110px) scale(0.5); opacity:0; }
+}
+
+.theme-glitch .gold-particle.twinkle-1 { animation:twinkle-glow-1 2s infinite; }
+.theme-glitch .gold-particle.twinkle-2 { animation:twinkle-glow-2 2.3s infinite; }
+.theme-glitch .gold-particle.twinkle-3 { animation:twinkle-glow-3 2.7s infinite; }
+
+@keyframes twinkle-glow-1 {
+  0%,100% { filter:brightness(1) drop-shadow(0 0 8px rgba(255,215,0,0.6)); }
+  50% { filter:brightness(1.5) drop-shadow(0 0 20px rgba(255,215,0,1)); }
+}
+
+@keyframes twinkle-glow-2 {
+  0%,100% { filter:brightness(1) drop-shadow(0 0 10px rgba(255,165,0,0.5)); }
+  50% { filter:brightness(1.4) drop-shadow(0 0 24px rgba(255,165,0,1)); }
+}
+
+@keyframes twinkle-glow-3 {
+  0%,100% { filter:brightness(1) drop-shadow(0 0 6px rgba(255,228,92,0.7)); }
+  50% { filter:brightness(1.6) drop-shadow(0 0 18px rgba(255,228,92,1)); }
 }
 
 .theme-glitch .step.active {
@@ -8759,6 +8759,9 @@ function doLogin() {
   document.getElementById('result-title').innerHTML = '💛☁️ ' + audio.name + ' ☁️💛';
   audio.buildSteps();
   initDots(audio.steps);
+  // Clear particles when switching audios (they'll only show for GOLD GLITCH)
+  const particlesContainer = document.getElementById('gold-particles');
+  if (particlesContainer) particlesContainer.innerHTML = '';
   showStep(0);
   showPage('page-form');
 }
@@ -15554,6 +15557,13 @@ function getGlitchSystem(fd){
     const container = document.getElementById('gold-particles');
     if (!container) return;
 
+    // ONLY initialize particles for GOLD GLITCH audio
+    if (!currentAudio || currentAudio.name !== 'GOLD GLITCH') {
+      // Clear any existing particles if not GOLD GLITCH
+      container.innerHTML = '';
+      return;
+    }
+
     // Crear 80-100 partículas iniciales
     const particleCount = 80 + Math.floor(Math.random() * 30);
     for (let i = 0; i < particleCount; i++) {
@@ -15561,9 +15571,11 @@ function getGlitchSystem(fd){
       container.appendChild(particle);
     }
 
-    // Mantener generando partículas nuevas continuamente
+    // Mantener generando partículas nuevas continuamente (only for GOLD GLITCH)
     setInterval(() => {
-      if (document.getElementById('page-form').classList.contains('active')) {
+      // Only generate particles if page-form is active AND current audio is GOLD GLITCH
+      if (document.getElementById('page-form').classList.contains('active') &&
+          currentAudio && currentAudio.name === 'GOLD GLITCH') {
         // Generar 2-3 partículas por intervalo
         for (let j = 0; j < 2 + Math.floor(Math.random() * 2); j++) {
           const particle = createParticle();

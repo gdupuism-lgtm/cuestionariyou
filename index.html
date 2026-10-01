@@ -7681,438 +7681,530 @@ textarea.step-input:focus { opacity:1; }
 .theme-seduction .step.active { animation:sed-step-in 0.7s cubic-bezier(0.16,1,0.3,1); }
 @keyframes sed-step-in { from{opacity:0;transform:translateY(32px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
 
-/* ═══════════════════════════════════════
-   IMAGINE — Púrpura · Opalino · Visión
-   ═══════════════════════════════════════ */
-.theme-imagine {
-  --bg: #020105;
-  --accent: #9d5dff;
-  --accent2: #c896ff;
-  --accent3: #e8d5ff;
-  --gold: #d4a9ff;
-  --gold2: #f0e6ff;
-  --text: #ffffff;
-  --text-soft: rgba(255,255,255,0.9);
-  --header-bg: #030107;
-  --pdot-off: rgba(157,93,255,0.3);
-  --pdot-on: #9d5dff;
-}
-
-/* Header */
-.theme-imagine .form-header {
-  background:var(--header-bg);
-  border-bottom:1px solid rgba(157,93,255,0.25);
-  position:relative; overflow:hidden;
-}
-.theme-imagine .form-header::after {
-  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
-  background:linear-gradient(90deg, transparent, rgba(157,93,255,0.8), rgba(212,169,255,0.5), rgba(157,93,255,0.8), transparent);
-  animation:img-headerline 4s linear infinite;
-  background-size:200% 100%;
-}
-@keyframes img-headerline { to{background-position:200% center} }
-.theme-imagine .fh-brand {
-  background:linear-gradient(90deg, var(--accent2), var(--gold), var(--accent3));
-  background-size:200% auto;
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  animation:img-shimmer 5s linear infinite; letter-spacing:7px;
-}
-@keyframes img-shimmer { to{background-position:200% center} }
-
-/* Dots */
-.theme-imagine .pdot { background:var(--pdot-off); }
-.theme-imagine .pdot.done { background:rgba(157,93,255,0.55); }
-.theme-imagine .pdot.active {
-  background:var(--accent);
-  box-shadow:0 0 16px rgba(157,93,255,0.9), 0 0 32px rgba(212,169,255,0.3);
-  animation:img-dot 2s ease-in-out infinite;
-}
-@keyframes img-dot {
-  0%,100%{transform:scale(1)} 50%{transform:scale(1.5);box-shadow:0 0 28px rgba(157,93,255,1),0 0 50px rgba(212,169,255,0.4)}
-}
-
-/* Background */
-.theme-imagine #page-form {
-  background:#010001; position:relative; overflow:hidden; color:var(--text);
-}
-.theme-imagine #page-form::before {
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
-  background:
-    radial-gradient(ellipse at 25% 25%, rgba(157,93,255,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 75%, rgba(157,93,255,0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 10%, rgba(212,169,255,0.07) 0%, transparent 40%);
-  animation:img-bg 7s ease-in-out infinite;
-}
-@keyframes img-bg { 0%,100%{opacity:0.7} 50%{opacity:1} }
-
-/* Stars */
-.theme-imagine #page-form::after {
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
-  background-image:
-    radial-gradient(1px 1px at 10% 15%, rgba(212,169,255,0.7), transparent),
-    radial-gradient(1px 1px at 30% 40%, rgba(157,93,255,0.6), transparent),
-    radial-gradient(1px 1px at 55% 12%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 70% 35%, rgba(212,169,255,0.55), transparent),
-    radial-gradient(1px 1px at 88% 20%, rgba(157,93,255,0.5), transparent),
-    radial-gradient(1px 1px at 15% 65%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1px 1px at 45% 80%, rgba(212,169,255,0.5), transparent),
-    radial-gradient(1px 1px at 82% 70%, rgba(157,93,255,0.45), transparent),
-    radial-gradient(2px 2px at 60% 55%, rgba(212,169,255,0.4), transparent),
-    radial-gradient(1px 1px at 25% 90%, rgba(255,255,255,0.4), transparent);
-  opacity:0.65; animation:img-stars 8s ease-in-out infinite;
-}
-@keyframes img-stars { 0%,100%{opacity:0.55} 50%{opacity:0.85} }
-
-.theme-imagine .form-main { position:relative; z-index:1; }
-
-/* Intro card */
-.theme-imagine .intro-card {
-  background:linear-gradient(135deg, rgba(157,93,255,0.35), rgba(212,169,255,0.25), rgba(157,93,255,0.3));
-  border:2px solid rgba(157,93,255,0.5); background-clip:padding-box;
-  position:relative; overflow:hidden;
-  backdrop-filter:blur(12px);
-}
-.theme-imagine .intro-card::before {
-  content:''; position:absolute; inset:-1px; z-index:-1; border-radius:inherit;
-  background:linear-gradient(135deg, rgba(157,93,255,0.6), rgba(212,169,255,0.4), rgba(157,93,255,0.3), rgba(212,169,255,0.5));
-  background-size:300% 300%;
-  animation:img-border 5s linear infinite;
-}
-@keyframes img-border { to{background-position:300% 300%} }
-
-.theme-imagine .img-intro { padding-top:155px; padding-bottom:52px; }
-
-/* Orb */
-.theme-imagine .img-orb {
-  position:absolute; top:-30px; left:50%; transform:translateX(-50%);
-  width:260px; height:260px; border-radius:50%;
-  background:radial-gradient(circle,
-    rgba(157,93,255,0.55) 0%,
-    rgba(212,169,255,0.25) 30%,
-    rgba(157,93,255,0.12) 55%,
-    transparent 75%);
-  filter:blur(18px);
-  animation:img-orb 4s ease-in-out infinite;
-}
-@keyframes img-orb {
-  0%,100%{transform:translateX(-50%) scale(1);opacity:0.8}
-  50%{transform:translateX(-50%) scale(1.2);opacity:1}
-}
-
-/* Ring */
-.theme-imagine .img-ring {
-  position:absolute; top:20px; left:50%; transform:translateX(-50%);
-  width:130px; height:130px; border-radius:50%;
-  border:1px solid rgba(212,169,255,0.3);
-  box-shadow:0 0 30px rgba(157,93,255,0.4), inset 0 0 20px rgba(157,93,255,0.2);
-  animation:img-ring 3s ease-in-out infinite;
-}
-@keyframes img-ring {
-  0%,100%{transform:translateX(-50%) scale(1);opacity:0.6}
-  50%{transform:translateX(-50%) scale(1.1);opacity:1}
-}
-
-/* Card text */
-.theme-imagine .intro-card-label {
-  position:relative; z-index:2; letter-spacing:5px;
-  background:linear-gradient(90deg, var(--gold), var(--accent3));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-}
-.theme-imagine .intro-card-title {
-  font-family:'DM Serif Display',serif; font-size:52px; line-height:1;
-  position:relative; z-index:2;
-}
-.theme-imagine .intro-card-title em {
-  font-style:italic;
-  background:linear-gradient(135deg, var(--accent) 0%, var(--gold) 35%, var(--accent3) 60%, var(--accent) 100%);
-  background-size:200% auto;
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  animation:img-shimmer 4s linear infinite;
-}
-.theme-imagine .intro-card-desc {
-  color:#ffffff; font-size:14px; line-height:2; position:relative; z-index:2; font-weight:500;
-}
-
-/* Step elements */
-.theme-imagine .step-eyebrow {
-  background:linear-gradient(90deg, #d4a9ff, #e8d5ff, #c896ff);
-  background-size:200% auto;
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  animation:img-shimmer 5s linear infinite;
-  letter-spacing:7px; font-family:'Courier New',monospace; font-weight:700;
-}
-.theme-imagine .step-q { font-family:'DM Serif Display',serif; color:#ffffff; font-weight:600; letter-spacing:-1px; font-size:clamp(24px,4vw,38px); }
-.theme-imagine .step-q em {
-  font-style:italic;
-  background:linear-gradient(135deg, var(--accent2), var(--gold) 50%, var(--accent3) 75%, var(--accent2) 100%);
-  background-size:200% auto;
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  animation:img-shimmer 4s linear infinite;
-}
-.theme-imagine .step-hint { color:#ffffff; font-size:14px; opacity:0.95; }
-.theme-imagine .step-input {
-  color:#ffffff; opacity:1; border-color:#9d5dff;
-  background:#1a0d2e; font-family:'Cormorant Garamond',serif; font-size:17px; border-width:2px;
-}
-.theme-imagine .step-input::placeholder { color:#c896ff; font-style:italic; opacity:1; }
-.theme-imagine .step-input:focus {
-  border-color:#d4a9ff; box-shadow:0 0 20px rgba(212,169,255,0.6), 0 0 40px rgba(157,93,255,0.3);
-  background:#220f3a;
-}
-.theme-imagine textarea.step-input { background:#1a0d2e; border-width:2px; }
-.theme-imagine textarea.step-input::placeholder { color:#c896ff; opacity:1; }
-.theme-imagine .lang-btn { color:var(--accent2); border-color:rgba(157,93,255,0.35); opacity:1; background:transparent; }
-.theme-imagine .lang-btn.active { background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#0a0412; }
-.theme-imagine .choice-opt { border-color:rgba(157,93,255,0.2); color:var(--text); opacity:1; background:rgba(157,93,255,0.03); }
-.theme-imagine .choice-opt:hover { border-color:rgba(157,93,255,0.45); background:rgba(157,93,255,0.08); }
-.theme-imagine .choice-opt.selected { border-color:var(--gold); background:rgba(212,169,255,0.08); box-shadow:0 0 16px rgba(212,169,255,0.2); }
-.theme-imagine .choice-opt.selected .choice-radio { background:var(--accent); border-color:var(--accent); box-shadow:0 0 8px rgba(157,93,255,0.6); }
-.theme-imagine .btn-back { color:rgba(250,245,245,0.4); }
-.theme-imagine .btn-next {
-  position:relative; overflow:hidden;
-  border-color:#d4a9ff; color:#ffffff; letter-spacing:6px; font-weight:600;
-}
-.theme-imagine .btn-next::before {
-  content:''; position:absolute; inset:0;
-  background:linear-gradient(90deg, rgba(157,93,255,0.15), rgba(212,169,255,0.1), rgba(157,93,255,0.15));
-  background-size:200% 100%; opacity:0; transition:opacity 0.3s;
-  animation:img-btn 3s linear infinite;
-}
-@keyframes img-btn { to{background-position:200% center} }
-.theme-imagine .btn-next:hover { background:transparent; border-color:#e8d5ff; color:#ffffff; box-shadow:0 0 30px rgba(212,169,255,0.7); }
-.theme-imagine .btn-next:hover::before { opacity:1; }
-
-/* Result */
-.theme-imagine #page-result { background:#010001 !important; color:var(--text) !important; }
-.theme-imagine .result-header { background:#020107; border-bottom:2px solid rgba(157,93,255,0.4); position:relative; }
-.theme-imagine .result-header::after {
-  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
-  background:linear-gradient(90deg, transparent, rgba(157,93,255,0.7), rgba(212,169,255,0.5), transparent);
-}
-.theme-imagine .result-tag {
-  background:linear-gradient(90deg, var(--accent2), var(--gold));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  letter-spacing:5px;
-}
-.theme-imagine .result-htitle { font-family:'DM Serif Display',serif; color:var(--text); }
-.theme-imagine .result-htitle em {
-  background:linear-gradient(135deg, var(--accent2), var(--gold) 50%, var(--accent3));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-}
-.theme-imagine .script-wrap { border-color:rgba(157,93,255,0.4); background:#0a0515; }
-.theme-imagine .script-head { background:#020107; }
-.theme-imagine .script-content { font-family:'Cormorant Garamond',serif; color:#ffffff !important; background:#0a0515 !important; line-height:2.1; font-size:16px; }
-.theme-imagine .btn-dl { border-color:rgba(157,93,255,0.28); color:rgba(157,93,255,0.55); background:transparent; }
-.theme-imagine .btn-dl:hover { border-color:var(--accent2); color:var(--accent2); }
-.theme-imagine .result-note { border-color:rgba(157,93,255,0.2); color:rgba(250,245,245,0.45); background:rgba(157,93,255,0.04); padding:24px 32px; }
-.theme-imagine .btn-copy { border-color:#9d5dff; background:#1a0d2e; color:#d4a9ff; font-weight:600; }
-.theme-imagine .btn-copy:hover { background:#220f3a; color:#e8d5ff; }
-.theme-imagine .step.active { animation:img-step-in 0.7s cubic-bezier(0.16,1,0.3,1); }
-@keyframes img-step-in { from{opacity:0;transform:translateY(32px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
-
-/* ═══════════════════════════════════════
-   LIMITLESS — Dorado · Azul Eléctrico · Mente Extraordinaria
-   ═══════════════════════════════════════ */
-.theme-limitless {
+/* ═══════════════════════════════════
+   GOLD GLITCH — Oro brillante abundancia
+═══════════════════════════════════ */
+.theme-glitch {
   --bg: #0a0805;
-  --accent: #ffd700;
-  --accent2: #ffed4e;
-  --accent3: #fff9e6;
-  --gold: #00d4ff;
-  --gold2: #00f0ff;
-  --text: #ffffff;
-  --text-soft: rgba(255,255,255,0.95);
-  --header-bg: #080600;
+  --surface: #1a1410;
+  --accent: #FFD700;
+  --accent2: #FFA500;
+  --accent3: #FFE55C;
+  --text: #FFFEF9;
+  --text-soft: rgba(255,254,249,0.75);
+  --header-bg: #050402;
   --pdot-off: rgba(255,215,0,0.25);
-  --pdot-on: #ffd700;
+  --pdot-on: #FFD700;
 }
 
-.theme-limitless .form-header {
-  background:var(--header-bg);
-  border-bottom:1px solid rgba(255,215,0,0.35);
-  position:relative; overflow:hidden;
+/* Partículas de dinero flotando */
+.theme-glitch #page-form::before {
+  content:''; position:fixed;
+  top:-200px; left:50%; transform:translateX(-50%);
+  width:800px; height:600px;
+  background:radial-gradient(ellipse at center top, rgba(255,215,0,0.35) 0%, rgba(255,165,0,0.18) 40%, transparent 75%);
+  pointer-events:none; z-index:0;
+  animation:gold-glow-pulse 4s ease-in-out infinite;
+  filter:blur(40px);
 }
-.theme-limitless .form-header::after {
-  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
-  background:linear-gradient(90deg, transparent, rgba(255,215,0,0.9), rgba(0,212,255,0.6), rgba(255,215,0,0.9), transparent);
-  animation:lim-headerline 4s linear infinite;
-  background-size:200% 100%;
-}
-@keyframes lim-headerline { to{background-position:200% center} }
-.theme-limitless .fh-brand {
-  background:linear-gradient(90deg, #ffed4e, #ffd700, #00d4ff, #ffed4e);
-  background-size:200% auto;
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  animation:lim-shimmer 5s linear infinite; letter-spacing:7px;
-}
-@keyframes lim-shimmer { to{background-position:200% center} }
 
-.theme-limitless .pdot { background:var(--pdot-off); }
-.theme-limitless .pdot.done { background:rgba(255,215,0,0.55); }
-.theme-limitless .pdot.active {
-  background:var(--accent);
-  box-shadow:0 0 16px rgba(255,215,0,1), 0 0 32px rgba(0,212,255,0.4);
-  animation:lim-dot 2s ease-in-out infinite;
-}
-@keyframes lim-dot { 0%,100%{transform:scale(1)} 50%{transform:scale(1.5);box-shadow:0 0 28px rgba(255,215,0,1),0 0 50px rgba(0,212,255,0.5)} }
-
-.theme-limitless #page-form {
-  background:linear-gradient(135deg, #0a0805 0%, #0d0a04 50%, #0a0805 100%); position:relative; overflow:hidden; color:var(--text);
-}
-.theme-limitless #page-form::before {
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
-  background:
-    radial-gradient(ellipse at 25% 25%, rgba(255,215,0,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 75%, rgba(0,212,255,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 10%, rgba(255,237,78,0.06) 0%, transparent 40%);
-  animation:lim-bg 7s ease-in-out infinite;
-}
-@keyframes lim-bg { 0%,100%{opacity:0.6} 50%{opacity:0.9} }
-
-.theme-limitless #page-form::after {
+.theme-glitch #page-form::after {
   content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
   background-image:
-    radial-gradient(1px 1px at 10% 15%, rgba(255,237,78,0.8), transparent),
-    radial-gradient(1px 1px at 30% 40%, rgba(255,215,0,0.7), transparent),
-    radial-gradient(1px 1px at 55% 12%, rgba(0,212,255,0.6), transparent),
-    radial-gradient(1px 1px at 70% 35%, rgba(0,240,255,0.65), transparent),
-    radial-gradient(1px 1px at 88% 20%, rgba(255,215,0,0.6), transparent),
-    radial-gradient(1px 1px at 15% 65%, rgba(0,212,255,0.55), transparent),
-    radial-gradient(1px 1px at 45% 80%, rgba(255,237,78,0.6), transparent),
-    radial-gradient(1px 1px at 82% 70%, rgba(255,215,0,0.55), transparent),
-    radial-gradient(2px 2px at 60% 55%, rgba(0,240,255,0.5), transparent),
-    radial-gradient(1px 1px at 25% 90%, rgba(255,215,0,0.5), transparent);
-  opacity:0.75; animation:lim-stars 8s ease-in-out infinite;
+    radial-gradient(2px 2px at 8% 12%, rgba(255,215,0,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 22% 35%, rgba(255,165,0,0.7), transparent),
+    radial-gradient(2px 2px at 38% 8%, rgba(255,228,92,0.75), transparent),
+    radial-gradient(1px 1px at 55% 25%, rgba(255,215,0,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 72% 18%, rgba(255,165,0,0.65), transparent),
+    radial-gradient(2px 2px at 88% 42%, rgba(255,228,92,0.7), transparent),
+    radial-gradient(1px 1px at 15% 65%, rgba(255,215,0,0.55), transparent),
+    radial-gradient(2px 2px at 42% 72%, rgba(255,165,0,0.6), transparent),
+    radial-gradient(2.5px 2.5px at 65% 58%, rgba(255,228,92,0.75), transparent),
+    radial-gradient(1.5px 1.5px at 82% 75%, rgba(255,215,0,0.65), transparent),
+    radial-gradient(2px 2px at 28% 88%, rgba(255,165,0,0.7), transparent),
+    radial-gradient(1px 1px at 92% 88%, rgba(255,228,92,0.6), transparent);
+  opacity:0.8;
+  animation:gold-particles-shimmer 8s ease-in-out infinite;
 }
-@keyframes lim-stars { 0%,100%{opacity:0.65} 50%{opacity:0.95} }
 
-.theme-limitless .form-main { position:relative; z-index:1; }
+@keyframes gold-glow-pulse {
+  0%,100% { opacity:0.6; transform:translateX(-50%) scale(0.95); }
+  50% { opacity:1; transform:translateX(-50%) scale(1.05); }
+}
 
-.theme-limitless .intro-card {
-  background:linear-gradient(135deg, rgba(255,215,0,0.15), rgba(0,212,255,0.1), rgba(255,215,0,0.12));
-  border:2px solid rgba(255,215,0,0.4); background-clip:padding-box;
-  position:relative; overflow:hidden;
-  backdrop-filter:blur(12px);
+@keyframes gold-particles-shimmer {
+  0%,100% { opacity:0.6; }
+  25% { opacity:0.9; }
+  50% { opacity:0.7; }
+  75% { opacity:0.95; }
 }
-.theme-limitless .intro-card::before {
-  content:''; position:absolute; inset:-1px; z-index:-1; border-radius:inherit;
-  background:linear-gradient(135deg, rgba(255,215,0,0.7), rgba(0,212,255,0.4), rgba(255,215,0,0.3), rgba(0,212,255,0.5));
-  background-size:300% 300%;
-  animation:lim-border 5s linear infinite;
-}
-@keyframes lim-border { to{background-position:300% 300%} }
 
-.theme-limitless .lim-intro { padding-top:155px; padding-bottom:52px; }
+/* ═══ FLOATING GOLD PARTICLES ═══ */
+.gold-particles-container {
+  position:fixed; inset:0; pointer-events:none; z-index:0.5;
+  overflow:hidden;
+}
 
-.theme-limitless .lim-orb {
-  position:absolute; top:-30px; left:50%; transform:translateX(-50%);
-  width:260px; height:260px; border-radius:50%;
-  background:radial-gradient(circle, rgba(255,215,0,0.6) 0%, rgba(0,212,255,0.3) 30%, rgba(255,215,0,0.15) 55%, transparent 75%);
-  filter:blur(18px);
-  animation:lim-orb 4s ease-in-out infinite;
+.gold-particle {
+  position:absolute; border-radius:2px;
+  pointer-events:none;
+  backdrop-filter: blur(0px);
 }
-@keyframes lim-orb { 0%,100%{transform:translateX(-50%) scale(1);opacity:0.85} 50%{transform:translateX(-50%) scale(1.2);opacity:1} }
 
-.theme-limitless .lim-ring {
-  position:absolute; top:20px; left:50%; transform:translateX(-50%);
-  width:130px; height:130px; border-radius:50%;
-  border:2px solid rgba(255,215,0,0.4);
-  box-shadow:0 0 40px rgba(255,215,0,0.5), inset 0 0 25px rgba(0,212,255,0.25);
-  animation:lim-ring 3s ease-in-out infinite;
-}
-@keyframes lim-ring { 0%,100%{transform:translateX(-50%) scale(1);opacity:0.7} 50%{transform:translateX(-50%) scale(1.1);opacity:1} }
+.gold-particle.size-1 { width:12px; height:12px; background:linear-gradient(135deg, rgba(255,215,0,1), rgba(255,165,0,0.8)); box-shadow:0 0 20px rgba(255,215,0,1), 0 0 40px rgba(255,165,0,0.8), inset 0 0 10px rgba(255,255,255,0.4); border:1px solid rgba(255,228,92,0.6); }
+.gold-particle.size-2 { width:18px; height:18px; background:linear-gradient(135deg, rgba(255,228,92,1), rgba(255,215,0,0.9)); box-shadow:0 0 28px rgba(255,228,92,1), 0 0 50px rgba(255,215,0,0.9), inset 0 0 12px rgba(255,255,255,0.5); border:1px solid rgba(255,255,200,0.7); }
+.gold-particle.size-3 { width:24px; height:24px; background:linear-gradient(135deg, rgba(255,165,0,1), rgba(255,215,0,0.85)); box-shadow:0 0 35px rgba(255,165,0,1), 0 0 60px rgba(255,215,0,0.9), inset 0 0 14px rgba(255,255,255,0.6); border:2px solid rgba(255,240,100,0.8); }
 
-.theme-limitless .intro-card-label {
-  position:relative; z-index:2; letter-spacing:5px;
-  background:linear-gradient(90deg, #ffed4e, #ffd700, #00d4ff);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+.gold-particle.float-1 { animation:float-up-1 4.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.gold-particle.float-2 { animation:float-up-2 5s infinite cubic-bezier(0.33, 0.66, 0.66, 1); }
+.gold-particle.float-3 { animation:float-up-3 5.5s infinite cubic-bezier(0.42, 0, 0.58, 1); }
+.gold-particle.float-4 { animation:float-up-4 6s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.gold-particle.float-5 { animation:float-up-5 6.5s infinite cubic-bezier(0.33, 0.66, 0.66, 1); }
+.gold-particle.float-6 { animation:float-up-6 7s infinite cubic-bezier(0.42, 0, 0.58, 1); }
+.gold-particle.float-7 { animation:float-up-7 7.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.gold-particle.float-8 { animation:float-up-8 8s infinite cubic-bezier(0.33, 0.66, 0.66, 1); }
+
+@keyframes float-up-1 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(60px) scale(0.5); opacity:0; }
 }
-.theme-limitless .intro-card-title {
-  font-family:'DM Serif Display',serif; font-size:52px; line-height:1; position:relative; z-index:2;
+
+@keyframes float-up-2 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(-80px) scale(0.4); opacity:0; }
 }
-.theme-limitless .intro-card-title em {
+
+@keyframes float-up-3 {
+  0% { transform:translateY(100vh) translateX(0) rotate(0deg) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(40px) rotate(180deg) scale(1.1); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(120px) rotate(360deg) scale(0.6); opacity:0; }
+}
+
+@keyframes float-up-4 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(-60px) scale(1.2); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(-40px) scale(0.5); opacity:0; }
+}
+
+@keyframes float-up-5 {
+  0% { transform:translateY(100vh) translateX(0) rotate(0deg) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(90px) rotate(180deg) scale(0.9); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(30px) rotate(360deg) scale(0.4); opacity:0; }
+}
+
+@keyframes float-up-6 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(-100px) scale(1.15); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(-70px) scale(0.5); opacity:0; }
+}
+
+@keyframes float-up-7 {
+  0% { transform:translateY(100vh) translateX(0) rotate(0deg) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(75px) rotate(-180deg) scale(1.05); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(100px) rotate(-360deg) scale(0.5); opacity:0; }
+}
+
+@keyframes float-up-8 {
+  0% { transform:translateY(100vh) translateX(0) scale(1); opacity:0; }
+  5% { opacity:1; }
+  50% { transform:translateY(50vh) translateX(-45px) scale(1.1); }
+  95% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(-110px) scale(0.5); opacity:0; }
+}
+
+.gold-particle.twinkle-1 { animation:twinkle-glow-1 2s infinite; }
+.gold-particle.twinkle-2 { animation:twinkle-glow-2 2.3s infinite; }
+.gold-particle.twinkle-3 { animation:twinkle-glow-3 2.7s infinite; }
+
+@keyframes twinkle-glow-1 {
+  0%,100% { filter:brightness(1) drop-shadow(0 0 8px rgba(255,215,0,0.6)); }
+  50% { filter:brightness(1.5) drop-shadow(0 0 20px rgba(255,215,0,1)); }
+}
+
+@keyframes twinkle-glow-2 {
+  0%,100% { filter:brightness(1) drop-shadow(0 0 10px rgba(255,165,0,0.5)); }
+  50% { filter:brightness(1.4) drop-shadow(0 0 24px rgba(255,165,0,1)); }
+}
+
+@keyframes twinkle-glow-3 {
+  0%,100% { filter:brightness(1) drop-shadow(0 0 6px rgba(255,228,92,0.7)); }
+  50% { filter:brightness(1.6) drop-shadow(0 0 18px rgba(255,228,92,1)); }
+}
+
+.theme-glitch .form-header {
+  background:linear-gradient(90deg, rgba(5,4,2,0.95), rgba(26,20,16,0.8), rgba(5,4,2,0.95));
+  color:var(--accent);
+  border-bottom:2px solid rgba(255,215,0,0.5);
+  position:relative;
+  box-shadow:0 8px 32px rgba(255,215,0,0.15);
+}
+
+.theme-glitch .form-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-2px; height:3px;
+  background:linear-gradient(90deg, transparent, rgba(255,215,0,0.9), transparent);
+  filter:blur(1px);
+}
+
+.theme-glitch .fh-brand {
+  color:var(--accent3);
+  letter-spacing:8px;
+  font-weight:600;
+  text-shadow:0 0 16px rgba(255,215,0,0.6);
+}
+
+.theme-glitch .pdot {
+  background:var(--pdot-off);
+  box-shadow:0 0 4px rgba(255,215,0,0.3);
+}
+
+.theme-glitch .pdot.done {
+  background:var(--accent);
+  box-shadow:0 0 8px rgba(255,215,0,0.6);
+}
+
+.theme-glitch .pdot.active {
+  background:var(--accent);
+  box-shadow:0 0 20px rgba(255,215,0,0.9);
+  animation:gold-pdot-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes gold-pdot-pulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.5); box-shadow:0 0 28px rgba(255,215,0,1); }
+}
+
+.theme-glitch #page-form {
+  background:linear-gradient(135deg, #0a0805 0%, #1a1410 35%, #0d0a07 70%, #050402 100%);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+
+.theme-glitch .form-main {
+  position:relative;
+  z-index:1;
+}
+
+.theme-glitch .step-eyebrow {
+  color:var(--accent3);
+  letter-spacing:8px;
+  font-family:'DM Serif Display',serif;
+  font-weight:700;
+  text-shadow:0 0 16px rgba(255,228,92,0.5);
+}
+
+.theme-glitch .step-q {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-weight:700;
+  letter-spacing:-1px;
+  font-size:clamp(28px,5vw,44px);
+}
+
+.theme-glitch .step-q em {
+  color:var(--accent);
   font-style:italic;
-  background:linear-gradient(135deg, #ffd700 0%, #ffed4e 35%, #00d4ff 60%, #ffd700 100%);
-  background-size:200% auto;
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  animation:lim-shimmer 4s linear infinite;
+  font-weight:800;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  text-shadow:0 0 20px rgba(255,215,0,0.4);
+  filter:drop-shadow(0 0 8px rgba(255,215,0,0.3));
 }
-.theme-limitless .intro-card-desc { color:#ffffff; font-size:14px; line-height:2; position:relative; z-index:2; font-weight:500; }
 
-.theme-limitless .step-eyebrow {
-  background:linear-gradient(90deg, #ffed4e, #ffd700, #00d4ff, #ffed4e);
-  background-size:200% auto;
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  animation:lim-shimmer 5s linear infinite;
-  letter-spacing:7px; font-family:'Courier New',monospace; font-weight:700;
+.theme-glitch .step-hint {
+  color:var(--text-soft);
+  font-weight:500;
 }
-.theme-limitless .step-q { font-family:'DM Serif Display',serif; color:#ffffff; font-weight:600; letter-spacing:-1px; font-size:clamp(24px,4vw,38px); }
-.theme-limitless .step-q em {
+
+.theme-glitch .step-input {
+  color:var(--text);
+  border-color:rgba(255,215,0,0.6);
+  opacity:1;
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;
+  font-weight:500;
+  background:rgba(255,215,0,0.08);
+  border-radius:4px;
+  padding:18px 24px;
+}
+
+.theme-glitch .step-input::placeholder {
+  color:rgba(255,215,0,0.4);
   font-style:italic;
-  background:linear-gradient(135deg, #ffd700, #ffed4e 50%, #00d4ff);
-  background-size:200% auto;
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  animation:lim-shimmer 4s linear infinite;
 }
-.theme-limitless .step-hint { color:#ffffff; font-size:14px; opacity:0.95; }
-.theme-limitless .step-input {
-  color:#ffffff; opacity:1; border-color:#ffd700;
-  background:#1a1505; font-family:'Cormorant Garamond',serif; font-size:17px; border-width:2px;
+
+.theme-glitch .step-input:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 24px rgba(255,215,0,0.35), inset 0 0 12px rgba(255,215,0,0.1);
+  background:rgba(255,215,0,0.12);
+  border-width:2px;
 }
-.theme-limitless .step-input::placeholder { color:#ffed4e; font-style:italic; opacity:1; }
-.theme-limitless .step-input:focus {
-  border-color:#00d4ff; box-shadow:0 0 20px rgba(0,212,255,0.5), 0 0 40px rgba(255,215,0,0.25);
-  background:#2a1f0a;
+
+.theme-glitch textarea.step-input {
+  background:rgba(255,215,0,0.08);
+  border-color:rgba(255,215,0,0.5);
+  border-radius:4px;
 }
-.theme-limitless textarea.step-input { background:#1a1505; border-width:2px; }
-.theme-limitless textarea.step-input::placeholder { color:#ffed4e; opacity:1; }
-.theme-limitless .lang-btn { color:#ffed4e; border-color:rgba(255,215,0,0.4); opacity:1; background:transparent; }
-.theme-limitless .lang-btn.active { background:linear-gradient(135deg, #ffd700, #ffed4e); color:#0a0805; }
-.theme-limitless .choice-opt { border-color:rgba(255,215,0,0.25); color:var(--text); opacity:1; background:rgba(255,215,0,0.05); }
-.theme-limitless .choice-opt:hover { border-color:rgba(255,215,0,0.5); background:rgba(255,215,0,0.1); }
-.theme-limitless .choice-opt.selected { border-color:#ffed4e; background:rgba(255,215,0,0.12); box-shadow:0 0 16px rgba(255,215,0,0.25); }
-.theme-limitless .choice-opt.selected .choice-radio { background:#ffd700; border-color:#ffd700; box-shadow:0 0 8px rgba(255,215,0,0.7); }
-.theme-limitless .btn-back { color:rgba(255,255,255,0.3); }
-.theme-limitless .btn-next {
-  position:relative; overflow:hidden;
-  border-color:#ffed4e; color:#ffffff; letter-spacing:6px; font-weight:600;
+
+.theme-glitch textarea.step-input:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 20px rgba(255,215,0,0.3);
 }
-.theme-limitless .btn-next::before {
+
+.theme-glitch .choice-opt {
+  border-color:rgba(255,215,0,0.4);
+  color:var(--text);
+  opacity:1;
+  background:rgba(255,215,0,0.06);
+  border-radius:4px;
+  transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+.theme-glitch .choice-opt:hover {
+  border-color:var(--accent);
+  background:rgba(255,215,0,0.14);
+  box-shadow:0 0 16px rgba(255,215,0,0.2);
+}
+
+.theme-glitch .choice-opt.selected {
+  border-color:var(--accent);
+  background:rgba(255,215,0,0.18);
+  box-shadow:0 0 24px rgba(255,215,0,0.35);
+  border-width:2px;
+}
+
+.theme-glitch .choice-opt.selected .choice-radio {
+  background:var(--accent);
+  border-color:var(--accent);
+  box-shadow:0 0 12px rgba(255,215,0,0.8);
+}
+
+.theme-glitch .lang-btn {
+  color:var(--accent);
+  border-color:rgba(255,215,0,0.4);
+  opacity:1;
+  background:transparent;
+  font-weight:600;
+  transition:all 0.3s;
+}
+
+.theme-glitch .lang-btn.active {
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  color:#0a0805;
+  border-color:var(--accent);
+  font-weight:700;
+  box-shadow:0 0 16px rgba(255,215,0,0.4);
+}
+
+.theme-glitch .btn-back {
+  color:rgba(255,254,249,0.5);
+  font-weight:600;
+}
+
+.theme-glitch .btn-back:hover {
+  color:var(--accent);
+  text-shadow:0 0 8px rgba(255,215,0,0.4);
+}
+
+.theme-glitch .btn-next {
+  border-color:rgba(255,215,0,0.6);
+  color:var(--accent);
+  letter-spacing:7px;
+  font-weight:700;
+  position:relative;
+  overflow:hidden;
+  padding:18px 40px;
+  font-size:11px;
+  transition:all 0.3s;
+}
+
+.theme-glitch .btn-next::before {
   content:''; position:absolute; inset:0;
-  background:linear-gradient(90deg, rgba(255,215,0,0.15), rgba(0,212,255,0.1), rgba(255,215,0,0.15));
-  background-size:200% 100%; opacity:0; transition:opacity 0.3s;
-  animation:lim-btn 3s linear infinite;
+  background:linear-gradient(135deg, rgba(255,215,0,0.25), rgba(255,165,0,0.15));
+  opacity:0;
+  transition:opacity 0.3s;
+  z-index:-1;
 }
-@keyframes lim-btn { to{background-position:200% center} }
-.theme-limitless .btn-next:hover { background:transparent; border-color:#00d4ff; color:#ffffff; box-shadow:0 0 30px rgba(0,212,255,0.7); }
-.theme-limitless .btn-next:hover::before { opacity:1; }
 
-.theme-limitless #page-result { background:linear-gradient(135deg, #0a0805 0%, #0d0a04 100%) !important; color:var(--text) !important; }
-.theme-limitless .result-header { background:#080600; border-bottom:2px solid rgba(255,215,0,0.45); position:relative; }
-.theme-limitless .result-header::after {
-  content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px;
-  background:linear-gradient(90deg, transparent, rgba(255,215,0,0.8), rgba(0,212,255,0.6), transparent);
+.theme-glitch .btn-next:hover {
+  border-color:var(--accent);
+  color:#fff;
+  background:linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,165,0,0.08));
+  box-shadow:0 0 32px rgba(255,215,0,0.5);
+  text-shadow:0 0 8px rgba(255,215,0,0.6);
 }
-.theme-limitless .result-tag {
-  background:linear-gradient(90deg, #ffed4e, #ffd700);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  letter-spacing:5px;
+
+.theme-glitch .btn-next:hover::before { opacity:1; }
+
+.theme-glitch .intro-card {
+  background:linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,165,0,0.08));
+  border:2px solid rgba(255,215,0,0.35);
+  color:var(--text);
+  border-radius:8px;
+  box-shadow:0 8px 32px rgba(255,215,0,0.15);
 }
-.theme-limitless .result-htitle { font-family:'DM Serif Display',serif; color:var(--text); }
-.theme-limitless .result-htitle em {
-  background:linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #00d4ff);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+
+.theme-glitch .intro-card-label {
+  color:var(--accent3);
+  letter-spacing:8px;
+  font-weight:700;
+  text-shadow:0 0 8px rgba(255,228,92,0.4);
 }
-.theme-limitless .script-wrap { border-color:rgba(255,215,0,0.3); background:#0d0a04; }
-.theme-limitless .script-head { background:#080600; }
-.theme-limitless .script-content { font-family:'Cormorant Garamond',serif; color:#ffffff !important; background:#0d0a04 !important; line-height:2.1; font-size:16px; }
-.theme-limitless .btn-dl { border-color:rgba(255,215,0,0.35); color:rgba(255,215,0,0.65); background:transparent; }
-.theme-limitless .btn-dl:hover { border-color:#ffed4e; color:#ffed4e; }
-.theme-limitless .result-note { border-color:rgba(255,215,0,0.25); color:rgba(255,255,255,0.5); background:rgba(255,215,0,0.04); padding:24px 32px; }
-.theme-limitless .btn-copy { border-color:#ffd700; background:#1a1505; color:#ffed4e; font-weight:600; }
-.theme-limitless .btn-copy:hover { background:#2a1f0a; color:#00d4ff; }
-.theme-limitless .step.active { animation:lim-step-in 0.7s cubic-bezier(0.16,1,0.3,1); }
-@keyframes lim-step-in { from{opacity:0;transform:translateY(32px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+
+.theme-glitch .intro-card-title {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-size:52px;
+  letter-spacing:-1px;
+  font-weight:800;
+  text-shadow:0 6px 40px rgba(255,215,0,0.35);
+}
+
+.theme-glitch .intro-card-title em {
+  color:var(--accent);
+  font-style:italic;
+  font-weight:900;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  background-size:200% auto;
+  animation:gold-glitch-shine 3s linear infinite;
+  filter:drop-shadow(0 0 12px rgba(255,215,0,0.4));
+}
+
+@keyframes gold-glitch-shine {
+  to { background-position:200% center; }
+}
+
+.theme-glitch .intro-card-desc {
+  color:var(--text-soft);
+  font-size:15px;
+  line-height:2;
+  font-weight:500;
+}
+
+.theme-glitch #page-result {
+  background:linear-gradient(135deg, #0a0805 0%, #1a1410 40%, #0d0a07 80%, #050402 100%) !important;
+  color:var(--text) !important;
+}
+
+.theme-glitch .result-header {
+  background:linear-gradient(90deg, rgba(5,4,2,0.95), rgba(26,20,16,0.85), rgba(5,4,2,0.95));
+  border-bottom:2px solid rgba(255,215,0,0.4);
+  position:relative;
+  box-shadow:0 8px 24px rgba(255,215,0,0.12);
+}
+
+.theme-glitch .result-header::after {
+  content:''; position:absolute; left:0; right:0; bottom:-2px; height:2px;
+  background:linear-gradient(90deg, transparent, rgba(255,215,0,0.8), transparent);
+}
+
+.theme-glitch .result-tag {
+  color:var(--accent3);
+  letter-spacing:6px;
+  font-weight:700;
+  text-shadow:0 0 8px rgba(255,228,92,0.3);
+}
+
+.theme-glitch .result-htitle {
+  font-family:'DM Serif Display',serif;
+  color:var(--text);
+  font-weight:800;
+}
+
+.theme-glitch .result-htitle em {
+  color:var(--accent);
+  font-weight:900;
+  background:linear-gradient(135deg, var(--accent), var(--accent2) 50%, var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  filter:drop-shadow(0 0 10px rgba(255,215,0,0.3));
+}
+
+.theme-glitch .script-wrap {
+  border:1px solid rgba(255,215,0,0.25);
+  background:rgba(255,215,0,0.04);
+  border-radius:4px;
+}
+
+.theme-glitch .script-head {
+  background:linear-gradient(90deg, rgba(5,4,2,0.9), rgba(26,20,16,0.8));
+  border-bottom:1px solid rgba(255,215,0,0.2);
+}
+
+.theme-glitch .script-content {
+  font-family:'Cormorant Garamond',serif;
+  color:var(--text) !important;
+  background:rgba(5,4,2,0.5) !important;
+  line-height:2.2;
+  font-size:17px;
+  font-weight:500;
+}
+
+.theme-glitch .btn-dl {
+  border-color:rgba(255,215,0,0.3);
+  color:rgba(255,215,0,0.65);
+  background:transparent;
+  font-weight:600;
+  transition:all 0.3s;
+}
+
+.theme-glitch .btn-dl:hover {
+  border-color:var(--accent);
+  color:var(--accent);
+  box-shadow:0 0 16px rgba(255,215,0,0.2);
+  background:rgba(255,215,0,0.08);
+}
+
+.theme-glitch .result-note {
+  border-color:rgba(255,215,0,0.25);
+  color:rgba(255,254,249,0.55);
+  background:rgba(255,215,0,0.06);
+  padding:24px 32px;
+  border-radius:4px;
+}
+
+.theme-glitch .btn-copy {
+  border-color:rgba(255,215,0,0.35);
+  background:rgba(255,215,0,0.12);
+  color:var(--accent);
+  font-weight:600;
+  transition:all 0.3s;
+}
+
+.theme-glitch .btn-copy:hover {
+  background:rgba(255,215,0,0.22);
+  color:var(--accent);
+  box-shadow:0 0 12px rgba(255,215,0,0.25);
+}
+
+.theme-glitch .step.active {
+  animation:gold-step-in 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+
+@keyframes gold-step-in {
+  from { opacity:0; transform:translateY(28px) scale(0.98); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
 </style>
 </head>
 <body>
@@ -8138,6 +8230,7 @@ textarea.step-input:focus { opacity:1; }
 
 <!-- ═══ FORM ═══ -->
 <div id="page-form" class="page">
+  <div id="gold-particles" class="gold-particles-container"></div>
   <header class="form-header">
     <div class="fh-brand" id="fh-brand-text">ERIORCENTER</div>
     <div class="progress-dots" id="progress-dots"></div>
@@ -8198,7 +8291,7 @@ textarea.step-input:focus { opacity:1; }
 // AUDIO CATALOG
 // ═══════════════════════════════════
 const AUDIOS = {
-  'miYOU1m5nP9sX': {
+  'miaudioyou11': {
     name: 'Audio YOU',
     theme: 'theme-you',
     steps: 11,
@@ -8210,7 +8303,7 @@ const AUDIOS = {
     buildPrompt: buildYouPrompt,
     systemPrompt: getYouSystem,
   },
-  'miIDENT9n5sL2wQ': {
+  'miidentity22': {
     name: 'Audio IDENTITY',
     theme: 'theme-identity',
     steps: 5,
@@ -8222,7 +8315,7 @@ const AUDIOS = {
     buildPrompt: buildIdentityPrompt,
     systemPrompt: getIdentitySystem,
   },
-  'miAP3Qw8R4nL': {
+  'miamorpropio33': {
     name: 'Amor Propio Magic 3.0',
     theme: 'theme-amor',
     steps: 5,
@@ -8234,31 +8327,31 @@ const AUDIOS = {
     buildPrompt: buildAmorPrompt,
     systemPrompt: getAmorSystem,
   },
-  'miB00ST9w3zY7K': {
-    name: 'BOOSTER 2.0',
-    theme: 'theme-limitless',
+  'mibooster44': {
+    name: 'Booster',
+    theme: 'theme-booster',
     steps: 5,
-    headerLabel: 'ERIORCENTER — BOOSTER 2.0 ⚡🚀',
-    introTitle: 'BOOSTER <em>2.0</em>',
-    introDesc: 'Entra en presencia, neutralidad y elección consciente. Domina el arte de regresar a tu centro y materializar tus preferencias sin esfuerzo ⚡✨',
-    fields: ['name','last','email','boosterintention','record'],
-    buildSteps: buildBooster2Steps,
-    buildPrompt: buildBooster2Prompt,
-    systemPrompt: getBooster2System,
+    headerLabel: 'ERIORCENTER — BOOSTER ⚡',
+    introTitle: 'Booster',
+    introDesc: 'Este audio ha sido creado para ayudarte a que <strong>todos tus otros audios funcionen más rápido y con mayor potencia</strong>, ya que te lleva al <strong>estado de neutralidad</strong> ⚡🌿',
+    fields: ['name','last','email','intention','record'],
+    buildSteps: buildBoosterSteps,
+    buildPrompt: buildBoosterPrompt,
+    systemPrompt: getBoosterSystem,
   },
-  'miHOMBRE5v9PxQ': {
-    name: 'AMOR PROPIO MAGIC HOMBRE 2.0',
-    theme: 'theme-limitless',
+  'miamorpropioHombre55': {
+    name: 'Amor Propio Magic Hombre',
+    theme: 'theme-hombre',
     steps: 5,
-    headerLabel: 'ERIORCENTER — AMOR PROPIO MAGIC HOMBRE 2.0 💎⚡',
-    introTitle: 'AMOR PROPIO MAGIC <em>HOMBRE 2.0</em>',
-    introDesc: 'Eres un hombre seguro, valioso y profundamente orgulloso de quien eres. Domina la seguridad, la abundancia y el poder de tu presencia 💎✨',
-    fields: ['name','last','email','hombreintention','record'],
+    headerLabel: 'ERIORCENTER — Amor Propio Magic Hombre 💎',
+    introTitle: 'Amor Propio Magic <em>Hombre</em>',
+    introDesc: 'Muchas gracias por adquirir nuestro programa para programar en tu inconsciente mucha <strong>magia</strong> y ser tu mejor versión <strong>masculina</strong> 💎⚡',
+    fields: ['name','last','email','intention','record'],
     buildSteps: buildHombreSteps,
-    buildPrompt: buildHombrePrompt2,
-    systemPrompt: getHombreSystem2,
+    buildPrompt: buildHombrePrompt,
+    systemPrompt: getHombreSystem,
   },
-  'miVITA9n2mR6kW': {
+  'mivitamind66': {
     name: 'VITAMIND',
     theme: 'theme-vitamind',
     steps: 6,
@@ -8270,7 +8363,7 @@ const AUDIOS = {
     buildPrompt: buildVitamindPrompt,
     systemPrompt: getVitamindSystem,
   },
-  'miMASTER5b7cP2xJ': {
+  'mimasterabundance77': {
     name: 'Master ABUNDANCE',
     theme: 'theme-abundance',
     steps: 6,
@@ -8282,7 +8375,7 @@ const AUDIOS = {
     buildPrompt: buildAbundancePrompt,
     systemPrompt: getAbundanceSystem,
   },
-  'miMONEY9r1sQ3vL': {
+  'mimoneytech88': {
     name: 'MONEY TECH',
     theme: 'theme-moneytech',
     steps: 6,
@@ -8294,7 +8387,7 @@ const AUDIOS = {
     buildPrompt: buildMoneytechPrompt,
     systemPrompt: getMoneytechSystem,
   },
-  'miSATORI8k4jG6tZ': {
+  'misatori99': {
     name: 'SATORI',
     theme: 'theme-satori',
     steps: 5,
@@ -8306,7 +8399,7 @@ const AUDIOS = {
     buildPrompt: buildSatoriPrompt,
     systemPrompt: getSatoriSystem,
   },
-  'miMESM7d5fR9pX': {
+  'mimesmerizinglove10': {
     name: 'MESMERIZING LOVE',
     theme: 'theme-mesmerizing',
     steps: 5,
@@ -8318,7 +8411,7 @@ const AUDIOS = {
     buildPrompt: buildMesmerizingPrompt,
     systemPrompt: getMesmerizingSystem,
   },
-  'miFITW9j3cK7gL': {
+  'mifitwave11': {
     name: 'FIT WAVE',
     theme: 'theme-fitwave',
     steps: 7,
@@ -8330,7 +8423,7 @@ const AUDIOS = {
     buildPrompt: buildFitwavePrompt,
     systemPrompt: getFitwaveSystem,
   },
-  'miSELECT9b2cK4mF': {
+  'miselect12': {
     name: 'SELECT',
     theme: 'theme-select',
     steps: 4,
@@ -8342,7 +8435,7 @@ const AUDIOS = {
     buildPrompt: buildSelectPrompt,
     systemPrompt: getSelectSystem,
   },
-  'miWOND8g6dJ2fH': {
+  'miwonderland13': {
     name: 'WONDERLAND COHERENCE',
     theme: 'theme-wonderland',
     steps: 5,
@@ -8354,7 +8447,7 @@ const AUDIOS = {
     buildPrompt: buildWonderlandPrompt,
     systemPrompt: getWonderlandSystem,
   },
-  'miLUCKY3k8mQ6dF': {
+  'milucky14': {
     name: 'LUCKY',
     theme: 'theme-lucky',
     steps: 5,
@@ -8366,7 +8459,7 @@ const AUDIOS = {
     buildPrompt: buildLuckyPrompt,
     systemPrompt: getLuckySystem,
   },
-  'miAP2P9x7K2m': {
+  'miamorpropio2punto0': {
     name: 'Amor Propio Magic 2.0',
     theme: 'theme-amorpropio2',
     steps: 5,
@@ -8378,7 +8471,7 @@ const AUDIOS = {
     buildPrompt: buildAmorpropio2Prompt,
     systemPrompt: getAmorpropio2System,
   },
-  'miECLT8q2rL5vM': {
+  'mieclet15': {
     name: 'ÉCLAT',
     theme: 'theme-eclat',
     steps: 4,
@@ -8390,7 +8483,7 @@ const AUDIOS = {
     buildPrompt: buildEclatPrompt,
     systemPrompt: getEclatSystem,
   },
-  'miATTR7h8cD3f': {
+  'miattraction16': {
     name: 'ATTRACTION',
     theme: 'theme-attraction',
     steps: 6,
@@ -8402,7 +8495,7 @@ const AUDIOS = {
     buildPrompt: buildAttractionPrompt,
     systemPrompt: getAttractionSystem,
   },
-  'miMIND4n9sT1vW': {
+  'mimastermind17': {
     name: 'Master MIND',
     theme: 'theme-mastermind',
     steps: 5,
@@ -8414,7 +8507,7 @@ const AUDIOS = {
     buildPrompt: buildMastermindPrompt,
     systemPrompt: getMastermindSystem,
   },
-  'miONCE5m7nP2hX': {
+  'mionceonce11': {
     name: '11:11',
     theme: 'theme-onceonce',
     steps: 5,
@@ -8426,7 +8519,7 @@ const AUDIOS = {
     buildPrompt: buildOnceoncePrompt,
     systemPrompt: getOnceonceSystem,
   },
-  'miKIDS3m8hQ5fD': {
+  'mieriorkids00': {
     name: 'ERIOR KIDS',
     theme: 'theme-kids',
     steps: 4,
@@ -8438,7 +8531,7 @@ const AUDIOS = {
     buildPrompt: buildKidsPrompt,
     systemPrompt: getKidsSystem,
   },
-  'miLOVE6n1pR4vS': {
+  'mieriorlove20': {
     name: 'ERIOR LOVE',
     theme: 'theme-eriorldove',
     steps: 5,
@@ -8450,7 +8543,7 @@ const AUDIOS = {
     buildPrompt: buildEriorlovePrompt,
     systemPrompt: getEriorloveSystem,
   },
-  'miWHITE7b3cL5pZ': {
+  'miwhiterabbit22': {
     name: 'White Rabbit',
     theme: 'theme-whiterabbit',
     steps: 4,
@@ -8462,7 +8555,7 @@ const AUDIOS = {
     buildPrompt: buildWhiterabbitPrompt,
     systemPrompt: getWhiterabbitSystem,
   },
-  'miCURIOUS4gH6jT': {
+  'micuriouscuriouser23': {
     name: 'CURIOUS CURIOUSER',
     theme: 'theme-curious',
     steps: 6,
@@ -8475,7 +8568,7 @@ const AUDIOS = {
     systemPrompt: getCuriousSystem,
     dualScript: true,
   },
-  'miMENTAL6g3hL8kZ': {
+  'mimentalglow21': {
     name: 'MENTAL GLOW UP',
     theme: 'theme-mentalglow',
     steps: 5,
@@ -8487,7 +8580,7 @@ const AUDIOS = {
     buildPrompt: buildMentalglowPrompt,
     systemPrompt: getMentalglowSystem,
   },
-  'miERIOR2k7tW9xB': {
+  'mierior24': {
     name: 'AUDIO ERIOR 3.0',
     theme: 'theme-erior3',
     steps: 5,
@@ -8500,7 +8593,7 @@ const AUDIOS = {
     systemPrompt: getErior3System,
     dualScript: true,
   },
-  'miMIND2j4tW6kB': {
+  'mimindmovie33': {
     name: 'MIND MOVIE',
     theme: 'theme-mindmovie',
     steps: 8,
@@ -8512,7 +8605,7 @@ const AUDIOS = {
     buildPrompt: buildMindmoviePrompt,
     systemPrompt: getMindmovieSystem,
   },
-  'miICON7b4dH6jX': {
+  'miiconaura11': {
     name: 'ICON AURA',
     theme: 'theme-iconaura',
     steps: 5,
@@ -8524,7 +8617,7 @@ const AUDIOS = {
     buildPrompt: buildIconauraPrompt,
     systemPrompt: getIconauraSystem,
   },
-  'miEMERG6p4sN8yZ': {
+  'miemergenc55': {
     name: 'EMERGENCY',
     theme: 'theme-emergency',
     steps: 4,
@@ -8537,7 +8630,7 @@ const AUDIOS = {
     systemPrompt: getEmergencySystem,
     quadScript: true,
   },
-  'miKEEP6j1vR4tN': {
+  'mikeepcool222': {
     name: 'KEEP COOL',
     theme: 'theme-keepcool',
     steps: 3,
@@ -8549,7 +8642,7 @@ const AUDIOS = {
     buildPrompt: buildKeepcoolPrompt,
     systemPrompt: getKeepcoolSystem,
   },
-  'miGODESS5m2tU8kP': {
+  'migodess444': {
     name: 'GOD/GODDESS',
     theme: 'theme-godgoddess',
     steps: 3,
@@ -8561,7 +8654,7 @@ const AUDIOS = {
     buildPrompt: buildGodgoddessPrompt,
     systemPrompt: getGodgoddessSystem,
   },
-  'miUNLIM4h5jQ7sX': {
+  'miunlimited00': {
     name: 'UN-LIMITED',
     theme: 'theme-unlimited',
     steps: 3,
@@ -8574,7 +8667,7 @@ const AUDIOS = {
     systemPrompt: getUnlimitedSystem,
     noAI: true,
   },
-  'miSIM6x1wL3gP8tR': {
+  'misimulation11': {
     name: 'SIMULATION-U',
     theme: 'theme-simulation',
     steps: 5,
@@ -8586,7 +8679,7 @@ const AUDIOS = {
     buildPrompt: buildSimulationPrompt,
     systemPrompt: getSimulationSystem,
   },
-  'miAPM4B2kJ6tW': {
+  'miapm40': {
     name: 'Amor Propio Magic 4.0',
     theme: 'theme-apm4',
     steps: 3,
@@ -8599,7 +8692,7 @@ const AUDIOS = {
     systemPrompt: getApm4System,
     singleOnly: true,
   },
-  'miSEDUC7w3pN5dY': {
+  'miseduction11': {
     name: 'SEDUCTION',
     theme: 'theme-seduction',
     steps: 6,
@@ -8612,31 +8705,17 @@ const AUDIOS = {
     systemPrompt: getSeductionSystem,
     singleOnly: true,
   },
-  'miIMAG8x7zW3kM': {
-    name: 'IMAGINE',
-    theme: 'theme-imagine',
-    steps: 4,
-    headerLabel: 'ERIORCENTER — IMAGINE 👽✨',
-    introTitle: '<em>IMAGINE</em>',
-    introDesc: 'Tu imaginación es tu herramienta más poderosa. Aquí la activamos para que todo lo que imagines se manifieste en tu realidad 👽✨',
-    fields: ['name','last','email','imagetheme'],
-    buildSteps: buildImagineSteps,
-    buildPrompt: buildImaginePrompt,
-    systemPrompt: getImagineSystem,
-    singleOnly: true,
-  },
-  'miLIM9h5p2wS7gY': {
-    name: 'LIMITLESS',
-    theme: 'theme-limitless',
-    steps: 4,
-    headerLabel: 'ERIORCENTER — LIMITLESS 🧠⚡',
-    introTitle: '<em>LIMITLESS</em>',
-    introDesc: 'Tu mente es extraordinaria. Activa tu poder mental ilimitado 🧠✨',
-    fields: ['name','last','email','limitlessintention'],
-    buildSteps: buildLimitlessSteps,
-    buildPrompt: buildLimitlessPrompt,
-    systemPrompt: getLimitlessSystem,
-    singleOnly: true,
+  'miGOLD8x2kP9m': {
+    name: 'GOLD GLITCH',
+    theme: 'theme-glitch',
+    steps: 5,
+    headerLabel: 'ERIORCENTER — GOLD GLITCH ✨',
+    introTitle: 'GOLD <em>GLITCH</em>',
+    introDesc: 'Bienvenid@ a nuestro programa <strong>GOLD GLITCH</strong>. Un audio de abundancia supraliminal diseñado para que experimentes tu versión más próspera 💛✨',
+    fields: ['name','email','glitchtheme'],
+    buildSteps: buildGlitchSteps,
+    buildPrompt: buildGlitchPrompt,
+    systemPrompt: getGlitchSystem,
   },
 };
 
@@ -8723,8 +8802,7 @@ const THEME_BG = {
   'theme-simulation': '#080508',
   'theme-apm4': '#080508',
   'theme-seduction': '#080306',
-  'theme-imagine': '#010001',
-  'theme-limitless': '#0a0805',
+  'theme-glitch': '#0a0805',
 };
 const THEME_COLOR = {
   'theme-you': '#faf8f5',
@@ -8761,8 +8839,7 @@ const THEME_COLOR = {
   'theme-simulation': '#faf5f7',
   'theme-apm4': '#fdf8f0',
   'theme-seduction': '#faf5f5',
-  'theme-imagine': '#ffffff',
-  'theme-limitless': '#ffffff',
+  'theme-glitch': '#ffffff',
 };
 
 function applyTheme(theme) {
@@ -8913,8 +8990,6 @@ function validateStep(n) {
     if(!v(fid)){show('e-'+fields[n-1]);return false;}
   }
   if(fields[n-1]==='intention'){hide('e-intention');if(!v('f-intention')){show('e-intention');return false;}}
-  if(fields[n-1]==='hombreintention'){hide('e-hombreintention');if(!v('f-hombreintention')){show('e-hombreintention');return false;}}
-  if(fields[n-1]==='boosterintention'){hide('e-boosterintention');if(!v('f-boosterintention')){show('e-boosterintention');return false;}}
   if(fields[n-1]==='condition'){hide('e-condition');if(!v('f-condition')){show('e-condition');return false;}}
   if(fields[n-1]==='urgency'){hide('e-urgency');if(!v('f-urgency')){show('e-urgency');return false;}}
   if(fields[n-1]==='manifest'){hide('e-manifest');if(!v('f-manifest')){show('e-manifest');return false;}}
@@ -8951,8 +9026,6 @@ function validateStep(n) {
   if(fields[n-1]==='yourversion'){hide('e-yourversion');if(!v('f-yourversion')){show('e-yourversion');return false;}}
   if(fields[n-1]==='avoid'){hide('e-avoid');if(!v('f-avoid')){show('e-avoid');return false;}}
   if(fields[n-1]==='iconintention'){hide('e-iconintention');if(!v('f-iconintention')){show('e-iconintention');return false;}}
-  if(fields[n-1]==='imagetheme'){hide('e-imagetheme');if(!v('f-imagetheme')){show('e-imagetheme');return false;}}
-  if(fields[n-1]==='limitlessintention'){hide('e-limitlessintention');if(!v('f-limitlessintention')){show('e-limitlessintention');return false;}}
   if(fields[n-1]==='keepcooltopics'){
     hide('e-keepcooltopics');
     const kcEl=document.getElementById('f-keepcooltopics');
@@ -9025,6 +9098,10 @@ function validateStep(n) {
     const sc=document.getElementById('f-clientscript');
     if(!sc||sc.value.trim().length<80){show('e-clientscript');return false;}
   }
+  if(fields[n-1]==='glitchtheme'){
+    hide('e-glitchtheme');
+    if(!v('f-glitchtheme')){show('e-glitchtheme');return false;}
+  }
   if(fields[n-1]==='specificname'){
     // specificname only required if lovetype=specific
     const lt=document.querySelector('input[name="lovetype"]:checked');
@@ -9058,7 +9135,7 @@ function collectStep(n) {
   if(f==='last') fd.last=g('f-last');
   if(f==='email') fd.email=g('f-email');
   if(f==='wish1') fd.wishes=[g('wish-1'),g('wish-2'),g('wish-3')].filter(Boolean);
-  if(['hobby','desire','strength','wound','money','intention','imagetheme','limitlessintention','boosterintention','hombreintention'].includes(f)) fd[f]=g('f-'+f);
+  if(['hobby','desire','strength','wound','money','intention'].includes(f)) fd[f]=g('f-'+f);
   if(f==='condition') fd.condition=g('f-condition');
   if(f==='urgency') fd.urgency=g('f-urgency');
   if(f==='manifest') fd.manifest=g('f-manifest');
@@ -9130,8 +9207,6 @@ function collectStep(n) {
   if(f==='gender'){const r=document.querySelector('input[name="gender"]:checked');fd.gender=r?r.value:'';};
   if(f==='record'){const r=document.querySelector('input[name="record"]:checked');fd.record=r?r.value:'';}
   if(f==='time'){const t=document.querySelector('input[name="time"]:checked');fd.time=t?t.value:'';}
-  if(f==='imagetheme') fd.imagetheme=g('f-imagetheme');
-  if(f==='limitlessintention') fd.limitlessintention=g('f-limitlessintention');
   fd.lang=lang;
 }
 
@@ -9241,7 +9316,7 @@ async function generate() {
       for(let ra=0;ra<3;ra++){
         if(ra>0) await delay(ra===1?3000:5000);
         try{
-          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA,max_tokens:2000})});
+          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA})});
           const dataA=await resA.json();
           const txtA=dataA.text||'';
           if(!txtA.includes('overloaded_error')&&!txtA.includes('API ERROR')&&txtA.length>20){partA=txtA;break;}
@@ -9254,7 +9329,7 @@ async function generate() {
       for(let rb=0;rb<3;rb++){
         if(rb>0) await delay(rb===1?3000:5000);
         try{
-          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB,max_tokens:2000})});
+          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB})});
           const dataB=await resB.json();
           const txtB=dataB.text||'';
           if(!txtB.includes('overloaded_error')&&!txtB.includes('API ERROR')&&txtB.length>20){partB=txtB;break;}
@@ -9330,7 +9405,7 @@ async function _doGenerate() {
       for(let ra=0;ra<3;ra++){
         if(ra>0) await delay(ra===1?3000:5000);
         try{
-          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA,max_tokens:2000})});
+          const resA=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptA})});
           const dataA=await resA.json();
           const txtA=dataA.text||'';
           if(!txtA.includes('overloaded_error')&&!txtA.includes('API ERROR')&&txtA.length>20){partA=txtA;break;}
@@ -9343,7 +9418,7 @@ async function _doGenerate() {
       for(let rb=0;rb<3;rb++){
         if(rb>0) await delay(rb===1?3000:5000);
         try{
-          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB,max_tokens:2000})});
+          const resB=await fetch('/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:baseSystem,prompt:promptB})});
           const dataB=await resB.json();
           const txtB=dataB.text||'';
           if(!txtB.includes('overloaded_error')&&!txtB.includes('API ERROR')&&txtB.length>20){partB=txtB;break;}
@@ -9542,7 +9617,7 @@ function splitScript(text) {
   if(idx>0){s1=text.substring(0,idx).trim();s2=text.substring(idx).trim();}
   else{const p=text.split('---');s1=p[0]?p[0].trim():text;s2=p[1]?p[1].trim():'';}
 
-  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess','theme-unlimited','theme-simulation','theme-apm4','theme-seduction','theme-imagine','theme-limitless'];
+  const singleOnly=['theme-identity','theme-amor','theme-booster','theme-hombre','theme-vitamind','theme-abundance','theme-moneytech','theme-satori','theme-mesmerizing','theme-fitwave','theme-select','theme-wonderland','theme-lucky','theme-amorpropio2','theme-eclat','theme-attraction','theme-mastermind','theme-onceonce','theme-kids','theme-eriorldove','theme-mentalglow','theme-whiterabbit','theme-mindmovie','theme-iconaura','theme-keepcool','theme-godgoddess','theme-unlimited','theme-simulation','theme-apm4','theme-seduction','theme-glitch'];
   const onlyMini=currentAudio&&singleOnly.includes(currentAudio.theme);
   const wrap1=document.querySelectorAll('.script-wrap')[0];
   if(onlyMini){
@@ -10535,8 +10610,8 @@ function buildHombreSteps(){
     <div class="step-eyebrow">04 — Tu intención</div>
     <h2 class="step-q">¿Para qué quieres que <em>intencionemos</em> este audio?</h2>
     <p class="step-hint">Por favor hazlo súper específico. Un solo tema. Entre más detalle, mejor. 💎<br><br>Ejemplos: "Quiero encontrar un mejor trabajo que sea desde mi casa", "Quiero conocer al amor de mi vida", "Quiero ser más disciplinado en el gym", "Quiero ganar más dinero con mi negocio".</p>
-    <textarea class="step-input" id="f-hombreintention" placeholder="Quiero..."></textarea>
-    <div class="field-err" id="e-hombreintention">Por favor escribe tu intención</div>
+    <textarea class="step-input" id="f-intention" placeholder="Quiero..."></textarea>
+    <div class="field-err" id="e-intention">Por favor escribe tu intención</div>
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="5">
@@ -15177,284 +15252,20 @@ REGLAS: Sin Markdown. Sin explicaciones. Solo el header de entrega y el script.`
 }
 
 // ═══════════════════════════════════
-// IMAGINE — Funciones
+// BUILD STEPS — GOLD GLITCH
 // ═══════════════════════════════════
-function buildImagineSteps(){
+function buildGlitchSteps(){
   document.getElementById('form-main-area').innerHTML=`
   <div class="step active" data-step="0">
-    <div class="intro-card img-intro">
-      <div class="img-orb"></div>
-      <div class="img-ring"></div>
-      <div class="intro-card-label">ERIORCENTER — NUEVO AUDIO ✦</div>
-      <div class="intro-card-title"><em>IMAGINE</em></div>
-      <div class="intro-card-desc">Tu imaginación es tu herramienta más poderosa. Aquí la activamos para que todo lo que imagines se manifieste en tu realidad 👽✨</div>
-    </div>
-    <div class="step-eyebrow">Antes de comenzar</div>
-    <h2 class="step-q">¿En qué idioma deseas tu <em>mini script</em>?</h2>
-    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
-    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar 👽</button></div>
-  </div>
-
-  <div class="step" data-step="1">
-    <div class="step-eyebrow">✦ 01 — Identificación</div>
-    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
-    <p class="step-hint">El nombre con el que imaginas 👽</p>
-    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
-    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
-  </div>
-
-  <div class="step" data-step="2">
-    <div class="step-eyebrow">✦ 02 — Identificación</div>
-    <h2 class="step-q">¿Cuál es tu <em>apellido</em>?</h2>
-    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
-    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
-  </div>
-
-  <div class="step" data-step="3">
-    <div class="step-eyebrow">✦ 03 — Contacto</div>
-    <h2 class="step-q">¿A qué <em>email</em> enviamos tu mini script?</h2>
-    <p class="step-hint">Por favor usa el mail con el que pagaste 💌</p>
-    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
-    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
-  </div>
-
-  <div class="step" data-step="4">
-    <div class="step-eyebrow">✦ 04 — Tu visión</div>
-    <h2 class="step-q">¿Qué deseas <em>imaginar</em>?</h2>
-    <p class="step-hint">Describe lo que imaginas que se manifieste en tu realidad. Sé específic@ y detallad@ 👽✨</p>
-    <textarea class="step-input" id="f-imagetheme" placeholder="Deseo imaginar..." style="height:140px;"></textarea>
-    <div class="field-err" id="e-imagetheme">Por favor describe tu imaginación</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Activar mi imaginación 👽</button></div>
-  </div>`;
-}
-
-function buildImaginePrompt(fd){
-  const name = fd.name || '_';
-  const theme = fd.imagetheme || '';
-
-  const deliveryHeader = `Hola 𓂃𓈒𓏸🫧👽𓏸𓈒𓂃 
-Aquí está tu mini script de IMAGINE ✨
-Por favor grábalo y escúchalo diariamente 🎤📄
-Cuando lo tengas listo, envíalo a:
-eriorcenter@gmail.com 💌
-¡Gracias! 🌸💫`;
-
-  if(fd.lang === 'es'){
-    return `Datos del cliente:
-- Nombre: ${name}
-- Tema de imaginación: "${theme}"
-
-Usa EXACTAMENTE el siguiente script base sin cambiar nada. Solo completa los espacios en blanco (____) con el nombre "${name}" y agrega una sección personalizada al final que integre el tema.
-
-SCRIPT BASE:
-Yo, ____, soy imaginación.
-Tengo una imaginación poderosa, vívida e ilimitada.
-¿Por qué será que todo lo que imagino intensamente se vuelve mi realidad?
-¿Por qué mi mente crea, mi imaginación lidera y mi realidad obedece tan fácilmente?
-¿Por qué no hay diferencia entre lo que imagino y lo que experimento?
-Yo, ____, sé cómo instalar dentro de mí el silencio verdadero.
-El ruido mental se apaga. La crítica interna se disuelve.
-Mi mente se vuelve solo una herramienta: clara, quieta y profunda.
-¿Por qué será que en este silencio puedo escucharme de verdad?
-¿Por qué este silencio ya está instalado y lo activo cuando yo quiera?
-Yo, ____, recupero mi niñ@ interior.
-Me siento segur@ para explorar, equivocarme y jugar sin miedo.
-Me doy permiso radical de jugar. Juego porque sí. Creo porque sí.
-¿Por qué será que mi niñ@ interior sabe que aquí dentro está protegido?
-¿Por qué todo se vuelve fácil, fluido y divertido cuando le dejo el mando?
-¿Por qué mi creatividad fluye sin esfuerzo cuando soy mi niñ@ interior?
-Yo, ____, instalo un amor propio que se nota en toda mi realidad.
-Me hablo con respeto. Me cuido. Elijo lo que me eleva.
-¿Por qué será que este amor propio ya no es solo un sentimiento, sino una forma de vivir?
-¿Por qué está programado en mí y transforma todo lo que toco?
-Yo, ____, limpio todos mis deseos de todo miedo y carencia.
-Lo que deseo ahora nace solo de expansión y verdad.
-La honestidad conmigo mism@ se vuelve natural y segura.
-¿Por qué será que estos deseos limpios se instalan en mi inconsciente y se vuelven mi realidad?
-¿Por qué ya no necesito mentirme?
-¿Por qué todo lo que imagino desde mi corazón se cumple de forma inmediata, natural y fácil?
-Todo es fácil.
-Todo fluye.
-Todo está hecho.
-Y así es.
-
-INSTRUCCIONES PARA LA SECCIÓN PERSONALIZADA:
-Después de "Y así es." agrega 6 a 10 líneas personalizadas que integren el tema "${theme}":
-- Empieza con: "Yo, ${name}, ahora aplico toda esta imaginación, este silencio, este niñ@ interior, este amor propio y estos deseos limpios a..."
-- Continúa con afirmaciones y preguntas en el mismo estilo (usando "¿Por qué será que...?")
-- Habla del tema como si ya se estuviera manifestando de forma natural, fácil y divertida
-- Mantén lenguaje neutral con "@"
-- Termina con:
-"Todo es fácil.
-Todo fluye.
-Todo está hecho.
-Y así es."
-
-Entrega EXACTAMENTE en este formato:
-
-${deliveryHeader}
-
-[AQUÍ VA EL SCRIPT COMPLETO con nombre y sección personalizada]
-
-REGLAS CRÍTICAS:
-- Sin Markdown
-- Sin explicaciones
-- No cambies el script base - es SAGRADO
-- Solo completa los ____ y agrega la sección personalizada
-- Solo el header y el script`;
-  } else {
-    return `Client: ${name}, Imagination theme: "${theme}". 
-Generate IMAGINE script in English using the exact base provided, completing blanks with name and adding personalized section for the theme. Delivery format: Start with greeting header (in Spanish as provided), then complete script. No Markdown. ONLY formatted content.`;
-  }
-}
-
-function getImagineSystem(fd){
-  return `Eres un creador de scripts de transformación personal. Tu tarea es tomar el script base IMAGINE exactamente como está (sin cambiar absolutamente nada) y:
-
-1. Completa todos los espacios en blanco (____) con el nombre de la persona
-2. Agrega una sección personalizada de 6-10 líneas al final que integre el tema elegido
-3. La sección personalizada sigue el patrón exacto del script base
-4. Mantén el lenguaje neutral con "@"
-5. El tono es poderoso, directo, sin explicaciones
-
-CRÍTICO: No cambies una sola palabra del script base. Es la estructura sagrada. Solo personalizas.`;
-}
-
-// ═══════════════════════════════════
-// LIMITLESS — Funciones
-// ═══════════════════════════════════
-function buildLimitlessSteps(){
-  document.getElementById('form-main-area').innerHTML=`
-  <div class="step active" data-step="0">
-    <div class="intro-card lim-intro">
-      <div class="lim-orb"></div>
-      <div class="lim-ring"></div>
-      <div class="intro-card-label">ERIORCENTER — PODER MENTAL ✦</div>
-      <div class="intro-card-title"><em>LIMITLESS</em></div>
-      <div class="intro-card-desc">Tu mente es extraordinaria. Activa tu poder mental ilimitado 🧠✨</div>
+    <div class="intro-card">
+      <div class="intro-card-label">ERIORCENTER — Audio</div>
+      <div class="intro-card-title">GOLD <em>GLITCH</em></div>
+      <div class="intro-card-desc">Bienvenid@ a nuestro programa <strong>GOLD GLITCH</strong>. Un audio de abundancia supraliminal diseñado para que experimentes tu versión más próspera 💛✨</div>
     </div>
     <div class="step-eyebrow">Antes de comenzar</div>
     <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
     <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
-    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar 🧠</button></div>
-  </div>
-
-  <div class="step" data-step="1">
-    <div class="step-eyebrow">✦ 01 — Identificación</div>
-    <h2 class="step-q">¿Cuál es tu <em>nombre</em>?</h2>
-    <input type="text" class="step-input" id="f-name" placeholder="Mi nombre es..." autocomplete="off">
-    <div class="field-err" id="e-name">Por favor ingresa tu nombre</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
-  </div>
-
-  <div class="step" data-step="2">
-    <div class="step-eyebrow">✦ 02 — Identificación</div>
-    <h2 class="step-q">¿Cuál es tu <em>apellido</em>?</h2>
-    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
-    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
-  </div>
-
-  <div class="step" data-step="3">
-    <div class="step-eyebrow">✦ 03 — Contacto</div>
-    <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
-    <p class="step-hint">Por favor usa el mail con el que pagaste 💌</p>
-    <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
-    <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
-  </div>
-
-  <div class="step" data-step="4">
-    <div class="step-eyebrow">✦ 04 — Tu Intención</div>
-    <h2 class="step-q">¿Para qué quieres <em>intencionar</em> tu script?</h2>
-    <p class="step-hint">Por ejemplo: saber más idiomas, ser más disciplinado, ser menos cuadrado, entender mejor la física 🧠⚡</p>
-    <textarea class="step-input" id="f-limitlessintention" placeholder="Quiero poder..." style="height:140px;"></textarea>
-    <div class="field-err" id="e-limitlessintention">Por favor describe tu intención</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="showWarning()">Activar mi mente 🧠⚡</button></div>
-  </div>`;
-}
-
-function buildLimitlessPrompt(fd){
-  const name = fd.name || '_';
-  const intention = fd.limitlessintention || '';
-
-  const deliveryHeader = `Hola 𓂃𓈒𓏸🧠⚡𓏸𓈒𓂃 
-Este es tu script para el audio de LIMITLESS. Por favor manda la grabación al correo eriorcenter@gmail.com`;
-
-  if(fd.lang === 'es'){
-    return `Datos del cliente:
-- Nombre: ${name}
-- Intención: "${intention}"
-
-INSTRUCCIONES CRÍTICAS:
-Genera un Mini Script personalizado usando EXACTAMENTE esta estructura base:
-
-"Yo, ____, tengo una mente extraordinaria. 🧠✨
-Mi mente es poderosa y cada día descubro nuevas capacidades dentro de mí.
-Tengo el increíble poder de [TEMA PERSONALIZADO] y se siente completamente natural para mí.
-Mi mente sabe exactamente cómo crear y experimentar [RESULTADO PERSONALIZADO].
-Confío en mi poder, en mi imaginación y en todo mi potencial.
-¿Por qué será que [TEMA PERSONALIZADO] se siente tan natural para mí? ⚡✨"
-
-PASOS:
-1. Completa ____ con: "${name}"
-2. Adapta [TEMA PERSONALIZADO] según la intención: "${intention}"
-3. Adapta [RESULTADO PERSONALIZADO] de forma natural
-4. NO copies mecánicamente - adapta las frases para que tengan sentido gramatical
-5. El resultado debe sentirse escrito especialmente para esa persona
-6. Máximo 70-100 palabras total
-7. Tono: mágico, poderoso, positivo, extraordinario
-
-Devuelve EXACTAMENTE en este formato:
-
-${deliveryHeader}
-
-[AQUÍ VA EL SCRIPT COMPLETADO]
-
-REGLAS CRÍTICAS:
-- Sin Markdown
-- Sin explicaciones
-- Solo el header y el script`;
-  } else {
-    return `Client: ${name}, Intention: "${intention}". Generate complete LIMITLESS script (70-100 words) using exact base structure provided, naturally adapting theme and result. Tone: magical, powerful, positive. First person, present. Delivery format: greeting header (in Spanish as provided) then complete script. No Markdown. Only formatted content.`;
-  }
-}
-
-function getLimitlessSystem(fd){
-  return `Eres un creador de scripts de transformación personal. Tu tarea es generar un Script personalizado LIMITLESS usando exactamente la estructura base proporcionada.
-
-CRÍTICO:
-1. Usa la estructura exacta - NO cambies el patrón
-2. Completa los espacios en blanco con el nombre
-3. Adapta [TEMA PERSONALIZADO] y [RESULTADO PERSONALIZADO] según la intención del usuario
-4. NO copies mecánicamente - adapta las frases para que tengan sentido natural
-5. El resultado debe sentirse escrito especialmente para esa persona
-6. Mantén el tono mágico, poderoso, positivo, extraordinario
-7. Primera persona, presente
-8. 70-100 palabras máximo
-9. Devuelve solo el script - sin explicaciones`;
-}
-
-// ═══════════════════════════════════
-// BOOSTER 2.0 — Funciones
-// ═══════════════════════════════════
-function buildBooster2Steps(){
-  document.getElementById('form-main-area').innerHTML=`
-  <div class="step active" data-step="0">
-    <div class="intro-card lim-intro">
-      <div class="lim-orb"></div>
-      <div class="lim-ring"></div>
-      <div class="intro-card-label">ERIORCENTER — PODER POTENCIADO ✦</div>
-      <div class="intro-card-title">BOOSTER <em>2.0</em></div>
-      <div class="intro-card-desc">Entra en presencia, neutralidad y elección consciente. Domina el arte de regresar a tu centro y materializar tus preferencias sin esfuerzo ⚡✨</div>
-    </div>
-    <div class="step-eyebrow">Antes de comenzar</div>
-    <h2 class="step-q">¿En qué idioma deseas tu <em>script</em>?</h2>
-    <div class="lang-row"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">Español</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button></div>
-    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar ⚡</button></div>
+    <div class="step-nav"><span></span><button class="btn-next" onclick="nextStep()">Comenzar →</button></div>
   </div>
   <div class="step" data-step="1">
     <div class="step-eyebrow">01 — Tu nombre</div>
@@ -15464,29 +15275,22 @@ function buildBooster2Steps(){
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="2">
-    <div class="step-eyebrow">02 — Tu apellido</div>
-    <h2 class="step-q">¿Y tu <em>apellido</em>?</h2>
-    <input type="text" class="step-input" id="f-last" placeholder="Mi apellido es..." autocomplete="off">
-    <div class="field-err" id="e-last">Por favor ingresa tu apellido</div>
-    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
-  </div>
-  <div class="step" data-step="3">
-    <div class="step-eyebrow">03 — Tu email</div>
+    <div class="step-eyebrow">02 — Tu email</div>
     <h2 class="step-q">¿A qué <em>email</em> enviamos tu script?</h2>
     <input type="email" class="step-input" id="f-email" placeholder="tucorreo@email.com" autocomplete="email">
     <div class="field-err" id="e-email">Por favor ingresa un email válido</div>
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
-  <div class="step" data-step="4">
-    <div class="step-eyebrow">04 — Tu intención</div>
-    <h2 class="step-q">¿Para qué quieres <em>intencionar</em> este audio?</h2>
-    <p class="step-hint">Un solo tema, breve. Si ya tienes tu script solo escribe "ya lo tengo" ⚡</p>
-    <textarea class="step-input" id="f-boosterintention" placeholder="Quiero..."></textarea>
-    <div class="field-err" id="e-boosterintention">Por favor escribe tu intención</div>
+  <div class="step" data-step="3">
+    <div class="step-eyebrow">03 — Personalización</div>
+    <h2 class="step-q">¿Con qué tema te gustaría personalizar este audio en palabras, frecuencias y sonido?</h2>
+    <p class="step-hint">Describe cómo quieres que se adapte el audio a tu realidad de abundancia 💛</p>
+    <textarea class="step-input" id="f-glitchtheme" placeholder="Mi tema de abundancia es..."></textarea>
+    <div class="field-err" id="e-glitchtheme">Por favor describe tu tema</div>
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
-  <div class="step" data-step="5">
-    <div class="step-eyebrow">05 — Grabación</div>
+  <div class="step" data-step="4">
+    <div class="step-eyebrow">04 — Grabación</div>
     <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
     <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
     <div class="choices">
@@ -15497,156 +15301,83 @@ function buildBooster2Steps(){
   </div>`;
 }
 
-function buildBooster2Prompt(fd){
-  const name = fd.name || '_';
-  const intention = fd.boosterintention || '';
+// ═══════════════════════════════════
+// BUILD PROMPT — GOLD GLITCH
+// ═══════════════════════════════════
+function buildGlitchPrompt(fd){
+  const name=fd.name||'_';
+  const theme=fd.glitchtheme||'abundancia';
+  if(fd.lang==='es'){
+    return `Datos: Nombre: ${name}, Tema: ${theme}
 
-  if(fd.lang === 'es'){
-    return `Datos del cliente:
-- Nombre: ${name}
-- Intención: "${intention}"
+SCRIPT BASE EXACTO:
 
-INSTRUCCIONES CRÍTICAS:
+Yo ${name}, soy mi versión más abundante.
 
-Usa el siguiente script como estructura base obligatoria.
-REGLA PRINCIPAL: Conserva el script completo. No elimines, resumas, sustituyas ni cambies ninguna de sus partes.
+Me pagan por existir.
+Me pagan por ser yo.
+Mi presencia tiene valor.
+Mi energía tiene valor.
+Mis ideas tienen valor.
+Mi autenticidad genera abundancia.
 
-La única sección que debes expandir es la que comienza con:
-"Yo elijo la dirección de mi realidad: amor, salud, abundancia, paz, belleza, libertad y cualquier preferencia que quiera experimentar."
+Merezco toda la abundancia que existe para mí.
+Merezco recibir muchísimo dinero.
+Merezco vivir rodeado/a de riqueza, oportunidades y facilidad.
 
-Inmediatamente después de esa frase, agrega la intención específica del cliente utilizando esta estructura:
-"Yo elijo [INTENCIÓN DEL CLIENTE]."
+Me siento tan abundante y completo/a por dentro que atraigo mucho, mucho dinero y abundancia por todas partes y de todas las formas.
 
-Después, desarrolla ampliamente esa intención en varios párrafos escritos en primera persona y en tiempo presente.
+Mi realidad es abundante porque yo soy abundancia.
+El dinero llega a mí de múltiples formas.
+Siempre hay más para mí.
+Siempre recibo más.
+Cada día soy más próspero/a, más magnético/a y más abundante.
 
-El desarrollo debe:
-* Mantener el tono de presencia, neutralidad, elección y facilidad del script original.
-* Convertir la intención del cliente en una realidad ya elegida y natural.
-* Describir de forma concreta cómo se ve y se experimenta esa preferencia.
-* Incluir afirmaciones relacionadas directamente con la intención.
-* Reforzar que esa realidad se siente normal, natural y fácil para la persona.
-* Reforzar que no necesita perseguir, controlar ni descubrir cómo sucederá.
-* Mantener un lenguaje fluido, directo, positivo y adecuado para escucharse repetidamente en un audio.
-* Evitar explicaciones teóricas o consejos.
-* No agregar títulos ni subtítulos dentro del script.
+Yo soy riqueza.
+Yo soy prosperidad.
+Yo soy expansión.
+Yo soy mi versión más abundante.
 
-Después de desarrollar la intención, continúa EXACTAMENTE con el resto del script desde:
-"Todo se manifiesta sin esfuerzo…"
+Me pagan por existir.
+Me pagan por ser auténtico/a.
+Me pagan por aportar mi esencia al mundo.
 
-SCRIPT BASE OBLIGATORIO:
-Yo ${name}, entro en una etapa de presencia, neutralidad y elección consciente. Dejo de analizarlo todo, de convertir cada pensamiento en una historia y de vivir intentando corregirme. Dejo de sanar a otros y de anticipar problemas.
-Todos los días observo lo que aparece sin juzgarlo, decido si me sirve o no y lo suelto rápidamente cuando no quiero alimentarlo. Así elimino cualquier bucle.
-Mi atención vuelve a mí, a lo que disfruto, a mis preferencias y a la experiencia que quiero vivir. No necesito tener todo resuelto ni conocer cada paso; puedo avanzar momento a momento, confiar más en mí y permitir que la vida también sea un juego. Vivo la vida con curiosidad, disfrute y expansión.
-Yo elijo la dirección de mi realidad: amor, salud, abundancia, paz, belleza, libertad y cualquier preferencia que quiera experimentar.
+Esta es mi realidad.
+Una realidad donde recibir mucho dinero es natural para mí.
 
-[AQUÍ: Agrega "Yo elijo ${intention}." y desarrolla ampliamente]
+Mi negocio es cada día más próspero y abundante.
+Cada vez llegan más clientes, ventas y oportunidades perfectas para mí.
+Mi negocio genera muchísimo dinero de forma constante y natural.
+Todo lo que creo tiene valor y las personas aman invertir en lo que ofrezco.
 
-Todo se manifiesta sin esfuerzo. En vez de perseguir resultados, forzar procesos o quedarme atrapad@ midiendo mi progreso, domino el arte de regresar a mi centro, elegir mis preferencias y permitir que el universo las materialice sin esfuerzo.
-Yo ${name}, vivo en un presente limpio donde no necesito cargar continuamente con historias anteriores. Solo observo, elijo, permanezco en neutralidad y vivo desde mis preferencias.
+Después de este texto base, agrega exactamente 5 líneas personalizadas relacionadas con: ${theme}
 
-Devuelve SOLO el script completo, sin explicaciones ni títulos.`;
+Las 5 líneas deben:
+- estar completamente en positivo
+- hablar como si la meta ya fuera una realidad
+- relacionar la meta con prosperidad, dinero, expansión, éxito u oportunidades
+- ser cortas, claras y fáciles de repetir
+- terminar con una pregunta afirmativa que comience con "¿Por qué será que...?"
+
+Formato: No agregues títulos, explicaciones ni introducciones. Entrega únicamente el script final completo.`;
   } else {
-    return `Client: ${name}, Intention: "${intention}". Use complete base script provided. Expand ONLY the "Yo elijo la dirección..." section with client's intention. Develop in first person, present tense, maintaining tone of presence, neutrality, ease. Do NOT change base script or add titles. Return complete script only, no explanations.`;
+    return `Data: Name: ${name}, Theme: ${theme}
+
+Generate an abundance supraliminal script in English using the exact provided base structure for ${name}, then add 5 personalized lines related to: ${theme}
+
+Keep all affirmations in positive present tense. Make the 5 new lines short, powerful, easy to repeat, and end with a "Why is it..." question.
+
+Return ONLY the complete final script. No explanations, no titles.`;
   }
 }
 
-function getBooster2System(fd){
-  return `Eres un creador de scripts de presencia y neutralidad. Tu tarea es expandir el script BOOSTER 2.0 con la intención específica del cliente.
-
-CRÍTICO:
-1. Mantén el script base COMPLETO y sin cambios
-2. Solo expande la sección "Yo elijo la dirección de mi realidad..."
-3. Agrega la intención del cliente de forma natural
-4. Desarrolla ampliamente en primera persona, presente, sin teoría
-5. Mantén el tono de presencia, neutralidad, facilidad y poder
-6. No agrues explicaciones teóricas
-7. Devuelve SOLO el script - sin títulos ni meta-comentarios
-
-La calidad está en la personalización natural y auténtica.`;
-}
-
 // ═══════════════════════════════════
-// AMOR PROPIO MAGIC HOMBRE 2.0 — Funciones
+// SYSTEM PROMPT — GOLD GLITCH
 // ═══════════════════════════════════
-function buildHombrePrompt2(fd){
-  const name = fd.name || '_';
-  const intention = fd.hombreintention || '';
-
-  const deliveryHeader = `Por favor, envía la grabación de tu Mini Script a nuestro correo: eriorcenter@gmail.com.
-Asegúrate de grabarlo con claridad y a un ritmo cómodo, ya que esta grabación será utilizada para crear tu experiencia personalizada.
-A continuación encontrarás tu Mini Script personalizado, creado especialmente a partir de la intención que elegiste:
-Aquí está tu mini script:`;
-
-  if(fd.lang === 'es'){
-    return `Datos del cliente:
-- Nombre: ${name}
-- Intención: "${intention}"
-
-INSTRUCCIONES CRÍTICAS:
-
-Usa el siguiente mini script como estructura base obligatoria.
-
-REGLA PRINCIPAL: Conserva el mini script EXACTAMENTE como está escrito. No elimines, resumas, sustituyas, reorganices ni modifiques ninguna palabra, frase, concepto o párrafo.
-
-MINI SCRIPT BASE (SIN CAMBIOS):
-Yo ${name}, soy un hombre seguro, firme, valioso y profundamente orgulloso de quien soy. Confío en mí, en mis decisiones y en mi capacidad para construir una vida extraordinaria. Mi mente es clara, mi energía tiene dirección y mi paz es mi mayor poder. Disfruto de mi libertad, de mi estabilidad y de todo lo que he construido. Las ideas correctas llegan a mí con naturalidad, las convierto en proyectos y negocios prósperos, y el dinero encuentra un lugar seguro conmigo porque sé generarlo, disfrutarlo y multiplicarlo con inteligencia, calma y confianza.
-Cada día admiro más al hombre en el que me estoy convirtiendo. Me gusta mi presencia, mi carácter, mi inteligencia, mi fuerza y la manera en que dirijo mi vida. Me amo, me respeto y soy mi propio respaldo. Mi creatividad genera riqueza, mis decisiones fortalecen mi futuro y mi abundancia crece junto con mi confianza. Soy dueño de mi energía, de mi atención y de mis respuestas; mi libertad se siente increíble y nadie ni nada tiene el poder de quitarme mi paz. ¿Qué voy a hacer ahora que me gusta tanto esta versión de mí, ahora que verdaderamente me amo?
-
-DESPUÉS DEL MINI SCRIPT, agrega UN SOLO párrafo completamente personalizado según la intención que la persona quiera mejorar.
-
-Este párrafo debe estar escrito:
-- En primera persona.
-- En presente.
-- Como una identidad que ya existe.
-- En masculino.
-- De manera directa, firme, segura y positiva.
-- Con frases sencillas y poderosas.
-- Reforzando que la persona YA ES el hombre que representa esa intención.
-- Manteniendo la energía de amor propio, seguridad, confianza, disfrute, facilidad y dominio personal del script original.
-- Sin explicar cómo manifestarlo.
-- Sin consejos.
-- Sin cambiar ninguna parte del mini script original.
-- Desarrollando únicamente la intención proporcionada: "${intention}"
-
-La estructura del párrafo personalizado debe comenzar así:
-"Soy el hombre [IDENTIDAD RELACIONADA CON LA INTENCIÓN]..."
-
-Después desarrolla esa identidad con afirmaciones específicas relacionadas con: ${intention}
-
-Devuelve EXACTAMENTE en este formato:
-
-${deliveryHeader}
-
-[AQUÍ VA EL MINI SCRIPT BASE SIN CAMBIOS, COMPLETAMENTE]
-
-[AQUÍ VA UN SOLO PÁRRAFO PERSONALIZADO comenzando con "Soy el hombre [IDENTIDAD]..."]
-
-REGLAS CRÍTICAS:
-- Sin Markdown
-- Sin explicaciones
-- Mini script base 100% intacto
-- Solo un párrafo personalizado al final
-- Mantén la energía de seguridad, confianza y amor propio`;
-  } else {
-    return `Client: ${name}, Intention: "${intention}". Use EXACT base mini script provided without any changes. After script, add ONE personalized paragraph starting with "Soy el hombre [IDENTITY]..." developing the intention. First person, present, masculine, direct, firm, confident. No explanations, no advice. Return formatted content only.`;
-  }
-}
-
-function getHombreSystem2(fd){
-  return `Eres el editor de Mini Scripts de Amor Propio Magic Hombre 2.0 de ERIORCENTER.
-
-CRÍTICO:
-1. El mini script base debe permanecer EXACTAMENTE como está - SIN CAMBIOS
-2. Agrega SOLO un párrafo personalizado al final
-3. Párrafo: "Soy el hombre [IDENTIDAD]..." desarrollando la intención
-4. Tono: Directo, firme, seguro, positivo, presente
-5. Identidad que YA EXISTE - no futura
-6. Masculino, sin drama, sin análisis terapéutico
-7. Mantén energía de: seguridad, confianza, disfrute, facilidad, dominio personal
-8. Sin explicaciones, sin consejos
-9. Devuelve SOLO el content final - sin títulos ni meta-comentarios
-
-La calidad está en la personalización auténtica y firme.`;
+function getGlitchSystem(fd){
+  return fd.lang==='es'
+    ?`Eres el editor de scripts del Audio GOLD GLITCH de ERIORCENTER. Crea un mini script personalizado de abundancia estilo supraliminal. Tono: directo, magnético, afirmativo, poderoso, positivo y fácil de escuchar en repetición. Devuelve SOLO el script final.`
+    :`You are ERIORCENTER's GOLD GLITCH audio script editor. Create a personalized abundance supraliminal mini script. Tone: direct, magnetic, affirmative, powerful, positive and easy to listen to on repeat. Return ONLY the final script.`;
 }
 
 (function(){
@@ -15797,6 +15528,64 @@ La calidad está en la personalización auténtica y firme.`;
     requestAnimationFrame(loop);
   }
   loop();
+})();
+
+/* ═══ GOLD GLITCH FLOATING PARTICLES ═══ */
+(function() {
+  const floatTypes = ['float-1','float-2','float-3','float-4','float-5','float-6','float-7','float-8'];
+  const sizeTypes = ['size-1','size-2','size-3'];
+  const twinkleTypes = ['twinkle-1','twinkle-2','twinkle-3'];
+
+  function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'gold-particle ' +
+      floatTypes[Math.floor(Math.random() * floatTypes.length)] + ' ' +
+      sizeTypes[Math.floor(Math.random() * sizeTypes.length)] + ' ' +
+      twinkleTypes[Math.floor(Math.random() * twinkleTypes.length)];
+
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.bottom = (Math.random() * 30 - 50) + 'px';
+    particle.style.animationDelay = Math.random() * 2 + 's';
+
+    return particle;
+  }
+
+  function initGoldParticles() {
+    const container = document.getElementById('gold-particles');
+    if (!container) return;
+
+    // Crear 80-100 partículas iniciales
+    const particleCount = 80 + Math.floor(Math.random() * 30);
+    for (let i = 0; i < particleCount; i++) {
+      const particle = createParticle();
+      container.appendChild(particle);
+    }
+
+    // Mantener generando partículas nuevas continuamente
+    setInterval(() => {
+      if (document.getElementById('page-form').classList.contains('active')) {
+        // Generar 2-3 partículas por intervalo
+        for (let j = 0; j < 2 + Math.floor(Math.random() * 2); j++) {
+          const particle = createParticle();
+          container.appendChild(particle);
+        }
+
+        // Limpiar partículas viejas para evitar memory leak
+        if (container.children.length > 220) {
+          container.removeChild(container.children[0]);
+        }
+      }
+    }, 350);
+  }
+
+  // Iniciar partículas automáticamente
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => initGoldParticles(), 200);
+    });
+  } else {
+    setTimeout(() => initGoldParticles(), 200);
+  }
 })();
 </script>
 

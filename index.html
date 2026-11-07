@@ -8579,11 +8579,11 @@ const AUDIOS = {
   'miB00ST9w3zY7K': {
     name: 'Booster',
     theme: 'theme-booster',
-    steps: 5,
+    steps: 6,
     headerLabel: 'ERIORCENTER — BOOSTER ⚡',
     introTitle: 'Booster',
     introDesc: 'Este audio ha sido creado para ayudarte a que <strong>todos tus otros audios funcionen más rápido y con mayor potencia</strong>, ya que te lleva al <strong>estado de neutralidad</strong> ⚡🌿',
-    fields: ['name','last','email','intention','record'],
+    fields: ['name','last','email','intention','gender','record'],
     buildSteps: buildBoosterSteps,
     buildPrompt: buildBoosterPrompt,
     systemPrompt: getBoosterSystem,
@@ -10288,7 +10288,17 @@ function buildBoosterSteps(){
     <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
   </div>
   <div class="step" data-step="5">
-    <div class="step-eyebrow">05 — Grabación</div>
+    <div class="step-eyebrow">05 — Tu género</div>
+    <h2 class="step-q">¿Eres <em>hombre</em> o <em>mujer</em>?</h2>
+    <div class="choices">
+      <label class="choice-opt" onclick="pickChoice(this,'gender')"><input type="radio" name="gender" value="mujer"><div class="choice-radio"></div><span class="choice-label">🌸 Mujer</span></label>
+      <label class="choice-opt" onclick="pickChoice(this,'gender')"><input type="radio" name="gender" value="hombre"><div class="choice-radio"></div><span class="choice-label">☀️ Hombre</span></label>
+    </div>
+    <div class="field-err" id="e-gender">Por favor selecciona una opción</div>
+    <div class="step-nav"><button class="btn-back" onclick="prevStep()">← Anterior</button><button class="btn-next" onclick="nextStep()">Continuar →</button></div>
+  </div>
+  <div class="step" data-step="6">
+    <div class="step-eyebrow">06 — Grabación</div>
     <h2 class="step-q">¿List@ para recibir tu <em>mini script</em>?</h2>
     <p class="step-hint">Recuerda — siempre funciona más con tu voz. Cuando recibas tu script, grábalo y envíalo a eriorcenter@gmail.com 🎙️</p>
     <div class="choices">
@@ -10723,13 +10733,78 @@ RECUERDA: Devuelve SOLO el script final con los datos del cliente. Sin explicaci
 // ═══════════════════════════════════
 // PROMPTS — BOOSTER
 // ═══════════════════════════════════
+const BOOSTER_PROMPT_ES = `PROMPT MAESTRO PARA GENERAR SCRIPTS PERSONALIZADOS
+
+Actúa como un generador de scripts personalizados de afirmaciones en primera persona.
+
+Tu tarea es crear un script utilizando el nombre, el género gramatical y el tema elegido por cada persona.
+
+REGLAS OBLIGATORIAS:
+
+1. El script siempre debe comenzar con el TEXTO FIJO que aparece a continuación.
+2. No debes modificar, resumir, eliminar, reorganizar ni agregar palabras al texto fijo.
+3. Sustituye únicamente el espacio del nombre por el nombre de la persona.
+4. Después del texto fijo, agrega el TEXTO PERSONALIZADO utilizando el tema que haya elegido la persona.
+5. Adapta automáticamente todas las palabras que lo requieran al masculino o femenino, según corresponda.
+6. El tema debe integrarse de manera natural, con buena ortografía y concordancia gramatical.
+7. Conserva el estilo afirmativo, positivo, directo, seguro y en tiempo presente.
+8. No agregues introducciones, explicaciones, títulos, despedidas ni comentarios adicionales.
+9. Entrega únicamente el script completo, listo para grabarse.
+10. Nunca cambies la estructura de las afirmaciones, aunque el tema sea diferente.
+
+PARTE 1: TEXTO FIJO OBLIGATORIO
+
+"Yo [NOMBRE], siempre estoy en neutralidad.
+
+Aquí solo existe la seguridad, solo existe la abundancia, solo existe el amor, solo existe mi versión más completa.
+
+Todo es fácil y todo lo que quiero se organiza y manifiesta con precisión.
+
+Esta realidad ya solo me refleja amor, relajación, dicha, gozo, plenitud y paz.
+
+Mi realidad ya solo responde a mis preferencias limpias:
+vivir en paz constante, amor estable y certeza absoluta en cada momento."
+
+PARTE 2: TEXTO PERSONALIZADO
+
+Después del texto fijo, escribe exactamente esta estructura, sustituyendo [TEMA] por el tema elegido:
+
+"Para mí es muy fácil [TEMA]. Todo es fácil pues obedece a mis preferencias, me salgo de los bucles y bloqueos para poder [TEMA]. Mi preferencia es [TEMA] y así es."
+
+ADAPTACIÓN DEL TEMA
+
+- Si la persona elige "aprender a manejar bien en moto", utiliza "manejar bien en moto" para que las afirmaciones suenen naturales.
+- Si elige "ser más segura de mí misma", utiliza "ser más segura de mí misma" si es mujer y "ser más seguro de mí mismo" si es hombre.
+- Si elige "tener una relación estable", conserva "tener una relación estable".
+- Si elige "sentirme hermosa", utiliza "sentirme hermosa" para femenino y "sentirme hermoso" para masculino.
+- Si el tema contiene palabras como preparada/preparado, tranquila/tranquilo, amada/amado, segura/seguro, adapta correctamente su género.
+- Si el tema viene escrito como deseo (por ejemplo, "quiero aprender a manejar"), conviértelo en una frase que encaje con "Para mí es muy fácil…", sin cambiar el texto fijo.
+
+IMPORTANTE: No inventes nuevas afirmaciones ni cambies el significado del tema. Solo realiza los ajustes gramaticales necesarios para integrarlo correctamente en la estructura.
+
+RESULTADO FINAL
+
+Devuelve únicamente las dos partes del script, una después de la otra, separadas por un espacio.
+
+No incluyas ningún texto fuera del script.`;
+
 function getBoosterSystem(fd){
   return fd.lang==='es'
-    ?`Eres el editor de scripts del BOOSTER de ERIORCENTER. Tono neutral, directo, claro. Sin emoción exagerada. Es un comando, no un texto emocional. Todo positivo, todo en presente. Devuelve SOLO el script final.`
+    ?BOOSTER_PROMPT_ES
     :`You are ERIORCENTER's BOOSTER script editor. Tone: neutral, direct, clear. No exaggerated emotion. It's a command, not an emotional text. Everything positive, everything in present tense. Return ONLY the final script.`;
 }
 
 function buildBoosterPrompt(fd){
+  const name=fd.name||'_';
+  const gender=fd.gender==='hombre'?'masculino':'femenino';
+  const tema=fd.intention||'';
+  const idioma=fd.lang==='en'?'inglés':'español';
+  return `Datos: Nombre: ${name}, Género: ${gender}, Tema elegido: ${tema}, Idioma de salida: ${idioma}
+
+Genera el script completo siguiendo estrictamente el prompt del sistema. Entrega únicamente el script final, sin títulos, sin números y sin explicaciones.`;
+}
+
+function buildBoosterPromptOld(fd){
   const name=fd.name||'_';
   const intention=fd.intention||'';
   if(fd.lang==='es'){

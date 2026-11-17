@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ERIORCENTER — Audios Personalizados</title>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@200;300;400;500&family=Montserrat:wght@200;300;400;500&family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
 /* ═══ RESET & BASE ═══ */
@@ -19,7 +20,7 @@ body { font-family: 'Jost', sans-serif; min-height:100vh; overflow-x:hidden; }
    LOGIN PAGE — Shared dark portal
 ═══════════════════════════════════ */
 #page-login {
-  background: radial-gradient(ellipse at 30% 20%, #1a1228 0%, #080808 50%, #030308 100%);
+  background: linear-gradient(180deg, #0a1a33 0%, #13284a 42%, #4a4360 72%, #7d5e63 100%);
   position: relative; overflow: hidden;
 }
 
@@ -29,6 +30,18 @@ body { font-family: 'Jost', sans-serif; min-height:100vh; overflow-x:hidden; }
 @keyframes login-entrance {
   from { opacity:0; transform:translateY(40px) scale(0.97); }
   to { opacity:1; transform:translateY(0) scale(1); }
+}
+
+.login-tiny-stars { position:absolute; inset:0; z-index:0; pointer-events:none; }
+.login-tiny-stars span {
+  position:absolute; width:2px; height:2px; border-radius:50%;
+  background:#fff; opacity:0.3;
+  box-shadow:0 0 3px 1px rgba(200,220,255,0.45);
+  animation:tiny-blink 6s ease-in-out infinite;
+}
+@keyframes tiny-blink {
+  0%,100% { opacity:0.2; }
+  50% { opacity:0.85; }
 }
 
 .login-stars {
@@ -69,7 +82,7 @@ body { font-family: 'Jost', sans-serif; min-height:100vh; overflow-x:hidden; }
   display:flex; flex-direction:column; align-items:center;
   background:rgba(255,255,255,0.02);
   border:1px solid rgba(255,255,255,0.06);
-  border-radius:2px;
+  border-radius:14px;
   padding:60px 48px 48px;
   backdrop-filter:blur(20px);
   box-shadow:0 0 80px rgba(120,80,200,0.08), 0 0 0 1px rgba(255,255,255,0.03);
@@ -105,33 +118,57 @@ body { font-family: 'Jost', sans-serif; min-height:100vh; overflow-x:hidden; }
 }
 
 .login-field-label {
-  font-size:9px; font-weight:400; letter-spacing:4px;
-  color:rgba(255,255,255,0.65); text-transform:uppercase; margin-bottom:14px;
+  font-family:'Italiana',serif; font-size:16px; font-weight:400; letter-spacing:5px;
+  color:rgba(255,255,255,0.88); text-transform:uppercase; margin-bottom:18px;
 }
 
-.login-input {
-  width:100%; background:rgba(255,255,255,0.03);
-  border:none; border-bottom:1px solid rgba(255,255,255,0.18);
-  padding:18px 24px; font-family:'Cormorant Garamond',serif;
-  font-size:18px; font-weight:300; letter-spacing:6px;
-  color:#fff; text-align:center; outline:none;
-  transition:all 0.4s cubic-bezier(0.16,1,0.3,1); margin-bottom:16px;
+.login-field {
+  position:relative; overflow:hidden; border-radius:18px;
+  padding:1.5px; margin-bottom:22px;
+  box-shadow:0 14px 40px rgba(0,0,0,0.28);
 }
-.login-input::placeholder { color:rgba(255,255,255,0.22); letter-spacing:4px; font-size:13px; }
-.login-input:focus { border-bottom-color:rgba(201,169,110,0.8); background:rgba(201,169,110,0.04); box-shadow:0 4px 24px rgba(201,169,110,0.08); }
+.login-field::before {
+  content:''; position:absolute; left:50%; top:50%;
+  width:240%; aspect-ratio:1; transform:translate(-50%,-50%);
+  background:conic-gradient(from 0deg, transparent 0deg, transparent 250deg, rgba(255,236,190,0.95) 300deg, rgba(232,160,140,0.8) 330deg, transparent 360deg);
+  animation:field-spin 4.5s linear infinite;
+  opacity:0.25; transition:opacity 0.6s ease;
+}
+.login-field:focus-within::before { opacity:1; }
+@keyframes field-spin { to { transform:translate(-50%,-50%) rotate(360deg); } }
+.login-input {
+  position:relative; z-index:1; width:100%; display:block;
+  background:linear-gradient(145deg, rgba(14,24,46,0.92), rgba(30,28,52,0.88));
+  border:none; border-radius:17px;
+  padding:20px 24px; font-family:'Italiana',serif;
+  font-size:22px; font-weight:400; letter-spacing:6px;
+  color:#fff; text-align:center; outline:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.14);
+  transition:background 0.4s ease, letter-spacing 0.4s ease;
+}
+.login-input::placeholder { font-family:'Italiana',serif; color:rgba(255,255,255,0.45); letter-spacing:4px; font-size:17px; }
+.login-input:focus { letter-spacing:8px; background:linear-gradient(145deg, rgba(20,34,62,0.95), rgba(44,36,60,0.92)); }
 
 .login-btn {
-  width:100%; background:transparent;
-  border:1px solid rgba(201,169,110,0.4);
-  padding:18px; font-family:'Cormorant Garamond',serif;
-  font-size:11px; font-weight:400; letter-spacing:8px;
-  color:rgba(201,169,110,0.85); text-transform:uppercase;
-  cursor:pointer; transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+  width:100%; border-radius:999px; cursor:pointer;
+  padding:17px 24px; font-family:'Italiana',serif;
+  font-size:18px; font-weight:400; letter-spacing:7px; text-indent:7px;
+  color:#fff; text-transform:uppercase;
+  background:linear-gradient(180deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.07) 55%, rgba(255,255,255,0.12) 100%);
+  border:1px solid rgba(255,255,255,0.3);
+  backdrop-filter:blur(18px) saturate(180%); -webkit-backdrop-filter:blur(18px) saturate(180%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(255,255,255,0.08), 0 14px 34px rgba(0,0,0,0.32);
   position:relative; overflow:hidden;
+  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease, background 0.35s ease;
 }
-.login-btn::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(201,169,110,0.12), rgba(255,255,255,0.04)); opacity:0; transition:opacity 0.4s; }
-.login-btn:hover { border-color:rgba(201,169,110,0.8); color:#fff; box-shadow:0 0 32px rgba(201,169,110,0.15); letter-spacing:10px; }
-.login-btn:hover::before { opacity:1; }
+.login-btn::before {
+  content:''; position:absolute; top:0; left:-75%; width:50%; height:100%;
+  background:linear-gradient(105deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform:skewX(-20deg); transition:left 0.8s ease;
+}
+.login-btn:hover { transform:translateY(-2px); box-shadow:inset 0 1px 0 rgba(255,255,255,0.6), 0 20px 40px rgba(0,0,0,0.38), 0 0 30px rgba(255,220,170,0.18); }
+.login-btn:hover::before { left:125%; }
+.login-btn:active { transform:translateY(0) scale(0.98); }
 
 .login-err {
   font-size:11px; color:rgba(220,140,140,0.8);
@@ -8462,6 +8499,7 @@ textarea.step-input:focus { opacity:1; }
 <!-- ═══ LOGIN ═══ -->
 <div id="page-login" class="page active">
   <div class="login-stars"></div>
+  <div class="login-tiny-stars"><span style="left:14%;top:18%;animation-delay:-0s"></span><span style="left:27%;top:62%;animation-delay:-1.8s"></span><span style="left:41%;top:11%;animation-delay:-3.4s"></span><span style="left:58%;top:30%;animation-delay:-0.9s"></span><span style="left:71%;top:79%;animation-delay:-4.2s"></span><span style="left:84%;top:22%;animation-delay:-2.5s"></span><span style="left:92%;top:55%;animation-delay:-5.1s"></span><span style="left:33%;top:88%;animation-delay:-3.9s"></span><span style="left:9%;top:46%;animation-delay:-1.2s"></span></div>
   <canvas id="fireworks-canvas" style="position:absolute;inset:0;pointer-events:none;z-index:2;width:100%;height:100%;"></canvas>
   <div class="login-glow login-glow-1"></div>
   <div class="login-glow login-glow-2"></div>
@@ -8471,9 +8509,11 @@ textarea.step-input:focus { opacity:1; }
     <h1 class="login-portal-title">Portal</h1>
     <p class="login-portal-sub">Audios personalizados</p>
     <div class="login-field-label">Código de acceso</div>
+    <div class="login-field">
     <input type="text" id="code-input" class="login-input" placeholder="ingresa tu código"
            onkeydown="if(event.key==='Enter') doLogin()">
-    <button class="login-btn" onclick="doLogin()">Acceder ✦</button>
+    </div>
+    <button class="login-btn" onclick="doLogin()">Acceder</button>
     <div id="login-err" class="login-err"></div>
   </div>
 </div>
